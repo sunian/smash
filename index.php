@@ -12,7 +12,7 @@ $conn = DbUtil::connect();
 $stmt = $conn->stmt_init();
 if ($stmt->prepare("show columns from `character` like 'universe'")){
     $stmt->execute();
-    $stmt->bind_result($col1, $col2);
+    $stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6);
     while ($stmt->fetch()){
         echo $col2, "</br>";
     }
