@@ -6,5 +6,15 @@
  * Time: 3:28 PM
  * To change this template use File | Settings | File Templates.
  */
+require_once('DbUtil.php');
+$conn = DbUtil::connect();
 
+$stmt = $conn->stmt_init();
+if ($stmt->prepare("show columns from `character` like 'universe'")){
+    $stmt->execute();
+    $stmt->bind_result($col1, $col2);
+    while ($stmt->fetch()){
+        echo $col2, "</br>";
+    }
+}
 ?>
