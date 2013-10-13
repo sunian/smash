@@ -14,7 +14,7 @@ if ($stmt->prepare("show columns from `character` like 'universe'")){
     $stmt->execute();
     $stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6);
     while ($stmt->fetch()){
-        $csv = substr($col2, 4, strlen($col2) - 5);
+        $csv = substr($col2, 5, -1);
         echo $csv, "</br>";
     }
 }
