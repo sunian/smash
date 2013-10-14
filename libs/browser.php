@@ -6,4 +6,4 @@
  * Time: 12:57 PM
  * To change this template use File | Settings | File Templates.
  */
-print(get_browser(null, false));
+echo json_encode(get_browser(null, false));
