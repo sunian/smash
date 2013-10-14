@@ -14,18 +14,21 @@ require_once('DbUtil.php');
 <head>
     <title>SMASH!</title>
     <?php include('headers.php'); ?>
+    <script type="text/javascript">
+        $(function (){
+            var select_universe = document.createElement("select");
+            select_universe.options.empty();
+            var universes = $("#div_universes")[0].text().split("]|[");
+            for (var i in universes){
+                select_universe.options[i] = new Option(universes[i], universes[i]);
+            }
+            document.body.add(select_universe);
+        });
+    </script>
 </head>
 <body>
 <?php
-$stmt = $conn->stmt_init();
-if ($stmt->prepare("select name from universe")){
-    $stmt->execute();
-    $stmt->bind_result($col1);
-    while ($stmt->fetch()){
-//        echo $col1, "</br>";
-    }
-}
-$stmt->close();
+
 
 ?>
 <?php include('universes.php'); ?>
