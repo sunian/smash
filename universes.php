@@ -9,24 +9,16 @@
 require_once('DbUtil.php');
 $conn = DbUtil::connect();
 
-?>
-
-<html>
-<head>
-    <title>SMASH!</title>
-</head>
-<body>
-<?php
 $stmt = $conn->stmt_init();
 if ($stmt->prepare("select name from universe")){
     $stmt->execute();
     $stmt->bind_result($col1);
+    $first = true;
     while ($stmt->fetch()){
-//        echo $col1, "</br>";
+        if (!$first) echo "]|[";
+        echo $col1;
+        $first = false;
     }
 }
 $stmt->close();
-
-?>
-</body>
-</html>
+$conn->close();
