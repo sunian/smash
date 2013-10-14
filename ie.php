@@ -14,7 +14,7 @@
     <title>You're using IE</title>
 <script type="text/javascript">
     function ignoreWarnings(){
-
+        location.href = "ie.php?ignore=1";
     }
 </script>
 </head>
@@ -29,5 +29,6 @@ if ($_GET["ignore"]){
     echo "<input type='button' value='Do not show this in the future' onclick='ignoreWarnings'/>";
 }
 ?>
+
 </body>
 </html>
