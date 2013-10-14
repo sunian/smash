@@ -20,7 +20,7 @@ require_once('libs/Character.php');
         $(function () {
             var select_universe = createUniverseSelector();
             select_universe.id = "select_universe";
-            document.body.appendChild(select_universe);
+            $("#newChar").appendChild(select_universe);
         });
     </script>
 </head>
@@ -49,6 +49,10 @@ require_once('libs/Character.php');
     }
     ?>
 </table>
+<div id="newChar">
+    Create new character identity:
+    <input placeholder="Name"><input placeholder="Nickname">
+</div>
 <?php include('libs/universes.php'); ?>
 </body>
 </html>
