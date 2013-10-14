@@ -28,6 +28,9 @@ class Character extends JSONObject {
         $stmt->prepare($sql_string);
         $stmt->bind_param("ss", $this->name, $this->nick);
         $stmt->execute();
-
+        $stmt->bind_result($name_id);
+        if ($stmt->fetch()){
+            echo $name_id;
+        }
     }
 }

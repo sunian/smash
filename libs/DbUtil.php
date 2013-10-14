@@ -26,11 +26,16 @@ class DbUtil
                 exit();
             }
             DbUtil::$connection = $conn;
-            echo "new ";
-        } else {
-            echo "old ";
         }
         return $conn;
+    }
+
+    public static function disconnect(){
+        $conn = DbUtil::$connection;
+        DbUtil::$connection = null;
+        if (is_object($conn)){
+            $conn->close();
+        }
     }
 
 }
