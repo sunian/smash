@@ -6,14 +6,15 @@
  * Time: 3:28 PM
  * To change this template use File | Settings | File Templates.
  */
-require_once('DbUtil.php');
+require_once('libs/browser.php');
+require_once('libs/DbUtil.php');
 
 ?>
 
 <html>
 <head>
     <title>SMASH!</title>
-    <?php include('headers.php'); ?>
+    <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
         $(function () {
 //            var select_universe = createUniverseSelector();
@@ -25,8 +26,8 @@ require_once('DbUtil.php');
 <body>
 <?php
 $_GET['enclose'] = 1;
-include('versions.php');
+include('libs/versions.php');
 ?>
-<?php include('universes.php'); ?>
+<?php include('libs/universes.php'); ?>
 </body>
 </html>
