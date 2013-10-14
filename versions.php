@@ -17,7 +17,7 @@ if ($stmt->prepare("SELECT version_id,
     $stmt->execute();
     $stmt->bind_result($version_id, $name);
     while ($stmt->fetch()) {
-        echo "<p><input type='checkbox' value='", $version_id, "'>", $name, "</input></p>";
+        echo "<label><input type='checkbox' value='", $version_id, "'/>", $name, "</label>";
     }
 }
 $stmt->close();
