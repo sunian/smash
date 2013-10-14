@@ -13,12 +13,12 @@ class DbUtil
     public static $user = "cs4750jcs5sb";
     public static $pass = "starkid";
     public static $database = "cs4750jcs5sb";
-    public static $connection = null;
+    private static $connection = null;
 
     public static function connect()
     {
         $conn = DbUtil::$connection;
-        if ($conn == null) {
+        if (!is_object($conn)) {
             $conn = new mysqli(DbUtil::$host, DbUtil::$user, DbUtil::$pass, DbUtil::$database);
             if ($conn->connect_errno) {
                 echo "db connection failed";
@@ -26,6 +26,9 @@ class DbUtil
                 exit();
             }
             DbUtil::$connection = $conn;
+            echo "new ";
+        } else {
+            echo "old ";
         }
         return $conn;
     }

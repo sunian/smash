@@ -22,6 +22,12 @@ class Character extends JSONObject {
     public function create(){
         $conn = DbUtil::connect();
         $stmt = $conn->stmt_init();
-        $stmt->prepare("");
+        $sql_string = "select name_id from character_names where name = ?" .
+            (($this->nick) ? " and nick = ?" : " and nick is null")
+        ;
+        $stmt->prepare($sql_string);
+        $stmt->bind_param("ss", $this->name, $this->nick);
+        $stmt->execute();
+
     }
 }

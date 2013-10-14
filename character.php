@@ -6,6 +6,7 @@
  * Time: 2:19 PM
  * To change this template use File | Settings | File Templates.
  */
+require_once('libs/browser.php');
 require_once('libs/Character.php');
 print_r(new Character($json_input));
 ?>
