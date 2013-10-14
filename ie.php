@@ -14,7 +14,7 @@
     <title>You're using IE</title>
 <script type="text/javascript">
     function ignoreWarnings(){
-        location.href = "ie.php?ignore=1";
+        window.location = "/ie.php?ignore=1";
     }
 </script>
 </head>
