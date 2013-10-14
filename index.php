@@ -17,12 +17,11 @@ require_once('DbUtil.php');
     <script type="text/javascript">
         $(function (){
             var select_universe = document.createElement("select");
-            select_universe.options.empty();
             var universes = $("#div_universes")[0].text().split("]|[");
             for (var i in universes){
                 select_universe.options[i] = new Option(universes[i], universes[i]);
             }
-            document.body.add(select_universe);
+            document.body.appendChild(select_universe);
         });
     </script>
 </head>
