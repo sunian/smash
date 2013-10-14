@@ -14,6 +14,7 @@ $conn = DbUtil::connect();
 <html>
 <head>
     <title>SMASH!</title>
+    <?php include('headers.php'); ?>
 </head>
 <body>
 <?php
@@ -28,5 +29,6 @@ if ($stmt->prepare("select name from universe")){
 $stmt->close();
 
 ?>
+<div id="div_universes" style="display: none;"></div>
 </body>
 </html>
