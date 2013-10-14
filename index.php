@@ -29,6 +29,6 @@ if ($stmt->prepare("select name from universe")){
 $stmt->close();
 
 ?>
-<div id="div_universes" style="display: none;"></div>
+<?php include('universes.php'); ?>
 </body>
 </html>

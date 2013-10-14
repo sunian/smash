@@ -1,3 +1,4 @@
+<div id="div_universes" style="display: none;">
 <?php
 /**
  * Created by JetBrains PhpStorm.
@@ -22,3 +23,5 @@ if ($stmt->prepare("select name from universe")){
 }
 $stmt->close();
 $conn->close();
+?>
+</div>
