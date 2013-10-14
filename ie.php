@@ -24,9 +24,9 @@
 <h3>Error description: User is currently using Internet Explorer.</h3>
 <?php
 if ($_GET["ignore"]){
-
+    echo "You have been notified of this error and will not be warned again.";
 } else {
-
+    echo "<input type='button' value='Do not show this in the future' onclick='ignoreWarnings'/>";
 }
 ?>
 </body>
