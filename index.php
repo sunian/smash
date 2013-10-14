@@ -17,9 +17,9 @@ require_once('libs/DbUtil.php');
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
         $(function () {
-//            var select_universe = createUniverseSelector();
-//            select_universe.id = "select_universe";
-//            document.body.appendChild(select_universe);
+            var select_universe = createUniverseSelector();
+            select_universe.id = "select_universe";
+            document.body.appendChild(select_universe);
         });
     </script>
 </head>
@@ -27,7 +27,6 @@ require_once('libs/DbUtil.php');
 <?php
 $_GET['enclose'] = 1;
 include('libs/versions.php');
-DbUtil::connect();DbUtil::connect();DbUtil::connect();DbUtil::connect();DbUtil::connect();DbUtil::connect();
 ?>
 <?php include('libs/universes.php'); ?>
 </body>
