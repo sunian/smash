@@ -24,3 +24,5 @@ class DbUtil {
     }
 
 }
+
+$conn = DbUtil::connect();

@@ -7,7 +7,6 @@
  * To change this template use File | Settings | File Templates.
  */
 require_once('DbUtil.php');
-$conn = DbUtil::connect();
 
 ?>
 
