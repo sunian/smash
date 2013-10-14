@@ -10,11 +10,11 @@ require_once('DbUtil.php');
 $conn = DbUtil::connect();
 
 $stmt = $conn->stmt_init();
-if ($stmt->prepare("show columns from `character` like 'universe'")){
+if ($stmt->prepare("select name from universe")){
     $stmt->execute();
-    $stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6);
+    $stmt->bind_result($col1);
     while ($stmt->fetch()){
-        $csv = str_getcsv(substr($col2, 5, -1), ',', "'");
+        $csv = str_getcsv(substr($col1, 5, -1), ',', "'");
         print_r($csv);
     }
 }
