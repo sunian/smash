@@ -19,7 +19,9 @@
 </script>
 </head>
 <body>
-<h1>You are currently using Internet Explorer</h1>
+<h1>Error!</h1>
+<h2>Error code: 34042</br>Error type: User</h2>
+<h3>Error description: User is currently using Internet Explorer.</h3>
 <?php
 if ($_GET["ignore"]){
 
