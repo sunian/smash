@@ -9,6 +9,14 @@
 require_once('DbUtil.php');
 $conn = DbUtil::connect();
 
+?>
+
+<html>
+<head>
+    <title>SMASH!</title>
+</head>
+<body>
+<?php
 $stmt = $conn->stmt_init();
 if ($stmt->prepare("select name from universe")){
     $stmt->execute();
@@ -17,4 +25,8 @@ if ($stmt->prepare("select name from universe")){
         echo $col1, "</br>";
     }
 }
+$stmt->close();
+
 ?>
+</body>
+</html>
