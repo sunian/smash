@@ -8,6 +8,7 @@
      */
     require_once('DbUtil.php');
 
+    $conn = DbUtil::connect();
     $stmt = $conn->stmt_init();
     if ($stmt->prepare("select name from universe")) {
         $stmt->execute();

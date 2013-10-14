@@ -8,6 +8,7 @@
  */
 require_once('DbUtil.php');
 
+$conn = DbUtil::connect();
 $stmt = $conn->stmt_init();
 if ($stmt->prepare("SELECT version_id,
                 concat(abbreviation, coalesce(concat(' ', version_number),'')) AS name

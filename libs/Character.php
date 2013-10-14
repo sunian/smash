@@ -20,6 +20,8 @@ class Character extends JSONObject {
     public $air_speed = null;
 
     public function create(){
-
+        $conn = DbUtil::connect();
+        $stmt = $conn->stmt_init();
+        $stmt->prepare("");
     }
 }

@@ -15,7 +15,7 @@ class JSONObject {
     public function set($data) {
         foreach ($data AS $key => $value) {
             if (is_array($value)) {
-                $sub = new JSONObject;
+                $sub = new JSONObject();
                 $sub->set($value);
                 $value = $sub;
             }
