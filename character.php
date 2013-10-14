@@ -6,5 +6,5 @@
  * Time: 2:19 PM
  * To change this template use File | Settings | File Templates.
  */
-print_r($_POST);
+echo file_get_contents("php://input");
 ?>
