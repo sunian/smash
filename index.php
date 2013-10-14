@@ -27,6 +27,7 @@ require_once('libs/DbUtil.php');
 <?php
 $_GET['enclose'] = 1;
 include('libs/versions.php');
+DbUtil::connect();DbUtil::connect();DbUtil::connect();DbUtil::connect();DbUtil::connect();DbUtil::connect();
 ?>
 <?php include('libs/universes.php'); ?>
 </body>
