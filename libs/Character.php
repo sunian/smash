@@ -9,7 +9,8 @@
 require_once('DbUtil.php');
 require_once('JSONObject.php');
 
-class Character extends JSONObject {
+class Character extends JSONObject
+{
     public $id = null;
     public $name = null;
     public $nick = null;
@@ -19,18 +20,26 @@ class Character extends JSONObject {
     public $falling_speed = null;
     public $air_speed = null;
 
-    public function create(){
+    public function createIdentity()
+    {
         $conn = DbUtil::connect();
         $stmt = $conn->stmt_init();
-        $sql_string = "select name_id from character_names where name = ?" .
-            (($this->nick) ? " and nick = ?" : " and nick is null")
-        ;
+        $sql_string = "SELECT identity_id FROM character_identity WHERE name = ? AND universe_id = ?" .
+            (($this->nick) ? " AND nickname = ?" : " AND nickname is null")
+            ;
         $stmt->prepare($sql_string);
-        $stmt->bind_param("ss", $this->name, $this->nick);
+        $stmt->bind_param("sis", $this->name, $this->universe, $this->nick);
         $stmt->execute();
-        $stmt->bind_result($name_id);
-        if ($stmt->fetch()){
-            echo $name_id;
+        $stmt->bind_result($identity_id);
+        if ($stmt->fetch()) {
+            echo $identity_id;
+            return "character identity already exists!";
         }
+        $sql_string = ($this->nick) ? "INSERT INTO character_identity (name, universe_id, nickname) VALUES (?,?,?)" :
+            "INSERT INTO character_names (name, universe_id) VALUES (?,?)";
+        $stmt->prepare($sql_string);
+        $stmt->execute();
+        $stmt->close();
+        return false;
     }
 }

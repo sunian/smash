@@ -17,16 +17,17 @@ require_once('libs/DbUtil.php');
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
         $(function () {
-            var select_universe = createUniverseSelector();
-            select_universe.id = "select_universe";
-            document.body.appendChild(select_universe);
+//            var select_universe = createUniverseSelector();
+//            select_universe.id = "select_universe";
+//            document.body.appendChild(select_universe);
         });
     </script>
 </head>
 <body>
+<a href="character.php">Characters</a>
 <?php
-$_GET['enclose'] = 1;
-include('libs/versions.php');
+//$_GET['enclose'] = 1;
+//include('libs/versions.php');
 ?>
 <?php include('libs/universes.php'); ?>
 </body>

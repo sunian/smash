@@ -9,6 +9,5 @@
 require_once('libs/browser.php');
 require_once('libs/Character.php');
 
-$character = new Character($json_input);
-$character->create();
+//$character = new Character($json_input);
 ?>
