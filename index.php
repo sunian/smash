@@ -14,8 +14,7 @@ if ($stmt->prepare("select name from universe")){
     $stmt->execute();
     $stmt->bind_result($col1);
     while ($stmt->fetch()){
-        $csv = str_getcsv(substr($col1, 5, -1), ',', "'");
-        print_r($csv);
+        echo $col1, "</br>";
     }
 }
 ?>
