@@ -24,7 +24,7 @@ require_once('DbUtil.php');
 </head>
 <body>
 <?php
-include('versions.php');
+include('versions.php?enclose');
 ?>
 <?php include('universes.php'); ?>
 </body>

@@ -21,7 +21,7 @@ if ($stmt->prepare("SELECT version_id,
     }
 }
 $stmt->close();
-echo $_GET['enclose'];
+echo $_GET['enclose'] == null;
 ?>
 <!--<script type="text/javascript">-->
 <!--</script>-->
