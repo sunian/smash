@@ -1,5 +1,4 @@
-<div id="div_universes" style="display: none;">
-<?php
+<div id="div_universes" style="display: none;"><?php
 /**
  * Created by JetBrains PhpStorm.
  * User: Sun
@@ -21,5 +20,4 @@ if ($stmt->prepare("select name from universe")){
     }
 }
 $stmt->close();
-?>
-</div>
+?></div>

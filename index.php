@@ -17,7 +17,7 @@ require_once('DbUtil.php');
     <script type="text/javascript">
         $(function (){
             var select_universe = document.createElement("select");
-            var universes = $("#div_universes")[0].text().split("]|[");
+            var universes = $("#div_universes").text().split("]|[");
             for (var i in universes){
                 select_universe.options[i] = new Option(universes[i], universes[i]);
             }
