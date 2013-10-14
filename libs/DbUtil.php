@@ -19,7 +19,6 @@ class DbUtil
     {
         $conn = DbUtil::$connection;
         if ($conn == null) {
-            echo "new ";
             $conn = new mysqli(DbUtil::$host, DbUtil::$user, DbUtil::$pass, DbUtil::$database);
             if ($conn->connect_errno) {
                 echo "db connection failed";
@@ -27,8 +26,6 @@ class DbUtil
                 exit();
             }
             DbUtil::$connection = $conn;
-        } else {
-            echo "old ";
         }
         return $conn;
     }

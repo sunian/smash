@@ -23,9 +23,9 @@ if ($stmt->prepare("SELECT version_id,
 }
 $stmt->close();
 if ($_GET['enclose'] != null){
-    echo "enclose";
+//    echo "enclose";
 } else {
-    echo "don't enclose";
+//    echo "don't enclose";
 }
 ?>
 <!--<script type="text/javascript">-->
