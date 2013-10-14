@@ -6,7 +6,7 @@
  * Time: 3:28 PM
  * To change this template use File | Settings | File Templates.
  */
-include_once('libs/browser.php');
+require_once('libs/browser.php');
 require_once('libs/DbUtil.php');
 
 ?>

@@ -8,6 +8,8 @@
  */
 if (stripos($_SERVER['HTTP_USER_AGENT'], "MSIE", 0) === false) {
     echo "you're safe </br>";
+} elseif (isset($_COOKIE["msie"]) && $_COOKIE["msie"] == "bypass") {
+    echo "you have been warned! </br>";
 } else {
-    echo "you're using IE </br>";
+    header("Location: ../ie.php");
 }
