@@ -15,17 +15,16 @@ require_once('DbUtil.php');
     <title>SMASH!</title>
     <?php include('headers.php'); ?>
     <script type="text/javascript">
-        $(function (){
-            var select_universe = createUniverseSelector();
-            select_universe.id = "select_universe";
-            document.body.appendChild(select_universe);
+        $(function () {
+//            var select_universe = createUniverseSelector();
+//            select_universe.id = "select_universe";
+//            document.body.appendChild(select_universe);
         });
     </script>
 </head>
 <body>
 <?php
-
-
+include('versions.php');
 ?>
 <?php include('universes.php'); ?>
 </body>
