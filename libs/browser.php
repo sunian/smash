@@ -11,5 +11,5 @@ if (stripos($_SERVER['HTTP_USER_AGENT'], "MSIE", 0) === false) {
 } elseif (isset($_COOKIE["msie"]) && $_COOKIE["msie"] == "bypass") {
     echo "you have been warned! </br>";
 } else {
-    header("Location: versions.php");
+    header("Location: ie.php");
 }
