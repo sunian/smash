@@ -30,7 +30,6 @@ if ($_GET["ignore"]){
     echo "<input type='button' value='Do not show this in the future' onclick='ignoreWarnings();'/>";
 }
 ?>
-<br>
-<p>If you happen to be the Link main known as InternetExplorer, I mean no disrespect, but you sir have a terrible alias.</p>
+<p style="margin-top: 42px;">If you happen to be the Link main known as InternetExplorer, I mean no disrespect, but you sir have a terrible alias.</p>
 </body>
 </html>
