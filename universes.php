@@ -21,3 +21,13 @@ if ($stmt->prepare("select name from universe")){
 }
 $stmt->close();
 ?></div>
+<script type="text/javascript">
+    function createUniverseSelector(){
+        var select_universe = document.createElement("select");
+        var universes = $("#div_universes").text().split("]|[");
+        for (var i in universes){
+            select_universe.options[i] = new Option(universes[i], universes[i]);
+        }
+        return select_universe;
+    }
+</script>
