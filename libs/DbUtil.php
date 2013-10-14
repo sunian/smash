@@ -18,7 +18,7 @@ class DbUtil
     public static function connect()
     {
         $conn = DbUtil::$connection;
-        if (!is_resource($conn)) {
+        if ($conn == null) {
             echo "new ";
             $conn = new mysqli(DbUtil::$host, DbUtil::$user, DbUtil::$pass, DbUtil::$database);
             if ($conn->connect_errno) {
