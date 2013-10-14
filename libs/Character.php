@@ -7,8 +7,9 @@
  * To change this template use File | Settings | File Templates.
  */
 require_once('DbUtil.php');
+require_once('JSONObject.php');
 
-class Character {
+class Character extends JSONObject {
     public $id = null;
     public $name = null;
     public $nick = null;

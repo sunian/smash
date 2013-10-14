@@ -6,5 +6,6 @@
  * Time: 2:19 PM
  * To change this template use File | Settings | File Templates.
  */
-print_r(json_decode(file_get_contents("php://input")));
+require_once('libs/Character.php');
+print_r(new Character($json_input));
 ?>
