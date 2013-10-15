@@ -10,6 +10,8 @@ require_once('libs/browser.php');
 require_once('libs/Character.php');
 if (strlen($json_input) > 0) {
     $character = new Character($json_input);
+    $error = $character->createIdentity();
+    if ($error) echo $error;
     exit();
 }
 ?>
@@ -38,7 +40,11 @@ if (strlen($json_input) > 0) {
 //                dataType: "json",
                 success: function (data, textStatus, jqXHR) {
 //                    console.log(data);
-                    location.reload();
+                    if (data.length > 0){
+                        alert(data);
+                    } else {
+                        location.reload();
+                    }
                 }
 
             });
