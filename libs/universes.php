@@ -30,7 +30,7 @@
         var select_universe = document.createElement("select");
         var universes = JSON.parse($("#div_universes").text());
         for (var i in universes) {
-            select_universe.options[i] = new Option(universes[i].id, universes[i].name);
+            select_universe.options[i] = new Option(universes[i].name, universes[i].id);
         }
         return select_universe;
     }
