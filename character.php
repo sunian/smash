@@ -96,38 +96,39 @@ if (strlen($json_input) > 0) {
             </tr>
         </table>
     </div>
-    <table id="tableChars" style="overflow: scroll;">
-        <tr>
-            <th>Name</th>
-            <th>Nickname</th>
-            <th>Universe</th>
-        </tr>
-        <tfoot>
-        <tr>
-            <td><input id="_newName" placeholder="New name" disabled="disabled"></td>
-            <td><input id="_newNick" placeholder="New Nickname" disabled="disabled"></td>
-            <td id="_newChar"></td>
-        </tr>
-        </tfoot>
-        <tbody class="sortable">
-        <?php
-        $conn = DbUtil::connect();
-        $stmt = $conn->prepare("SELECT i.name, i.nickname, u.name as universe
+    <div style="overflow: scroll">
+        <table id="tableChars">
+            <tr>
+                <th>Name</th>
+                <th>Nickname</th>
+                <th>Universe</th>
+            </tr>
+            <tfoot>
+            <tr>
+                <td><input id="_newName" placeholder="New name" disabled="disabled"></td>
+                <td><input id="_newNick" placeholder="New Nickname" disabled="disabled"></td>
+                <td id="_newChar"></td>
+            </tr>
+            </tfoot>
+            <tbody class="sortable">
+            <?php
+            $conn = DbUtil::connect();
+            $stmt = $conn->prepare("SELECT i.name, i.nickname, u.name as universe
                     FROM character_identity AS i INNER JOIN universe AS u on i.universe_id = u.universe_id
                     ORDER BY u.universe_id, i.nickname, i.name");
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_BOTH);
-        while ($row = $stmt->fetch()) {
-            echo "<tr>";
-            echo "<td>", $row["name"], "</td>";
-            echo "<td>", $row["nickname"], "</td>";
-            echo "<td>", $row["universe"], "</td>";
-            echo "</tr>";
-        }
-        ?>
-        </tbody>
-    </table>
-
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_BOTH);
+            while ($row = $stmt->fetch()) {
+                echo "<tr>";
+                echo "<td>", $row["name"], "</td>";
+                echo "<td>", $row["nickname"], "</td>";
+                echo "<td>", $row["universe"], "</td>";
+                echo "</tr>";
+            }
+            ?>
+            </tbody>
+        </table>
+    </div>
     <div id="fixedFooter" class="_fixedFooter">
         <table class="layout">
             <tr class="layout">
