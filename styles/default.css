@@ -15,16 +15,16 @@ table td {
     background-color: #f7ffff;
 }
 
-table.layout, table.layout tr {
+table.layout, table.layout tr, table.layout td, table.layout th {
     background-color: transparent;
     border-collapse: collapse;
-    border-spacing: 0px;
+    border-spacing: 0;
     border: none;
 }
 
-table.layout td, table.layout th {
-    background-color: transparent;
-}
+/*table.layout td, table.layout th {*/
+    /*background-color: transparent;*/
+/*}*/
 
 .fixedFooter {
     position: fixed;
