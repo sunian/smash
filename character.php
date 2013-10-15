@@ -89,6 +89,7 @@ if (strlen($json_input) > 0) {
         <td id="_newChar"></td>
     </tr>
     </tfoot>
+    <tbody class="sortable">
     <?php
     $conn = DbUtil::connect();
     $stmt = $conn->prepare("SELECT i.name, i.nickname, u.name as universe
@@ -105,7 +106,7 @@ if (strlen($json_input) > 0) {
         echo "</tr>";
     }
     ?>
-
+    </tbody>
 </table>
 
 <div id="fixedFooter" class="fixedFooter">
