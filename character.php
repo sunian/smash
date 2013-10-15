@@ -8,7 +8,7 @@
  */
 require_once('libs/browser.php');
 require_once('libs/Character.php');
-
+echo (strlen($json_input));
 //$character = new Character($json_input);
 ?>
 
@@ -29,7 +29,14 @@ require_once('libs/Character.php');
             newChar.nick = $("#newNick").val();
             if (newChar.nick.length == 0) newChar.nick = undefined;
             newChar.universe = $(select_universe).val();
-            console.log(JSON.stringify(newChar));
+//            console.log(JSON.stringify(newChar));
+            $.ajax({
+                type: "POST",
+                url: "character.php",
+                data: JSON.stringify(newChar),
+                dataType: "json",
+                success: function () {}
+            });
         }
     </script>
 </head>
