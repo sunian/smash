@@ -39,6 +39,7 @@ class Character extends JSONObject
             "INSERT INTO character_names (name, universe_id) VALUES (?,?)";
         $stmt->prepare($sql_string);
         $stmt->execute();
+        echo "inserted ", $stmt->affected_rows, " rows";
         $stmt->close();
         return false;
     }
