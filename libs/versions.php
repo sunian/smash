@@ -9,20 +9,16 @@
 require_once('DbUtil.php');
 
 $conn = DbUtil::connect();
-$stmt = $conn->stmt_init();
-if ($stmt->prepare("SELECT version_id,
+$stmt = $conn->prepare("SELECT version_id as id,
                 concat(abbreviation, coalesce(concat(' ', version_number),'')) AS name
                 FROM version
-                ORDER BY name")
-) {
-    $stmt->execute();
-    $stmt->bind_result($version_id, $name);
-    while ($stmt->fetch()) {
-        echo "<label><input type='checkbox' value='", $version_id, "'/>", $name, "</label></br>";
-    }
+                ORDER BY name");
+$stmt->execute();
+while ($row = $stmt->fetch()) {
+    echo "<label><input type='checkbox' value='", $row["id"], "'/>", $row["name"], "</label></br>";
 }
-$stmt->close();
-if ($_GET['enclose'] != null){
+$stmt->closeCursor();
+if ($_GET['enclose'] != null) {
 //    echo "enclose";
 } else {
 //    echo "don't enclose";
