@@ -35,13 +35,11 @@ if (strlen($json_input) > 0) {
 //            console.log(JSON.stringify(newChar));
             $.ajax({
                 type: "POST",
-                url: "character.php",
                 data: JSON.stringify(newChar),
                 dataType: "json",
-                success: function (e1, e2) {
+                success: function (data) {
                     console.log("success");
-                    console.log(e1);
-                    console.log(e2);
+                    console.log(data);
                 }
             });
         }
