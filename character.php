@@ -37,15 +37,16 @@ if (strlen($json_input) > 0) {
             $("#newName").focus();
         });
 
-        function sortTable(){
-            var rows = $.makeArray($("table#tableChars tbody.sortable tr"));
+        function sortTable(table, col, dir){
+            var rows = $.makeArray(table.find("tbody.sortable tr"));
             rows.sort(function (a, b){
-                return $(a.cells[0]).text().localeCompare($(b.cells[0]).text());
+                return $(a.cells[0]).text().localeCompare($(b.cells[0]).text()) * dir;
             });
-            $("table#tableChars").append(rows);
+            table.append(rows);
         }
 
         function createChar() {
+            sortTable($("table#tableChars"), 0, 1);
             var newChar = {};
             newChar.name = $("#newName").val();
             newChar.nick = $("#newNick").val();
