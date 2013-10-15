@@ -33,7 +33,7 @@ if (strlen($json_input) > 0) {
             alignCellWidths($.makeArray($("table#tableChars tr th")),
                 $.makeArray($("div#fixedHeader table tr th")));
             alignCellWidths($.makeArray($("table#tableChars tfoot tr td")),
-                $.makeArray($("div#fixedFooter table tr td")));
+                $.makeArray($("div#fixedFooter table.content tr td")));
             $("div#fixedFooter").css("bottom", $(document.body).css("margin") + "px");
             $("#newName").focus();
         });
@@ -113,7 +113,7 @@ if (strlen($json_input) > 0) {
     <table class="layout">
         <tr class="layout">
             <td style="vertical-align: bottom;" class="layout">
-                <table>
+                <table class="content">
                     <tr>
                         <td><input id="newName" placeholder="New name"></td>
                         <td><input id="newNick" placeholder="New Nickname"></td>
