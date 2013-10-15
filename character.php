@@ -136,7 +136,7 @@ if (strlen($json_input) > 0) {
                     </tr>
                 </table>
             </td>
-            <td class="layout">
+            <td class="layout" style="padding-left: 4px;">
                 <a href="javascript:void(0);" class="btnPlus" onclick="createChar();"></a>
 <!--                <input type="button" value="Create New&#x00A;Character" onclick="createChar();">-->
             </td>
