@@ -17,8 +17,11 @@ table td {
 
 div.fixedFooter {
     position: fixed;
-    background-color: white;
     bottom: 0px;
     padding-bottom: 8px;
     float: left;
+}
+
+.white {
+    background-color: white;
 }
