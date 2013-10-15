@@ -14,3 +14,10 @@ table th {
 table td {
     background-color: #f7ffff;
 }
+
+div#fixedFooter {
+    position: fixed;
+    background-color: white;
+    bottom: 0px;
+    padding-bottom: 8px;
+}
