@@ -108,7 +108,6 @@ if (strlen($json_input) > 0) {
     $stmt->setFetchMode(PDO::FETCH_BOTH);
     while ($row = $stmt->fetch()) {
         echo "<tr>";
-        echo "<tr>";
         echo "<td>", $row["name"], "</td>";
         echo "<td>", $row["nickname"], "</td>";
         echo "<td>", $row["universe"], "</td>";
