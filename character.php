@@ -33,9 +33,12 @@ if (strlen($json_input) > 0) {
             if (newChar.nick.length == 0) newChar.nick = undefined;
             newChar.universe = $(select_universe).val();
 //            console.log(JSON.stringify(newChar));
-            $.post(null, JSON.stringify(newChar), function (data) {
+            $.post(null, JSON.stringify(newChar),
+                function (data, textStatus, jqXHR) {
                     console.log("success");
                     console.log(data);
+                    console.log(textStatus);
+                    console.log(jqXHR);
                 }
                 , "json"
             );
