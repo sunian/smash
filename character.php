@@ -10,7 +10,7 @@ require_once('libs/browser.php');
 require_once('libs/Character.php');
 if (strlen($json_input) > 0) {
     $character = new Character($json_input);
-    print_r($character);
+    echo json_encode($character);
     exit();
 }
 ?>
@@ -37,7 +37,6 @@ if (strlen($json_input) > 0) {
                 type: "POST",
                 data: JSON.stringify(newChar),
                 success: function (data, textStatus, jqXHR) {
-                    console.log("success");
                     console.log(data);
                 }
 
