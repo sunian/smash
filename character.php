@@ -97,7 +97,7 @@ if (strlen($json_input) > 0) {
 
 </table>
 <div id="fixedFooter">
-    <table>
+    <table style="display: inline-table">
         <tr>
             <td><input id="newName" placeholder="New name"></td>
             <td><input id="newNick" placeholder="New Nickname"></td>
