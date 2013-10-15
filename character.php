@@ -103,7 +103,7 @@ if (strlen($json_input) > 0) {
 <div id="fixedFooter" class="fixedFooter">
     <!--    <div style="position: relative;">-->
     <!--        <div style="display: inline-block; position: relative; top: 10px;" class="white">-->
-    <table>
+    <table class="layout">
         <tr>
             <td>
                 <table>

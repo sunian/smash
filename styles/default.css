@@ -15,6 +15,15 @@ table td {
     background-color: #f7ffff;
 }
 
+table.layout {
+    background-color: transparent;
+    border-collapse: collapse;
+}
+
+table.layout td, table.layout th {
+    background-color: transparent;
+}
+
 .fixedFooter {
     position: fixed;
     bottom: 0px;
