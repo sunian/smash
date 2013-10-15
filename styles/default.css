@@ -44,8 +44,13 @@ a.btnPlus {
     height: 32px;
 }
 
-a.btnPlus:hover{
+a.btnPlus:hover {
     background: url("../images/plus_hover.png") no-repeat;
+    background-size: cover;
+}
+
+a.btnPlus:active {
+    background: url("../images/plus_down.png") no-repeat;
     background-size: cover;
 }
 
