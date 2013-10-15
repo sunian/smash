@@ -44,6 +44,10 @@ a.btnPlus {
     height: 32px;
 }
 
+a.btnPlus:hover{
+    background: url("../images/plus_hover.png") no-repeat;
+}
+
 .white {
     background-color: white;
 }
