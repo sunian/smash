@@ -9,7 +9,7 @@
     require_once('DbUtil.php');
 
     $conn = DbUtil::connect();
-    $stmt = $conn->prepare("select universe_id, name from universe order by universe_id");
+    $stmt = $conn->prepare("select universe_id as id, name from universe order by universe_id");
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     echo json_encode($stmt->fetchAll());
@@ -20,7 +20,7 @@
         var select_universe = document.createElement("select");
         var universes = JSON.parse($("#div_universes").text());
         for (var i in universes) {
-            select_universe.options[i] = new Option(universes[i].name, universes[i].universe_id);
+            select_universe.options[i] = new Option(universes[i].name, universes[i].id);
         }
         return select_universe;
     }
