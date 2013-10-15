@@ -34,7 +34,7 @@ if (strlen($json_input) > 0) {
                 $.makeArray($("div#fixedHeader table tr th")));
             alignCellWidths($.makeArray($("table#tableChars tfoot tr td")),
                 $.makeArray($("div#fixedFooter table.content tr td")));
-            $("div#fixedHeader table tr th").each(function (i, elem){
+            $("div#fixedHeader table tr th").each(function (i, elem) {
                 $(elem).attr("dir", "1").css("cursor", "pointer");
                 $(elem).click(function () {
                     var dir = $(elem).attr("dir") * 1;
@@ -45,9 +45,9 @@ if (strlen($json_input) > 0) {
             $("#newName").focus();
         });
 
-        function sortTable(table, col, dir){
+        function sortTable(table, col, dir) {
             var rows = $.makeArray(table.find("tr"));
-            rows.sort(function (a, b){
+            rows.sort(function (a, b) {
                 return $(a.cells[col]).text().localeCompare($(b.cells[col]).text()) * dir;
             });
             table.append(rows);
@@ -83,66 +83,68 @@ if (strlen($json_input) > 0) {
     </script>
 </head>
 <body>
-<div id="fixedHeader" class="fixedHeader">
-    <table>
+<div id="body">
+    <div id="fixedHeader" class="fixedHeader">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Nickname</th>
+                <th>Universe</th>
+            </tr>
+        </table>
+    </div>
+    <table id="tableChars">
         <tr>
             <th>Name</th>
             <th>Nickname</th>
             <th>Universe</th>
         </tr>
-    </table>
-</div>
-<table id="tableChars">
-    <tr>
-        <th>Name</th>
-        <th>Nickname</th>
-        <th>Universe</th>
-    </tr>
-    <tfoot>
-    <tr>
-        <td><input id="_newName" placeholder="New name" disabled="disabled"></td>
-        <td><input id="_newNick" placeholder="New Nickname" disabled="disabled"></td>
-        <td id="_newChar"></td>
-    </tr>
-    </tfoot>
-    <tbody class="sortable">
-    <?php
-    $conn = DbUtil::connect();
-    $stmt = $conn->prepare("SELECT i.name, i.nickname, u.name as universe
+        <tfoot>
+        <tr>
+            <td><input id="_newName" placeholder="New name" disabled="disabled"></td>
+            <td><input id="_newNick" placeholder="New Nickname" disabled="disabled"></td>
+            <td id="_newChar"></td>
+        </tr>
+        </tfoot>
+        <tbody class="sortable">
+        <?php
+        $conn = DbUtil::connect();
+        $stmt = $conn->prepare("SELECT i.name, i.nickname, u.name as universe
                     FROM character_identity AS i INNER JOIN universe AS u on i.universe_id = u.universe_id
                     ORDER BY u.universe_id, i.nickname, i.name");
-    $stmt->execute();
-    $stmt->setFetchMode(PDO::FETCH_BOTH);
-    while ($row = $stmt->fetch()) {
-        echo "<tr>";
-        echo "<td>", $row["name"], "</td>";
-        echo "<td>", $row["nickname"], "</td>";
-        echo "<td>", $row["universe"], "</td>";
-        echo "</tr>";
-    }
-    ?>
-    </tbody>
-</table>
-
-<div id="fixedFooter" class="fixedFooter">
-    <table class="layout">
-        <tr class="layout">
-            <td style="vertical-align: bottom;" class="layout">
-                <table class="content">
-                    <tr>
-                        <td><input id="newName" placeholder="New name"></td>
-                        <td><input id="newNick" placeholder="New Nickname"></td>
-                        <td id="newChar"></td>
-                    </tr>
-                </table>
-            </td>
-            <td class="layout" style="padding-left: 4px;">
-                <a href="javascript:void(0);" class="btnPlus" onclick="createChar();"></a>
-<!--                <input type="button" value="Create New&#x00A;Character" onclick="createChar();">-->
-            </td>
-        </tr>
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_BOTH);
+        while ($row = $stmt->fetch()) {
+            echo "<tr>";
+            echo "<td>", $row["name"], "</td>";
+            echo "<td>", $row["nickname"], "</td>";
+            echo "<td>", $row["universe"], "</td>";
+            echo "</tr>";
+        }
+        ?>
+        </tbody>
     </table>
 
+    <div id="fixedFooter" class="fixedFooter">
+        <table class="layout">
+            <tr class="layout">
+                <td style="vertical-align: bottom;" class="layout">
+                    <table class="content">
+                        <tr>
+                            <td><input id="newName" placeholder="New name"></td>
+                            <td><input id="newNick" placeholder="New Nickname"></td>
+                            <td id="newChar"></td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="layout" style="padding-left: 4px;">
+                    <a href="javascript:void(0);" class="btnPlus" onclick="createChar();"></a>
+                    <!--                <input type="button" value="Create New&#x00A;Character" onclick="createChar();">-->
+                </td>
+            </tr>
+        </table>
+
+    </div>
 </div>
 <?php include('libs/universes.php'); ?>
 </body>
