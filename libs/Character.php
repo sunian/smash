@@ -37,7 +37,7 @@ class Character extends JSONObject
             $params["nick"] = $this->nick;
             $sql_string = "INSERT INTO character_identity (name, universe_id, nickname) VALUES (:name, :universe, :nick)";
             $stmt = $conn->prepare($sql_string);
-            $stmt->execute((array)$this);
+            $stmt->execute($params);
             $stmt->closeCursor();
             return false;
 
