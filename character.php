@@ -38,7 +38,7 @@ if (strlen($json_input) > 0) {
                 $(elem).attr("dir", "1");
                 $(elem).click(function () {
                     var dir = $(elem).attr("dir") * 1;
-                    console.log(i + " " + dir);
+                    sortTable($("table#tableChars tbody.sortable"), i, dir);
                     $(elem).attr("dir", "" + (dir * -1));
                 })
             });
@@ -48,13 +48,12 @@ if (strlen($json_input) > 0) {
         function sortTable(table, col, dir){
             var rows = $.makeArray(table.find("tr"));
             rows.sort(function (a, b){
-                return $(a.cells[0]).text().localeCompare($(b.cells[0]).text()) * dir;
+                return $(a.cells[col]).text().localeCompare($(b.cells[col]).text()) * dir;
             });
             table.append(rows);
         }
 
         function createChar() {
-            sortTable($("table#tableChars tbody.sortable"), 0, 1);
             var newChar = {};
             newChar.name = $("#newName").val();
             newChar.nick = $("#newNick").val();
