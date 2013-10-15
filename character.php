@@ -83,6 +83,9 @@ if (strlen($json_input) > 0) {
     </script>
 </head>
 <body>
+<div id="pageHeader" class="fixedHeader">
+    Hi!
+</div>
 <div id="body">
     <div id="fixedHeader" class="fixedHeader">
         <table>
