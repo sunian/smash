@@ -2,6 +2,11 @@ body {
     margin: 0;
 }
 
+div.body {
+    margin: 8px;
+    position: relative;
+}
+
 table {
     background-color: #c0c0c0;
     text-align: center;

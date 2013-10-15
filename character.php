@@ -87,7 +87,7 @@ if (strlen($json_input) > 0) {
     <img src="images/title_logo.png">
     Hi, this is the nav header
 </div>
-<div id="body" style="position: relative;">
+<div class="body">
     <div id="fixedHeader" class="fixedHeader">
         <table>
             <tr>
