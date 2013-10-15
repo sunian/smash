@@ -35,17 +35,14 @@ if (strlen($json_input) > 0) {
             $("div#fixedFooter").css("bottom", $(document.body).css("margin") + "px");
             $("#newName").focus();
         });
-        function alignCellWidths(rowSource, rowTarget) {
-            for (var i in rowTarget) {
-                $(rowTarget[i]).css("width", $(rowSource[i]).css("width") + "px");
-            }
-        }
+
         function createChar() {
             var newChar = {};
             newChar.name = $("#newName").val();
             newChar.nick = $("#newNick").val();
             if (newChar.name.length == 0) {
                 alert("Please enter a name to create a new character.");
+                $("#newName").focus();
                 return;
             }
             if (newChar.nick.length == 0) newChar.nick = undefined;
