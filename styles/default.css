@@ -24,12 +24,8 @@ table.layout, table.layout tr.layout, table.layout td.layout, table.layout th.la
     padding: 0;
 }
 
-/*table.layout td, table.layout th {*/
-    /*background-color: transparent;*/
-/*}*/
-
 .fixedHeader {
-    /*position: fixed;*/
+    position: fixed;
     top: 0px;
     /*border-bottom: 8px solid white;*/
 }
