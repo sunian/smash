@@ -19,7 +19,7 @@
 <script type="text/javascript">
     function alignCellWidths(rowSource, rowTarget) {
         for (var i in rowTarget) {
-            $(rowTarget[i]).css("width", $(rowSource[i]).css("width") + "px");
+            $(rowTarget[i]).css("width", $(rowSource[i]).css("width"));
         }
     }
 

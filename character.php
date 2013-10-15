@@ -34,7 +34,6 @@ if (strlen($json_input) > 0) {
                 $.makeArray($("div#fixedHeader table tr th")));
             alignCellWidths($.makeArray($("table#tableChars tfoot tr td")),
                 $.makeArray($("div#fixedFooter table.content tr td")));
-            $("div#fixedFooter").css("bottom", $(document.body).css("margin") + "px");
             $("#newName").focus();
         });
 
