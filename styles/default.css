@@ -1,6 +1,12 @@
-
+table {
+   background-color: #c0c0c0;
+}
 
 table th {
     background-color: #424244;
     color: white;
+}
+
+table td {
+    background-color: white;
 }
