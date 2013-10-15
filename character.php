@@ -26,6 +26,7 @@ if (strlen($json_input) > 0) {
             select_universe = createUniverseSelector();
             select_universe.id = "select_universe";
             $("#newChar")[0].appendChild(select_universe);
+            $("#newName").focus();
         });
         function createChar() {
             var newChar = {};
