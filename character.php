@@ -60,18 +60,17 @@ if (strlen($json_input) > 0) {
     </tr>
     <?php
     $conn = DbUtil::connect();
-    $stmt = $conn->stmt_init();
-    $stmt->prepare("SELECT i.name, i.nickname, u.name
+    $stmt = $conn->prepare("SELECT i.name, i.nickname, u.name as universe
                     FROM character_identity AS i INNER JOIN universe AS u on i.universe_id = u.universe_id
                     ORDER BY u.universe_id, i.nickname, i.name");
     $stmt->execute();
-    $stmt->bind_result($name, $nick, $universe);
-    while ($stmt->fetch()) {
+    $stmt->setFetchMode(PDO::FETCH_BOTH);
+    while ($row = $stmt->fetch()) {
         echo "<tr>";
         echo "<tr>";
-        echo "<td>", $name, "</td>";
-        echo "<td>", $nick, "</td>";
-        echo "<td>", $universe, "</td>";
+        echo "<td>", $row["name"], "</td>";
+        echo "<td>", $row["nickname"], "</td>";
+        echo "<td>", $row["universe"], "</td>";
         echo "</tr>";
     }
     ?>

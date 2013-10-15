@@ -19,23 +19,28 @@ class DbUtil
     {
         $conn = DbUtil::$connection;
         if (!is_object($conn)) {
-            $conn = new mysqli(DbUtil::$host, DbUtil::$user, DbUtil::$pass, DbUtil::$database);
-            if ($conn->connect_errno) {
+            try {
+                $conn = new PDO("mysql:host=" . DbUtil::$host . ";dbname=" . DbUtil::$database,
+                    DbUtil::$user, DbUtil::$pass,
+                    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
+                );
+            } catch (PDOException $e){
                 echo "db connection failed";
-                $conn->close();
                 exit();
             }
+//            $conn = new mysqli(DbUtil::$host, DbUtil::$user, DbUtil::$pass, DbUtil::$database);
             DbUtil::$connection = $conn;
         }
         return $conn;
     }
 
-    public static function disconnect(){
-        $conn = DbUtil::$connection;
+    public static function disconnect()
+    {
+//        $conn = DbUtil::$connection;
         DbUtil::$connection = null;
-        if (is_object($conn)){
-            $conn->close();
-        }
+//        if (is_object($conn)) {
+//            $conn->close();
+//        }
     }
 
 }

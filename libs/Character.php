@@ -23,24 +23,19 @@ class Character extends JSONObject
     public function createIdentity()
     {
         $conn = DbUtil::connect();
-        $stmt = $conn->stmt_init();
-        $sql_string = "SELECT identity_id FROM character_identity WHERE name = ? AND universe_id = ?" .
-            (($this->nick) ? " AND nickname = ?" : " AND nickname is null")
-            ;
-        $stmt->prepare($sql_string);
-        $stmt->bind_param("sss", $this->name, $this->universe, $this->nick);
-        $stmt->execute();
-        $stmt->bind_result($identity_id);
-        if ($stmt->fetch()) {
-            echo $identity_id;
+        $sql_string = "SELECT identity_id FROM character_identity WHERE name = :name AND universe_id = :universe" .
+            (($this->nick) ? " AND nickname = :nick" : " AND nickname is null");
+        $stmt = $conn->prepare($sql_string);
+
+        $stmt->execute((array)$this);
+        if ($row = $stmt->fetch()) {
             return "character identity already exists!";
         }
-        $sql_string = "INSERT INTO character_identity (name, universe_id, nickname) VALUES (?,?,?)";
-        $stmt->prepare($sql_string);
-        $stmt->bind_param("sss", $this->name, $this->universe, $this->nick);
-        $stmt->execute();
-        echo "inserted ", $stmt->affected_rows, " rows";
-        $stmt->close();
+        $stmt->closeCursor();
+        $sql_string = "INSERT INTO character_identity (name, universe_id, nickname) VALUES (:name, :universe, :nick)";
+        $stmt = $conn->prepare($sql_string);
+        $stmt->execute((array)$this);
+        $stmt->closeCursor();
         return false;
     }
 }

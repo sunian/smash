@@ -9,21 +9,19 @@
     require_once('DbUtil.php');
 
     $conn = DbUtil::connect();
-    $stmt = $conn->stmt_init();
-    if ($stmt->prepare("select universe_id, name from universe order by universe_id")) {
-        $stmt->execute();
-        $stmt->bind_result($id, $name);
-        $universes = array();
-        $count = 0;
-        while ($stmt->fetch()) {
-            $universes[$count++] = array(
-                "id" => $id,
-                "name" => $name
-            );
-        }
-        echo json_encode($universes);
-    }
-    $stmt->close();
+    $stmt = $conn->prepare("select universe_id, name from universe order by universe_id");
+    $stmt->execute();
+//    $universes = array();
+//    $count = 0;
+    print_r($stmt->fetchAll());
+//    while ($row = $stmt->fetch()) {
+//        $universes[$count++] = array(
+//            "id" => $id,
+//            "name" => $name
+//        );
+//    }
+//    echo json_encode($universes);
+    $stmt->closeCursor();
     ?></div>
 <script type="text/javascript">
     function createUniverseSelector() {
