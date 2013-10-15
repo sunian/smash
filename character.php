@@ -104,8 +104,8 @@ if (strlen($json_input) > 0) {
     <!--    <div style="position: relative;">-->
     <!--        <div style="display: inline-block; position: relative; top: 10px;" class="white">-->
     <table class="layout">
-        <tr>
-            <td style="vertical-align: bottom;">
+        <tr class="layout">
+            <td style="vertical-align: bottom;" class="layout">
                 <table>
                     <tr>
                         <td><input id="newName" placeholder="New name"></td>
@@ -114,7 +114,7 @@ if (strlen($json_input) > 0) {
                     </tr>
                 </table>
             </td>
-            <td>
+            <td class="layout">
                 <input type="button" value="Create New&#x00A;Character" onclick="createChar();">
             </td>
         </tr>

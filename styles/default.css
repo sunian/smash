@@ -15,7 +15,7 @@ table td {
     background-color: #f7ffff;
 }
 
-table.layout, table.layout tr, table.layout td, table.layout th {
+table.layout, table.layout tr.layout, table.layout td.layout, table.layout th.layout {
     background-color: transparent;
     border-collapse: collapse;
     border-spacing: 0;
