@@ -97,14 +97,14 @@ if (strlen($json_input) > 0) {
 
 </table>
 <div id="fixedFooter" class="fixedFooter">
-    <table style="display: inline-table" class="white">
+    <table style="display: inline-block; float: left" class="white">
         <tr>
             <td><input id="newName" placeholder="New name"></td>
             <td><input id="newNick" placeholder="New Nickname"></td>
             <td id="newChar"></td>
         </tr>
     </table>
-    <input type="button" value="Create New&#x00A;Character" onclick="createChar();" >
+    <input type="button" value="Create New&#x00A;Character" onclick="createChar();" style="display: inline-block; float: left">
 </div>
 <?php include('libs/universes.php'); ?>
 </body>
