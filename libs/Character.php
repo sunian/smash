@@ -25,20 +25,20 @@ class Character extends JSONObject
         try {
             $conn = DbUtil::connect();
             $sql_string = "SELECT identity_id FROM character_identity WHERE name = :name AND universe_id = :universe" .
-                (is_null($this->nick) ? " AND nickname = :nick" : " AND nickname = :nick");
+                (is_null($this->nick) ? " AND nickname is null" : " AND nickname = :nick");
             $params = array("name" => $this->name, "universe" => $this->universe);
-//            if (!is_null($this->nick))
-                $params["nick"] = $this->nick;
+            if (!is_null($this->nick)) $params["nick"] = $this->nick;
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
             if ($row = $stmt->fetch()) {
                 return "character identity already exists!";
             }
             $stmt->closeCursor();
-//        $sql_string = "INSERT INTO character_identity (name, universe_id, nickname) VALUES (:name, :universe, :nick)";
-//        $stmt = $conn->prepare($sql_string);
-//        $stmt->execute((array)$this);
-//        $stmt->closeCursor();
+            $params["nick"] = $this->nick;
+            $sql_string = "INSERT INTO character_identity (name, universe_id, nickname) VALUES (:name, :universe, :nick)";
+            $stmt = $conn->prepare($sql_string);
+            $stmt->execute((array)$this);
+            $stmt->closeCursor();
             return false;
 
         } catch (PDOException $e) {
