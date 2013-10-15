@@ -26,7 +26,8 @@ class Character extends JSONObject
         $sql_string = "SELECT identity_id FROM character_identity WHERE name = :name AND universe_id = :universe" .
             (is_null($this->nick) ? " AND nickname is null" : " AND nickname = :nick");
         $stmt = $conn->prepare($sql_string);
-        $stmt->execute((array) $this);
+//        $stmt->execute((array) $this);
+        $stmt->execute(array("name" => $this->name, "universe" => $this->universe));
         if ($row = $stmt->fetch()) {
             return "character identity already exists!";
         }
