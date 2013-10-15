@@ -60,7 +60,7 @@ if (strlen($json_input) > 0) {
         <th>Universe</th>
     </tr>
     <tfoot>
-    <tr style="position: fixed; bottom: 0px;">
+    <tr>
         <td><input id="newName" placeholder="New name"></td>
         <td><input id="newNick" placeholder="New Nickname"></td>
         <td id="newChar"></td>
