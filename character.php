@@ -59,18 +59,18 @@ if (strlen($json_input) > 0) {
         <th>Nickname</th>
         <th>Universe</th>
     </tr>
-    <tfoot style="position: fixed; bottom: 0px">
-    <tr>
+    <tfoot>
+    <tr style="position: fixed; bottom: 0px;">
         <td><input id="newName" placeholder="New name"></td>
         <td><input id="newNick" placeholder="New Nickname"></td>
         <td id="newChar"></td>
     </tr>
     </tfoot>
-    $stmt = $conn->prepare("SELECT i.name, i.nickname, u.name as universe
-    FROM character_identity AS i INNER JOIN universe AS u on i.universe_id = u.universe_id
-    ORDER BY u.universe_id, i.nickname, i.name");
     <?php
     $conn = DbUtil::connect();
+    $stmt = $conn->prepare("SELECT i.name, i.nickname, u.name as universe
+                    FROM character_identity AS i INNER JOIN universe AS u on i.universe_id = u.universe_id
+                    ORDER BY u.universe_id, i.nickname, i.name");
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_BOTH);
     while ($row = $stmt->fetch()) {
@@ -82,6 +82,7 @@ if (strlen($json_input) > 0) {
         echo "</tr>";
     }
     ?>
+
 </table>
 <input type="button" value="Create New&#x00A;Character" onclick="createChar();">
 <?php include('libs/universes.php'); ?>
