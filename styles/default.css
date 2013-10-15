@@ -30,7 +30,7 @@ table.layout, table.layout tr.layout, table.layout td.layout, table.layout th.la
 .fixedFooter {
     position: fixed;
     bottom: 0px;
-    border-bottom: 8px white;
+    border-bottom: 8px solid white;
     float: left;
 }
 
