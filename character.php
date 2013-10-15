@@ -96,7 +96,7 @@ if (strlen($json_input) > 0) {
             </tr>
         </table>
     </div>
-    <table id="tableChars">
+    <table id="tableChars" style="overflow: auto;">
         <tr>
             <th>Name</th>
             <th>Nickname</th>
