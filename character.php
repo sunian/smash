@@ -33,7 +33,7 @@ if (strlen($json_input) > 0) {
             if (newChar.nick.length == 0) newChar.nick = undefined;
             newChar.universe = $(select_universe).val();
 //            console.log(JSON.stringify(newChar));
-            $.post("characters.php", JSON.stringify(newChar), function (data) {
+            $.post(null, JSON.stringify(newChar), function (data) {
                     console.log("success");
                     console.log(data);
                 }
