@@ -28,7 +28,7 @@ class Character extends JSONObject
             (($this->nick) ? " AND nickname = ?" : " AND nickname is null")
             ;
         $stmt->prepare($sql_string);
-        $stmt->bind_param("sis", $this->name, $this->universe, $this->nick);
+        $stmt->bind_param("sss", $this->name, $this->universe, $this->nick);
         $stmt->execute();
         $stmt->bind_result($identity_id);
         if ($stmt->fetch()) {

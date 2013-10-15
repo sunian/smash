@@ -27,9 +27,9 @@ require_once('libs/Character.php');
             var newChar = {};
             newChar.name = $("#newName").val();
             newChar.nick = $("#newNick").val();
-            if (newChar.nick.length == 0) newChar.nick = undefined;
+            if (newChar.nick.length == 0) newChar.nick = null;
             newChar.universe = $(select_universe).val();
-            console.log(newChar);
+            console.log(JSON.stringify(newChar));
         }
     </script>
 </head>
