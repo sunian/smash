@@ -83,7 +83,7 @@ if (strlen($json_input) > 0) {
     </script>
 </head>
 <body>
-<div id="pageHeader" style="position: fixed;">
+<div id="pageHeader" >
     Hi
 </div>
 <div id="body" style="position: relative;">
