@@ -40,9 +40,9 @@ if (strlen($json_input) > 0) {
         function sortTable(){
             var rows = $.makeArray($("table#tableChars tbody.sortable tr"));
             rows.sort(function (a, b){
-                console.log($(a.cells[0]).text() + " | " + $(b.cells[0]).text());
-                return 0;
+                return $(a.cells[0]).text().localeCompare($(b.cells[0]).text());
             });
+            $("table#tableChars").append(rows);
         }
 
         function createChar() {
