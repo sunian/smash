@@ -105,7 +105,7 @@ if (strlen($json_input) > 0) {
         </tr>
     </table>
 </div>
-<input type="button" value="Create New&#x00A;Character" onclick="createChar();" style="display: none">
+<input type="button" value="Create New&#x00A;Character" onclick="createChar();" >
 <?php include('libs/universes.php'); ?>
 </body>
 </html>
