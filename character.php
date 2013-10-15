@@ -35,7 +35,7 @@ if (strlen($json_input) > 0) {
             alignCellWidths($.makeArray($("table#tableChars tfoot tr td")),
                 $.makeArray($("div#fixedFooter table.content tr td")));
             $("div#fixedHeader table tr th").each(function (i, elem){
-                $(elem).attr("dir", "1").attr("cursor", "pointer");
+                $(elem).attr("dir", "1").css("cursor", "pointer");
                 $(elem).click(function () {
                     var dir = $(elem).attr("dir") * 1;
                     sortTable($("table#tableChars tbody.sortable"), i, dir);
