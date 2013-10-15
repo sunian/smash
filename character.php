@@ -36,7 +36,8 @@ if (strlen($json_input) > 0) {
             $.ajax({
                 type: "POST",
                 data: JSON.stringify(newChar),
-                success: function (data, textStatus, jqXHR) {
+                dataType: "json",
+                    success: function (data, textStatus, jqXHR) {
                     console.log(data);
                 }
 
