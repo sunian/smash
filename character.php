@@ -39,6 +39,7 @@ if (strlen($json_input) > 0) {
                 data: JSON.stringify(newChar),
                 dataType: "json",
                 success: function (e1, e2) {
+                    console.log("success");
                     console.log(e1);
                     console.log(e2);
                 }
