@@ -31,7 +31,7 @@ class Character extends JSONObject
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
             if ($row = $stmt->fetch()) {
-                return "character identity already exists!";
+                return "That character already exists!";
             }
             $stmt->closeCursor();
             $params["nick"] = $this->nick;
