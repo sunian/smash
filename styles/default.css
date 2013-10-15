@@ -18,6 +18,7 @@ table td {
 table.layout {
     background-color: transparent;
     border-collapse: collapse;
+    border-spacing: 0px;
 }
 
 table.layout td, table.layout th {
