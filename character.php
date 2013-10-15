@@ -62,7 +62,7 @@ if (strlen($json_input) > 0) {
     $conn = DbUtil::connect();
     $stmt = $conn->stmt_init();
     $stmt->prepare("SELECT i.name, i.nickname, u.name
-                    FROM character_identity AS i NATURAL JOIN universe AS u on i.universe_id = u.universe_id
+                    FROM character_identity AS i INNER JOIN universe AS u on i.universe_id = u.universe_id
                     ORDER BY u.universe_id, i.nickname, i.name");
     $stmt->execute();
     $stmt->bind_result($name, $nick, $universe);
