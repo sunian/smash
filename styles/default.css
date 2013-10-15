@@ -33,7 +33,7 @@ table.layout, table.layout tr.layout, table.layout td.layout, table.layout th.la
 .fixedFooter {
     position: absolute;
     bottom: 0px;
-    /*border-bottom: 8px solid white;*/
+    border-bottom: 8px solid white;
 }
 
 a.btnPlus {
