@@ -26,8 +26,14 @@ if (strlen($json_input) > 0) {
             select_universe = createUniverseSelector();
             select_universe.id = "select_universe";
             $("#newChar")[0].appendChild(select_universe);
+            alignCellWidths($("table#tableChars tfoot tr"), $("div#fixedFooter table tr"));
             $("#newName").focus();
         });
+        function alignCellWidths(rowSource, rowTarget) {
+            for (var i in rowTarget) {
+                rowTarget[i].css("width", rowSource[i].css("width") + "px");
+            }
+        }
         function createChar() {
             var newChar = {};
             newChar.name = $("#newName").val();
@@ -53,7 +59,7 @@ if (strlen($json_input) > 0) {
     </script>
 </head>
 <body>
-<table style="text-align: center">
+<table id="tableChars" style="text-align: center">
     <tr>
         <th>Name</th>
         <th>Nickname</th>
