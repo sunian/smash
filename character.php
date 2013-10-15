@@ -105,7 +105,7 @@ if (strlen($json_input) > 0) {
     <!--        <div style="display: inline-block; position: relative; top: 10px;" class="white">-->
     <table class="layout">
         <tr>
-            <td>
+            <td style="vertical-align: bottom;">
                 <table>
                     <tr>
                         <td><input id="newName" placeholder="New name"></td>
