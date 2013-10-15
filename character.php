@@ -44,6 +44,10 @@ if (strlen($json_input) > 0) {
             var newChar = {};
             newChar.name = $("#newName").val();
             newChar.nick = $("#newNick").val();
+            if (newChar.name.length == 0) {
+                alert("Please enter a name to create a new character");
+                return;
+            }
             if (newChar.nick.length == 0) newChar.nick = undefined;
             newChar.universe = $(select_universe).val();
 //            console.log(JSON.stringify(newChar));
@@ -98,7 +102,7 @@ if (strlen($json_input) > 0) {
 </table>
 <div id="fixedFooter" class="fixedFooter">
     <div style="position: relative;">
-        <div style="display: inline-block; bottom: 0px; position: absolute;" class="white">
+        <div style="display: inline-block; bottom: 0px; position: relative;" class="white">
             <table>
                 <tr>
                     <td><input id="newName" placeholder="New name"></td>
@@ -107,7 +111,7 @@ if (strlen($json_input) > 0) {
                 </tr>
             </table>
         </div>
-        <div style="display: inline-block; bottom: 0px; position: absolute;">
+        <div style="display: inline-block; bottom: 0px; position: relative;">
             <input type="button" value="Create New&#x00A;Character" onclick="createChar();">
         </div>
     </div>
