@@ -43,7 +43,7 @@ class Character extends JSONObject
             return false;
 
         } catch (PDOException $e){
-            echo $e->getMessage();
+            return $e->getMessage();
         }
     }
 }
