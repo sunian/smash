@@ -9,7 +9,7 @@
 
 ?>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="viewport" content="width=device-width, user-scalable=false;"/>
+<meta name="viewport" content="user-scalable=false;"/>
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 <script type="text/javascript" src="http://datejs.googlecode.com/files/date.js"></script>
