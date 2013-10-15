@@ -36,7 +36,9 @@ if (strlen($json_input) > 0) {
                 $.makeArray($("div#fixedFooter table.content tr td")));
             $("div#fixedHeader table tr th").each(function (i, elem){
                 $(elem).click(function () {
-                    console.log(i + " " + elem);
+                    var dir = $(elem).attr("dir").length > 0 ? -1 : 1;
+                    console.log(i + " " + dir);
+                    $(elem).attr("dir", dir ? "-1" : "");
                 })
             });
             $("#newName").focus();
