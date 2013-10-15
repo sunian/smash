@@ -134,11 +134,13 @@ if (strlen($json_input) > 0) {
             <tr class="layout">
                 <td style="vertical-align: bottom;" class="layout">
                     <table class="content">
+                        <tfoot>
                         <tr>
                             <td><input id="newName" placeholder="New name"></td>
                             <td><input id="newNick" placeholder="New Nickname"></td>
                             <td id="newChar"></td>
                         </tr>
+                        </tfoot>
                     </table>
                 </td>
                 <td class="layout" style="padding-left: 4px;">
