@@ -26,12 +26,13 @@ if (strlen($json_input) > 0) {
             select_universe = createUniverseSelector();
             select_universe.id = "select_universe";
             $("#newChar")[0].appendChild(select_universe);
-            alignCellWidths($("table#tableChars tfoot tr"), $("div#fixedFooter table tr"));
+            alignCellWidths($.makeArray($("table#tableChars tfoot tr td")),
+                $.makeArray($("div#fixedFooter table tr td")));
             $("#newName").focus();
         });
         function alignCellWidths(rowSource, rowTarget) {
             for (var i in rowTarget) {
-                rowTarget[i].css("width", rowSource[i].css("width") + "px");
+                $(rowTarget[i]).css("width", $(rowSource[i]).css("width") + "px");
             }
         }
         function createChar() {
