@@ -10,7 +10,7 @@
 
     $conn = DbUtil::connect();
     $stmt = $conn->stmt_init();
-    if ($stmt->prepare("select universe_id, name from universe")) {
+    if ($stmt->prepare("select universe_id, name from universe order by universe_id")) {
         $stmt->execute();
         $stmt->bind_result($id, $name);
         $universes = array();

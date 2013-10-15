@@ -17,11 +17,20 @@ require_once('libs/Character.php');
     <title>Characters</title>
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
+        var select_universe;
         $(function () {
-            var select_universe = createUniverseSelector();
+            select_universe = createUniverseSelector();
             select_universe.id = "select_universe";
             $("#newChar")[0].appendChild(select_universe);
         });
+        function createChar(){
+            var newChar = {};
+            newChar.name = $("#newName").val();
+            newChar.nick = $("#newNick").val();
+            if (newChar.nick.length == 0) newChar.nick = undefined;
+            newChar.universe = $(select_universe).val();
+            console.log(newChar);
+        }
     </script>
 </head>
 <body>
@@ -54,7 +63,7 @@ require_once('libs/Character.php');
     <input id="newName" placeholder="Name"><input id="newNick" placeholder="Nickname">
     &nbsp;&nbsp;&nbsp;Universe:
 </div>
-<input type="button" value="Create">
+<input type="button" value="Create" onclick="createChar();">
 <?php include('libs/universes.php'); ?>
 </body>
 </html>
