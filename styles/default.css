@@ -27,7 +27,7 @@ table.layout, table.layout tr.layout, table.layout td.layout, table.layout th.la
 .fixedHeader {
     position: absolute;
     top: 0px;
-    border-top: 8px solid white;
+    border-top: 4px solid white;
 }
 
 .fixedFooter {
