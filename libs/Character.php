@@ -24,7 +24,7 @@ class Character extends JSONObject
     {
         try{
             $conn = DbUtil::connect();
-            $sql_string = "SELECT identity_id FROM character_identity WHERE name = :name AND universe_id = :universe" .
+            $sql_string = "SELECT `identity_id` FROM character_identity WHERE name = :name AND universe_id = :universe" .
                 (is_null($this->nick) ? " AND nickname is null" : " AND nickname = :nick");
             $stmt = $conn->prepare($sql_string);
 //        $stmt->execute((array) $this);
