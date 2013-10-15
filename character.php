@@ -10,7 +10,6 @@ require_once('libs/browser.php');
 require_once('libs/Character.php');
 if (strlen($json_input) > 0) {
     $character = new Character($json_input);
-    echo json_encode($character);
     exit();
 }
 ?>
@@ -36,9 +35,10 @@ if (strlen($json_input) > 0) {
             $.ajax({
                 type: "POST",
                 data: JSON.stringify(newChar),
-                dataType: "json",
-                    success: function (data, textStatus, jqXHR) {
-                    console.log(data);
+//                dataType: "json",
+                success: function (data, textStatus, jqXHR) {
+//                    console.log(data);
+                    location.reload();
                 }
 
             });
@@ -75,7 +75,7 @@ if (strlen($json_input) > 0) {
         <td id="newChar"></td>
     </tr>
 </table>
-<input type="button" value="Create New&#x00A;Character" onclick="createChar();" >
+<input type="button" value="Create New&#x00A;Character" onclick="createChar();">
 <?php include('libs/universes.php'); ?>
 </body>
 </html>
