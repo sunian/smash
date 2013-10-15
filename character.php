@@ -30,6 +30,8 @@ if (strlen($json_input) > 0) {
             select_universe = createUniverseSelector();
             select_universe.id = "select_universe";
             $("#newChar")[0].appendChild(select_universe);
+            alignCellWidths($.makeArray($("table#tableChars tr th")),
+                $.makeArray($("div#fixedHeader table tr td")));
             alignCellWidths($.makeArray($("table#tableChars tfoot tr td")),
                 $.makeArray($("div#fixedFooter table tr td")));
             $("div#fixedFooter").css("bottom", $(document.body).css("margin") + "px");
@@ -66,7 +68,7 @@ if (strlen($json_input) > 0) {
     </script>
 </head>
 <body>
-<div class="fixedHeader">
+<div id="fixedHeader" class="fixedHeader">
     <table>
         <tr>
             <th>Name</th>
