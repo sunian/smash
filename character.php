@@ -8,8 +8,11 @@
  */
 require_once('libs/browser.php');
 require_once('libs/Character.php');
-echo (strlen($json_input));
-//$character = new Character($json_input);
+if (strlen($json_input) > 0) {
+    $character = new Character($json_input);
+    print_r($character);
+    exit();
+}
 ?>
 
 <html>
@@ -23,7 +26,7 @@ echo (strlen($json_input));
             select_universe.id = "select_universe";
             $("#newChar")[0].appendChild(select_universe);
         });
-        function createChar(){
+        function createChar() {
             var newChar = {};
             newChar.name = $("#newName").val();
             newChar.nick = $("#newNick").val();
@@ -35,7 +38,10 @@ echo (strlen($json_input));
                 url: "character.php",
                 data: JSON.stringify(newChar),
                 dataType: "json",
-                success: function () {}
+                success: function (e1, e2) {
+                    console.log(e1);
+                    console.log(e2);
+                }
             });
         }
     </script>
@@ -51,11 +57,11 @@ echo (strlen($json_input));
     $conn = DbUtil::connect();
     $stmt = $conn->stmt_init();
     $stmt->prepare("SELECT i.name, i.nickname, u.name
-                    FROM character_identity as i natural join universe as u
-                    order by u.universe_id, i.nickname, i.name");
+                    FROM character_identity AS i NATURAL JOIN universe AS u
+                    ORDER BY u.universe_id, i.nickname, i.name");
     $stmt->execute();
     $stmt->bind_result($name, $nick, $universe);
-    while ($stmt->fetch()){
+    while ($stmt->fetch()) {
         echo "<tr>";
         echo "<tr>";
         echo "<td>", $name, "</td>";
@@ -66,6 +72,7 @@ echo (strlen($json_input));
     ?>
 </table>
 <p>Create new character identity:</p>
+
 <div id="newChar">
     <input id="newName" placeholder="Name"><input id="newNick" placeholder="Nickname">
     &nbsp;&nbsp;&nbsp;Universe:
