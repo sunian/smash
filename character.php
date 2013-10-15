@@ -33,15 +33,12 @@ if (strlen($json_input) > 0) {
             if (newChar.nick.length == 0) newChar.nick = undefined;
             newChar.universe = $(select_universe).val();
 //            console.log(JSON.stringify(newChar));
-            $.ajax({
-                type: "POST",
-                data: JSON.stringify(newChar),
-                dataType: "json",
-                success: function (data) {
+            $.post("characters.php", JSON.stringify(newChar), function (data) {
                     console.log("success");
                     console.log(data);
                 }
-            });
+                , "json"
+            );
         }
     </script>
 </head>
@@ -75,7 +72,7 @@ if (strlen($json_input) > 0) {
         <td id="newChar"></td>
     </tr>
 </table>
-<input type="button" value="Create New&#x00A;Character Identity" onclick="createChar();" >
+<input type="button" value="Create New&#x00A;Character" onclick="createChar();">
 <?php include('libs/universes.php'); ?>
 </body>
 </html>
