@@ -10,24 +10,27 @@
 
     $conn = DbUtil::connect();
     $stmt = $conn->stmt_init();
-    if ($stmt->prepare("select name from universe")) {
+    if ($stmt->prepare("select universe_id, name from universe")) {
         $stmt->execute();
-        $stmt->bind_result($col1);
-        $first = true;
+        $stmt->bind_result($id, $name);
+        $universes = array();
+        $count = 0;
         while ($stmt->fetch()) {
-            if (!$first) echo "]|[";
-            echo $col1;
-            $first = false;
+            $universes[$count++] = array(
+                "id" => $id,
+                "name" => $name
+            );
         }
+        echo json_encode($universes);
     }
     $stmt->close();
     ?></div>
 <script type="text/javascript">
     function createUniverseSelector() {
         var select_universe = document.createElement("select");
-        var universes = $("#div_universes").text().split("]|[");
+        var universes = JSON.parse($("#div_universes").text());
         for (var i in universes) {
-            select_universe.options[i] = new Option(universes[i], universes[i]);
+            select_universe.options[i] = new Option(universes[i].id, universes[i].name);
         }
         return select_universe;
     }
