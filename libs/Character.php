@@ -35,8 +35,7 @@ class Character extends JSONObject
             echo $identity_id;
             return "character identity already exists!";
         }
-        $sql_string = ($this->nick) ? "INSERT INTO character_identity (name, universe_id, nickname) VALUES (?,?,?)" :
-            "INSERT INTO character_names (name, universe_id) VALUES (?,?)";
+        $sql_string = "INSERT INTO character_identity (name, universe_id, nickname) VALUES (?,?,?)";
         $stmt->prepare($sql_string);
         $stmt->bind_param("sss", $this->name, $this->universe, $this->nick);
         $stmt->execute();
