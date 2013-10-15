@@ -101,8 +101,6 @@ if (strlen($json_input) > 0) {
 
 </table>
 <div id="fixedFooter" class="fixedFooter">
-    <!--    <div style="position: relative;">-->
-    <!--        <div style="display: inline-block; position: relative; top: 10px;" class="white">-->
     <table class="layout">
         <tr class="layout">
             <td style="vertical-align: bottom;" class="layout">
