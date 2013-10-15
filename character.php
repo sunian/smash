@@ -10,9 +10,7 @@ require_once('libs/browser.php');
 require_once('libs/Character.php');
 if (strlen($json_input) > 0) {
     $character = new Character($json_input);
-    echo "create ";
     $error = $character->createIdentity();
-    echo "created ";
     if ($error) echo $error;
     exit();
 }

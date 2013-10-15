@@ -22,23 +22,28 @@ class Character extends JSONObject
 
     public function createIdentity()
     {
-        $conn = DbUtil::connect();
-        $sql_string = "SELECT identity_id FROM character_identity WHERE name = :name AND universe_id = :universe" .
-            (is_null($this->nick) ? " AND nickname is null" : " AND nickname = :nick");
-        $stmt = $conn->prepare($sql_string);
+        try{
+            $conn = DbUtil::connect();
+            $sql_string = "SELECT identity_id FROM character_identity WHERE name = :name AND universe_id = :universe" .
+                (is_null($this->nick) ? " AND nickname is null" : " AND nickname = :nick");
+            $stmt = $conn->prepare($sql_string);
 //        $stmt->execute((array) $this);
 //        $stmt->execute(array("name" => $this->name, "universe" => $this->universe));
-        $stmt->bindParam(":name", $this->name);
-        $stmt->bindParam(":universe", $this->universe);
-        $stmt->execute();
-        if ($row = $stmt->fetch()) {
-            return "character identity already exists!";
-        }
-        $stmt->closeCursor();
+            $stmt->bindParam(":name", $this->name);
+            $stmt->bindParam(":universe", $this->universe);
+            $stmt->execute();
+            if ($row = $stmt->fetch()) {
+                return "character identity already exists!";
+            }
+            $stmt->closeCursor();
 //        $sql_string = "INSERT INTO character_identity (name, universe_id, nickname) VALUES (:name, :universe, :nick)";
 //        $stmt = $conn->prepare($sql_string);
 //        $stmt->execute((array)$this);
 //        $stmt->closeCursor();
-        return false;
+            return false;
+
+        } catch (PDOException $e){
+            echo $e->getMessage();
+        }
     }
 }
