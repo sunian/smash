@@ -97,6 +97,15 @@ if (strlen($json_input) > 0) {
     ?>
 
 </table>
+<div class="fixedHeader">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Nickname</th>
+            <th>Universe</th>
+        </tr>
+    </table>
+</div>
 <div id="fixedFooter" class="fixedFooter">
     <table class="layout">
         <tr class="layout">

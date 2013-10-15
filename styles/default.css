@@ -27,11 +27,16 @@ table.layout, table.layout tr.layout, table.layout td.layout, table.layout th.la
     /*background-color: transparent;*/
 /*}*/
 
+.fixedHeader {
+    /*position: fixed;*/
+    top: 0px;
+    /*border-bottom: 8px solid white;*/
+}
+
 .fixedFooter {
     position: fixed;
     bottom: 0px;
     border-bottom: 8px solid white;
-    float: left;
 }
 
 .white {
