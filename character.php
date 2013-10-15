@@ -32,6 +32,7 @@ if (strlen($json_input) > 0) {
             $("#newChar")[0].appendChild(select_universe);
             alignCellWidths($.makeArray($("table#tableChars tfoot tr td")),
                 $.makeArray($("div#fixedFooter table tr td")));
+            $("div#fixedFooter").css("bottom", $(document.body).css("margin") + "px");
             $("#newName").focus();
         });
         function alignCellWidths(rowSource, rowTarget) {
