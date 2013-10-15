@@ -87,7 +87,7 @@ if (strlen($json_input) > 0) {
     Hi
 </div>
 <div id="body">
-    <div id="fixedHeader" class="_fixedHeader">
+    <div id="fixedHeader" class="fixedHeader">
         <table>
             <tr>
                 <th>Name</th>
@@ -129,7 +129,7 @@ if (strlen($json_input) > 0) {
             </tbody>
         </table>
     </div>
-    <div id="fixedFooter" class="_fixedFooter">
+    <div id="fixedFooter" class="fixedFooter">
         <table class="layout">
             <tr class="layout">
                 <td style="vertical-align: bottom;" class="layout">
