@@ -96,7 +96,7 @@ if (strlen($json_input) > 0) {
     ?>
 
 </table>
-<div id="fixedFooter" style="position: fixed; bottom: 0px; padding: 8px;">
+<div id="fixedFooter" style="position: fixed; bottom: 0px; padding-bottom: 8px;">
     <table>
         <tr>
             <td><input id="newName" placeholder="New name"></td>
