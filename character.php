@@ -84,7 +84,7 @@ if (strlen($json_input) > 0) {
 </head>
 <body>
 <div id="pageHeader" class="fixedHeader">
-    Hi!
+    Hi
 </div>
 <div id="body">
     <div id="fixedHeader" class="fixedHeader">
