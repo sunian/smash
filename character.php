@@ -39,11 +39,11 @@ if (strlen($json_input) > 0) {
                 data: JSON.stringify(newChar),
 //                dataType: "json",
                 success: function (data, textStatus, jqXHR) {
-//                    console.log(data);
+                    console.log(data);
                     if (data.length > 0){
                         alert(data);
                     } else {
-                        location.reload();
+//                        location.reload();
                     }
                 }
 
