@@ -61,9 +61,9 @@ if (strlen($json_input) > 0) {
     </tr>
     <tfoot>
     <tr>
-        <td><input id="newName" placeholder="New name"></td>
-        <td><input id="newNick" placeholder="New Nickname"></td>
-        <td id="newChar"></td>
+        <td><input id="_newName" placeholder="New name"></td>
+        <td><input id="_newNick" placeholder="New Nickname"></td>
+        <td id="_newChar"></td>
     </tr>
     </tfoot>
     <?php
@@ -84,7 +84,16 @@ if (strlen($json_input) > 0) {
     ?>
 
 </table>
-<input type="button" value="Create New&#x00A;Character" onclick="createChar();">
+<div id="fixedFooter">
+    <table>
+        <tr>
+            <td><input id="newName" placeholder="New name"></td>
+            <td><input id="newNick" placeholder="New Nickname"></td>
+            <td id="newChar"></td>
+        </tr>
+    </table>
+</div>
+<input type="button" value="Create New&#x00A;Character" onclick="createChar();" style="display: none">
 <?php include('libs/universes.php'); ?>
 </body>
 </html>
