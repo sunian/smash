@@ -14,4 +14,4 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 <script type="text/javascript" src="http://datejs.googlecode.com/files/date.js"></script>
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/south-street/jquery-ui.css" rel="stylesheet" type="text/css" />
-<link href="/styles/default.css" rel="stylesheet" type="text/css" />
+<link href="styles/default.css" rel="stylesheet" type="text/css" />
