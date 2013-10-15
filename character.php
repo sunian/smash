@@ -35,7 +35,7 @@ if (strlen($json_input) > 0) {
             alignCellWidths($.makeArray($("table#tableChars tfoot tr td")),
                 $.makeArray($("div#fixedFooter table.content tr td")));
             $("div#fixedHeader table tr th").each(function (i, elem){
-                elem.onclick(function () {
+                $(elem).click(function () {
                     console.log(i + " " + elem);
                 })
             });
