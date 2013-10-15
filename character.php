@@ -83,7 +83,7 @@ if (strlen($json_input) > 0) {
     </script>
 </head>
 <body>
-<div id="pageHeader" style="background-color: #F1F1F1; color: #404040;">
+<div id="pageHeader" style="background-color: #F1F1F1; color: #404040; padding: 8px;">
     <img src="images/title_logo.png">
     Hi, this is the nav header
 </div>
