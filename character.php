@@ -52,7 +52,7 @@ if (strlen($json_input) > 0) {
     </script>
 </head>
 <body>
-<table>
+<table style="text-align: center">
     <tr>
         <th>Name</th>
         <th>Nickname</th>
