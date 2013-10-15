@@ -69,13 +69,12 @@ if (strlen($json_input) > 0) {
         echo "</tr>";
     }
     ?>
+    <tr>
+        <td><input id="newName" placeholder="New name"></td>
+        <td><input id="newNick" placeholder="New Nickname"></td>
+        <td id="newChar"></td>
+    </tr>
 </table>
-<p>Create new character identity:</p>
-
-<div id="newChar">
-    <input id="newName" placeholder="Name"><input id="newNick" placeholder="Nickname">
-    &nbsp;&nbsp;&nbsp;Universe:
-</div>
 <input type="button" value="Create" onclick="createChar();">
 <?php include('libs/universes.php'); ?>
 </body>
