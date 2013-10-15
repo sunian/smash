@@ -25,13 +25,13 @@ table.layout, table.layout tr.layout, table.layout td.layout, table.layout th.la
 }
 
 .fixedHeader {
-    position: fixed;
+    position: absolute;
     top: 0px;
     border-top: 8px solid white;
 }
 
 .fixedFooter {
-    position: fixed;
+    position: absolute;
     bottom: 0px;
     border-bottom: 8px solid white;
 }
