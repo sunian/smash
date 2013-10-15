@@ -43,7 +43,7 @@ if (strlen($json_input) > 0) {
                     if (data.length > 0){
                         alert(data);
                     } else {
-//                        location.reload();
+                        location.reload();
                     }
                 }
 
