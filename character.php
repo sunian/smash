@@ -66,6 +66,15 @@ if (strlen($json_input) > 0) {
     </script>
 </head>
 <body>
+<div class="fixedHeader">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Nickname</th>
+            <th>Universe</th>
+        </tr>
+    </table>
+</div>
 <table id="tableChars" style="text-align: center">
     <tr>
         <th>Name</th>
@@ -97,15 +106,7 @@ if (strlen($json_input) > 0) {
     ?>
 
 </table>
-<div class="fixedHeader">
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Nickname</th>
-            <th>Universe</th>
-        </tr>
-    </table>
-</div>
+
 <div id="fixedFooter" class="fixedFooter">
     <table class="layout">
         <tr class="layout">
