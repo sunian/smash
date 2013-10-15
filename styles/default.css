@@ -20,4 +20,5 @@ div.fixedFooter {
     background-color: white;
     bottom: 0px;
     padding-bottom: 8px;
+    float: left;
 }
