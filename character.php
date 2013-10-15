@@ -72,8 +72,8 @@ if (strlen($json_input) > 0) {
     </tr>
     <tfoot>
     <tr>
-        <td><input id="_newName" placeholder="New name"></td>
-        <td><input id="_newNick" placeholder="New Nickname"></td>
+        <td><input id="_newName" placeholder="New name" disabled="disabled"></td>
+        <td><input id="_newNick" placeholder="New Nickname" disabled="disabled"></td>
         <td id="_newChar"></td>
     </tr>
     </tfoot>
