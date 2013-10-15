@@ -24,6 +24,10 @@ if (strlen($json_input) > 0) {
         var select_universe;
         $(function () {
             select_universe = createUniverseSelector();
+            select_universe.id = "_select_universe";
+            select_universe.disabled = true;
+            $("#_newChar")[0].appendChild(select_universe);
+            select_universe = createUniverseSelector();
             select_universe.id = "select_universe";
             $("#newChar")[0].appendChild(select_universe);
             alignCellWidths($.makeArray($("table#tableChars tfoot tr td")),
