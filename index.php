@@ -24,7 +24,7 @@ require_once('libs/DbUtil.php');
     </script>
 </head>
 <body>
-<a href="character.php">Characters</a>
+
 <?php
 //$_GET['enclose'] = 1;
 //include('libs/versions.php');
