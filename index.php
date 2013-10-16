@@ -24,11 +24,6 @@ require_once('libs/DbUtil.php');
     </script>
 </head>
 <body>
-
-<?php
-//$_GET['enclose'] = 1;
-//include('libs/versions.php');
-?>
-<?php //include('libs/universes.php'); ?>
+<?php include('libs/navheader.php'); ?>
 </body>
 </html>
