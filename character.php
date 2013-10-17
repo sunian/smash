@@ -94,7 +94,7 @@ if (strlen($json_input) > 0) {
             </tr>
         </table>
     </div>
-    <div style="overflow: scroll; max-height: 80%">
+    <div style="overflow: scroll; max-height: 80%; display: inline-block;">
         <table id="tableChars">
             <tr>
                 <th>Name</th>
