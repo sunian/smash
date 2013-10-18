@@ -85,7 +85,7 @@ if (strlen($json_input) > 0) {
 <body>
 <?php include('libs/navheader.php'); ?>
 <div class="body">
-    <div style="overflow: scroll; max-height: 80%; display: inline-block; position: relative">
+    <div style="overflow: scroll; height: 80%; display: inline-block; position: relative">
         <div id="fixedHeader" class="fixedHeader">
             <table>
                 <tr>
