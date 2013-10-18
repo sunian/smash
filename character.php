@@ -94,7 +94,7 @@ if (strlen($json_input) > 0) {
             </tr>
         </table>
     </div>
-    <div style="overflow: auto; max-height: 80%">
+    <div style="overflow: scroll; max-height: 80%">
         <table id="tableChars">
             <tr>
                 <th>Name</th>
@@ -141,8 +141,8 @@ if (strlen($json_input) > 0) {
                         </tfoot>
                     </table>
                 </td>
-                <td class="layout" style="padding-left: 4px;">
-
+                <td class="layout" style="padding-left: 8px;">
+                    <a href="javascript:void(0);" class="btnPlus" onclick="createChar();"></a>
                     <!--                <input type="button" value="Create New&#x00A;Character" onclick="createChar();">-->
                 </td>
             </tr>
@@ -150,7 +150,6 @@ if (strlen($json_input) > 0) {
 
     </div>
 </div>
-<a href="javascript:void(0);" class="btnPlus" onclick="createChar();"></a>
 <?php include('libs/universes.php'); ?>
 </body>
 </html>
