@@ -4,6 +4,8 @@ body {
 
 div.body {
     margin: 8px;
+    position: relative;
+    display: inline-block;
 }
 
 table {
