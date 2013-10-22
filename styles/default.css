@@ -90,6 +90,13 @@ a.btnPlus:active {
     background-size: cover;
 }
 
+.naviLink {
+    color: white;
+    font-size: 100%;
+    display: inline-block;
+    float: left;
+}
+
 .white {
     background-color: white;
 }
