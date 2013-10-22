@@ -35,13 +35,19 @@ table.layout, table.layout tr.layout, table.layout td.layout, table.layout th.la
 .fixedHeader {
     position: absolute;
     top: 0px;
-    border-top: 4px solid #364086;
 }
 
 .fixedFooter {
     position: absolute;
     bottom: 0px;
+}
 
+.borderTop {
+    border-top: 4px solid #364086;
+}
+
+.borderBottom {
+    border-bottom: 4px solid #364086;
 }
 
 a.btnPlus {

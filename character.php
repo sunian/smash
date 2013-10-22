@@ -85,7 +85,7 @@ if (strlen($json_input) > 0) {
 <body>
 <?php include('libs/navheader.php'); ?>
 <div class="body">
-    <div id="fixedHeader" class="fixedHeader">
+    <div id="fixedHeader" class="fixedHeader borderTop">
         <table>
             <tr>
                 <th class="clickable">Name</th>
@@ -130,7 +130,7 @@ if (strlen($json_input) > 0) {
     <div id="fixedFooter" class="fixedFooter">
         <table class="layout">
             <tr class="layout">
-                <td style="vertical-align: bottom; border-bottom: 4px solid #364086;" class="layout">
+                <td style="vertical-align: bottom;" class="layout borderBottom">
                     <table class="content">
                         <tfoot>
                         <tr>
