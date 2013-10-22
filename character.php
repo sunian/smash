@@ -50,6 +50,11 @@ if (strlen($json_input) > 0) {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
             });
             newName.focus();
+            $("div#scrollContainer").animate({
+                maxHeight: "90%"
+            }, 5000, function() {
+                // Animation complete.
+            });
         });
 
         function sortTable(table, col, dir) {
@@ -101,7 +106,7 @@ if (strlen($json_input) > 0) {
             </tr>
         </table>
     </div>
-    <div style="max-height: 80%" class="scrollable">
+    <div id="scrollContainer" style="max-height: 80%" class="scrollable">
         <table id="tableChars">
             <tr>
                 <th>Name</th>
