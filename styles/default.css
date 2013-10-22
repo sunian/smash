@@ -37,7 +37,7 @@ table td {
 }
 
 table.layout, table.layout tr.layout, table.layout td.layout, table.layout th.layout {
-    background-color: transparent;
+    /*background-color: transparent;*/
     border-collapse: collapse;
     border-spacing: 0;
     border: none;
@@ -54,13 +54,13 @@ table.layout, table.layout tr.layout, table.layout td.layout, table.layout th.la
     bottom: 0px;
 }
 
-/*.borderTop {*/
-    /*border-top: 4px solid #364086;*/
-/*}*/
+.borderTop {
+    border-top: 4px solid #364086;
+}
 
-/*.borderBottom {*/
-    /*border-bottom: 4px solid #364086;*/
-/*}*/
+.borderBottom {
+    border-bottom: 4px solid #364086;
+}
 
 a.btnPlus {
     display: inline-block;
