@@ -99,6 +99,9 @@ a.btnPlus:active {
     width: 125px;
     margin: 0 -2px;
     border: 2px solid #39468a;
+}
+
+.naviLink:first-child {
     border-radius: 4px;
 }
 
