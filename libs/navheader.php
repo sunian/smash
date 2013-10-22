@@ -17,6 +17,8 @@
     <nav>
         <a class="naviLink clickable" href="character.php">Characters</a>
         <a class="naviLink clickable" href="tournaments.php">Tournaments</a>
+        <a class="naviLink clickable" href="players.php">Players</a>
+        <a class="naviLink clickable" href="videos.php">Videos</a>
     </nav>
 
 </div>
