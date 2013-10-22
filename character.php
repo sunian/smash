@@ -52,7 +52,7 @@ if (strlen($json_input) > 0) {
             newName.focus();
             $("div#scrollContainer").css("maxHeight", "10%").animate({
                 maxHeight: "80%"
-            }, 800, function() {
+            }, 750, function() {
                 // Animation complete.
             });
         });
