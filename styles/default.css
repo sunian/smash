@@ -54,13 +54,13 @@ table.layout, table.layout tr.layout, table.layout td.layout, table.layout th.la
     bottom: 0px;
 }
 
-.borderTop {
-    border-top: 4px solid #364086;
-}
+/*.borderTop {*/
+    /*border-top: 4px solid #364086;*/
+/*}*/
 
-.borderBottom {
-    border-bottom: 4px solid #364086;
-}
+/*.borderBottom {*/
+    /*border-bottom: 4px solid #364086;*/
+/*}*/
 
 a.btnPlus {
     display: inline-block;
