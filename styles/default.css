@@ -93,6 +93,8 @@ a.btnPlus:active {
 .naviLink {
     background-color: rgba(20, 25, 54, 0.5);
     color: white;
+    display: inline-block;
+    text-align: center;
     height: 25px;
     width: 125px;
 }
