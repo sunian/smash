@@ -130,7 +130,7 @@ if (strlen($json_input) > 0) {
     <div id="fixedFooter" class="fixedFooter">
         <table class="layout">
             <tr class="layout">
-                <td style="vertical-align: bottom;" class="layout">
+                <td style="vertical-align: bottom; border-bottom: 4px solid #364086;" class="layout">
                     <table class="content">
                         <tfoot>
                         <tr>
@@ -141,8 +141,8 @@ if (strlen($json_input) > 0) {
                         </tfoot>
                     </table>
                 </td>
-                <td class="layout" style="padding-left: 20px; background-color: transparent;">
-<!--                    <a href="javascript:void(0);" class="btnPlus" onclick="createChar();"></a>-->
+                <td class="layout" style="padding-left: 20px;">
+                    <a href="javascript:void(0);" class="btnPlus" onclick="createChar();"></a>
                     <!--                <input type="button" value="Create New&#x00A;Character" onclick="createChar();">-->
                 </td>
             </tr>

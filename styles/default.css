@@ -41,7 +41,7 @@ table.layout, table.layout tr.layout, table.layout td.layout, table.layout th.la
 .fixedFooter {
     position: absolute;
     bottom: 0px;
-    border-bottom: 4px solid #364086;
+
 }
 
 a.btnPlus {
