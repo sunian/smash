@@ -26,6 +26,10 @@ table {
     text-align: center;
 }
 
+table.solid {
+    background-color: rgba(54, 64, 134, 1);
+}
+
 table th {
     background-color: #05050C;
     color: white;
@@ -36,8 +40,12 @@ table td {
     color: white;
 }
 
+table.solid td {
+    background-color: rgba(20, 25, 54, 1);
+}
+
 table.layout, table.layout tr.layout, table.layout td.layout, table.layout th.layout {
-    /*background-color: transparent;*/
+    background-color: transparent;
     border-collapse: collapse;
     border-spacing: 0;
     border: none;

@@ -93,7 +93,7 @@ if (strlen($json_input) > 0) {
 <?php include('libs/navheader.php'); ?>
 <div class="body">
     <div id="fixedHeader" class="fixedHeader">
-        <table>
+        <table class="solid">
             <tr>
                 <th class="clickable">Name</th>
                 <th class="clickable">Nickname</th>
@@ -138,7 +138,7 @@ if (strlen($json_input) > 0) {
         <table class="layout">
             <tr class="layout">
                 <td style="vertical-align: bottom;" class="layout">
-                    <table class="content">
+                    <table class="content solid">
                         <tfoot>
                         <tr>
                             <td><input id="newName" placeholder="New name"></td>
