@@ -98,6 +98,8 @@ a.btnPlus:active {
     padding: 8px 0;
     width: 125px;
     margin: 0 -2px;
+    border: 2px solid #39468a;
+    border-radius: 4px;
 }
 
 nav {
