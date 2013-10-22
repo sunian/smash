@@ -13,7 +13,11 @@ background: -webkit-linear-gradient(top,  rgba(19,23,50,.9) 0%,rgba(5,6,13,0.5) 
 vertical-align: middle;
          ">
     <a href="index.php"><img src="images/title_logo.png" style="margin: 0px 8px; max-height: 11%"></a>
+    <span style="display: inline-block;
+  vertical-align: middle;
+">
     <a class="naviLink" href="character.php">Characters</a>
     <a class="naviLink" href="tournaments.php">Tournaments</a>
+        </span>
     Hi, this is the nav header
 </div>

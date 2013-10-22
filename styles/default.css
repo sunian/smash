@@ -92,9 +92,9 @@ a.btnPlus:active {
 
 .naviLink {
     color: white;
-    font-size: 100%;
-    display: inline-block;
-    vertical-align: middle;
+    /*font-size: 100%;*/
+    /*display: inline-block;*/
+    /*vertical-align: middle;*/
 }
 
 .white {
