@@ -22,7 +22,7 @@ input, select {
 }
 
 table {
-    background-color: rgba(54, 64, 134);
+    background-color: rgba(54, 64, 134, 0.5);
     text-align: center;
 }
 
