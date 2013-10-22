@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    background: url("../images/pageBG.png") repeat;
 }
 
 div.body {
