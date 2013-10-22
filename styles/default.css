@@ -15,7 +15,7 @@ div.body {
     padding-right: 18px;
 }
 
-input {
+input, select {
     background-color: #0E0E0E;
     border-color: #282828;
     color: #526FC3;
