@@ -101,6 +101,7 @@ a.btnPlus:active {
     border-color: #39468a;
     border-style: solid;
     border-width: 2px 0 2px 0;
+    text-decoration: none;
 }
 
 .naviLink:first-child {
