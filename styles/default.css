@@ -65,3 +65,7 @@ a.btnPlus:active {
 .white {
     background-color: white;
 }
+
+.clickable:hover {
+    background-color: #39468a;
+}

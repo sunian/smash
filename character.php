@@ -88,9 +88,9 @@ if (strlen($json_input) > 0) {
     <div id="fixedHeader" class="fixedHeader">
         <table>
             <tr>
-                <th>Name</th>
-                <th>Nickname</th>
-                <th>Universe</th>
+                <th class="clickable">Name</th>
+                <th class="clickable">Nickname</th>
+                <th class="clickable">Universe</th>
             </tr>
         </table>
     </div>
