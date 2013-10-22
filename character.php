@@ -44,9 +44,9 @@ if (strlen($json_input) > 0) {
                     $(elem).attr("dir", "" + (dir * -1));
                 })
             });
-            newName.focus().on("keyup", function () {
+            newName.keyup( function () {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
-            });
+            }).focus();
         });
 
         function sortTable(table, col, dir) {
