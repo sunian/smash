@@ -108,7 +108,7 @@ a.btnPlus:active {
 
 .naviLink:last-child {
     border-radius: 0 4px 4px 0;
-    border-width: 2px 2px 0 2px;
+    border-width: 2px 2px 2px 0;
 }
 
 nav {
