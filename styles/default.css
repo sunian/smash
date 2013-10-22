@@ -95,7 +95,7 @@ a.btnPlus:active {
     color: white;
     display: inline-block;
     text-align: center;
-    height: 25px;
+    padding: 8px 0;
     width: 125px;
 }
 
