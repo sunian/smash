@@ -91,10 +91,10 @@ a.btnPlus:active {
 }
 
 .naviLink {
+    background-color: rgba(20, 25, 54, 0.5);
     color: white;
-    /*font-size: 100%;*/
-    /*display: inline-block;*/
-    /*vertical-align: middle;*/
+    height: 25px;
+    width: 125px;
 }
 
 .white {
