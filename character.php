@@ -50,9 +50,9 @@ if (strlen($json_input) > 0) {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
             });
             newName.focus();
-            $("div#scrollContainer").animate({
-                maxHeight: "90%"
-            }, 5000, function() {
+            $("div#scrollContainer").css("maxHeight", "0%").animate({
+                maxHeight: "80%"
+            }, 1000, function() {
                 // Animation complete.
             });
         });
