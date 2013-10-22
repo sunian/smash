@@ -102,7 +102,7 @@ a.btnPlus:active {
 }
 
 .naviLink:first-child {
-    border-radius: 4px;
+    border-radius: 4px 4px 0px 0px;
     border-width: 2px 0 2px 2px;
 }
 
