@@ -22,7 +22,7 @@ input, select {
 }
 
 table {
-    background-color: #364086;
+    background-color: rgba(54, 64, 134);
     text-align: center;
 }
 
@@ -32,7 +32,7 @@ table th {
 }
 
 table td {
-    background-color: #141936;
+    background-color: rgba(20, 25, 54, 0.5);
     color: white;
 }
 

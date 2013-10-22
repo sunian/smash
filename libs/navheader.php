@@ -7,8 +7,15 @@
  * To change this template use File | Settings | File Templates.
  */
 ?>
-<div id="pageHeader" style="background: url('images/headerBG.png') center repeat-x;
-            background-size: auto 100%; color: #404040; ">
+<div id="pageHeader" style="
+background: -moz-linear-gradient(top,  rgba(19,23,50,1) 0%, rgba(0,0,0,0.75) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(19,23,50,1)), color-stop(100%,rgba(0,0,0,0.75)));
+background: -webkit-linear-gradient(top,  rgba(19,23,50,1) 0%,rgba(0,0,0,0.75) 100%);
+background: -o-linear-gradient(top,  rgba(19,23,50,1) 0%,rgba(0,0,0,0.75) 100%);
+background: -ms-linear-gradient(top,  rgba(19,23,50,1) 0%,rgba(0,0,0,0.75) 100%);
+background: linear-gradient(to bottom,  rgba(19,23,50,1) 0%,rgba(0,0,0,0.75) 100%);
+
+        color: #404040; ">
     <a href="index.php"><img src="images/title_logo.png" style="margin: 0px 8px"></a>
     <a href="character.php">Characters</a>
     <a href="tournaments.php">Tournaments</a>
