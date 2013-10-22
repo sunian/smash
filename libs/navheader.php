@@ -7,7 +7,8 @@
  * To change this template use File | Settings | File Templates.
  */
 ?>
-<div id="pageHeader" style="background: url('images/headerBG.png') repeat-x; color: #404040; ">
+<div id="pageHeader" style="background: url('images/headerBG.png') center repeat-x;
+            background-size: auto 100%; color: #404040; ">
     <a href="index.php"><img src="images/title_logo.png" style="margin: 0px 8px"></a>
     <a href="character.php">Characters</a>
     <a href="tournaments.php">Tournaments</a>
