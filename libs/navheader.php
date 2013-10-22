@@ -14,7 +14,7 @@
     <a href="index.php"><img src="images/title_logo.png" style="margin: 0px 8px;
         max-height: 11%;
         vertical-align: middle;"></a>
-    <ul>
+    <ul style="list-style: none;">
         <li><a class="naviLink clickable" href="character.php">Characters</a></li>
         <li><a class="naviLink clickable" href="tournaments.php">Tournaments</a></li>
     </ul>
