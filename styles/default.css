@@ -94,7 +94,7 @@ a.btnPlus:active {
     color: white;
     font-size: 100%;
     display: inline-block;
-    float: left;
+    vertical-align: middle;
 }
 
 .white {
