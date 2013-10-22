@@ -22,6 +22,8 @@ if (strlen($json_input) > 0) {
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
         var select_universe;
+        var newName = $("#newName");
+        var btnAdd = $("a.btnPlus");
         $(function () {
             select_universe = createUniverseSelector();
             select_universe.id = "_select_universe";
@@ -42,7 +44,9 @@ if (strlen($json_input) > 0) {
                     $(elem).attr("dir", "" + (dir * -1));
                 })
             });
-            $("#newName").focus();
+            newName.focus().bind("keyup", function () {
+                btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
+            });
         });
 
         function sortTable(table, col, dir) {
@@ -55,11 +59,11 @@ if (strlen($json_input) > 0) {
 
         function createChar() {
             var newChar = {};
-            newChar.name = $("#newName").val();
+            newChar.name = newName.val();
             newChar.nick = $("#newNick").val();
             if (newChar.name.length == 0) {
                 alert("Please enter a name to create a new character.");
-                $("#newName").focus();
+                newName.focus();
                 return;
             }
             if (newChar.nick.length == 0) newChar.nick = undefined;
