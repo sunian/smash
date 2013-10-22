@@ -46,7 +46,8 @@ if (strlen($json_input) > 0) {
             });
             newName.keyup( function () {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
-            }).focus();
+            });
+            newName.focus();
         });
 
         function sortTable(table, col, dir) {
