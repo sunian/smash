@@ -9,8 +9,8 @@
 ?>
 <div id="pageHeader" style="
 background: -moz-linear-gradient(top,  rgba(19,23,50,1) 0%, rgba(0,0,0,0.75) 100%);
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(19,23,50,1)), color-stop(100%,rgba(0,0,0,0.75)));
-background: -webkit-linear-gradient(top,  rgba(19,23,50,1) 0%,rgba(0,0,0,0.75) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(19,23,50,1)), color-stop(100%,rgba(0,0,0,0.35)));
+background: -webkit-linear-gradient(top,  rgba(19,23,50,1) 0%,rgba(0,0,0,0.35) 100%);
 background: -o-linear-gradient(top,  rgba(19,23,50,1) 0%,rgba(0,0,0,0.75) 100%);
 background: -ms-linear-gradient(top,  rgba(19,23,50,1) 0%,rgba(0,0,0,0.75) 100%);
 background: linear-gradient(to bottom,  rgba(19,23,50,1) 0%,rgba(0,0,0,0.75) 100%);
