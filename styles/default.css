@@ -9,6 +9,12 @@ div.body {
     display: inline-block;
 }
 
+.scrollable {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 20px;
+}
+
 table {
     background-color: #364086;
     text-align: center;
