@@ -22,9 +22,11 @@ if (strlen($json_input) > 0) {
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
         var select_universe;
-        var newName = $("#newName");
-        var btnAdd = $("a.btnPlus");
+        var newName;
+        var btnAdd;
         $(function () {
+            newName = $("#newName");
+            btnAdd = $("a.btnPlus");
             select_universe = createUniverseSelector();
             select_universe.id = "_select_universe";
             select_universe.disabled = true;
