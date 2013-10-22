@@ -53,7 +53,7 @@ a.btnPlus {
 }
 
 a.btnPlus:hover {
-    background: url("../images/plus_hover.png") no-repeat;
+    background: url("../images/plus_down.png") no-repeat;
     background-size: cover;
 }
 
