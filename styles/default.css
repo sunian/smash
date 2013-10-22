@@ -97,7 +97,11 @@ a.btnPlus:active {
     text-align: center;
     padding: 8px 0;
     width: 125px;
-    margin: 0;
+    margin: 0 -3px;
+}
+
+nav {
+    display: inline-block;
 }
 
 .white {
