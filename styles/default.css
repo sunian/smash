@@ -118,6 +118,7 @@ a.btnPlus:active {
     border-radius: 6px 6px 0 0;
     border-width: 1px 1px 0 1px;
     padding-bottom: 2.7%;
+    vertical-align: text-bottom;
 }
 
 nav {
