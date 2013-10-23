@@ -29,7 +29,9 @@ if ($activePage == null) {
     <nav>
         <?php
         foreach ($navPages as $navPage => $pageTitle) {
-            echo "<a class='naviLink clickable' href='", $navPage, "'>", $pageTitle, "</a>";
+            echo "<a class='naviLink clickable",
+                $navPage == $activePage ? " active" : "",
+                "' href='", $navPage, "'>", $pageTitle, "</a>";
         }
 
         ?>
