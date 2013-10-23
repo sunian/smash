@@ -119,6 +119,8 @@ a.btnPlus:active {
     border-width: 1px 1px 0 1px;
     padding-bottom: 2.7%;
     vertical-align: bottom;
+    margin-left: -1px;
+    margin-right: -1px;
 }
 
 nav {
