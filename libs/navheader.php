@@ -13,7 +13,6 @@ $navPages = array(
     'players.php' => 'Players',
     'videos.php' => 'Videos'
 );
-$activePage = 1;
 if ($activePage == null) {
     $activePage = 'character.php';
 }
