@@ -21,14 +21,14 @@ if ($activePage == null) {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(19,23,50,.9)), color-stop(100%,rgba(5,6,13,0.5)));
     background: -webkit-linear-gradient(top,  rgba(19,23,50,.9) 0%,rgba(5,6,13,0.5) 100%);
          ">
-    <a href="index.php"><img src="images/title_logo.png" style="margin: 0px 8px;
+    <a href="index.php"><img src="images/title_logo.png" style="margin: 0 8px;
         max-height: 11%;
         vertical-align: text-bottom;
         "></a>
     <nav>
         <?php
         foreach ($navPages as $navPage => $pageTitle) {
-            echo "<a class='naviLink clickable' href='", $navPage, "'>", $pageTitle, "</a>";
+//            echo "<a class='naviLink clickable' href='", $navPage, "'>", $pageTitle, "</a>";
         }
 
         ?>
