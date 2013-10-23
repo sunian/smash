@@ -57,14 +57,6 @@ if (strlen($json_input) > 0) {
             });
         });
 
-        function sortTable(table, col, dir) {
-            var rows = $.makeArray(table.find("tr"));
-            rows.sort(function (a, b) {
-                return $(a.cells[col]).text().localeCompare($(b.cells[col]).text()) * dir;
-            });
-            table.append(rows);
-        }
-
         function createChar() {
             var newChar = {};
             newChar.name = newName.val();

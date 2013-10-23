@@ -25,4 +25,11 @@
         }
     }
 
+    function sortTable(table, col, dir) {
+        var rows = $.makeArray(table.find("tr"));
+        rows.sort(function (a, b) {
+            return $(a.cells[col]).text().localeCompare($(b.cells[col]).text()) * dir;
+        });
+        table.append(rows);
+    }
 </script>
