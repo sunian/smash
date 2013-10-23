@@ -98,7 +98,6 @@ a.btnPlus:active {
     width: 125px;
     /*margin: 0 -2px;*/
     border: 0 solid #39468a;
-    border-top-width: 1px;
     text-decoration: none;
 }
 
@@ -121,6 +120,9 @@ a.btnPlus:active {
 
 nav {
     display: inline-block;
+    border: 0 solid #39468a;
+    border-top-width: 1px;
+    border-radius: 6px 6px 0 0;
 }
 
 .white {
