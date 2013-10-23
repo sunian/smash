@@ -6,17 +6,17 @@
  * Time: 9:26 PM
  * To change this template use File | Settings | File Templates.
  */
-ini_set('display_errors',"1");
-$navPages = [
+//ini_set('display_errors',"1");
+$navPages = array(
     'character.php' => 'Characters',
     'tournaments.php' => 'Tournaments',
     'players.php' => 'Players',
     'videos.php' => 'Videos'
-];
-//$activePage = 1;
-//if ($activePage == null) {
-//    $activePage = 'character.php';
-//}
+);
+$activePage = 1;
+if ($activePage == null) {
+    $activePage = 'character.php';
+}
 ?>
 <div id="pageHeader" style="
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(19,23,50,.9)), color-stop(100%,rgba(5,6,13,0.5)));
