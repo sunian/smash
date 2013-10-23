@@ -98,17 +98,18 @@ a.btnPlus:active {
     width: 125px;
     /*margin: 0 -2px;*/
     border: 0 solid #39468a;
+    border-top-width: 1px;
     text-decoration: none;
 }
 
 .naviLink:first-child {
-    /*border-radius: 6px 0 0 0;*/
-    /*border-width: 1px 0 0 1px;*/
+    border-radius: 6px 0 0 0;
+    border-width: 1px 0 0 1px;
 }
 
 .naviLink:last-child {
-    /*border-radius: 0 6px 0 0;*/
-    /*border-width: 1px 1px 0 0;*/
+    border-radius: 0 6px 0 0;
+    border-width: 1px 1px 0 0;
 }
 
 .naviLink.active {
@@ -120,9 +121,6 @@ a.btnPlus:active {
 
 nav {
     display: inline-block;
-    border: 1px solid #39468a;
-    border-bottom-width: 0;
-    border-radius: 6px 6px 0 0;
 }
 
 .white {
