@@ -122,8 +122,12 @@ a.btnPlus:active {
     margin-right: -1px;
 }
 
-.naviLink:first-child, .naviLink:last-child {
-    margin: 0;
+.naviLink:first-child {
+    margin-left: 0;
+}
+
+.naviLink:last-child {
+    margin-right: 0;
 }
 
 nav {
