@@ -7,14 +7,14 @@
  * To change this template use File | Settings | File Templates.
  */
 $navPages = [
-    "character.php" => "Characters",
-    "tournaments.php" => "Tournaments",
-    "players.php" => "Players",
-    "videos.php" => "Videos"
+    'character.php' => 'Characters',
+    'tournaments.php' => 'Tournaments',
+    'players.php' => 'Players',
+    'videos.php' => 'Videos'
 ];
 $activePage = 1;
 if ($activePage == null) {
-    $activePage = "character.php";
+    $activePage = 'character.php';
 }
 ?>
 <div id="pageHeader" style="
@@ -26,6 +26,12 @@ if ($activePage == null) {
         vertical-align: text-bottom;
         "></a>
     <nav>
+        <?php
+        foreach ($navPages as $navPage => $pageTitle) {
+            echo "<a class='naviLink clickable' href='", $navPage, "'>", $pageTitle, "</a>";
+        }
+
+        ?>
     </nav>
 
 </div>
