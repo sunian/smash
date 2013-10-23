@@ -129,6 +129,6 @@ nav {
     background-color: white;
 }
 
-.clickable:hover {
+.clickable:hover:not(.active) {
     background-color: #39468a;
 }
