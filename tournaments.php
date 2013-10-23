@@ -18,11 +18,12 @@ if (strlen($json_input) > 0) {
     <title>Tournaments</title>
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
-        var select_universe;
+        var newDate;
         var newName;
         var btnAdd;
         $(function () {
             newName = $("#newName");
+            newDate = $("#newDate");
             btnAdd = $("a.btnPlus");
             alignCellWidths($.makeArray($("table#tableChars tr th")),
                 $.makeArray($("div#fixedHeader table tr th")));
@@ -36,7 +37,7 @@ if (strlen($json_input) > 0) {
                     $(elem).attr("dir", "" + (dir * -1));
                 })
             });
-            $("#newDate").datepicker();
+            newDate.datepicker();
             newName.keyup( function () {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
             });
@@ -48,22 +49,22 @@ if (strlen($json_input) > 0) {
             });
         });
 
-        function createChar() {
-            var newChar = {};
-            newChar.name = newName.val();
-            newChar.nick = $("#newNick").val();
-            if (newChar.name.length == 0) {
-                alert("Please enter a name to create a new character.");
+        function createTourny() {
+            var newTourny = {};
+            newTourny.name = newName.val();
+            newTourny.venue = $("#newVenue").val();
+            if (newTourny.name.length == 0) {
+                alert("Please enter a name to create a new tournament.");
                 newName.focus();
                 return;
             }
-            if (newChar.nick.length == 0) newChar.nick = undefined;
-            newChar.universe = $(select_universe).val();
-//            console.log(JSON.stringify(newChar));
+            if (newTourny.venue.length == 0) newTourny.venue = undefined;
+            newTourny.date = newDate.val();
+            newTourny.region = 0;
+            console.log(JSON.stringify(newTourny));
             $.ajax({
                 type: "POST",
-                data: JSON.stringify(newChar),
-//                dataType: "json",
+                data: JSON.stringify(newTourny),
                 success: function (data, textStatus, jqXHR) {
                     console.log(data);
                     if (data.length > 0) {
@@ -137,8 +138,7 @@ if (strlen($json_input) > 0) {
                     </table>
                 </td>
                 <td class="layout" style="padding-left: 20px;">
-                    <a href="javascript:void(0);" style="display: none;" class="btnPlus" onclick="createChar();"></a>
-                    <!--                <input type="button" value="Create New&#x00A;Character" onclick="createChar();">-->
+                    <a href="javascript:void(0);" style="display: none;" class="btnPlus" onclick="createTourny();"></a>
                 </td>
             </tr>
         </table>
