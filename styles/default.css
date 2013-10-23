@@ -133,6 +133,7 @@ a.btnPlus:active {
 
 nav {
     display: inline-block;
+    font-variant: small-caps;
 }
 
 .white {
