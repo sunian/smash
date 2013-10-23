@@ -11,6 +11,7 @@ $navPages = array(
     'character.php' => 'Characters',
     'tournaments.php' => 'Tournaments',
     'players.php' => 'Players',
+    'techniques.php' => 'Tech',
     'videos.php' => 'Videos'
 );
 if ($activePage == null) {
