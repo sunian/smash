@@ -13,7 +13,7 @@
          ">
     <a href="index.php"><img src="images/title_logo.png" style="margin: 0px 8px;
         max-height: 11%;
-        /*vertical-align: middle;*/
+        vertical-align: text-bottom;
         "></a>
     <nav>
         <a class="naviLink clickable" href="character.php">Characters</a>
