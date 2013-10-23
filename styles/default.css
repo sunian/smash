@@ -96,7 +96,7 @@ a.btnPlus:active {
     text-align: center;
     padding: 1.7% 0;
     width: 125px;
-    margin: 0 -2px;
+    /*margin: 0 -2px;*/
     border: 0 solid #39468a;
     border-top-width: 1px;
     text-decoration: none;
