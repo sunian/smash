@@ -14,7 +14,7 @@ $navPages = array(
     'videos.php' => 'Videos'
 );
 if ($activePage == null) {
-    $activePage = 'character.php';
+    $activePage = basename($_SERVER['PHP_SELF']);
 }
 ?>
 <div id="pageHeader" style="
@@ -32,7 +32,6 @@ if ($activePage == null) {
                 $navPage == $activePage ? " active" : "",
                 "' href='", $navPage, "'>", $pageTitle, "</a>";
         }
-        echo basename($_SERVER['PHP_SELF']);
         ?>
     </nav>
 
