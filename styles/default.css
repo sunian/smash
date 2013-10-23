@@ -96,7 +96,6 @@ a.btnPlus:active {
     text-align: center;
     padding: 1.7% 0;
     width: 125px;
-    /*margin: 0 -2px;*/
     border: 0 solid #39468a;
     border-top-width: 1px;
     text-decoration: none;
@@ -121,6 +120,10 @@ a.btnPlus:active {
     vertical-align: bottom;
     margin-left: -1px;
     margin-right: -1px;
+}
+
+.naviLink:first-child, .naviLink:last-child {
+    margin: 0;
 }
 
 nav {
