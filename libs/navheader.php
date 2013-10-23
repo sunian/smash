@@ -6,6 +6,7 @@
  * Time: 9:26 PM
  * To change this template use File | Settings | File Templates.
  */
+ini_set('display_errors',"1");
 $navPages = [
     'character.php' => 'Characters',
     'tournaments.php' => 'Tournaments',
