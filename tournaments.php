@@ -38,13 +38,15 @@ if (strlen($json_input) > 0) {
                 })
             });
             newDate.datepicker();
-            newName.keyup( function () {
+            newName.keyup(function () {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
-            });
+            }).autocomplete({
+                    source: getVenues()
+                });
             newName.focus();
             $("div#scrollContainer").css("maxHeight", "10%").animate({
                 maxHeight: "85%"
-            }, 666, function() {
+            }, 666, function () {
                 // Animation complete.
             });
         });

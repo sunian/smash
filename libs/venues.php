@@ -20,6 +20,7 @@
         var venues = JSON.parse($("#div_venues").text());
         for (var i in venues) {
         }
+        venues = ["Link", "Sheik", "Marth", "Ganon", "DK", "Ike", "Pika"];
         return venues;
     }
 </script>
