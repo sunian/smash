@@ -146,6 +146,6 @@ if (strlen($json_input) > 0) {
     </div>
 </div>
 
-<?php include('libs/regions.php'); ?>
+<?php include('libs/venues.php'); ?>
 </body>
 </html>
