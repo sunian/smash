@@ -36,6 +36,7 @@ if (strlen($json_input) > 0) {
                     $(elem).attr("dir", "" + (dir * -1));
                 })
             });
+            $("#newDate").datepicker();
             newName.keyup( function () {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
             });
@@ -99,7 +100,7 @@ if (strlen($json_input) > 0) {
             <tr>
                 <td><input id="_newName" placeholder="New name" disabled="disabled"></td>
                 <td><input id="_newVenue" placeholder="New Venue" disabled="disabled"></td>
-                <td id="_newDate"></td>
+                <td id="_newDate"><input id="_newDate" placeholder="New Date" disabled="disabled"></td>
             </tr>
             </tfoot>
             <tbody class="sortable">
@@ -130,7 +131,7 @@ if (strlen($json_input) > 0) {
                         <tr>
                             <td><input id="newName" placeholder="New name"></td>
                             <td><input id="newVenue" placeholder="New venue"></td>
-                            <td id="newDate"></td>
+                            <td><input id="newDate" placeholder="New date"></td>
                         </tr>
                         </tfoot>
                     </table>
