@@ -134,7 +134,7 @@ a.btnPlus:active {
 nav {
     display: inline-block;
     font-variant: small-caps;
-    font-stretch: expanded;
+    letter-spacing: 0.1em;
 }
 
 .white {
