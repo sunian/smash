@@ -26,12 +26,6 @@ if ($activePage == null) {
         vertical-align: text-bottom;
         "></a>
     <nav>
-        <?php
-        foreach ($navPages as $navPage => $pageTitle) {
-//            echo "<a class='naviLink clickable' href='", $navPage, "'>", $pageTitle, "</a>";
-        }
-
-        ?>
     </nav>
 
 </div>
