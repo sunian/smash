@@ -32,7 +32,7 @@ if ($activePage == null) {
                 $navPage == $activePage ? " active" : "",
                 "' href='", $navPage, "'>", $pageTitle, "</a>";
         }
-
+        echo basename($_SERVER['PHP_SELF']);
         ?>
     </nav>
 
