@@ -91,7 +91,6 @@ a.btnPlus:active {
 }
 
 .naviLink {
-    /*background-color: rgba(20, 25, 54, 0.5);*/
     color: white;
     display: inline-block;
     text-align: center;
@@ -101,6 +100,11 @@ a.btnPlus:active {
     border: 0 solid #39468a;
     border-top-width: 1px;
     text-decoration: none;
+}
+
+.naviLink.active {
+    background-color: rgba(20, 25, 54, 0.5);
+    /*#292E4B*/
 }
 
 .naviLink:first-child {
