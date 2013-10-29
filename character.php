@@ -54,8 +54,8 @@ if (strlen($json_input) > 0) {
                 maxHeight: "85%"
             }, 666, function() {
                 // Animation complete.
-//                $("div#fixedFooter table.content, div#fixedHeader table")
-//                    .css("width", $("table#tableChars").css("width"));
+                $("div#fixedFooter table.content, div#fixedHeader table")
+                    .css("width", $("table#tableChars").css("width"));
 
             });
         });
@@ -125,7 +125,7 @@ if (strlen($json_input) > 0) {
             $stmt->setFetchMode(PDO::FETCH_BOTH);
             while ($row = $stmt->fetch()) {
                 echo "<tr>";
-                echo "<td>", $row["name"], "aklsjdhflkasjdhflkaj</td>";
+                echo "<td>", $row["name"], "</td>";
                 echo "<td>", $row["nickname"], "</td>";
                 echo "<td>", $row["universe"], "</td>";
                 echo "</tr>";
