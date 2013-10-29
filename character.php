@@ -104,9 +104,9 @@ if (strlen($json_input) > 0) {
     <div id="scrollContainer" class="scrollable">
         <table id="tableChars">
             <tr class="no-break">
-                <th>The LEGEND of Zelda</th>
-                <th>The LEGEND of Zelda</th>
-                <th>The LEGEND of Zelda</th>
+                <th>The LEGEND OF Zelda</th>
+                <th>The LEGEND OF Zelda</th>
+                <th>The LEGEND OF Zelda</th>
             </tr>
             <tfoot>
             <tr>
