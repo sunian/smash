@@ -39,7 +39,7 @@ class DataTable
                         <td id='_newChar'></td>
                     </tr>
                     </tfoot>
-                    <tbody class='sortable'>", $this->printData($this->renderData), "</tbody>
+                    <tbody class='sortable'>", $this->sqlQuery, "</tbody>
                 </table>
             </div>";
     }
