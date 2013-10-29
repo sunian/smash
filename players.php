@@ -25,6 +25,7 @@ if (strlen($json_input) > 0) {
 <?php
 include('libs/navheader.php');
 $table = new DataTable();
+$table->render();
 ?>
 
 </body>
