@@ -53,6 +53,10 @@ table.layout, table.layout tr.layout, table.layout td.layout, table.layout th.la
     padding: 0;
 }
 
+table.content input {
+    width: 100%;
+}
+
 .fixedHeader {
     position: absolute;
     top: 0px;
