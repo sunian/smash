@@ -39,7 +39,7 @@ class DataTable
                         <td id='_newChar'></td>
                     </tr>
                     </tfoot>
-                    <tbody class='sortable'>", $this->printData($this->renderData), "</tbody>
+                    <tbody class='sortable'>", $this->printData(), "</tbody>
                 </table>
             </div>";
     }
@@ -51,14 +51,14 @@ class DataTable
         }
     }
 
-    private function printData($callback)
+    private function printData()
     {
         $conn = DbUtil::connect();
         $stmt = $conn->prepare($this->sqlQuery);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_BOTH);
         while ($row = $stmt->fetch()) {
-            $callback($row);
+            ($this->renderData)($row);
         }
     }
 }
