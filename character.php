@@ -103,15 +103,15 @@ if (strlen($json_input) > 0) {
     </div>
     <div id="scrollContainer" class="scrollable">
         <table id="tableChars">
-            <tr>
-                <th>Name</th>
-                <th>Nickname</th>
-                <th>Universe</th>
+            <tr class="no-break">
+                <th>The LEGEND of Zelda</th>
+                <th>The LEGEND of Zelda</th>
+                <th>The LEGEND of Zelda</th>
             </tr>
             <tfoot>
-            <tr class="no-break">
-                <td>The LEGEND of Zelda</td>
-                <td>The LEGEND of Zelda</td>
+            <tr>
+                <td><input id="_newName" placeholder="New name" disabled="disabled"></td>
+                <td><input id="_newNick" placeholder="New nickname" disabled="disabled"></td>
                 <td id="_newChar"></td>
             </tr>
             </tfoot>
