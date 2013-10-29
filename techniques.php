@@ -98,8 +98,8 @@ if (strlen($json_input) > 0) {
             </tr>
             <tfoot>
             <tr>
-                <td>The Legend of Zelda</td>
-                <td>The Legend of Zelda</td>
+                <td><input placeholder="New name" disabled="disabled"></td>
+                <td><input placeholder="New abbrev" disabled="disabled"></td>
             </tr>
             </tfoot>
             <tbody class="sortable">
