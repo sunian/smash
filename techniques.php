@@ -122,7 +122,7 @@ if (strlen($json_input) > 0) {
         <table class="layout">
             <tr class="layout">
                 <td style="vertical-align: bottom;" class="layout">
-                    <table class="content solid">
+                    <table class="content solid" style="table-layout: fixed;">
                         <tfoot>
                         <tr>
                             <td><input id="newName" placeholder="New name"></td>
