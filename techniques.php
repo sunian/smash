@@ -87,6 +87,7 @@ if (strlen($json_input) > 0) {
             <tr>
                 <th class="clickable">Name</th>
                 <th class="clickable">Abbreviation</th>
+                <th class="clickable">Abbreviation</th>
             </tr>
         </table>
     </div>
@@ -95,11 +96,13 @@ if (strlen($json_input) > 0) {
             <tr>
                 <th>Name</th>
                 <th>Abbreviation</th>
+                <th>Abbreviation</th>
             </tr>
             <tfoot>
             <tr>
                 <td><input placeholder="New name" disabled="disabled"></td>
                 <td><input placeholder="New abbrev" disabled="disabled"></td>
+                <td><input placeholder="New _abbrev" disabled="disabled"></td>
             </tr>
             </tfoot>
             <tbody class="sortable">
@@ -113,6 +116,7 @@ if (strlen($json_input) > 0) {
             while ($row = $stmt->fetch()) {
                 echo "<tr>";
                 echo "<td><a href='techniques.php?t=", $row["technique_id"], "'>", $row["name"], "</a></td>";
+                echo "<td>", $row["abbreviation"], "</td>";
                 echo "<td>", $row["abbreviation"], "</td>";
                 echo "</tr>";
             }
@@ -129,6 +133,7 @@ if (strlen($json_input) > 0) {
                         <tr>
                             <td><input id="newName" placeholder="New name"></td>
                             <td><input id="newAbbrev" placeholder="New abbrev"></td>
+                            <td><input id="_newAbbrev" placeholder="New abbrev"></td>
                         </tr>
                         </tfoot>
                     </table>
