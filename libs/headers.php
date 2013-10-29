@@ -22,6 +22,7 @@
     function alignCellWidths(rowSource, rowTarget) {
         for (var i in rowTarget) {
             $(rowTarget[i]).css("width", $(rowSource[i]).css("width"));
+            console.log($(rowSource[i]).css("width") + " " + $(rowTarget[i]).css("width"));
         }
     }
 

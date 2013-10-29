@@ -46,7 +46,7 @@ if (strlen($json_input) > 0) {
                 maxHeight: "85%"
             }, 666, function() {
                 // Animation complete.
-                $("div#fixedFooter table.content").css("width", $("table#tableTechs").css("width"));
+//                $("div#fixedFooter table.content").css("width", $("table#tableTechs").css("width"));
             });
         });
 
