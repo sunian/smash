@@ -25,7 +25,7 @@ class DataTable
         <table class="solid">
             <tr>';
         foreach ($this->headers as $text) {
-            echo '<th class="clickable">', $text, '</th>';
+            echo '<th class="clickable">$text</th>';
         }
         echo '</tr>
         </table>
