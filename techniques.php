@@ -48,6 +48,7 @@ if (strlen($json_input) > 0) {
                 maxHeight: "85%"
             }, 666, function() {
                 // Animation complete.
+                console.log($("table#tableTechs").css("width"));
             });
         });
 
