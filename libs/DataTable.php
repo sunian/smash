@@ -53,6 +53,7 @@ class DataTable
 
     private function printData($callback)
     {
+        print_r($callback);
         $conn = DbUtil::connect();
         $stmt = $conn->prepare($this->sqlQuery);
         $stmt->execute();
