@@ -110,8 +110,8 @@ if (strlen($json_input) > 0) {
             </tr>
             <tfoot>
             <tr>
-                <td><input id="_newName" placeholder="New name" disabled="disabled"></td>
-                <td><input id="_newNick" placeholder="New nickname" disabled="disabled"></td>
+                <td>The Legend of Zelda</td>
+                <td>The Legend of Zelda</td>
                 <td id="_newChar"></td>
             </tr>
             </tfoot>
