@@ -11,6 +11,8 @@ class DataTable
     public $id = null;
     public $headers = null;
     public $canInsert = false;
+    public $sqlQuery = null;
+    public $renderData = null;//$printData(rows)
 
     function __construct($id, $headers)
     {
@@ -37,13 +39,23 @@ class DataTable
                         <td id='_newChar'></td>
                     </tr>
                     </tfoot>
-                    <tbody class='sortable'>";
+                    <tbody class='sortable'>", $this->printData($this->renderData);
     }
 
     private function printHeaders($clickable)
     {
         foreach ($this->headers as $text) {
             echo "<th ", $clickable ? "class='clickable'" : "", ">$text</th>";
+        }
+    }
+
+    private function printData($callback){
+        $conn = DbUtil::connect();
+        $stmt = $conn->prepare($this->sqlQuery);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_BOTH);
+        while ($row = $stmt->fetch()) {
+            $callback($row);
         }
     }
 }
