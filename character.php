@@ -110,8 +110,8 @@ if (strlen($json_input) > 0) {
             </tr>
             <tfoot>
             <tr class="no-break">
-                <td>The Legend of Zelda</td>
-                <td>The Legend of Zelda</td>
+                <td>The LEGEND of Zelda</td>
+                <td>The LEGEND of Zelda</td>
                 <td id="_newChar"></td>
             </tr>
             </tfoot>
