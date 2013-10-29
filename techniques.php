@@ -91,36 +91,34 @@ if (strlen($json_input) > 0) {
         </table>
     </div>
     <div id="scrollContainer" class="scrollable">
-        <div style="width: 100%; height: 100%;">
-            <table id="tableTechs">
-                <tr>
-                    <th>Name</th>
-                    <th>Abbreviation</th>
-                </tr>
-                <tfoot>
-                <tr>
-                    <td><input placeholder="New name" disabled="disabled"></td>
-                    <td><input placeholder="New abbrev" disabled="disabled"></td>
-                </tr>
-                </tfoot>
-                <tbody class="sortable">
-                <?php
-                $conn = DbUtil::connect();
-                $stmt = $conn->prepare("SELECT t.name, t.abbreviation, t.technique_id
+        <table id="tableTechs">
+            <tr>
+                <th>Name</th>
+                <th>Abbreviation</th>
+            </tr>
+            <tfoot>
+            <tr>
+                <td><input placeholder="New name" disabled="disabled"></td>
+                <td><input placeholder="New abbrev" disabled="disabled"></td>
+            </tr>
+            </tfoot>
+            <tbody class="sortable">
+            <?php
+            $conn = DbUtil::connect();
+            $stmt = $conn->prepare("SELECT t.name, t.abbreviation, t.technique_id
                     FROM technique AS t
                     ORDER BY t.name, t.abbreviation");
-                $stmt->execute();
-                $stmt->setFetchMode(PDO::FETCH_BOTH);
-                while ($row = $stmt->fetch()) {
-                    echo "<tr>";
-                    echo "<td><a href='techniques.php?t=", $row["technique_id"], "'>", $row["abbreviation"], "</a></td>";
-                    echo "<td>", $row["abbreviation"], "</td>";
-                    echo "</tr>";
-                }
-                ?>
-                </tbody>
-            </table>
-        </div>
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_BOTH);
+            while ($row = $stmt->fetch()) {
+                echo "<tr>";
+                echo "<td><a href='techniques.php?t=", $row["technique_id"], "'>", $row["abbreviation"], "</a></td>";
+                echo "<td>", $row["abbreviation"], "</td>";
+                echo "</tr>";
+            }
+            ?>
+            </tbody>
+        </table>
     </div>
     <div id="fixedFooter" class="fixedFooter">
         <table class="layout">
