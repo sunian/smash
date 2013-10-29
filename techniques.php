@@ -102,7 +102,7 @@ if (strlen($json_input) > 0) {
             <tr>
                 <td><input placeholder="New name" disabled="disabled"></td>
                 <td><input placeholder="New abbrev" disabled="disabled"></td>
-                <td><input placeholder="New _abbrev" disabled="disabled"></td>
+                <td><select id="select_universe"><option value="1">The Legend of Zelda</option><option value="2">Mario</option><option value="3">Yoshi</option><option value="4">Donkey Kong</option><option value="5">Metroid</option><option value="6">Kirby</option><option value="7">Star Fox</option><option value="8">Pokemon</option></select></td>
             </tr>
             </tfoot>
             <tbody class="sortable">
@@ -133,7 +133,7 @@ if (strlen($json_input) > 0) {
                         <tr>
                             <td><input id="newName" placeholder="New name"></td>
                             <td><input id="newAbbrev" placeholder="New abbrev"></td>
-                            <td><input id="_newAbbrev" placeholder="New abbrev"></td>
+                            <td><select id="select_universe"><option value="1">The Legend of Zelda</option><option value="2">Mario</option><option value="3">Yoshi</option><option value="4">Donkey Kong</option><option value="5">Metroid</option><option value="6">Kirby</option><option value="7">Star Fox</option><option value="8">Pokemon</option></select></td>
                         </tr>
                         </tfoot>
                     </table>
