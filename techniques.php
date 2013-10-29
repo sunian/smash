@@ -112,7 +112,7 @@ if (strlen($json_input) > 0) {
             $stmt->setFetchMode(PDO::FETCH_BOTH);
             while ($row = $stmt->fetch()) {
                 echo "<tr>";
-                echo "<td><a href='techniques.php?t=", $row["technique_id"], "'>", $row["name"], "</a></td>";
+                echo "<td><a href='techniques.php?t=", $row["technique_id"], "'>", "Double Jump Cancel Fast Fall L-cancel", "</a></td>";
                 echo "<td>", $row["abbreviation"], "</td>";
                 echo "</tr>";
             }
