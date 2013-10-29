@@ -19,6 +19,10 @@ if (strlen($json_input) > 0) {
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
     </script>
+    <form action="welcome.php" method="post">
+        Video URL: <input type="text" name="URL"><br>
+        <input type="submit">
+    </form>
 </head>
 <body>
 <?php include('libs/navheader.php'); ?>
