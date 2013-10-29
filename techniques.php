@@ -28,9 +28,9 @@ if (strlen($json_input) > 0) {
             btnAdd = $("a.btnPlus");
             alignCellWidths($.makeArray($("table#tableTechs tr th")),
                 $.makeArray($("div#fixedHeader table tr th")));
-            $("div#fixedFooter table.content").css("width", $("table#tableTechs").css("width"));
             alignCellWidths($.makeArray($("table#tableTechs tfoot tr td")),
                 $.makeArray($("div#fixedFooter table.content tr td")));
+            $("div#fixedFooter table.content").css("width", $("table#tableTechs").css("width"));
             $("div#fixedHeader table tr th").each(function (i, elem) {
                 $(elem).attr("dir", "1").css("cursor", "pointer");
                 $(elem).click(function () {
