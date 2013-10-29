@@ -94,7 +94,7 @@ if (strlen($json_input) > 0) {
     <div id="scrollContainer" class="scrollable">
         <table id="tableTechs">
             <tr>
-                <th>Name</th>
+                <th>abbreviati onabbreviatio nabbreviat ion</th>
                 <th>Abbreviation</th>
                 <th>Abbreviation</th>
             </tr>
@@ -115,7 +115,7 @@ if (strlen($json_input) > 0) {
             $stmt->setFetchMode(PDO::FETCH_BOTH);
             while ($row = $stmt->fetch()) {
                 echo "<tr>";
-                echo "<td><a href='techniques.php?t=", $row["technique_id"], "'>", $row["abbreviation"], "abbreviati onabbreviatio nabbreviat ion</a></td>";
+                echo "<td><a href='techniques.php?t=", $row["technique_id"], "'>", $row["abbreviation"], "</a></td>";
                 echo "<td>", $row["abbreviation"], "</td>";
                 echo "<td>", $row["abbreviation"], "</td>";
                 echo "</tr>";
