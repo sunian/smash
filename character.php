@@ -101,7 +101,7 @@ if (strlen($json_input) > 0) {
             </tr>
         </table>
     </div>
-    <div id="scrollContainer" class="scrollable" style="max-width: 85%;">
+    <div id="scrollContainer" class="scrollable" style="max-height: 85%;">
         <table id="tableChars">
             <tr>
                 <th>Name</th>
