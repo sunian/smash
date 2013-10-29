@@ -87,22 +87,19 @@ if (strlen($json_input) > 0) {
             <tr>
                 <th class="clickable">Name</th>
                 <th class="clickable">Abbreviation</th>
-                <th class="clickable">Abbreviation</th>
             </tr>
         </table>
     </div>
     <div id="scrollContainer" class="scrollable">
         <table id="tableTechs">
-            <tr class="no-break">
-                <th>abbreviati onabbreviatio nabbreviat ion</th>
-                <th>Abbreviation</th>
+            <tr>
+                <th>Name</th>
                 <th>Abbreviation</th>
             </tr>
             <tfoot>
             <tr>
                 <td><input placeholder="New name" disabled="disabled"></td>
                 <td><input placeholder="New abbrev" disabled="disabled"></td>
-                <td><select id="select_universe"><option value="1">The Legend of Zelda</option><option value="2">Mario</option><option value="3">Yoshi</option><option value="4">Donkey Kong</option><option value="5">Metroid</option><option value="6">Kirby</option><option value="7">Star Fox</option><option value="8">Pokemon</option></select></td>
             </tr>
             </tfoot>
             <tbody class="sortable">
@@ -116,7 +113,6 @@ if (strlen($json_input) > 0) {
             while ($row = $stmt->fetch()) {
                 echo "<tr>";
                 echo "<td><a href='techniques.php?t=", $row["technique_id"], "'>", $row["abbreviation"], "</a></td>";
-                echo "<td>", $row["abbreviation"], "</td>";
                 echo "<td>", $row["abbreviation"], "</td>";
                 echo "</tr>";
             }
@@ -133,7 +129,6 @@ if (strlen($json_input) > 0) {
                         <tr>
                             <td><input id="newName" placeholder="New name"></td>
                             <td><input id="newAbbrev" placeholder="New abbrev"></td>
-                            <td><select id="select_universe"><option value="1">The Legend of Zelda</option><option value="2">Mario</option><option value="3">Yoshi</option><option value="4">Donkey Kong</option><option value="5">Metroid</option><option value="6">Kirby</option><option value="7">Star Fox</option><option value="8">Pokemon</option></select></td>
                         </tr>
                         </tfoot>
                     </table>
