@@ -25,13 +25,13 @@ class DataTable
         <table class="solid">
             <tr>';
         foreach ($this->headers as $text) {
-            echo '<th class="clickable">$text</th>';
+            echo "<th class='clickable'>$text</th>";
         }
-        echo '</tr>
+        echo "</tr>
         </table>
     </div>
-    <div id="scrollContainer" class="scrollable">
-        <table id="table', $this->id, '">
+    <div id='scrollContainer' class='scrollable'>
+        <table id='table$this->id'>
             <tr>
                 <th>Name</th>
                 <th>Nickname</th>
@@ -39,11 +39,11 @@ class DataTable
             </tr>
             <tfoot>
             <tr>
-                <td><input id="_newName" placeholder="New name" disabled="disabled"></td>
-                <td><input id="_newNick" placeholder="New nickname" disabled="disabled"></td>
-                <td id="_newChar"></td>
+                <td><input id='_newName' placeholder='New name' disabled='disabled'></td>
+                <td><input id='_newNick' placeholder='New nickname' disabled='disabled'></td>
+                <td id='_newChar'></td>
             </tr>
             </tfoot>
-            <tbody class="sortable">';
+            <tbody class='sortable'>";
     }
 }
