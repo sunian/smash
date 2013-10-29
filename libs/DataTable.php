@@ -29,11 +29,7 @@ class DataTable
             </div>
             <div id='scrollContainer' class='scrollable'>
                 <table id='table$this->id'>
-                    <tr>
-                        <th>Name</th>
-                        <th>Nickname</th>
-                        <th>Universe</th>
-                    </tr>
+                    <tr>", $this->printHeaders(false), "</tr>
                     <tfoot>
                     <tr>
                         <td><input id='_newName' placeholder='New name' disabled='disabled'></td>
