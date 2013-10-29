@@ -44,6 +44,7 @@ if (strlen($json_input) > 0) {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
             });
             newName.focus();
+            console.log($("table#tableTechs").css("width"));
             $("div#scrollContainer").css("maxHeight", "10%").animate({
                 maxHeight: "85%"
             }, 666, function() {
