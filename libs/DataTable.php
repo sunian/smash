@@ -24,7 +24,7 @@ class DataTable
         "<div class='body'>
             <div id='fixedHeader' class='fixedHeader'>
                 <table class='solid'>
-                    <tr>$this->printHeaders(true)</tr>
+                    <tr>", $this->printHeaders(true), "</tr>
                 </table>
             </div>
             <div id='scrollContainer' class='scrollable'>
@@ -44,9 +44,10 @@ class DataTable
                     <tbody class='sortable'>";
     }
 
-    public function printHeaders($clickable){
+    private function printHeaders($clickable)
+    {
         foreach ($this->headers as $text) {
-            echo "<th ", $clickable ? "class='clickable'" : "" , ">$text</th>";
+            echo "<th ", $clickable ? "class='clickable'" : "", ">$text</th>";
         }
     }
 }
