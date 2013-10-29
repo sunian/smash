@@ -26,15 +26,16 @@ if (strlen($json_input) > 0) {
         $(function () {
             newName = $("#newName");
             btnAdd = $("a.btnPlus");
-            alignCellWidths($.makeArray($("table#tableChars tr th")),
+            alignCellWidths($.makeArray($("table#tableTechs tr th")),
                 $.makeArray($("div#fixedHeader table tr th")));
-            alignCellWidths($.makeArray($("table#tableChars tfoot tr td")),
+            $("div#fixedFooter table.content").css("width", $("table#tableTechs").css("width"));
+            alignCellWidths($.makeArray($("table#tableTechs tfoot tr td")),
                 $.makeArray($("div#fixedFooter table.content tr td")));
             $("div#fixedHeader table tr th").each(function (i, elem) {
                 $(elem).attr("dir", "1").css("cursor", "pointer");
                 $(elem).click(function () {
                     var dir = $(elem).attr("dir") * 1;
-                    sortTable($("table#tableChars tbody.sortable"), i, dir);
+                    sortTable($("table#tableTechs tbody.sortable"), i, dir);
                     $(elem).attr("dir", "" + (dir * -1));
                 })
             });
@@ -89,7 +90,7 @@ if (strlen($json_input) > 0) {
         </table>
     </div>
     <div id="scrollContainer" class="scrollable">
-        <table id="tableChars">
+        <table id="tableTechs">
             <tr>
                 <th>Name</th>
                 <th>Abbreviation</th>
@@ -122,7 +123,7 @@ if (strlen($json_input) > 0) {
         <table class="layout">
             <tr class="layout">
                 <td style="vertical-align: bottom;" class="layout">
-                    <table class="content solid" style="table-layout: fixed;">
+                    <table class="content solid">
                         <tfoot>
                         <tr>
                             <td><input id="newName" placeholder="New name"></td>
