@@ -148,6 +148,9 @@ if (strlen($json_input) > 0) {
     </div>
 </div>
 
-<?php include('libs/venues.php'); ?>
+<?php
+include('libs/venues.php');
+include('libs/regions.php');
+?>
 </body>
 </html>
