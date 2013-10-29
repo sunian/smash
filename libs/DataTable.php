@@ -53,13 +53,13 @@ class DataTable
 
     private function printData($callback)
     {
-        $conn = DbUtil::connect();
-        $stmt = $conn->prepare($this->sqlQuery);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_BOTH);
+//        $conn = DbUtil::connect();
+//        $stmt = $conn->prepare($this->sqlQuery);
+//        $stmt->execute();
+//        $stmt->setFetchMode(PDO::FETCH_BOTH);
         print_r($callback);
-        while ($row = $stmt->fetch()) {
-            $callback();
-        }
+//        while ($row = $stmt->fetch()) {
+//            $callback();
+//        }
     }
 }
