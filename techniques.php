@@ -38,13 +38,13 @@ if (strlen($json_input) > 0) {
                     $(elem).attr("dir", "" + (dir * -1));
                 })
             });
-            newName.keyup( function () {
+            newName.keyup(function () {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
             });
             newName.focus();
             $("div#scrollContainer").css("maxHeight", "10%").animate({
                 maxHeight: "85%"
-            }, 666, function() {
+            }, 666, function () {
                 // Animation complete.
                 $("div#fixedFooter table.content, div#fixedHeader table")
                     .css("width", $("table#tableTechs").css("width"));
@@ -98,8 +98,8 @@ if (strlen($json_input) > 0) {
             </tr>
             <tfoot>
             <tr>
-                <td><input  placeholder="New name" disabled="disabled"></td>
-                <td><input  placeholder="New abbrev" disabled="disabled"></td>
+                <td><input placeholder="New name" disabled="disabled"></td>
+                <td><input placeholder="New abbrev" disabled="disabled"></td>
             </tr>
             </tfoot>
             <tbody class="sortable">
@@ -112,7 +112,7 @@ if (strlen($json_input) > 0) {
             $stmt->setFetchMode(PDO::FETCH_BOTH);
             while ($row = $stmt->fetch()) {
                 echo "<tr>";
-                echo "<td><a href='asdf'>", $row["name"], "</a></td>";
+                echo "<td><a href='techniques.php?t='", $row["technique_id"], ">", $row["name"], "</a></td>";
                 echo "<td>", $row["abbreviation"], "</td>";
                 echo "</tr>";
             }
