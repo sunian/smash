@@ -102,7 +102,7 @@ if (strlen($json_input) > 0) {
         </table>
     </div>
     <div id="scrollContainer" class="scrollable">
-        <table id="tableChars">
+        <table id="tableChars" class="no-break">
             <tr>
                 <th>Name</th>
                 <th>Nickname</th>

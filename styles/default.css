@@ -13,7 +13,7 @@ div.body {
 .scrollable {
     overflow-y: auto;
     overflow-x: hidden;
-    /*padding-right: 18px;*/
+    padding-right: 18px;
     max-height: 10%;
 }
 
