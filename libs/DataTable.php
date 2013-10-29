@@ -6,7 +6,8 @@
  * Time: 12:39 PM
  */
 
-class DataTable {
+class DataTable
+{
     public $id = null;
     public $headers = null;
     public $canInsert = false;
@@ -17,19 +18,20 @@ class DataTable {
         $this->headers = $headers;
     }
 
-    public function render(){
+    public function render()
+    {
         echo '<div class="body">
     <div id="fixedHeader" class="fixedHeader">
         <table class="solid">
-            <tr>
-                <th class="clickable">Name</th>
-                <th class="clickable">Nickname</th>
-                <th class="clickable">Universe</th>
-            </tr>
+            <tr>';
+        foreach ($this->headers as $text) {
+            echo '<th class="clickable">', $text, '</th>';
+        }
+        echo '</tr>
         </table>
     </div>
     <div id="scrollContainer" class="scrollable">
-        <table id="table',$this->id,'">
+        <table id="table', $this->id, '">
             <tr>
                 <th>Name</th>
                 <th>Nickname</th>
