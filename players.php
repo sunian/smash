@@ -35,7 +35,7 @@ $table->renderData = function ($row) {
     echo "<td>", $row["date"], "</td>";
     echo "</tr>";
 };
-print_r($table);
+$table->renderData();
 //$table->render();
 ?>
 
