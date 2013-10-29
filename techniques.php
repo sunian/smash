@@ -105,14 +105,14 @@ if (strlen($json_input) > 0) {
             <tbody class="sortable">
             <?php
             $conn = DbUtil::connect();
-            $stmt = $conn->prepare("SELECT t.name, t.abbreviation
+            $stmt = $conn->prepare("SELECT t.name, t.abbreviation, t.technique_id
                     FROM technique AS t
                     ORDER BY t.name, t.abbreviation");
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_BOTH);
             while ($row = $stmt->fetch()) {
                 echo "<tr>";
-                echo "<td>", $row["name"], "</td>";
+                echo "<td><a href='asdf'>", $row["name"], "</a></td>";
                 echo "<td>", $row["abbreviation"], "</td>";
                 echo "</tr>";
             }
