@@ -42,7 +42,7 @@ table td {
     color: white;
 }
 
-tr.no-break td, tr.no-break th {
+table.no-break td, table.no-break th {
     white-space: nowrap;
 }
 
