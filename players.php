@@ -7,6 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 require_once('libs/browser.php');
+require_once('libs/DataTable.php');
 //require_once('libs/Character.php');
 if (strlen($json_input) > 0) {
     exit();
@@ -21,7 +22,10 @@ if (strlen($json_input) > 0) {
     </script>
 </head>
 <body>
-<?php include('libs/navheader.php'); ?>
+<?php
+include('libs/navheader.php');
+(new DataTable())->render();
+?>
 
 </body>
 </html>
