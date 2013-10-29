@@ -96,8 +96,11 @@ a.btnPlus:active {
     background-size: cover;
 }
 
-.naviLink {
+a {
     color: white;
+}
+
+.naviLink {
     display: inline-block;
     text-align: center;
     padding: 1.7% 0;
