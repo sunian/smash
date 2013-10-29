@@ -58,7 +58,7 @@ table.layout, table.layout tr.layout, table.layout td.layout, table.layout th.la
     padding: 0;
 }
 
-table.content input {
+table.content input, table.content select {
     width: 100%;
 }
 
