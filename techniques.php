@@ -30,8 +30,6 @@ if (strlen($json_input) > 0) {
                 $.makeArray($("div#fixedHeader table tr th")));
             alignCellWidths($.makeArray($("table#tableTechs tfoot tr td")),
                 $.makeArray($("div#fixedFooter table.content tr td")));
-            console.log($("table#tableTechs").css("width"));
-            $("div#fixedFooter table.content").css("width", $("table#tableTechs").css("width"));
             $("div#fixedHeader table tr th").each(function (i, elem) {
                 $(elem).attr("dir", "1").css("cursor", "pointer");
                 $(elem).click(function () {
@@ -44,12 +42,11 @@ if (strlen($json_input) > 0) {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
             });
             newName.focus();
-            console.log($("table#tableTechs").css("width"));
             $("div#scrollContainer").css("maxHeight", "10%").animate({
                 maxHeight: "85%"
             }, 666, function() {
                 // Animation complete.
-                console.log($("table#tableTechs").css("width"));
+                $("div#fixedFooter table.content").css("width", $("table#tableTechs").css("width"));
             });
         });
 
