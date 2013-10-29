@@ -11,6 +11,12 @@ class DataTable {
     public $headers = null;
     public $canInsert = false;
 
+    function __construct($id, $headers)
+    {
+        $this->id = $id;
+        $this->headers = $headers;
+    }
+
     public function render(){
         echo '<div class="body">
     <div id="fixedHeader" class="fixedHeader">
@@ -23,7 +29,7 @@ class DataTable {
         </table>
     </div>
     <div id="scrollContainer" class="scrollable">
-        <table id="tableChars">
+        <table id="table',$this->id,'">
             <tr>
                 <th>Name</th>
                 <th>Nickname</th>
