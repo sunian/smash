@@ -93,7 +93,7 @@ if (strlen($json_input) > 0) {
     </div>
     <div id="scrollContainer" class="scrollable">
         <table id="tableTechs">
-            <tr>
+            <tr class="no-break">
                 <th>abbreviati onabbreviatio nabbreviat ion</th>
                 <th>Abbreviation</th>
                 <th>Abbreviation</th>
