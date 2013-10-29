@@ -5,6 +5,7 @@
  * Date: 10/29/13
  * Time: 12:39 PM
  */
+require_once('DbUtil.php');
 
 class DataTable
 {
