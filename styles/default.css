@@ -14,6 +14,7 @@ div.body {
     overflow-y: auto;
     overflow-x: hidden;
     padding-right: 18px;
+    max-height: 10%;
 }
 
 input, select {
