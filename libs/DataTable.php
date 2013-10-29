@@ -30,7 +30,7 @@ class DataTable
                 </table>
             </div>
             <div id='scrollContainer' class='scrollable'>
-                <table id='table$this->id'>
+                <table id='table$this->id' class='no-break'>
                     <tr>", $this->printHeaders(false), "</tr>
                     <tfoot>
                     <tr>
