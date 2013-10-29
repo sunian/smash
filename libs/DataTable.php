@@ -58,8 +58,7 @@ class DataTable
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_BOTH);
         while ($row = $stmt->fetch()) {
-            $callback($row);
+            $callback();
         }
-        echo "done";
     }
 }
