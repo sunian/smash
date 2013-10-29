@@ -13,7 +13,7 @@ class DataTable
     public $headers = null;
     public $canInsert = false;
     public $sqlQuery = null;
-    public $renderData = null; //$printData(rows)
+    public $renderData; //$printData(rows)
 
     function __construct($id, $headers)
     {
@@ -59,10 +59,8 @@ class DataTable
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_BOTH);
         $callback = $this->renderData;
-        print_r($callback);
-        $callback();
-//        while ($row = $stmt->fetch()) {
-//            $callback();
-//        }
+        while ($row = $stmt->fetch()) {
+            $callback($row);
+        }
     }
 }

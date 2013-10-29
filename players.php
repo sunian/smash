@@ -28,11 +28,11 @@ $table = new DataTable("Players", array("Col1", "Col2", "Col3"));
 $table->sqlQuery = "SELECT name, venue, date
                     FROM tournament
                     ORDER BY tournament_id, date, name";
-$table->renderData = function () {
+$table->renderData = function ($row) {
     echo "<tr>";
-//    echo "<td>", $row["name"], "</td>";
-//    echo "<td>", $row["venue"], "</td>";
-//    echo "<td>", $row["date"], "</td>";
+    echo "<td>", $row["name"], "</td>";
+    echo "<td>", $row["venue"], "</td>";
+    echo "<td>", $row["date"], "</td>";
     echo "</tr>";
 };
 $table->render();
