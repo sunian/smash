@@ -12,7 +12,7 @@ class DataTable
     public $headers = null;
     public $canInsert = false;
     public $sqlQuery = null;
-    public $renderData = null;//$printData(rows)
+    public $renderData = null; //$printData(rows)
 
     function __construct($id, $headers)
     {
@@ -39,7 +39,9 @@ class DataTable
                         <td id='_newChar'></td>
                     </tr>
                     </tfoot>
-                    <tbody class='sortable'>", $this->printData($this->renderData);
+                    <tbody class='sortable'>", $this->printData($this->renderData), "</tbody>
+                </table>
+            </div>";
     }
 
     private function printHeaders($clickable)
@@ -49,7 +51,8 @@ class DataTable
         }
     }
 
-    private function printData($callback){
+    private function printData($callback)
+    {
         $conn = DbUtil::connect();
         $stmt = $conn->prepare($this->sqlQuery);
         $stmt->execute();
