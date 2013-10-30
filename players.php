@@ -24,7 +24,11 @@ if (strlen($json_input) > 0) {
 <body>
 <?php
 include('libs/navheader.php');
-$table = new DataTable("Tournaments", array("Name", "Venue", "Date"));
+$table = new DataTable("Tournaments", array(
+    new TableColumn("Name", "newName", "input", "New name"),
+    new TableColumn("Venue", "newVenue", "input", "New venue"),
+    new TableColumn("Date", "newDate", "input", "New date")
+));
 $table->sqlQuery = "SELECT name, venue, date
                     FROM tournament
                     ORDER BY tournament_id, date, name";

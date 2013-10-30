@@ -7,18 +7,35 @@
  */
 require_once('DbUtil.php');
 
+class TableColumn
+{
+    public $id;
+    public $header;
+    public $inputType;
+    public $placeholder;
+
+    function __construct($header, $id, $inputType, $placeholder)
+    {
+        $this->header = $header;
+        $this->id = $id;
+        $this->inputType = $inputType;
+        $this->placeholder = $placeholder;
+    }
+
+}
+
 class DataTable
 {
     public $id = null;
-    public $headers = null;
+    public $columns = null;
     public $canInsert = false;
     public $sqlQuery = null;
     public $renderData; //$printData(rows)
 
-    function __construct($id, $headers)
+    function __construct($id, $columns)
     {
         $this->id = $id;
-        $this->headers = $headers;
+        $this->columns = $columns;
     }
 
     public function render()
@@ -34,21 +51,58 @@ class DataTable
                 <table id='table$this->id' class='no-break'>
                     <tr>", $this->printHeaders(false), "</tr>
                     <tfoot>
-                    <tr>
-                        <td><input id='_newName' placeholder='New name' disabled='disabled'></td>
-                        <td><input id='_newNick' placeholder='New nickname' disabled='disabled'></td>
-                        <td id='_newChar'></td>
-                    </tr>
+                    <tr>", $this->printFooters(false), "</tr>
                     </tfoot>
                     <tbody class='sortable'>", $this->printData(), "</tbody>
                 </table>
-            </div>";
+            </div>
+            <div id='fixedFooter' class='fixedFooter'>
+                <table class='layout'>
+                    <tr class='layout'>
+                        <td style='vertical-align: bottom;' class='layout'>
+                            <table class='content solid'>
+                                <tfoot>
+                                <tr>", $this->printFooters(true), "</tr>
+                                </tfoot>
+                            </table>
+                        </td>
+                        <td class='layout' style='padding-left: 20px;'>
+                            <a href='javascript:void(0);' style='display: none;' class='btnPlus' onclick='create$this->id();'></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>";
     }
 
     private function printHeaders($clickable)
     {
-        foreach ($this->headers as $text) {
-            echo "<th ", $clickable ? "class='clickable'" : "", ">$text</th>";
+        foreach ($this->columns as $col) {
+            echo "<th ", $clickable ? "class='clickable'" : "", ">$col->header</th>";
+        }
+    }
+
+    private function printFooters($enabled)
+    {
+        foreach ($this->columns as $col) {
+            switch ($col->inputType) {
+                case "input":
+                    echo "<td>";
+                    if ($enabled) {
+                        echo "<input id='$col->id' placeholder='$col->placeholder'>";
+                    } else {
+                        echo "<input disabled='disabled'>";
+                    }
+                    echo "</td>";
+                    break;
+                case "select":
+                    if ($enabled) {
+                        echo " <td id='$col->id'></td>";
+                    } else {
+                        echo " <td id='_$col->id'></td>";
+                    }
+                    break;
+            }
         }
     }
 
