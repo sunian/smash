@@ -11,16 +11,18 @@
     $conn = DbUtil::connect();
     $stmt = $conn->prepare("select distinct venue from tournament order by venue");
     $stmt->execute();
-    $stmt->setFetchMode(PDO::FETCH_NAMED);
-    echo json_encode($stmt->fetchAll());
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $venues = $stmt->fetchAll();
     $stmt->closeCursor();
+    foreach ($venues as $i => $venue) {
+        $venues[$i] = $venue["venue"];
+    }
+
+    echo json_encode($venues);
     ?></div>
 <script type="text/javascript">
     function getVenues() {
         var venues = JSON.parse($("#div_venues").text());
-        for (var i in venues) {
-        }
-        venues = ["Link", "Sheik", "Marth", "Ganon", "DK", "Ike", "Pika"];
         return venues;
     }
 </script>
