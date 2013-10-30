@@ -21,12 +21,19 @@ if (strlen($json_input) > 0) {
     <script type="text/javascript">
         var newDate, newVenue;
         var newName, newRegion;
-        var btnAdd;
+        var selectRegion;
         $(function () {
             newName = $("#newName");
             newDate = $("#newDate");
             newVenue = $("#newVenue");
             newRegion = $("#newRegion");
+            selectRegion = createRegionSelector();
+            selectRegion.id = "_selectRegion";
+            selectRegion.disabled = true;
+            $("#_newRegion")[0].appendChild(selectRegion);
+            selectRegion = createRegionSelector();
+            selectRegion.id = "selectRegion";
+            newRegion[0].appendChild(select_universe);
             newName.keyup(function () {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
             });
@@ -76,7 +83,7 @@ $table = new DataTable("Tournys", array(
     new TableColumn("Name", "newName", "input", "New name"),
     new TableColumn("Date", "newDate", "date", "New date"),
     new TableColumn("Venue", "newVenue", "input", "New venue"),
-    new TableColumn("Region", "newRegion", "input", "New region")
+    new TableColumn("Region", "newRegion", "select", "New region")
 ));
 $table->setData("SELECT t.name, t.venue, t.date, r.name AS region
                 FROM tournament AS t INNER JOIN region AS r ON t.region_id = r.region_id
