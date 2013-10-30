@@ -27,8 +27,7 @@ if (strlen($json_input) > 0) {
             newDate = $("#newDate");
             newVenue = $("#newVenue");
             newRegion = $("#newRegion");
-            <?php echo "btnAdd = $('a.btnPlus');";?>
-
+            btnAdd = $("a.btnPlus");
             alignCellWidths($.makeArray($("table#tableTournys tr th")),
                 $.makeArray($("div#fixedHeader table tr th")));
             alignCellWidths($.makeArray($("table#tableTournys tfoot tr td")),
