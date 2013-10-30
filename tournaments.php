@@ -98,7 +98,7 @@ $table->renderData = function ($row) {
     echo "<tr>";
     echo "<td>", $row["name"], "</td>";
     echo "<td>", $row["venue"], "</td>";
-    echo "<td>", print_r($row["date"]), "</td>";
+    echo "<td>", $row["date"], "</td>";
     echo "</tr>";
 };
 $table->render();
