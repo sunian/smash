@@ -26,15 +26,15 @@ if (strlen($json_input) > 0) {
             newName = $("#newName");
             newDate = $("#newDate");
             btnAdd = $("a.btnPlus");
-            alignCellWidths($.makeArray($("table#tableChars tr th")),
+            alignCellWidths($.makeArray($("table#tableTournys tr th")),
                 $.makeArray($("div#fixedHeader table tr th")));
-            alignCellWidths($.makeArray($("table#tableChars tfoot tr td")),
+            alignCellWidths($.makeArray($("table#tableTournys tfoot tr td")),
                 $.makeArray($("div#fixedFooter table.content tr td")));
             $("div#fixedHeader table tr th").each(function (i, elem) {
                 $(elem).attr("dir", "1").css("cursor", "pointer");
                 $(elem).click(function () {
                     var dir = $(elem).attr("dir") * 1;
-                    sortTable($("table#tableChars tbody.sortable"), i, dir);
+                    sortTable($("table#tableTournys tbody.sortable"), i, dir);
                     $(elem).attr("dir", "" + (dir * -1));
                 })
             });
@@ -48,6 +48,8 @@ if (strlen($json_input) > 0) {
                 maxHeight: "85%"
             }, 666, function () {
                 // Animation complete.
+                $("div#fixedFooter table.content, div#fixedHeader table")
+                    .css("width", $("table#tableChars").css("width"));
             });
         });
 
@@ -63,7 +65,6 @@ if (strlen($json_input) > 0) {
             if (newTourny.venue.length == 0) newTourny.venue = undefined;
             newTourny.date = newDate.val();
             newTourny.region = 0;
-            console.log(JSON.stringify(newTourny));
             $.ajax({
                 type: "POST",
                 data: JSON.stringify(newTourny),
