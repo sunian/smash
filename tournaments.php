@@ -91,9 +91,9 @@ $table = new DataTable("Tournys", array(
     new TableColumn("Venue", "newVenue", "input", "New Venue"),
     new TableColumn("Date", "newDate", "date", "New date")
 ));
-$table->setData("SELECT name, venue, date
-                FROM tournament
-                ORDER BY tournament_id, date, name", null);
+$table->setData("SELECT t.name, t.venue, t.date, r.name as region
+                FROM tournament as t INNER JOIN region as r on t.region_id = r.region_id
+                ORDER BY t.region_id, t.date, t.name", null);
 $table->renderData = function ($row) {
     $leDate = explode("-", $row["date"]);
     echo "<tr>";
