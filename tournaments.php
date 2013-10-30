@@ -49,7 +49,7 @@ if (strlen($json_input) > 0) {
             }, 666, function () {
                 // Animation complete.
                 $("div#fixedFooter table.content, div#fixedHeader table")
-                    .css("width", $("table#tableChars").css("width"));
+                    .css("width", $("table#tableTournys").css("width"));
             });
         });
 
