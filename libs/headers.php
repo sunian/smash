@@ -19,6 +19,10 @@
       type="text/css"/>
 <link href="styles/default.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript">
+    $(function () {
+       $("input.date").datepicker();
+    });
+
     function alignCellWidths(rowSource, rowTarget) {
         for (var i in rowTarget) {
             $(rowTarget[i]).css("width", $(rowSource[i]).css("width"));

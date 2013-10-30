@@ -108,6 +108,15 @@ class DataTable
                         echo " <td id='_$col->id'></td>";
                     }
                     break;
+                case "date":
+                    echo "<td>";
+                    if ($enabled) {
+                        echo "<input id='$col->id' placeholder='$col->placeholder' class='date'>";
+                    } else {
+                        echo "<input disabled='disabled'>";
+                    }
+                    echo "</td>";
+                    break;
             }
         }
     }

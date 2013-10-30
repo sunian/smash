@@ -37,7 +37,6 @@ if (strlen($json_input) > 0) {
                     $(elem).attr("dir", "" + (dir * -1));
                 })
             });
-            newDate.datepicker();
             newName.keyup(function () {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
             }).autocomplete({
@@ -134,7 +133,7 @@ if (strlen($json_input) > 0) {
                         <tr>
                             <td><input id="newName" placeholder="New name"></td>
                             <td><input id="newVenue" placeholder="New venue"></td>
-                            <td><input id="newDate" placeholder="New date"></td>
+                            <td><input id="newDate" placeholder="New date" class="date"></td>
                         </tr>
                         </tfoot>
                     </table>
