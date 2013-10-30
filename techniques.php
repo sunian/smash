@@ -51,7 +51,7 @@ if (strlen($json_input) > 0) {
             });
         });
 
-        function createTech() {
+        function createTechs() {
             var newTech = {};
             newTech.name = newName.val();
             newTech.abbrev = $("#newAbbrev").val();
@@ -80,67 +80,25 @@ if (strlen($json_input) > 0) {
     </script>
 </head>
 <body>
-<?php include('libs/navheader.php'); ?>
-<div class="body">
-    <div id="fixedHeader" class="fixedHeader">
-        <table class="solid">
-            <tr>
-                <th class="clickable">Name</th>
-                <th class="clickable">Abbreviation</th>
-            </tr>
-        </table>
-    </div>
-    <div id="scrollContainer" class="scrollable">
-        <table id="tableTechs" class="no-break">
-            <tr>
-                <th>Name</th>
-                <th>Abbreviation</th>
-            </tr>
-            <tfoot>
-            <tr>
-                <td><input placeholder="New name" disabled="disabled"></td>
-                <td><input placeholder="New abbrev" disabled="disabled"></td>
-            </tr>
-            </tfoot>
-            <tbody class="sortable">
-            <?php
-            $conn = DbUtil::connect();
-            $stmt = $conn->prepare("SELECT t.name, t.abbreviation, t.technique_id
-                    FROM technique AS t
-                    ORDER BY t.name, t.abbreviation");
-            $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_BOTH);
-            while ($row = $stmt->fetch()) {
-                echo "<tr>";
-                echo "<td><a href='techniques.php?t=", $row["technique_id"], "'>", $row["name"], "</a></td>";
-                echo "<td>", $row["abbreviation"], "</td>";
-                echo "</tr>";
-            }
-            ?>
-            </tbody>
-        </table>
-    </div>
-    <div id="fixedFooter" class="fixedFooter">
-        <table class="layout">
-            <tr class="layout">
-                <td style="vertical-align: bottom;" class="layout">
-                    <table class="content solid">
-                        <tfoot>
-                        <tr>
-                            <td><input id="newName" placeholder="New name"></td>
-                            <td><input id="newAbbrev" placeholder="New abbrev"></td>
-                        </tr>
-                        </tfoot>
-                    </table>
-                </td>
-                <td class="layout" style="padding-left: 20px;">
-                    <a href="javascript:void(0);" style="display: none;" class="btnPlus" onclick="createTech();"></a>
-                    <!--                <input type="button" value="Create New&#x00A;Character" onclick="createTech();">-->
-                </td>
-            </tr>
-        </table>
+<?php
 
-    </div>
-</div>
+include('libs/navheader.php');
+
+$table = new DataTable("Techs", array(
+    new TableColumn("Name", "newName", "input", "New name"),
+    new TableColumn("Abbreviation", "newAbbrev", "input", "New abbrev")
+));
+$table->setData("SELECT t.name, t.abbreviation, t.technique_id
+                    FROM technique AS t
+                    ORDER BY t.name, t.abbreviation", null);
+$table->renderData = function ($row) {
+    echo "<tr>";
+    echo "<td><a href='techniques.php?t=", $row["technique_id"], "'>", $row["name"], "</a></td>";
+    echo "<td>", $row["abbreviation"], "</td>";
+    echo "</tr>";
+};
+$table->render();
+
+?>
 </body>
 </html>

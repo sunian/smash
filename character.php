@@ -94,14 +94,15 @@ if (strlen($json_input) > 0) {
 <?php
 
 include('libs/navheader.php');
+
 $table = new DataTable("Chars", array(
     new TableColumn("Name", "newName", "input", "New name"),
     new TableColumn("Nickname", "newNick", "input", "New nickname"),
     new TableColumn("Universe", "newChar", "select", "")
 ));
-$table->sqlQuery = "SELECT i.name, i.nickname, u.name as universe
+$table->setData("SELECT i.name, i.nickname, u.name as universe
                     FROM character_identity AS i INNER JOIN universe AS u on i.universe_id = u.universe_id
-                    ORDER BY u.universe_id, i.nickname, i.name";
+                    ORDER BY u.universe_id, i.nickname, i.name", null);
 $table->renderData = function ($row) {
     echo "<tr>";
     echo "<td>", $row["name"], "</td>";

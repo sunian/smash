@@ -39,6 +39,11 @@ class DataTable
         $this->columns = $columns;
     }
 
+    function setData($sqlQuery, $sqlParams){
+        $this->sqlQuery = $sqlQuery;
+        $this->sqlParams = $sqlParams;
+    }
+
     public function render()
     {
         echo
