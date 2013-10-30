@@ -89,10 +89,10 @@ $table->setData("SELECT t.name, t.venue, t.date, r.name AS region
                 FROM tournament AS t INNER JOIN region AS r ON t.region_id = r.region_id
                 ORDER BY t.region_id, t.date, t.name", null);
 $table->renderData = function ($row) {
-    $leDate = explode("-", $row["date"]);
+    $leDate = $row["date"];
     echo "<tr>";
     echo "<td>", $row["name"], "</td>";
-    echo "<td>", date("M jS, Y", mktime(0, 0, 0, $leDate[1], $leDate[2], $leDate[0])), "</td>";
+    echo "<td raw='$leDate'>", DataTable::prettyDate($leDate), "</td>";
     echo "<td>", $row["venue"], "</td>";
     echo "<td>", $row["region"], "</td>";
     echo "</tr>";
