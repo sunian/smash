@@ -43,31 +43,18 @@ if (strlen($json_input) > 0) {
         });
 
         function createChars() {
-            var newChar = {};
-            newChar.name = newName.val();
-            newChar.nick = $("#newNick").val();
-            if (newChar.name.length == 0) {
+            var newObj = {};
+            newObj.name = newName.val();
+            newObj.nick = $("#newNick").val();
+            if (newObj.name.length == 0) {
                 alert("Please enter a name to create a new character.");
                 newName.focus();
                 return;
             }
-            if (newChar.nick.length == 0) newChar.nick = undefined;
-            newChar.universe = $(selectUniverse).val();
+            if (newObj.nick.length == 0) newObj.nick = undefined;
+            newObj.universe = $(selectUniverse).val();
 //            console.log(JSON.stringify(newChar));
-            $.ajax({
-                type: "POST",
-                data: JSON.stringify(newChar),
-//                dataType: "json",
-                success: function (data, textStatus, jqXHR) {
-                    console.log(data);
-                    if (data.length > 0) {
-                        alert(data);
-                    } else {
-                        location.reload();
-                    }
-                }
-
-            });
+            uploadObj(newObj);
         }
     </script>
 </head>

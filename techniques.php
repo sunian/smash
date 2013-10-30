@@ -35,30 +35,17 @@ if (strlen($json_input) > 0) {
         });
 
         function createTechs() {
-            var newTech = {};
-            newTech.name = newName.val();
-            newTech.abbrev = $("#newAbbrev").val();
-            if (newTech.name.length == 0) {
+            var newObj = {};
+            newObj.name = newName.val();
+            newObj.abbrev = $("#newAbbrev").val();
+            if (newObj.name.length == 0) {
                 alert("Please enter a name to create a new technique.");
                 newName.focus();
                 return;
             }
-            if (newTech.abbrev.length == 0) newTech.abbrev = undefined;
+            if (newObj.abbrev.length == 0) newObj.abbrev = undefined;
 //            console.log(JSON.stringify(newChar));
-            $.ajax({
-                type: "POST",
-                data: JSON.stringify(newTech),
-//                dataType: "json",
-                success: function (data, textStatus, jqXHR) {
-                    console.log(data);
-                    if (data.length > 0) {
-                        alert(data);
-                    } else {
-                        location.reload();
-                    }
-                }
-
-            });
+            uploadObj(newObj);
         }
     </script>
 </head>

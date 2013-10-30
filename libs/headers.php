@@ -51,6 +51,23 @@
         });
     }
 
+    function uploadObj(newObj){
+        $.ajax({
+            type: "POST",
+            data: JSON.stringify(newObj),
+//                dataType: "json",
+            success: function (data, textStatus, jqXHR) {
+                console.log(data);
+                if (data.length > 0) {
+                    alert(data);
+                } else {
+                    location.reload();
+                }
+            }
+
+        });
+    }
+
     function alignCellWidths(rowSource, rowTarget) {
         for (var i in rowTarget) {
             $(rowTarget[i]).css("width", $(rowSource[i]).css("width"));

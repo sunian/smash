@@ -50,30 +50,19 @@ if (strlen($json_input) > 0) {
         });
 
         function createTournys() {
-            var newTourny = {};
-            newTourny.name = newName.val();
-            newTourny.venue = $("#newVenue").val();
-            if (newTourny.name.length == 0) {
+            var newObj = {};
+            newObj.name = newName.val();
+            newObj.venue = newVenue.val();
+            newObj.date = newDate.val();
+            if (newObj.name.length == 0) {
                 alert("Please enter a name to create a new tournament.");
                 newName.focus();
                 return;
             }
-            if (newTourny.venue.length == 0) newTourny.venue = undefined;
-            newTourny.date = newDate.val();
-            newTourny.region = 0;
-            $.ajax({
-                type: "POST",
-                data: JSON.stringify(newTourny),
-                success: function (data, textStatus, jqXHR) {
-                    console.log(data);
-                    if (data.length > 0) {
-                        alert(data);
-                    } else {
-                        location.reload();
-                    }
-                }
-
-            });
+            if (newObj.venue.length == 0) newObj.venue = undefined;
+            if (newObj.date.length == 0) newObj.date = undefined;
+            newObj.region = $(selectRegion).val();
+            uploadObj(newObj);
         }
     </script>
 </head>
