@@ -72,8 +72,8 @@ class DataTable
                                 </tfoot>
                             </table>
                         </td>
-                        <td class='layout' style='padding-left: 20px;'>
-                            <a href='javascript:void(0);' style='display: none;' class='btnPlus' onclick='create$this->id();'></a>
+                        <td class='layout' style='padding-left: 20px; display: none'>
+                            <a href='javascript:void(0);' class='btnPlus' onclick='create$this->id();'></a>
                         </td>
                     </tr>
                 </table>
