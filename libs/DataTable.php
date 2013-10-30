@@ -30,6 +30,7 @@ class DataTable
     public $columns = null;
     public $canInsert = false;
     public $sqlQuery = null;
+    public $sqlParams = null;
     public $renderData; //$printData(rows)
 
     function __construct($id, $columns)
@@ -110,7 +111,7 @@ class DataTable
     {
         $conn = DbUtil::connect();
         $stmt = $conn->prepare($this->sqlQuery);
-        $stmt->execute();
+        $stmt->execute($this->sqlParams);
         $stmt->setFetchMode(PDO::FETCH_BOTH);
         $callback = $this->renderData;
         while ($row = $stmt->fetch()) {
