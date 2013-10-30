@@ -31,7 +31,7 @@ if (strlen($json_input) > 0) {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
             });
 
-            setupTables("Players");
+            Helper.setupTables("Players");
 
             newName.focus();
         });
@@ -48,7 +48,7 @@ if (strlen($json_input) > 0) {
             if (newObj.venue.length == 0) newObj.venue = undefined;
             newObj.date = newDate.val();
             newObj.region = 0;
-            uploadObj(newObj);
+            Helper.uploadObj(newObj);
         }
     </script>
 </head>

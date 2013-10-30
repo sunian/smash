@@ -29,7 +29,7 @@ if (strlen($json_input) > 0) {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
             });
 
-            setupTables("Techs");
+            Helper.setupTables("Techs");
 
             newName.focus();
         });
@@ -45,7 +45,7 @@ if (strlen($json_input) > 0) {
             }
             if (newObj.abbrev.length == 0) newObj.abbrev = undefined;
 //            console.log(JSON.stringify(newChar));
-            uploadObj(newObj);
+            Helper.uploadObj(newObj);
         }
     </script>
 </head>

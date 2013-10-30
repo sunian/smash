@@ -47,7 +47,7 @@ if (strlen($json_input) > 0) {
                 source: getVenues()
             });
 
-            setupTables("Tournys");
+            Helper.setupTables("Tournys")
 
             newName.focus();
         });
@@ -69,8 +69,8 @@ if (strlen($json_input) > 0) {
                 newObj.date = Date.parse(newObj.date).toString("yyyy-MM-dd");
             }
             newObj.region = $(selectRegion).val();
-            alert(JSON.stringify(newObj));
-//            uploadObj(newObj);
+//            alert(JSON.stringify(newObj));
+            Helper.uploadObj(newObj);
         }
     </script>
 </head>

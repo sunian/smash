@@ -37,7 +37,7 @@ if (strlen($json_input) > 0) {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
             });
 
-            setupTables("Chars");
+            Helper.setupTables("Chars");
 
             newName.focus();
         });
@@ -54,7 +54,7 @@ if (strlen($json_input) > 0) {
             if (newObj.nick.length == 0) newObj.nick = undefined;
             newObj.universe = $(selectUniverse).val();
 //            console.log(JSON.stringify(newChar));
-            uploadObj(newObj);
+            Helper.uploadObj(newObj);
         }
     </script>
 </head>
