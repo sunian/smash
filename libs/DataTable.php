@@ -39,8 +39,7 @@ class DataTable
         $this->columns = $columns;
     }
 
-    function setData($sqlQuery, $sqlParams)
-    {
+    function setData($sqlQuery, $sqlParams){
         $this->sqlQuery = $sqlQuery;
         $this->sqlParams = $sqlParams;
     }
@@ -64,22 +63,20 @@ class DataTable
                 </table>
             </div>
             <div id='fixedFooter' class='fixedFooter'>
-                <div style='display: inline;'>
-                    <table class='layout'>
-                        <tr class='layout'>
-                            <td style='vertical-align: bottom;' class='layout'>
-                                <table class='content solid'>
-                                    <tfoot>
-                                    <tr>", $this->printFooters(true), "</tr>
-                                    </tfoot>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div style='padding-left: 20px; display: inline;'>
-                    <a href='javascript:void(0);' class='btnPlus' onclick='create$this->id();'></a>
-                </div>
+                <table class='layout'>
+                    <tr class='layout'>
+                        <td style='vertical-align: bottom;' class='layout'>
+                            <table class='content solid'>
+                                <tfoot>
+                                <tr>", $this->printFooters(true), "</tr>
+                                </tfoot>
+                            </table>
+                        </td>
+                        <td class='layout' style='padding-left: 20px; display: none'>
+                            <a href='javascript:void(0);' class='btnPlus' onclick='create$this->id();'></a>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>";
     }

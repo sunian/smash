@@ -26,7 +26,7 @@ if (strlen($json_input) > 0) {
         var btnAdd;
         $(function () {
             newName = $("#newName");
-            btnAdd = $("a.btnPlus");
+            btnAdd = $("a.btnPlus").parent();
             alignCellWidths($.makeArray($("table#tableTechs tr th")),
                 $.makeArray($("div#fixedHeader table tr th")));
             alignCellWidths($.makeArray($("table#tableTechs tfoot tr td")),
