@@ -63,7 +63,11 @@ if (strlen($json_input) > 0) {
                 return;
             }
             if (newObj.venue.length == 0) newObj.venue = undefined;
-            if (newObj.date.length == 0) newObj.date = undefined;
+            if (newObj.date.length == 0) {
+                newObj.date = undefined;
+            } else {
+                newObj.date = Date.parse(newObj.date).toString("yyyy-MM-dd");
+            }
             newObj.region = $(selectRegion).val();
             alert(JSON.stringify(newObj));
 //            uploadObj(newObj);
