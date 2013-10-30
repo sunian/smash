@@ -59,7 +59,7 @@ table.layout, table.layout tr.layout, table.layout td.layout, table.layout th.la
 }
 
 table.content input, table.content select {
-    /*width: 100%;*/
+    width: 100%;
 }
 
 .fixedHeader {
