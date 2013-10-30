@@ -37,6 +37,9 @@ if (strlen($json_input) > 0) {
             newName.keyup(function () {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
             });
+            newName.autocomplete({
+                source: getTournyNames()
+            });
             newVenue.autocomplete({
                 source: getVenues()
             });
@@ -100,6 +103,7 @@ $table->renderData = function ($row) {
 $table->render();
 
 include('libs/venues.php');
+include('libs/tournament_names.php');
 include('libs/regions.php');
 
 ?>
