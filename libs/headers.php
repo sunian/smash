@@ -24,7 +24,9 @@
         $("input.date").datepicker({
             onSelect: function (dateText, inst) {
                 this.focus();
-            }});
+            },
+            constrainInput: false
+        });
     });
 
     function setupTables(tableID) {
