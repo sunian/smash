@@ -21,7 +21,10 @@
 <script type="text/javascript">
     var btnAdd;
     $(function () {
-        $("input.date").datepicker();
+        $("input.date").datepicker({
+            onSelect: function (dateText, inst) {
+                this.focus();
+            }});
     });
 
     function setupTables(tableID) {
