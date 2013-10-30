@@ -33,7 +33,7 @@ if (strlen($json_input) > 0) {
             $("#_newRegion")[0].appendChild(selectRegion);
             selectRegion = createRegionSelector();
             selectRegion.id = "selectRegion";
-            newRegion[0].appendChild(select_universe);
+            newRegion[0].appendChild(selectRegion);
             newName.keyup(function () {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
             });

@@ -22,17 +22,17 @@ if (strlen($json_input) > 0) {
     <title>Characters</title>
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
-        var select_universe;
+        var selectUniverse;
         var newName;
         $(function () {
             newName = $("#newName");
-            select_universe = createUniverseSelector();
-            select_universe.id = "_select_universe";
-            select_universe.disabled = true;
-            $("#_newChar")[0].appendChild(select_universe);
-            select_universe = createUniverseSelector();
-            select_universe.id = "select_universe";
-            $("#newChar")[0].appendChild(select_universe);
+            selectUniverse = createUniverseSelector();
+            selectUniverse.id = "_selectUniverse";
+            selectUniverse.disabled = true;
+            $("#_newChar")[0].appendChild(selectUniverse);
+            selectUniverse = createUniverseSelector();
+            selectUniverse.id = "selectUniverse";
+            $("#newChar")[0].appendChild(selectUniverse);
             newName.keyup( function () {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
             });
@@ -52,7 +52,7 @@ if (strlen($json_input) > 0) {
                 return;
             }
             if (newChar.nick.length == 0) newChar.nick = undefined;
-            newChar.universe = $(select_universe).val();
+            newChar.universe = $(selectUniverse).val();
 //            console.log(JSON.stringify(newChar));
             $.ajax({
                 type: "POST",
