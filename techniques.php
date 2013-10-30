@@ -23,33 +23,15 @@ if (strlen($json_input) > 0) {
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
         var newName;
-        var btnAdd;
         $(function () {
             newName = $("#newName");
-            btnAdd = $("a.btnPlus").parent();
-            alignCellWidths($.makeArray($("table#tableTechs tr th")),
-                $.makeArray($("div#fixedHeader table tr th")));
-            alignCellWidths($.makeArray($("table#tableTechs tfoot tr td")),
-                $.makeArray($("div#fixedFooter table.content tr td")));
-            $("div#fixedHeader table tr th").each(function (i, elem) {
-                $(elem).attr("dir", "1").css("cursor", "pointer");
-                $(elem).click(function () {
-                    var dir = $(elem).attr("dir") * 1;
-                    sortTable($("table#tableTechs tbody.sortable"), i, dir);
-                    $(elem).attr("dir", "" + (dir * -1));
-                })
-            });
             newName.keyup(function () {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
             });
+
+            setupTables("Techs");
+
             newName.focus();
-            $("div#scrollContainer").css("maxHeight", "10%").animate({
-                maxHeight: "85%"
-            }, 666, function () {
-                // Animation complete.
-//                $("div#fixedFooter table.content, div#fixedHeader table")
-//                    .css("width", $("table#tableTechs").css("width"));
-            });
         });
 
         function createTechs() {

@@ -19,9 +19,34 @@
       type="text/css"/>
 <link href="styles/default.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript">
+    var btnAdd;
     $(function () {
-       $("input.date").datepicker();
+        $("input.date").datepicker();
     });
+
+    function setupTables(tableID) {
+        btnAdd = $("a.btnPlus").parent();
+        alignCellWidths($.makeArray($("table#table" + tableID + " tr th")),
+            $.makeArray($("div#fixedHeader table tr th")));
+        alignCellWidths($.makeArray($("table#table" + tableID + " tfoot tr td")),
+            $.makeArray($("div#fixedFooter table.content tr td")));
+        $("div#fixedHeader table tr th").each(function (i, elem) {
+            $(elem).attr("dir", "1").css("cursor", "pointer");
+            $(elem).click(function () {
+                var dir = $(elem).attr("dir") * 1;
+                sortTable($("table#table" + tableID + " tbody.sortable"), i, dir);
+                $(elem).attr("dir", "" + (dir * -1));
+            })
+        });
+
+        $("div#scrollContainer").css("maxHeight", "10%").animate({
+            maxHeight: "85%"
+        }, 666, function () {
+            // Animation complete.
+            $("div#fixedFooter table.content, div#fixedHeader table")
+                .css("width", $("table#table" + tableID).css("width"));
+        });
+    }
 
     function alignCellWidths(rowSource, rowTarget) {
         for (var i in rowTarget) {
