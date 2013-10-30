@@ -64,7 +64,7 @@ class DataTable
                 </table>
             </div>
             <div id='fixedFooter' class='fixedFooter'>
-                <div style='display: inline-block;'>
+                <div style='display: inline;'>
                     <table class='layout'>
                         <tr class='layout'>
                             <td style='vertical-align: bottom;' class='layout'>
@@ -77,7 +77,7 @@ class DataTable
                         </tr>
                     </table>
                 </div>
-                <div style='padding-left: 20px; display: inline-block;'>
+                <div style='padding-left: 20px; display: inline;'>
                     <a href='javascript:void(0);' class='btnPlus' onclick='create$this->id();'></a>
                 </div>
             </div>
