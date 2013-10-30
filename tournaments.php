@@ -65,7 +65,8 @@ if (strlen($json_input) > 0) {
             if (newObj.venue.length == 0) newObj.venue = undefined;
             if (newObj.date.length == 0) newObj.date = undefined;
             newObj.region = $(selectRegion).val();
-            uploadObj(newObj);
+            alert(JSON.stringify(newObj));
+//            uploadObj(newObj);
         }
     </script>
 </head>
