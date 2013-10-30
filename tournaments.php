@@ -20,11 +20,12 @@ if (strlen($json_input) > 0) {
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
         var newDate;
-        var newName;
+        var newName, newRegion;
         var btnAdd;
         $(function () {
             newName = $("#newName");
             newDate = $("#newDate");
+            newRegion = $("#newRegion");
             btnAdd = $("a.btnPlus");
             alignCellWidths($.makeArray($("table#tableTournys tr th")),
                 $.makeArray($("div#fixedHeader table tr th")));
@@ -88,8 +89,8 @@ include('libs/navheader.php');
 
 $table = new DataTable("Tournys", array(
     new TableColumn("Name", "newName", "input", "New name"),
-    new TableColumn("Venue", "newVenue", "input", "New Venue"),
     new TableColumn("Date", "newDate", "date", "New date"),
+    new TableColumn("Venue", "newVenue", "input", "New venue"),
     new TableColumn("Region", "newRegion", "input", "New region")
 ));
 $table->setData("SELECT t.name, t.venue, t.date, r.name as region
@@ -99,8 +100,8 @@ $table->renderData = function ($row) {
     $leDate = explode("-", $row["date"]);
     echo "<tr>";
     echo "<td>", $row["name"], "</td>";
-    echo "<td>", $row["venue"], "</td>";
     echo "<td>", date("M jS, Y", mktime(0, 0, 0, $leDate[1], $leDate[2], $leDate[0])), "</td>";
+    echo "<td>", $row["venue"], "</td>";
     echo "<td>", $row["region"], "</td>";
     echo "</tr>";
 };
