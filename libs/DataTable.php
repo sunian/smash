@@ -39,7 +39,8 @@ class DataTable
         $this->columns = $columns;
     }
 
-    function setData($sqlQuery, $sqlParams){
+    function setData($sqlQuery, $sqlParams)
+    {
         $this->sqlQuery = $sqlQuery;
         $this->sqlParams = $sqlParams;
     }
@@ -72,11 +73,11 @@ class DataTable
                                 </tfoot>
                             </table>
                         </td>
-                        <td class='layout' style='padding-left: 20px; display: none'>
-                            <a href='javascript:void(0);' class='btnPlus' onclick='create$this->id();'></a>
-                        </td>
                     </tr>
                 </table>
+                <div class='layout' style='padding-left: 20px; display: inline-block;'>
+                    <a href='javascript:void(0);' class='btnPlus' onclick='create$this->id();'></a>
+                </div>
             </div>
         </div>";
     }
