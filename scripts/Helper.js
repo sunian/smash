@@ -67,7 +67,9 @@ Helper.alignCellWidths = function (rowSource, rowTarget) {
 Helper.sortTable = function (table, col, dir) {
     var rows = $.makeArray(table.find("tr"));
     rows.sort(function (a, b) {
-        return $(a.cells[col]).text().localeCompare($(b.cells[col]).text()) * dir;
+        var aText = $(a.cells[col]).attr("raw") ? $(a.cells[col]).attr("raw") : $(a.cells[col]).text();
+        var bText = $(b.cells[col]).attr("raw") ? $(b.cells[col]).attr("raw") : $(b.cells[col]).text();
+        return aText.localeCompare(bText) * dir;
     });
     table.append(rows);
 }
