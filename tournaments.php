@@ -7,7 +7,8 @@
  * To change this template use File | Settings | File Templates.
  */
 require_once('libs/browser.php');
-require_once('libs/Character.php');
+require_once('libs/DataTable.php');
+//require_once('libs/Character.php');
 if (strlen($json_input) > 0) {
     exit();
 }
@@ -50,7 +51,7 @@ if (strlen($json_input) > 0) {
             });
         });
 
-        function createTourny() {
+        function createTournys() {
             var newTourny = {};
             newTourny.name = newName.val();
             newTourny.venue = $("#newVenue").val();
@@ -80,76 +81,31 @@ if (strlen($json_input) > 0) {
     </script>
 </head>
 <body>
-<?php include('libs/navheader.php'); ?>
-<div class="body">
-    <div id="fixedHeader" class="fixedHeader">
-        <table class="solid">
-            <tr>
-                <th class="clickable">Name</th>
-                <th class="clickable">Venue</th>
-                <th class="clickable">Date</th>
-            </tr>
-        </table>
-    </div>
-    <div id="scrollContainer" class="scrollable">
-        <table id="tableChars">
-            <tr>
-                <th>Name</th>
-                <th>Venue</th>
-                <th>Date</th>
-            </tr>
-            <tfoot>
-            <tr>
-                <td><input id="_newName" placeholder="New name" disabled="disabled"></td>
-                <td><input id="_newVenue" placeholder="New Venue" disabled="disabled"></td>
-                <td id="_newDate"><input id="_newDate" placeholder="New Date" disabled="disabled"></td>
-            </tr>
-            </tfoot>
-            <tbody class="sortable">
-            <?php
-            $conn = DbUtil::connect();
-            $stmt = $conn->prepare("SELECT name, venue, date
-                    FROM tournament
-                    ORDER BY tournament_id, date, name");
-            $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_BOTH);
-            while ($row = $stmt->fetch()) {
-                echo "<tr>";
-                echo "<td>", $row["name"], "</td>";
-                echo "<td>", $row["venue"], "</td>";
-                echo "<td>", $row["date"], "</td>";
-                echo "</tr>";
-            }
-            ?>
-            </tbody>
-        </table>
-    </div>
-    <div id="fixedFooter" class="fixedFooter">
-        <table class="layout">
-            <tr class="layout">
-                <td style="vertical-align: bottom;" class="layout">
-                    <table class="content solid">
-                        <tfoot>
-                        <tr>
-                            <td><input id="newName" placeholder="New name"></td>
-                            <td><input id="newVenue" placeholder="New venue"></td>
-                            <td><input id="newDate" placeholder="New date" class="date"></td>
-                        </tr>
-                        </tfoot>
-                    </table>
-                </td>
-                <td class="layout" style="padding-left: 20px;">
-                    <a href="javascript:void(0);" style="display: none;" class="btnPlus" onclick="createTourny();"></a>
-                </td>
-            </tr>
-        </table>
-
-    </div>
-</div>
-
 <?php
+
+include('libs/navheader.php');
+
+$table = new DataTable("Tournys", array(
+    new TableColumn("Name", "newName", "input", "New name"),
+    new TableColumn("Venue", "newVenue", "input", "New Venue"),
+    new TableColumn("Date", "newDate", "date", "New date")
+));
+$table->setData("SELECT name, venue, date
+                FROM tournament
+                ORDER BY tournament_id, date, name", null);
+$table->renderData = function ($row) {
+    echo "<tr>";
+    echo "<td>", $row["name"], "</td>";
+    echo "<td>", $row["venue"], "</td>";
+    echo "<td>", $row["date"], "</td>";
+    echo "</tr>";
+};
+$table->render();
+
 include('libs/venues.php');
 include('libs/regions.php');
+
 ?>
+
 </body>
 </html>
