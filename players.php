@@ -68,18 +68,18 @@ if (strlen($json_input) > 0) {
 <?php
 include('libs/navheader.php');
 $table = new DataTable("Players", array(
-    new TableColumn("Name", "newName", "input", "New name"),
-    new TableColumn("Venue", "newVenue", "input", "New venue"),
-    new TableColumn("Date", "newDate", "input", "New date")
+    new TableColumn("Tag", "newTag", "input", "New tag"),
+    new TableColumn("Region", "newRegion", "input", "New region"),
+    new TableColumn("Name", "newName", "input", "New name")
 ));
-$table->sqlQuery = "SELECT name, venue, date
-                    FROM tournament
-                    ORDER BY tournament_id, date, name";
+$table->sqlQuery = "SELECT p.name, p.tag, r.name as region
+                    FROM player as p INNER JOIN region as r on p.region_id = r.region_id
+                    ORDER BY r.name, p.tag, p.name";
 $table->renderData = function ($row) {
     echo "<tr>";
+    echo "<td>", $row["tag"], "</td>";
+    echo "<td>", $row["region"], "</td>";
     echo "<td>", $row["name"], "</td>";
-    echo "<td>", $row["venue"], "</td>";
-    echo "<td>", $row["date"], "</td>";
     echo "</tr>";
 };
 $table->render();
