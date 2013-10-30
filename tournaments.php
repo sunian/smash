@@ -89,7 +89,8 @@ include('libs/navheader.php');
 $table = new DataTable("Tournys", array(
     new TableColumn("Name", "newName", "input", "New name"),
     new TableColumn("Venue", "newVenue", "input", "New Venue"),
-    new TableColumn("Date", "newDate", "date", "New date")
+    new TableColumn("Date", "newDate", "date", "New date"),
+    new TableColumn("Region", "newRegion", "input", "New region")
 ));
 $table->setData("SELECT t.name, t.venue, t.date, r.name as region
                 FROM tournament as t INNER JOIN region as r on t.region_id = r.region_id
@@ -100,6 +101,7 @@ $table->renderData = function ($row) {
     echo "<td>", $row["name"], "</td>";
     echo "<td>", $row["venue"], "</td>";
     echo "<td>", date("M jS, Y", mktime(0, 0, 0, $leDate[1], $leDate[2], $leDate[0])), "</td>";
+    echo "<td>", $row["region"], "</td>";
     echo "</tr>";
 };
 $table->render();
