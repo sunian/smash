@@ -8,8 +8,11 @@
  */
 require_once('libs/browser.php');
 require_once('libs/DataTable.php');
-//require_once('libs/Character.php');
+require_once('libs/Tournament.php');
 if (strlen($json_input) > 0) {
+    $tournament = new Tournament($json_input);
+    $error = $tournament->createTournament();
+    if ($error) echo $error;
     exit();
 }
 ?>
