@@ -24,10 +24,8 @@ if (strlen($json_input) > 0) {
     <script type="text/javascript">
         var select_universe;
         var newName;
-        var btnAdd;
         $(function () {
             newName = $("#newName");
-            btnAdd = $("a.btnPlus");
             select_universe = createUniverseSelector();
             select_universe.id = "_select_universe";
             select_universe.disabled = true;
@@ -35,30 +33,13 @@ if (strlen($json_input) > 0) {
             select_universe = createUniverseSelector();
             select_universe.id = "select_universe";
             $("#newChar")[0].appendChild(select_universe);
-            alignCellWidths($.makeArray($("table#tableChars tr th")),
-                $.makeArray($("div#fixedHeader table tr th")));
-            alignCellWidths($.makeArray($("table#tableChars tfoot tr td")),
-                $.makeArray($("div#fixedFooter table.content tr td")));
-            $("div#fixedHeader table tr th").each(function (i, elem) {
-                $(elem).attr("dir", "1").css("cursor", "pointer");
-                $(elem).click(function () {
-                    var dir = $(elem).attr("dir") * 1;
-                    sortTable($("table#tableChars tbody.sortable"), i, dir);
-                    $(elem).attr("dir", "" + (dir * -1));
-                })
-            });
             newName.keyup( function () {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
             });
-            newName.focus();
-            $("div#scrollContainer").css("maxHeight", "10%").animate({
-                maxHeight: "85%"
-            }, 666, function() {
-                // Animation complete.
-                $("div#fixedFooter table.content, div#fixedHeader table")
-                    .css("width", $("table#tableChars").css("width"));
 
-            });
+            setupTables("Chars");
+
+            newName.focus();
         });
 
         function createChars() {
