@@ -27,33 +27,16 @@ if (strlen($json_input) > 0) {
             newDate = $("#newDate");
             newVenue = $("#newVenue");
             newRegion = $("#newRegion");
-            btnAdd = $("a.btnPlus");
-            alignCellWidths($.makeArray($("table#tableTournys tr th")),
-                $.makeArray($("div#fixedHeader table tr th")));
-            alignCellWidths($.makeArray($("table#tableTournys tfoot tr td")),
-                $.makeArray($("div#fixedFooter table.content tr td")));
-            $("div#fixedHeader table tr th").each(function (i, elem) {
-                $(elem).attr("dir", "1").css("cursor", "pointer");
-                $(elem).click(function () {
-                    var dir = $(elem).attr("dir") * 1;
-                    sortTable($("table#tableTournys tbody.sortable"), i, dir);
-                    $(elem).attr("dir", "" + (dir * -1));
-                })
-            });
             newName.keyup(function () {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
             });
             newVenue.autocomplete({
                 source: getVenues()
             });
+
+            setupTables("Tournys");
+
             newName.focus();
-            $("div#scrollContainer").css("maxHeight", "10%").animate({
-                maxHeight: "85%"
-            }, 666, function () {
-                // Animation complete.
-                $("div#fixedFooter table.content, div#fixedHeader table")
-                    .css("width", $("table#tableTournys").css("width"));
-            });
         });
 
         function createTournys() {
