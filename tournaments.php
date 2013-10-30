@@ -95,10 +95,11 @@ $table->setData("SELECT name, venue, date
                 FROM tournament
                 ORDER BY tournament_id, date, name", null);
 $table->renderData = function ($row) {
+    $leDate = explode("-", $row["date"]);
     echo "<tr>";
     echo "<td>", $row["name"], "</td>";
     echo "<td>", $row["venue"], "</td>";
-    echo "<td>", print_r(explode("-", $row["date"])), "</td>";
+    echo "<td>", date("M jS, Y", mktime(0, 0, 0, $leDate[1], $leDate[2], $leDate[0])), "</td>";
     echo "</tr>";
 };
 $table->render();
