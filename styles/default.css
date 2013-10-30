@@ -2,6 +2,7 @@ body {
     margin: 0;
     background: url("../images/pageBG.png") repeat;
     font-family: sans-serif;
+    text-align: center;
 }
 
 div.body {
