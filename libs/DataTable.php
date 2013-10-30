@@ -77,7 +77,7 @@ class DataTable
                         </tr>
                     </table>
                 </div>
-                <div class='layout' style='padding-left: 20px; display: inline-block;'>
+                <div style='padding-left: 20px; display: inline-block;'>
                     <a href='javascript:void(0);' class='btnPlus' onclick='create$this->id();'></a>
                 </div>
             </div>
