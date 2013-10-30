@@ -19,14 +19,16 @@ if (strlen($json_input) > 0) {
     <title>Tournaments</title>
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
-        var newDate;
+        var newDate, newVenue;
         var newName, newRegion;
         var btnAdd;
         $(function () {
             newName = $("#newName");
             newDate = $("#newDate");
+            newVenue = $("#newVenue");
             newRegion = $("#newRegion");
-            btnAdd = $("a.btnPlus");
+            <?php echo "btnAdd = $('a.btnPlus');";?>
+
             alignCellWidths($.makeArray($("table#tableTournys tr th")),
                 $.makeArray($("div#fixedHeader table tr th")));
             alignCellWidths($.makeArray($("table#tableTournys tfoot tr td")),
@@ -41,9 +43,10 @@ if (strlen($json_input) > 0) {
             });
             newName.keyup(function () {
                 btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
-            }).autocomplete({
-                    source: getVenues()
-                });
+            });
+            newVenue.autocomplete({
+                source: getVenues()
+            });
             newName.focus();
             $("div#scrollContainer").css("maxHeight", "10%").animate({
                 maxHeight: "85%"
@@ -93,8 +96,8 @@ $table = new DataTable("Tournys", array(
     new TableColumn("Venue", "newVenue", "input", "New venue"),
     new TableColumn("Region", "newRegion", "input", "New region")
 ));
-$table->setData("SELECT t.name, t.venue, t.date, r.name as region
-                FROM tournament as t INNER JOIN region as r on t.region_id = r.region_id
+$table->setData("SELECT t.name, t.venue, t.date, r.name AS region
+                FROM tournament AS t INNER JOIN region AS r ON t.region_id = r.region_id
                 ORDER BY t.region_id, t.date, t.name", null);
 $table->renderData = function ($row) {
     $leDate = explode("-", $row["date"]);
