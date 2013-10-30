@@ -33,7 +33,7 @@ class Tournament extends JSONObject
             }
             $stmt->closeCursor();
             $params["venue"] = $this->venue;
-            $sql_string = "INSERT INTO technique (name, date, venue, region_id) VALUES (:name, :date, :venue, :region)";
+            $sql_string = "INSERT INTO tournament (name, date, venue, region_id) VALUES (:name, :date, :venue, :region)";
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
             $stmt->closeCursor();
