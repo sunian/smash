@@ -58,7 +58,7 @@ if (strlen($json_input) > 0) {
             }
             if (newObj.tag.length == 0) newObj.tag = undefined;
             if (newObj.name.length == 0) newObj.name = undefined;
-            newObj.region = $(newRegion).val();
+            newObj.region = $(selectRegion).val();
             Helper.uploadObj(newObj);
         }
     </script>
