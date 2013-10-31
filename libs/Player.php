@@ -20,7 +20,7 @@ class Player extends JSONObject
     {
         try {
             $conn = DbUtil::connect();
-            $sql_string = "SELECT player_id FROM player WHERE region = :region " .
+            $sql_string = "SELECT player_id FROM player WHERE region_id = :region " .
                 (is_null($this->tag) ? " AND tag is null" : " AND tag = :tag") .
                 (is_null($this->name) ? " AND name is null" : " AND name = :name");
             $params = array("region" => $this->region);
@@ -34,7 +34,7 @@ class Player extends JSONObject
             $stmt->closeCursor();
             $params["tag"] = $this->tag;
             $params["name"] = $this->name;
-            $sql_string = "INSERT INTO player (name, tag, region) VALUES (:name, :tag, :region)";
+            $sql_string = "INSERT INTO player (name, tag, region_id) VALUES (:name, :tag, :region)";
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
             $stmt->closeCursor();
