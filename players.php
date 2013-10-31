@@ -73,7 +73,7 @@ $table = new DataTable("Players", array(
 ));
 $table->sqlQuery = "SELECT p.name, p.tag, r.name as region
                     FROM player as p INNER JOIN region as r on p.region_id = r.region_id
-                    ORDER BY r.name, p.tag, p.name";
+                    ORDER BY p.player_id";
 $table->renderData = function ($row) {
     echo "<tr>";
     echo "<td>", $row["tag"], "</td>";
