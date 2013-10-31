@@ -8,11 +8,11 @@
  */
 //ini_set('display_errors',"1");
 $navPages = array(
+    'videos.php' => 'Videos',
+    'players.php' => 'Players',
     'characters.php' => 'Characters',
     'tournaments.php' => 'Tournaments',
-    'players.php' => 'Players',
-    'techniques.php' => 'Tech',
-    'videos.php' => 'Videos'
+    'techniques.php' => 'Tech'
 );
 if ($activePage == null) {
     $activePage = basename($_SERVER['PHP_SELF']);
