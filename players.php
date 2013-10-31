@@ -8,8 +8,11 @@
  */
 require_once('libs/browser.php');
 require_once('libs/DataTable.php');
-//require_once('libs/Character.php');
+require_once('libs/Player.php');
 if (strlen($json_input) > 0) {
+    $technique = new Player($json_input);
+    $error = $technique->createPlayer();
+    if ($error) echo $error;
     exit();
 }
 ?>
