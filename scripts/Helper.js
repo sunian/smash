@@ -12,7 +12,7 @@ $(function () {
     });
 });
 
-function Helper (){
+function Helper() {
 //nothing here, just a Helper class with static methods
 }
 
@@ -40,7 +40,7 @@ Helper.setupTables = function (tableID) {
     });
 }
 
-Helper.uploadObj = function (newObj){
+Helper.uploadObj = function (newObj) {
     $.ajax({
         type: "POST",
         data: JSON.stringify(newObj),
@@ -72,4 +72,8 @@ Helper.sortTable = function (table, col, dir) {
         return aText.localeCompare(bText) * dir;
     });
     table.append(rows);
+}
+
+Helper.displayBtnAdd = function (bool) {
+    btnAdd.css("display", bool ? "inline-block" : "none");
 }

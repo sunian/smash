@@ -38,7 +38,7 @@ if (strlen($json_input) > 0) {
             selectRegion.id = "selectRegion";
             newRegion[0].appendChild(selectRegion);
             newName.keyup(function () {
-                btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
+                Helper.displayBtnAdd(newName.val().length > 0);
             });
             newName.autocomplete({
                 source: getTournyNames()

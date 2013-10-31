@@ -19,35 +19,43 @@ if (strlen($json_input) > 0) {
     <title>Players</title>
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
-        var newDate, newVenue;
-        var newName, newRegion;
-        var btnAdd;
+        var newTag, newName, newRegion;
+        var selectRegion;
         $(function () {
             newName = $("#newName");
-            newDate = $("#newDate");
-            newVenue = $("#newVenue");
+            newTag = $("#newTag");
             newRegion = $("#newRegion");
+            selectRegion = createRegionSelector();
+            selectRegion.id = "_selectRegion";
+            selectRegion.disabled = true;
+            $("#_newRegion")[0].appendChild(selectRegion);
+            selectRegion = createRegionSelector();
+            selectRegion.id = "selectRegion";
+            newRegion[0].appendChild(selectRegion);
+            newTag.keyup(function () {
+                Helper.displayBtnAdd(newName.val().length > 0 || newTag.val().length > 0);
+            });
             newName.keyup(function () {
-                btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
+                Helper.displayBtnAdd(newName.val().length > 0 || newTag.val().length > 0);
             });
 
             Helper.setupTables("Players");
 
-            newName.focus();
+            newTag.focus();
         });
 
         function createPlayers() {
             var newObj = {};
             newObj.name = newName.val();
-            newObj.venue = $("#newVenue").val();
-            if (newObj.name.length == 0) {
-                alert("Please enter a name to create a new tournament.");
-                newName.focus();
+            newObj.tag = newTag.val();
+            if (newObj.name.length == 0 && newObj.tag.length == 0) {
+                alert("Please enter a tag and/or a name to create a new player.");
+                newTag.focus();
                 return;
             }
-            if (newObj.venue.length == 0) newObj.venue = undefined;
-            newObj.date = newDate.val();
-            newObj.region = 0;
+            if (newObj.tag.length == 0) newObj.tag = undefined;
+            if (newObj.name.length == 0) newObj.name = undefined;
+            newObj.region = $(newRegion).val();
             Helper.uploadObj(newObj);
         }
     </script>
@@ -57,7 +65,7 @@ if (strlen($json_input) > 0) {
 include('libs/navheader.php');
 $table = new DataTable("Players", array(
     new TableColumn("Tag", "newTag", "input", "New tag"),
-    new TableColumn("Region", "newRegion", "input", "New region"),
+    new TableColumn("Region", "newRegion", "select", "New region"),
     new TableColumn("Name", "newName", "input", "New name")
 ));
 $table->sqlQuery = "SELECT p.name, p.tag, r.name as region
@@ -71,6 +79,8 @@ $table->renderData = function ($row) {
     echo "</tr>";
 };
 $table->render();
+
+include('libs/regions.php');
 ?>
 
 </body>

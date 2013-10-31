@@ -26,7 +26,7 @@ if (strlen($json_input) > 0) {
         $(function () {
             newName = $("#newName");
             newName.keyup(function () {
-                btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
+                Helper.displayBtnAdd(newName.val().length > 0);
             });
 
             Helper.setupTables("Techs");

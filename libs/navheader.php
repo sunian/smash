@@ -8,7 +8,7 @@
  */
 //ini_set('display_errors',"1");
 $navPages = array(
-    'character.php' => 'Characters',
+    'characters.php' => 'Characters',
     'tournaments.php' => 'Tournaments',
     'players.php' => 'Players',
     'techniques.php' => 'Tech',

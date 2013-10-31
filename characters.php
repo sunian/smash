@@ -34,7 +34,7 @@ if (strlen($json_input) > 0) {
             selectUniverse.id = "selectUniverse";
             $("#newChar")[0].appendChild(selectUniverse);
             newName.keyup( function () {
-                btnAdd.css("display", newName.val().length > 0 ? "inline-block" : "none")
+                Helper.displayBtnAdd(newName.val().length > 0);
             });
 
             Helper.setupTables("Chars");
