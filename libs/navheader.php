@@ -12,7 +12,8 @@ $navPages = array(
     'players.php' => 'Players',
     'characters.php' => 'Characters',
     'tournaments.php' => 'Tournaments',
-    'techniques.php' => 'Tech'
+    'techniques.php' => 'Tech',
+    'versions.php' => 'Versions'
 );
 if ($activePage == null) {
     $activePage = basename($_SERVER['PHP_SELF']);
