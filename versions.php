@@ -62,9 +62,10 @@ $table->setData("SELECT version_id, release_date,
                 FROM version
                 ORDER BY name", null);
 $table->renderData = function ($row) {
+    $leDate = $row["release_date"];
     echo "<tr>";
     echo "<td><a href='techniques.php?t=", $row["versions_id"], "'>", $row["name"], "</a></td>";
-    echo "<td>", DataTable::prettyDate($row["release_date"]), "</td>";
+    echo "<td raw='$leDate'>", DataTable::prettyDate($leDate), "</td>";
     echo "</tr>";
 };
 $table->render();

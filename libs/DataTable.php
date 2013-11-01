@@ -138,6 +138,7 @@ class DataTable
 
     public static function prettyDate($date){
         $leDate = explode("-", $date);
+        if (sizeof($leDate) != 3) return "";
         return date("M jS, Y", mktime(0, 0, 0, $leDate[1], $leDate[2], $leDate[0]));
     }
 }
