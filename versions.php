@@ -8,11 +8,11 @@
  */
 require_once('libs/browser.php');
 require_once('libs/DataTable.php');
-require_once('libs/Technique.php');
+//require_once('libs/Technique.php');
 if (strlen($json_input) > 0) {
-    $technique = new Technique($json_input);
-    $error = $technique->createTechnique();
-    if ($error) echo $error;
+//    $technique = new Technique($json_input);
+//    $error = $technique->createTechnique();
+//    if ($error) echo $error;
     exit();
 }
 ?>
