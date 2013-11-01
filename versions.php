@@ -22,9 +22,10 @@ if (strlen($json_input) > 0) {
     <title>Versions</title>
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
-        var newName;
+        var newName, newDate;
         $(function () {
             newName = $("#newName");
+            newDate = $("#newDate");
             newName.keyup(function () {
                 Helper.displayBtnAdd(newName.val().length > 0);
             });
@@ -53,15 +54,17 @@ if (strlen($json_input) > 0) {
 include('libs/navheader.php');
 
 $table = new DataTable("Versions", array(
-    new TableColumn("Name", "newName", "input", "New name")
+    new TableColumn("Name", "newName", "input", "New name"),
+    new TableColumn("Release Date", "newDate", "date", "New date")
 ));
-$table->setData("SELECT version_id,
+$table->setData("SELECT version_id, release_date,
                 concat(title, coalesce(concat(' ', version_number),'')) AS name
                 FROM version
                 ORDER BY name", null);
 $table->renderData = function ($row) {
     echo "<tr>";
     echo "<td><a href='techniques.php?t=", $row["versions_id"], "'>", $row["name"], "</a></td>";
+    echo "<td>", DataTable::prettyDate($row["release_date"]), "</td>";
     echo "</tr>";
 };
 $table->render();
