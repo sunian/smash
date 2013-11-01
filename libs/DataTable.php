@@ -103,9 +103,9 @@ class DataTable
                     break;
                 case "select":
                     if ($enabled) {
-                        echo " <td id='$col->id'></td>";
+                        echo "<td id='$col->id'></td>";
                     } else {
-                        echo " <td id='_$col->id'></td>";
+                        echo "<td id='_$col->id'></td>";
                     }
                     break;
                 case "date":
@@ -116,6 +116,9 @@ class DataTable
                         echo "<input disabled='disabled'>";
                     }
                     echo "</td>";
+                    break;
+                default:
+                    echo "<td></td>";
                     break;
             }
         }

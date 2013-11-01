@@ -56,7 +56,7 @@ $table = new DataTable("Versions", array(
     new TableColumn("Name", "newName", "input", "New name")
 ));
 $table->setData("SELECT version_id,
-                concat(abbreviation, coalesce(concat(' ', version_number),'')) AS name
+                concat(name, coalesce(concat(' ', version_number),'')) AS name
                 FROM version
                 ORDER BY name", null);
 $table->renderData = function ($row) {
