@@ -31,7 +31,7 @@ $table = new DataTable("Videos", array(
 ));
 $table->setData("SELECT title, url, date_added
 FROM video
-ORDER BY date DESC", null);
+ORDER BY date_added DESC", null);
 $table->renderData = function ($row) {
     echo "<tr>";
     echo "<td>", $row["title"], "</td>";
