@@ -7,6 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 require_once('libs/browser.php');
+require_once('libs/DataTable.php');
 require_once('libs/Videos.php');
 if (strlen($json_input) > 0) {
     exit();
@@ -23,7 +24,7 @@ if (strlen($json_input) > 0) {
 <body>
 <?php include('libs/navheader.php');
 
-$table = new DataTable("Chars", array(
+$table = new DataTable("Videos", array(
     new TableColumn("Title", "newTitle", "input", "Title"),
     new TableColumn("Video URL", "newURL", "input", "Video URL"),
     new TableColumn("Date Added", "newDate", "none", "")
