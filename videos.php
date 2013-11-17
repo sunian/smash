@@ -19,7 +19,11 @@ if (strlen($json_input) > 0) {
     <title>Videos</title>
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
+        var newTitle;
+        var newURL;
         $(function () {
+            newTitle = $("#newTitle");
+            newURL = $("#newURL");
             newTitle.keyup( function () {
                 Helper.displayBtnAdd(newTitle.val().length > 0);
             });
