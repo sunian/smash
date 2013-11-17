@@ -36,7 +36,7 @@ if (strlen($json_input) > 0) {
             newTitle.focus();
         });
 
-        function createVideo() {
+        function createVideos() {
             var newObj = {};
             newObj.title = newTitle.val();
             newObj.url = newURL.val();
