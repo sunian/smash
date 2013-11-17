@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 require_once('libs/browser.php');
-//require_once('libs/Character.php');
+require_once('libs/Videos.php');
 if (strlen($json_input) > 0) {
     exit();
 }
@@ -21,11 +21,24 @@ if (strlen($json_input) > 0) {
     </script>
 </head>
 <body>
-<?php include('libs/navheader.php'); ?>
+<?php include('libs/navheader.php');
 
-<form action="welcome.php" method="post">
-    Video URL: <input type="text" name="URL"><br>
-    <input type="submit">
-</form>
+$table = new DataTable("Chars", array(
+    new TableColumn("Title", "newTitle", "input", "Title"),
+    new TableColumn("Video URL", "newURL", "input", "Video URL"),
+    new TableColumn("Date Added", "newDate", "none", "")
+));
+$table->setData("SELECT title, url, date_added
+FROM video
+ORDER BY date DESC", null);
+$table->renderData = function ($row) {
+    echo "<tr>";
+    echo "<td>", $row["title"], "</td>";
+    echo "<td>", $row["url"], "</td>";
+    echo "<td>", $row["date_added"], "</td>";
+    echo "</tr>";
+};
+$table->render();
+?>
 </body>
 </html>
