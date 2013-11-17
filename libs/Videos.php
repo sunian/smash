@@ -27,7 +27,7 @@ class Video extends JSONObject {
                 return "That video already exists!";
             }
             $stmt->closeCursor();
-            $sql_string = "INSERT INTO video (title, url) VALUES (:title, :url)";
+            $sql_string = "INSERT INTO video (title, url, date_added) VALUES (:title, :url, NOW())";
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
             $stmt->closeCursor();

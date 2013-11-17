@@ -10,6 +10,9 @@ require_once('libs/browser.php');
 require_once('libs/DataTable.php');
 require_once('libs/Videos.php');
 if (strlen($json_input) > 0) {
+    $video = new Video($json_input);
+    $error = $video->createIdentity();
+    if ($error) echo $error;
     exit();
 }
 ?>
@@ -32,6 +35,19 @@ if (strlen($json_input) > 0) {
 
             newTitle.focus();
         });
+
+        function createVideo() {
+            var newObj = {};
+            newObj.title = newTitle.val();
+            newObj.url = newURL.val();
+            if (newObj.title.length == 0) {
+                alert("Please enter a video title.");
+                newTitle.focus();
+                return;
+            }
+//            console.log(JSON.stringify(newChar));
+            Helper.uploadObj(newObj);
+        }
     </script>
 </head>
 <body>
