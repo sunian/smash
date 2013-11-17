@@ -48,7 +48,7 @@ ORDER BY date_added DESC", null);
 $table->renderData = function ($row) {
     echo "<tr>";
     echo "<td>", $row["title"], "</td>";
-    echo "<td>", $row["url"], "</td>";
+    echo "<td> <a href=\"", $row["url"], "\">", $row["url"], "</a> </td>";
     echo "<td>", $row["date_added"], "</td>";
     echo "</tr>";
 };
