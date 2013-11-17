@@ -19,6 +19,15 @@ if (strlen($json_input) > 0) {
     <title>Videos</title>
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
+        $(function () {
+            newTitle.keyup( function () {
+                Helper.displayBtnAdd(newTitle.val().length > 0);
+            });
+
+            Helper.setupTables("Videos");
+
+            newTitle.focus();
+        });
     </script>
 </head>
 <body>
