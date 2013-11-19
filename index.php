@@ -29,10 +29,10 @@ require_once('libs/VideoListUnit.php');
 try {
     $conn = DbUtil::connect();
     $stmt = $conn->prepare("SELECT video_id FROM video ORDER BY date_added DESC");
+    $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    echo count($stmt->fetchAll());
     $x = 0;
-    while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    while($row = $stmt->fetch()) {
         echo $row["video_id"];
         $listUnit = new VideoListUnit($row["video_id"]);
         echo $listUnit->getDisplayString();
