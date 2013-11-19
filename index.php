@@ -25,6 +25,7 @@ require_once('libs/VideoListUnit.php');
     </script>
 </head>
 <body>
+<div class="body">
 <?php include('libs/navheader.php');
 try {
     $conn = DbUtil::connect();
@@ -45,5 +46,6 @@ catch(PDOException $e) {
     echo $e->getMessage();
 }
 ?>
+</div>
 </body>
 </html>
