@@ -30,6 +30,8 @@ class VideoListUnit {
     }
 
     public function getDisplayString() {
-        return "<div id='video_list_unit'> <img src=\"" . $this->url . "/1.jpg\"> </div>";
+        $temp = "img." . substr($this->url, strchr($this->url, "y"));
+        $imgStr = substr($temp, 0, strchr($temp, "/")+1) . "vi/" . substr($temp, strchr($temp, "=")+1) . "hqdefault.jpg";
+        return "<div id='video_list_unit'> <img src=\"" . $imgStr . "/1.jpg\"> </div>";
     }
 }
