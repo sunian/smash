@@ -31,10 +31,17 @@ try {
     $stmt = $conn->prepare("SELECT video_id FROM video ORDER BY date_added DESC LIMIT 0, 10");
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    echo "<div class='video_list_unit' id='". $this->video_id . "'>
+            <table border=\"1\">";
     while($row = $stmt->fetch()) {
         $listUnit = new VideoListUnit($row["video_id"]);
+        echo "<tr>
+                <td><img src=\"http://img.youtube.com/vi/" . $listUnit->getThumbnail() . "/1.jpg\"></td>
+                <td>Players: </td>
+              </tr>";
         echo $listUnit->getDisplayString();
     }
+    echo "</table></div>";
 }
 catch(PDOException $e) {
     echo $e->getMessage();

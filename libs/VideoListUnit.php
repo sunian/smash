@@ -54,4 +54,13 @@ class VideoListUnit {
             </table>
             </div>";
     }
+
+    public function getThumbnail() {
+        $query = substr($this->url, strpos($this->url, "?"));
+        $query = substr($query, strpos($query, "v=")+2);
+        if(strpos($query, "&")>-1) $query = substr($query, 0, strpos($query, "&"));
+        return "<div class='video_list_unit' id='". $this->video_id . "'>
+                <img src=\"http://img.youtube.com/vi/" . $query . "/1.jpg\">
+            </div>";
+    }
 }
