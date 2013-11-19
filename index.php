@@ -30,9 +30,11 @@ $conn = DbUtil::connect();
 $stmt = $conn->prepare("SELECT video_id FROM video ORDER BY date_added DESC");
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
 $x = 0;
+echo "Starting to print the divs";
 while($row = $stmt->fetch()) {
     $listUnit = new VideoListUnit($row["video_id"]);
     echo $listUnit->getDisplayString();
+    if(++$x==10) break;
 }
 ?>
 </body>
