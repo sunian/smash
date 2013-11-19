@@ -17,7 +17,7 @@ class Video extends JSONObject {
     public function createIdentity()
     {
         try {
-            if($this->url{strlen($this->url)}=='/') $this->url = substr($this->url, 0, strlen($this->url)-1);
+            if($this->url{strlen($this->url)-1}=='/') $this->url = substr($this->url, 0, strlen($this->url)-1);
             $conn = DbUtil::connect();
             $sql_string = "SELECT video_id FROM video WHERE title = :title AND url = :url";
             $params = array("title" => $this->title, "url" => $this->url);
