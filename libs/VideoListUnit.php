@@ -31,6 +31,7 @@ class VideoListUnit {
 
     public function getDisplayString() {
         $query = substr($this->url, strpos($this->url, "?"));
+        echo $query;
         $query = substr($query, strpos($query, "=")+1);
 //        if(strpos($query, "?")>-1) $query = substr($query, 0, strpos($query, "?"));
         return "<div id='video_list_unit'> <img src=\"img.youtube.com/vi/" . $query . "/hqdefault.jpg\"> </div>";
