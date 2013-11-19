@@ -41,20 +41,6 @@ class VideoListUnit {
         }
     }
 
-    public function getDisplayString() {
-        $query = substr($this->url, strpos($this->url, "?"));
-        $query = substr($query, strpos($query, "v=")+2);
-        if(strpos($query, "&")>-1) $query = substr($query, 0, strpos($query, "&"));
-        return "<div class='video_list_unit' id='". $this->video_id . "'>
-            <table border=\"1\">
-                <tr>
-                <td><img src=\"http://img.youtube.com/vi/" . $query . "/1.jpg\"></td>
-                <td>Players: </td>
-                </tr>
-            </table>
-            </div>";
-    }
-
     public function getThumbnail() {
         $query = substr($this->url, strpos($this->url, "?"));
         $query = substr($query, strpos($query, "v=")+2);
