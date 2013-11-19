@@ -8,6 +8,7 @@
  */
 require_once('libs/browser.php');
 require_once('libs/DataTable.php');
+require_once('libs/SearchBox.php');
 require_once('libs/Videos.php');
 if (strlen($json_input) > 0) {
     $video = new Video($json_input);
@@ -72,6 +73,11 @@ $table->renderData = function ($row) {
     echo "</tr>";
 };
 $table->render();
+
+$searchbox = new SearchBox("filter", array(
+    new QueryField("title", "Title"))
+);
+$searchbox->render();
 ?>
 </body>
 </html>
