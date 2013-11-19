@@ -34,8 +34,8 @@ try {
     echo "<div></div><table id=\"most_recent_vids\" border=\"1\">";
     while($row = $stmt->fetch()) {
         $listUnit = new VideoListUnit($row["video_id"]);
-        echo "<tr>
-                <td><img src=\"http://img.youtube.com/vi/" . $listUnit->getThumbnail() . "/1.jpg\"></td>
+        echo "<tr id=\"" , $row["video_id"] , "\">
+                <td>" , $listUnit->getThumbnail() , "</td>
                 <td>Players: </td>
               </tr>";
     }
