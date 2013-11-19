@@ -25,13 +25,15 @@ require_once('libs/VideoListUnit.php');
     </script>
 </head>
 <body>
-<div class="body">
+
 <?php include('libs/navheader.php');
+
 try {
     $conn = DbUtil::connect();
     $stmt = $conn->prepare("SELECT video_id FROM video ORDER BY date_added DESC LIMIT 0, 10");
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    echo "<div class='body'>";
     echo "<table id='most_recent_vids'>";
     while($row = $stmt->fetch()) {
         $listUnit = new VideoListUnit($row["video_id"]);
@@ -41,11 +43,12 @@ try {
               </tr>";
     }
     echo "</table>";
+    echo "</div>";
 }
 catch(PDOException $e) {
     echo $e->getMessage();
 }
+
 ?>
-</div>
 </body>
 </html>
