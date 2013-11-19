@@ -32,8 +32,7 @@ try {
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     echo "testing";
-    echo "<div class='video_list_unit' id='". $this->video_id . "'>
-            <table border=\"1\">";
+    echo "<table id=\"most_recent_vids\" border=\"1\">";
     while($row = $stmt->fetch()) {
         $listUnit = new VideoListUnit($row["video_id"]);
         echo "<tr>
@@ -42,7 +41,7 @@ try {
               </tr>";
         echo $listUnit->getDisplayString();
     }
-    echo "</table></div>";
+    echo "</table>";
 }
 catch(PDOException $e) {
     echo $e->getMessage();
