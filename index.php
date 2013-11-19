@@ -32,7 +32,7 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
 $x = 0;
 while($row = $stmt->fetch()) {
     $listUnit = new VideoListUnit($row["video_id"]);
-    $listUnit->echoDisplayString();
+    echo $listUnit->getDisplayString();
 }
 ?>
 </body>

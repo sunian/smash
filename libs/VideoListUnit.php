@@ -29,7 +29,7 @@ class VideoListUnit {
         $this->date_added = $result["date_added"];
     }
 
-    public function echoDisplayString() {
-        echo "<div id='video_list_unit'> <img src=\"" , $this->url , "/1.jpg\"> </div>";
+    public function getDisplayString() {
+        return "<div id='video_list_unit'> <img src=\"" . $this->url . "/1.jpg\"> </div>";
     }
 }
