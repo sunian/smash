@@ -47,4 +47,14 @@ class VideoListUnit {
         if(strpos($query, "&")>-1) $query = substr($query, 0, strpos($query, "&"));
         return "<img src=\"http://img.youtube.com/vi/" . $query . "/1.jpg\">";
     }
+
+    public function getVideoInformation() {
+        $outputString = "<div>Players: " . $this->players[0];
+        for($i=1; $i<count($this->players); $i++) {
+            $outputString = $outputString . ", " . $this->players[$i];
+        }
+        $outputString = $outputString . "</div>";
+
+        return $outputString;
+    }
 }
