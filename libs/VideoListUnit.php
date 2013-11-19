@@ -23,7 +23,7 @@ class VideoListUnit {
         $stmt = $conn->prepare($queryString);
         $stmt->execute($params);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $result = $stmt->fetchAll();
+        $result = $stmt->fetch();
         $this->title = $result["title"];
         $this->url = $result["url"];
         $this->date_added = $result["date_added"];
