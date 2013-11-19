@@ -29,6 +29,7 @@ require_once('libs/VideoListUnit.php');
 $conn = DbUtil::connect();
 $stmt = $conn->prepare("SELECT video_id FROM video ORDER BY date_added DESC");
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
+echo count($stmt->fetchAll());
 $x = 0;
 while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     echo $row["video_id"];
