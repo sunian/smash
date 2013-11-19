@@ -31,6 +31,7 @@ try {
     $stmt = $conn->prepare("SELECT video_id FROM video ORDER BY date_added DESC LIMIT 0, 10");
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    echo "testing";
     echo "<div class='video_list_unit' id='". $this->video_id . "'>
             <table border=\"1\">";
     while($row = $stmt->fetch()) {
