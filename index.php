@@ -26,16 +26,21 @@ require_once('libs/VideoListUnit.php');
 </head>
 <body>
 <?php include('libs/navheader.php');
-$conn = DbUtil::connect();
-$stmt = $conn->prepare("SELECT video_id FROM video ORDER BY date_added DESC");
-$stmt->setFetchMode(PDO::FETCH_ASSOC);
-echo count($stmt->fetchAll());
-$x = 0;
-while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    echo $row["video_id"];
-    $listUnit = new VideoListUnit($row["video_id"]);
-    echo $listUnit->getDisplayString();
-    if(++$x==10) break;
+try {
+    $conn = DbUtil::connect();
+    $stmt = $conn->prepare("SELECT video_id FROM video ORDER BY date_added DESC");
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    echo count($stmt->fetchAll());
+    $x = 0;
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        echo $row["video_id"];
+        $listUnit = new VideoListUnit($row["video_id"]);
+        echo $listUnit->getDisplayString();
+        if(++$x==10) break;
+    }
+}
+catch(PDOException $e) {
+    echo $e->getMessage();
 }
 ?>
 </body>
