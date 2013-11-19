@@ -33,7 +33,7 @@ class VideoListUnit {
         $query = substr($this->url, strpos($this->url, "?"));
         echo $this->url;
         $query = substr($query, strpos($query, "=")+1);
-//        if(strpos($query, "?")>-1) $query = substr($query, 0, strpos($query, "?"));
+        if(strpos($query, "?")>-1) $query = substr($query, 0, strpos($query, "?"));
         return "<div class='video_list_unit' id='". $this->video_id . "'>
             <img src=\"http://img.youtube.com/vi/" . $query . "/1.jpg\"> </div>";
     }
