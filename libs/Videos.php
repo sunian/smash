@@ -30,6 +30,7 @@ class Video extends JSONObject {
             $stmt->closeCursor();
             $sql_string = "INSERT INTO video (title, url, date_added) VALUES (:title, :url, NOW())";
             $stmt = $conn->prepare($sql_string);
+            $params["title"] = $this->title;
             $stmt->execute($params);
             $stmt->closeCursor();
             return false;
