@@ -31,7 +31,7 @@ try {
     $stmt = $conn->prepare("SELECT video_id FROM video ORDER BY date_added DESC LIMIT 0, 10");
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    echo "<table id=\"most_recent_vids\" border=\"1\">";
+    echo "<div></div><table id=\"most_recent_vids\" border=\"1\">";
     while($row = $stmt->fetch()) {
         $listUnit = new VideoListUnit($row["video_id"]);
         echo "<tr>
@@ -39,7 +39,7 @@ try {
                 <td>Players: </td>
               </tr>";
     }
-    echo "</table>";
+    echo "</table></div>";
 }
 catch(PDOException $e) {
     echo $e->getMessage();
