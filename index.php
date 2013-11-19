@@ -30,7 +30,7 @@ $conn = DbUtil::connect();
 $stmt = $conn->prepare("SELECT video_id FROM video ORDER BY date_added DESC");
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
 $x = 0;
-while($row = $stmt->fetch()) {
+while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     echo $row["video_id"];
     $listUnit = new VideoListUnit($row["video_id"]);
     echo $listUnit->getDisplayString();
