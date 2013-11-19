@@ -30,8 +30,9 @@ class VideoListUnit {
     }
 
     public function getDisplayString() {
-        $urlComponents = parse_url($this->url, PHP_URL_PATH);
-        $query = $urlComponents["query"];
-        return "<div id='video_list_unit'> <img src=\"img.youtube.com/vi/" . substr($query, 2) . "/hqdefault.jpg\"> </div>";
+        $query = substr($this->url, strpos($this->url, "?"));
+        $query = substr($query, strpos($query, "=")+1);
+        if(strpos($query, "?")>-1) $query = substr($query, 0, strpos($query, "?"));
+        return "<div id='video_list_unit'> <img src=\"img.youtube.com/vi/" . $query . "/hqdefault.jpg\"> </div>";
     }
 }
