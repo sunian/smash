@@ -30,6 +30,9 @@ if (strlen($json_input) > 0) {
             newTitle.keyup( function () {
                 Helper.displayBtnAdd(newTitle.val().length > 0 && newURL.val().length > 0);
             });
+            newURL.keyup( function () {
+                Helper.displayBtnAdd(newTitle.val().length > 0 && newURL.val().length > 0);
+            });
 
             Helper.setupTables("Videos");
 
