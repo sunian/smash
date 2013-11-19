@@ -28,7 +28,7 @@ if (strlen($json_input) > 0) {
             newTitle = $("#newTitle");
             newURL = $("#newURL");
             newTitle.keyup( function () {
-                Helper.displayBtnAdd(newTitle.val().length > 0);
+                Helper.displayBtnAdd(newTitle.val().length > 0 && newURL.val().length > 0);
             });
 
             Helper.setupTables("Videos");
