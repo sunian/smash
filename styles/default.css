@@ -24,7 +24,7 @@ input, select {
     color: #526FC3;
 }
 
-table {
+table, div.search-box {
     background-color: rgba(54, 64, 134, 0.4);
     text-align: center;
 }
@@ -106,6 +106,13 @@ a.btnPlus:active {
 }
 
 a {
+    color: white;
+}
+
+div.search-box {
+    display: inline-block;
+    float: right;
+    margin-right: 5%;
     color: white;
 }
 

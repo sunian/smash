@@ -38,7 +38,7 @@ class SearchBox
 
     public function render()
     {
-        echo "<div style='display: inline-block;float: right'>", $this->renderFields(),
+        echo "<div class='search-box'>", $this->renderFields(),
         "</div>";
     }
 
