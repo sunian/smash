@@ -29,14 +29,6 @@ class VideoListUnit {
         $this->date_added = $result["date_added"];
     }
 
-    function __construct($video_id, $title, $url, $date_added) {
-//        $conn = DbUtil::connect();
-        $this->video_id = $video_id;
-        $this->url = $url;
-        $this->date_added = $date_added;
-        $this->title = $title;
-    }
-
     public function echoDisplayString() {
         echo "<div id='video_list_unit'> <img src=\"" , $this->url , "/1.jpg\"> </div>";
     }
