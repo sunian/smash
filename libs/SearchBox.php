@@ -8,7 +8,7 @@
 require_once('JSONObject.php');
 require_once('DbUtil.php');
 
-class QueryField
+class QueryField extends JSONObject
 {
     public $id;
     public $placeholder;
@@ -37,6 +37,13 @@ class SearchBox extends JSONObject
     {
         $this->title = $title;
         $this->fields = $fields;
+    }
+
+    public function getFieldType($fieldName) {
+        switch ($fieldName) {
+            case "fields": return "QueryField";
+        }
+        return parent::getFieldType($fieldName);
     }
 
     public function render()

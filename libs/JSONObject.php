@@ -16,7 +16,7 @@ class JSONObject {
         foreach ($data AS $key => $value) {
             if (is_array($value)) {
                 if (sizeof($value) > 0 && is_object($value[0])) {
-                    $refClass = new ReflectionClass($this->getType($key));
+                    $refClass = new ReflectionClass($this->getFieldType($key));
                     foreach ($value AS $i => $val) {
                         $sub = $refClass->newInstance();
                         $sub->set($val);
@@ -24,7 +24,7 @@ class JSONObject {
                     }
                 }
             } else if (is_object($value)) {
-                $refClass = new ReflectionClass($this->getType($key));
+                $refClass = new ReflectionClass($this->getFieldType($key));
                 $sub = $refClass->newInstance();
                 $sub->set($value);
                 $value = $sub;
@@ -33,7 +33,7 @@ class JSONObject {
         }
     }
 
-    public function getType($fieldName) {
+    public function getFieldType($fieldName) {
         return "JSONObject";
     }
 }
