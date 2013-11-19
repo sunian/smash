@@ -20,7 +20,7 @@ class QueryField
 
     public function render()
     {
-        echo "<p>$this->id : $this->placeholder</p>";
+        echo "<input id='$this->id' placeholder='$this->placeholder'/>";
     }
 }
 
