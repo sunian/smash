@@ -5,12 +5,15 @@
  * Date: 10/29/13
  * Time: 12:39 PM
  */
+require_once('JSONObject.php');
 require_once('DbUtil.php');
 
 class QueryField
 {
     public $id;
     public $placeholder;
+    public $type;
+    public $count;//1 or + or *
 
     function __construct($id, $placeholder)
     {
@@ -24,21 +27,21 @@ class QueryField
     }
 }
 
-class SearchBox
+class SearchBox extends JSONObject
 {
-    public $id = null;
+    public $title = null;
     public $fields = null;
     public $renderData; //$printData(rows)
 
-    function __construct($id, $fields)
+    function __construct($title, $fields)
     {
-        $this->id = $id;
+        $this->title = $title;
         $this->fields = $fields;
     }
 
     public function render()
     {
-        echo "<div class='search-box'>", $this->renderFields(),
+        echo "<div class='search-box'>$this->title", $this->renderFields(),
         "</div>";
     }
 

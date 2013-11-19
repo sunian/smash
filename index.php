@@ -31,10 +31,10 @@ try {
     $stmt = $conn->prepare("SELECT video_id FROM video ORDER BY date_added DESC LIMIT 0, 10");
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    echo "<table id=\"most_recent_vids\" border=\"1\">";
+    echo "<table id='most_recent_vids'>";
     while($row = $stmt->fetch()) {
         $listUnit = new VideoListUnit($row["video_id"]);
-        echo "<tr id=\"" , $row["video_id"] , "\">
+        echo "<tr id='" , $row["video_id"] , "'>
                 <td>" , $listUnit->getThumbnail() , "</td>
                 <td>" , $listUnit->getVideoInformation() , "</td>
               </tr>";
