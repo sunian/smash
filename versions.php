@@ -27,7 +27,7 @@ if (strlen($json_input) > 0) {
             newName = $("#newName");
             newDate = $("#newDate");
             newName.keyup(function () {
-                Helper.displayBtnAdd(newName.val().length > 0);
+                Helper.displayBtnAdd(true);
             });
 
             Helper.setupTables("Versions");
@@ -55,8 +55,8 @@ if (strlen($json_input) > 0) {
 include('libs/navheader.php');
 
 $table = new DataTable("Versions", array(
-    new TableColumn("Name", "newName", "input", "New name"),
-    new TableColumn("Release Date", "newDate", "date", "New date")
+    new TableColumn("Name", "newName", "none", ""),
+    new TableColumn("Release Date", "newDate", "none", "")
 ));
 $table->setData("SELECT version_id, release_date,
                 concat(title, coalesce(concat(' ', version_number),'')) AS name
