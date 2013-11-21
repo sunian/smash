@@ -26,9 +26,9 @@ if (strlen($json_input) > 0) {
         $(function () {
             newName = $("#newName");
             newDate = $("#newDate");
-            Helper.displayBtnAdd(true);
 
             Helper.setupTables("Versions");
+            Helper.displayBtnAdd(true);
 
             newName.focus();
         });
