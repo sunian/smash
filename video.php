@@ -60,12 +60,9 @@ catch(PDOException $e) {
 
 ?>
 
-
-<embed
-    width="420" height="345"
-    src="http://www.youtube.com/watch?v=aEd5doQuG9c"
-    type="application/x-shockwave-flash">
-</embed>
+<iframe width="420" height="345"
+        src="http://www.youtube.com/watch?v=aEd5doQuG9c">
+</iframe>
 
 </body>
 </html>
