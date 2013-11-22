@@ -36,7 +36,7 @@ require_once('libs/Videos.php');
 <body>
 
 <embed
-    width="420" height="345"
+    width="420" height="340"
     src="http://www.youtube.com/watch?v=aEd5doQuG9c"
     type="application/x-shockwave-flash">
 </embed>
