@@ -37,27 +37,6 @@ require_once('libs/Videos.php');
 
 <?php include('libs/navheader.php');
 
-try {
-    $conn = DbUtil::connect();
-    $stmt = $conn->prepare("SELECT url FROM video");
-    $stmt->execute();
-    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-//    echo "<div class='body'>";
-//    echo "<table id='most_recent_vids'>";
-//    while($row = $stmt->fetch()) {
-//        $listUnit = new VideoListUnit($row["video_id"]);
-//        echo "<tr id='" , $row["video_id"] , "'>
-//                <td>" , $listUnit->getThumbnail() , "</td>
-//                <td>" , $listUnit->getVideoInformation() , "</td>
-//              </tr>";
-//    }
-//    echo "</table>";
-//    echo "</div>";
-}
-catch(PDOException $e) {
-    echo $e->getMessage();
-}
-
 ?>
 
 <iframe width="420" height="340"
