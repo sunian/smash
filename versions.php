@@ -34,7 +34,7 @@ if (strlen($json_input) > 0) {
         });
 
         function createVersions() {
-            document.location.href = "versions.php?t=newVersion";
+            document.location.href = "version.php?t=newVersion";
 //            var newObj = {};
 //            newObj.name = newName.val();
 //            newObj.release_date = newDate.val();
@@ -64,7 +64,7 @@ $table->setData("SELECT version_id, release_date,
 $table->renderData = function ($row) {
     $leDate = $row["release_date"];
     echo "<tr>";
-    echo "<td><a href='versions.php?t=", $row["version_id"], "'>", $row["name"], "</a></td>";
+    echo "<td><a href='version.php?t=", $row["version_id"], "'>", $row["name"], "</a></td>";
     echo "<td raw='$leDate'>", DataTable::prettyDate($leDate), "</td>";
     echo "</tr>";
 };
