@@ -34,6 +34,13 @@ require_once('libs/Videos.php');
     </script>
 </head>
 <body>
+
+<embed
+    width="420" height="345"
+    src="http://www.youtube.com/watch?v=aEd5doQuG9c"
+    type="application/x-shockwave-flash">
+</embed>
+
 <?php include('libs/navheader.php');
 
 try {
