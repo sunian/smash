@@ -25,9 +25,7 @@ require_once('libs/Videos.php');
         header("Location: http://plato.cs.virginia.edu/~jcs5sb/smash/videos.php");
         exit;
     }
-    else {
-        echo "<div id=\"div_urlParam\" style=\"display: none;>" , $urlParams["t"] , "</div>";
-    }
+
     ?>
     <script type="text/javascript">
 
