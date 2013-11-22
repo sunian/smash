@@ -10,7 +10,6 @@ require_once('browser.php');
 
 class JSONObject {
     public function __construct($json = false) {
-        echo "jsonData=", $json;
         if ($json) $this->set(json_decode($json, true));
     }
 
