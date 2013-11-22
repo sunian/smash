@@ -21,9 +21,12 @@ require_once('libs/Videos.php');
 <head>
     <title>Video</title>
     <?php include('libs/headers.php');
-    if($urlParams["t"]<0) {
+    if(!$urlParams["t"]) {
         header("Location: http://plato.cs.virginia.edu/~jcs5sb/smash/videos.php");
         exit;
+    }
+    else {
+        echo "<div id=\"div_urlParam\" style=\"display: none;\">" , $urlParams["t"] , "</div>";
     }
     ?>
     <script type="text/javascript">
@@ -33,6 +36,26 @@ require_once('libs/Videos.php');
 <body>
 <?php include('libs/navheader.php');
 
+try {
+    $conn = DbUtil::connect();
+    $stmt = $conn->prepare("SELECT url FROM video");
+    $stmt->execute();
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+//    echo "<div class='body'>";
+//    echo "<table id='most_recent_vids'>";
+//    while($row = $stmt->fetch()) {
+//        $listUnit = new VideoListUnit($row["video_id"]);
+//        echo "<tr id='" , $row["video_id"] , "'>
+//                <td>" , $listUnit->getThumbnail() , "</td>
+//                <td>" , $listUnit->getVideoInformation() , "</td>
+//              </tr>";
+//    }
+//    echo "</table>";
+//    echo "</div>";
+}
+catch(PDOException $e) {
+    echo $e->getMessage();
+}
 
 ?>
 </body>
