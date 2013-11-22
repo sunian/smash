@@ -32,13 +32,11 @@ class SearchBox extends JSONObject
     public $title = null;
     public $fields = null;
     public $renderData; //$printData(rows)
-    public $test;
 
-    public static function construct($title, $fields) {
+    public static function nu($title, $fields) {
         $instance = new self();
         $instance->title = $title;
         $instance->fields = $fields;
-        $instance->test = $fields[0];
         return $instance;
     }
 
@@ -46,7 +44,6 @@ class SearchBox extends JSONObject
         echo "fieldName=", $fieldName;
         switch ($fieldName) {
             case "fields": return "QueryField[]";
-            case "test": return "QueryField";
         }
         return parent::getFieldType($fieldName);
     }
