@@ -27,7 +27,7 @@ require_once('libs/Character.php');
 include('libs/navheader.php');
 
 if(strcmp($urlParams["t"], "newVersion")==0) {
-    echo "wat";
+//    echo "wat";
 }
 else {
     $version = new Version();
