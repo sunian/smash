@@ -69,11 +69,11 @@ class Version extends JSONObject{
                 "falling_speed_rank AS falling_speed, air_speed_rank AS air_speed, nickname AS nick FROM character_identity NATURAL" .
                 " JOIN character NATURAL JOIN universe NATURAL JOIN version WHERE version_id = :version_id";
             $stmt = $conn->prepare($sqlString);
+            echo "hello James";
             $stmt->execute($params);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $characters = $stmt->fetchAll();
             $this->characters = JSONList::nu("Character", $characters);
-            echo "hello James";
             print_r($this->characters);
 //            $character_count = 0;
 //            foreach($characters as $row) {
