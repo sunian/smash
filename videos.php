@@ -67,7 +67,7 @@ FROM video
 ORDER BY date_added DESC", null);
 $table->renderData = function ($row) {
     echo "<tr>";
-    echo "<td><a href='video.php?t=", $row["video_id"], "'>", $row["title"], "</a></td>";
+    echo "<td><a href='videos.php?t=", $row["video_id"], "'>", $row["title"], "</a></td>";
     echo "<td> <a href=\"", $row["url"], "\">", $row["url"], "</a> </td>";
     echo "<td>", $row["date_added"], "</td>";
     echo "</tr>";
