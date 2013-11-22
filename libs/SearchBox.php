@@ -50,15 +50,8 @@ class SearchBox extends JSONObject
 
     public function render()
     {
-        echo "<div class='search-box'>$this->title", $this->renderFields(),
+        echo "<div class='search-box'>", json_encode($this),
         "</div>";
-    }
-
-    private function renderFields() {
-        foreach ($this->fields as $field) {
-            $field->render();
-        }
-
     }
 
 }
