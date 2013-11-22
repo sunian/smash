@@ -16,7 +16,7 @@ require_once('libs/browser.php');
         exit;
     }
     else {
-        echo "<div id=\"div_urlParam\" style=\"display: none;>" , $urlParams["t"] , "</div>";
+        echo "<div id=\"div_urlParam\" style=\"display: none;\">" , $urlParams["t"] , "</div>";
     }
     ?>
 </head>
