@@ -60,10 +60,11 @@ class Version extends JSONObject{
             $this->release_date = $row["release_date"];
             $this->version_number = $row["version_number"];
 
-//            $stmt = $conn->prepare("SELECT name FROM pretty_version WHERE version_id = :version_id");
-//            $stmt->execute($params);
-//            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-//            $this->pretty_name = $stmt->fetch()["name"];
+            $stmt = $conn->prepare("SELECT name FROM pretty_version WHERE version_id = :version_id");
+            $stmt->execute($params);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $row = $stmt->fetch();
+            $this->pretty_name = $row["name"];
 
 //            $sqlString = "SELECT character_id AS id, character.name AS name, universe.name AS universe, weight, height" .
 //                "falling_speed_rank AS falling_speed, air_speed_rank AS air_speed, nickname AS nick FROM character_identity NATURAL" .
