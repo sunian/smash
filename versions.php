@@ -57,10 +57,7 @@ $table = new DataTable("Versions", array(
     new TableColumn("Name", "newName", "none", ""),
     new TableColumn("Release Date", "newDate", "none", "")
 ));
-$table->setData("SELECT version_id, release_date,
-                concat(title, coalesce(concat(' ', version_number),'')) AS name
-                FROM version
-                ORDER BY name", null);
+$table->setData("SELECT * FROM pretty_version ORDER BY name", null);
 $table->renderData = function ($row) {
     $leDate = $row["release_date"];
     echo "<tr>";
