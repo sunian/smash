@@ -38,7 +38,7 @@ try {
     while($row = $stmt->fetch()) {
         $listUnit = new VideoListUnit($row["video_id"]);
         echo "<tr id='" , $row["video_id"] , "'>
-                <td>" , $listUnit->getThumbnail() , "</td>
+                <td><a href='video.php?t=", $row["video_id"], "'>", $listUnit->getThumbnail() , "</a></td>
                 <td>" , $listUnit->getVideoInformation() , "</td>
               </tr>";
     }
