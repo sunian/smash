@@ -21,10 +21,6 @@ require_once('libs/Videos.php');
 <head>
     <title>Video</title>
     <?php include('libs/headers.php');
-    if(strlen($urlParams["t"]) <= 0) {
-        header("Location: http://plato.cs.virginia.edu/~jcs5sb/smash/videos.php");
-        exit;
-    }
 
     ?>
     <script type="text/javascript">
