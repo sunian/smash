@@ -9,18 +9,26 @@
 require_once('libs/browser.php');
 require_once('libs/DbUtil.php');
 require_once('libs/Videos.php');
-if (strlen($json_input) > 0) {
+//if (strlen($json_input) > 0) {
    // $video = new Video($json_input);
    // $error = $video->createIdentity();
    // if ($error) echo $error;
    // exit();
-}
+//}
 ?>
 
 <html>
 <head>
     <title>Video</title>
-    <?php include('libs/headers.php'); ?>
+    <?php include('libs/headers.php');
+    if(strlen($urlParams["t"]) <= 0) {
+        header("Location: http://plato.cs.virginia.edu/~jcs5sb/smash/videos.php");
+        exit;
+    }
+    else {
+        echo "<div id=\"div_urlParam\" style=\"display: none;>" , $urlParams["t"] , "</div>";
+    }
+    ?>
     <script type="text/javascript">
 
     </script>
