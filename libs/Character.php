@@ -17,6 +17,7 @@ class Character extends JSONObject
     public $universe = null;
     public $version = null;
     public $weight = null;
+    public $height = null;
     public $falling_speed = null;
     public $air_speed = null;
 

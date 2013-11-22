@@ -15,13 +15,22 @@ require_once('libs/browser.php');
         header("Location: http://plato.cs.virginia.edu/~jcs5sb/smash/versions.php");
         exit;
     }
-    else {
-        echo "<div id=\"div_urlParam\" style=\"display: none;\">" , $urlParams["t"] , "</div>";
-    }
+//    else {
+//        echo "<div id=\"div_urlParam\" style=\"display: none;\">" , $urlParams["t"] , "</div>";
+//    }
     ?>
 </head>
 <body>
-<?php include('libs/navheader.php');?>
+<?php
+include('libs/navheader.php');
+
+if(strcmp($urlParams["t"], "newVersion")==0) {
+
+}
+else {
+
+}
+?>
 </body>
 </html>
 
