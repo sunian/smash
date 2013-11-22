@@ -14,7 +14,12 @@ class JSONObject {
 
     public function set($data) {
         foreach ($data AS $key => $value) {
-            if (is_array($value)) {
+            if (is_object($value)) {
+                $refClass = new ReflectionClass($this->getFieldType($key));
+                $sub = $refClass->newInstance();
+                $sub->set($value);
+                $value = $sub;
+            } else if (is_array($value)) {
                 if (sizeof($value) > 0 && is_object($value[0])) {
                     $refClass = new ReflectionClass($this->getFieldType($key));
                     foreach ($value AS $i => $val) {
@@ -23,11 +28,6 @@ class JSONObject {
                         $value[$i] = $sub;
                     }
                 }
-            } else if (is_object($value)) {
-                $refClass = new ReflectionClass($this->getFieldType($key));
-                $sub = $refClass->newInstance();
-                $sub->set($value);
-                $value = $sub;
             }
             $this->{$key} = $value;
         }
