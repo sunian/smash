@@ -23,7 +23,7 @@ class QueryField extends JSONObject
 
     public function render()
     {
-        echo "<input id='$this->id' placeholder='$this->placeholder'/>";
+        echo "<br><input id='$this->id' placeholder='$this->placeholder'/>";
     }
 }
 

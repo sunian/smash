@@ -74,7 +74,7 @@ $table->renderData = function ($row) {
 };
 $table->render();
 
-$searchbox = SearchBox::nu("filter", array(
+$searchbox = SearchBox::nu("Filter Videos", array(
     new QueryField("title", "Title"))
 );
 $searchbox->render();
