@@ -1,12 +1,13 @@
 <?php
 /**
  * Created by JetBrains PhpStorm.
- * User: Sun
+ * User: Student
  * Date: 10/18/13
  * Time: 2:53 AM
  * To change this template use File | Settings | File Templates.
  */
 require_once('libs/browser.php');
+require_once('libs/DbUtil.php');
 require_once('libs/Videos.php');
 if (strlen($json_input) > 0) {
    // $video = new Video($json_input);
@@ -26,6 +27,7 @@ if (strlen($json_input) > 0) {
 </head>
 <body>
 <?php include('libs/navheader.php');
+
 
 ?>
 </body>
