@@ -33,10 +33,11 @@ class SearchBox extends JSONObject
     public $fields = null;
     public $renderData; //$printData(rows)
 
-    function __construct($title, $fields)
-    {
-        $this->title = $title;
-        $this->fields = $fields;
+    public static function construct($title, $fields) {
+        $instance = new self();
+        $instance->title = $title;
+        $instance->fields = $fields;
+        return $instance;
     }
 
     public function getFieldType($fieldName) {
