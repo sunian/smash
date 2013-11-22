@@ -65,10 +65,11 @@ class Version extends JSONObject{
             $row = $stmt->fetch();
             $this->pretty_name = $row["name"];
 
-            $sqlString = "SELECT character_id AS id, character.name AS name, universe.name AS universe, weight, height," .
-                "falling_speed_rank AS falling_speed, air_speed_rank AS air_speed, nickname AS nick, :version_name AS version
-                FROM character_identity NATURAL" .
-                " JOIN character NATURAL JOIN universe NATURAL JOIN version WHERE version_id = :version_id";
+            $sqlString = "SELECT c.character_id AS id, i.name AS name, u.name AS universe, c.weight, c.height,
+                c.falling_speed_rank AS falling_speed, c.air_speed_rank AS air_speed, i.nickname AS nick, :version_name AS version
+                FROM character_identity as i INNER JOIN `character` as c on i.identity_id = c.identity_id
+                INNER JOIN universe as u on i.universe_id = u.universe_id INNER JOIN version as v on v.version_id = c.version_id
+                WHERE v.version_id = :version_id";
             $stmt = $conn->prepare($sqlString);
             $params["version_name"] = $this->pretty_name;
             $stmt->execute($params);
