@@ -78,6 +78,7 @@ $searchbox = SearchBox::nu("Filter Videos", array(
     new QueryField("title", "Title"))
 );
 $searchbox->render();
+
 ?>
 </body>
 </html>
