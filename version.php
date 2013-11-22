@@ -11,7 +11,6 @@ require_once('libs/browser.php');
 <head>
     <?php
     include('libs/headers.php');
-    $urlParams = $_CLEAN('GET');
     if(strlen($urlParams["t"])) {
         header("Location: http://plato.cs.virginia.edu/~jcs5sb/smash/versions.php");
         exit;

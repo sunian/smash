@@ -23,4 +23,4 @@ function clean($elem)
     return $elem;
 }
 
-$_CLEAN['GET'] = clean($_GET);
+$urlParams = clean($_GET);
