@@ -17,6 +17,7 @@ class JSONObject {
         foreach ($data AS $key => $value) {
             if (is_object($value)) {
                 $refClass = new ReflectionClass($this->getFieldType($key));
+                echo "refClass=", $refClass, "  ";
                 $sub = $refClass->newInstance();
                 $sub->set($value);
                 $value = $sub;
