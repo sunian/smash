@@ -66,4 +66,11 @@ class Video extends JSONObject {
             return $e->getMessage();
         }
     }
+
+    public function getIDFromURL() {
+        $query = substr($this->url, strpos($this->url, "?"));
+        $query = substr($query, strpos($query, "v=")+2);
+        if(strpos($query, "&")>-1) $query = substr($query, 0, strpos($query, "&"));
+        return $query;
+    }
 }
