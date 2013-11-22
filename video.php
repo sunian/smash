@@ -21,9 +21,12 @@ require_once('libs/Videos.php');
 <head>
     <title>Video</title>
     <?php include('libs/headers.php');
-    if($urlParams["t"]<0) {
+    if(!$urlParams["t"]) {
         header("Location: http://plato.cs.virginia.edu/~jcs5sb/smash/videos.php");
         exit;
+    }
+    else {
+        echo "<div id=\"div_urlParam\" style=\"display: none;\">" , $urlParams["t"] , "</div>";
     }
     ?>
     <script type="text/javascript">
