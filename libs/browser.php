@@ -13,3 +13,14 @@ if (stripos($_SERVER['HTTP_USER_AGENT'], "MSIE", 0) === false) {
 } else {
     header("Location: ie.php");
 }
+function clean($elem)
+{
+    if(!is_array($elem))
+        $elem = htmlentities($elem,ENT_QUOTES,"UTF-8");
+    else
+        foreach ($elem as $key => $value)
+            $elem[$key] = $this->clean($value);
+    return $elem;
+}
+
+$_CLEAN['GET'] = clean($_GET);

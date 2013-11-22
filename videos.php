@@ -78,7 +78,7 @@ $searchbox = new SearchBox("filter", array(
     new QueryField("title", "Title"))
 );
 $searchbox->render();
-echo json_encode($searchbox);
+echo print_r(new SearchBox(json_encode($searchbox)));
 ?>
 </body>
 </html>
