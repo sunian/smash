@@ -74,7 +74,7 @@ $table->renderData = function ($row) {
 };
 $table->render();
 
-$searchbox = new SearchBox("filter", array(
+$searchbox = SearchBox::construct("filter", array(
     new QueryField("title", "Title"))
 );
 $searchbox->render();
