@@ -24,7 +24,7 @@ class JSONObject {
                 $sub->set($value);
                 $value = $sub;
             } else if (is_array($value)) {
-                if (sizeof($value) > 0 && is_object($value[0])) {
+                if (sizeof($value) > 0 && is_array($value[0])) {
                     $refClass = new ReflectionClass($this->getFieldType($key));
                     foreach ($value AS $i => $val) {
                         $sub = $refClass->newInstance();

@@ -19,7 +19,7 @@ function clean($elem)
         $elem = htmlentities($elem,ENT_QUOTES,"UTF-8");
     else
         foreach ($elem as $key => $value)
-            $elem[$key] = $this->clean($value);
+            $elem[$key] = clean($value);
     return $elem;
 }
 
