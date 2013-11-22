@@ -6,10 +6,10 @@
  * Time: 3:15 PM
  */
 require_once('libs/browser.php');
-require_once('libs/DataTable.php');
 ?>
 <html>
 <head>
+    <h1>Test</h1>
     <?php
     include('libs/headers.php');
     $urlParams = $_CLEAN('GET');
