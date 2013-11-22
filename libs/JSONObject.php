@@ -15,23 +15,23 @@ class JSONObject {
 
     public function set($data) {
         foreach ($data AS $key => $value) {
-            echo $key, "= ";
-            print_r($value);
-            echo is_object($value), " ", is_array($value), "\n";
-            if (is_object($value)) {
-                $refClass = new ReflectionClass($this->getFieldType($key));
-                $sub = $refClass->newInstance();
-                $sub->set($value);
-                $value = $sub;
-            } else if (is_array($value)) {
-                if (sizeof($value) > 0 && is_array($value[0])) {
-                    $refClass = new ReflectionClass($this->getFieldType($key));
-                    foreach ($value AS $i => $val) {
-                        $sub = $refClass->newInstance();
-                        $sub->set($val);
-                        $value[$i] = $sub;
+            if (is_array($value)) {
+                $fieldType = $this->getFieldType($key);
+                $refClass = new ReflectionClass(str_replace("[]","", $fieldType));
+                if (endsWith($fieldType, "[]")){
+                    if (sizeof($value) > 0 && is_array($value[0])) {
+                        foreach ($value AS $i => $val) {
+                            $sub = $refClass->newInstance();
+                            $sub->set($val);
+                            $value[$i] = $sub;
+                        }
                     }
+                } else {
+                    $sub = $refClass->newInstance();
+                    $sub->set($value);
+                    $value = $sub;
                 }
+
             }
             $this->{$key} = $value;
         }
