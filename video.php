@@ -61,7 +61,7 @@ catch(PDOException $e) {
 ?>
 
 <iframe width="420" height="345"
-        src="http://www.youtube.com/watch?v=aEd5doQuG9c">
+        src="http://www.youtube.com/embed/aEd5doQuG9c?enablejsapi=1&playsinline=1&autoplay=1">
 </iframe>
 
 </body>
