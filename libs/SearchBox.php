@@ -41,7 +41,6 @@ class SearchBox extends JSONObject
     }
 
     public function getFieldType($fieldName) {
-        echo "fieldName=", $fieldName;
         switch ($fieldName) {
             case "fields": return "QueryField[]";
         }
