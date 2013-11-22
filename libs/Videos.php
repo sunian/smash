@@ -13,6 +13,7 @@ class Video extends JSONObject {
     public $id = null;
     public $title = null;
     public $url = null;
+    public $players = null;
 
     public function createIdentity()
     {
@@ -73,4 +74,23 @@ class Video extends JSONObject {
         if(strpos($query, "&")>-1) $query = substr($query, 0, strpos($query, "&"));
         return $query;
     }
+
+//    public function getPlayers() {
+//        try {
+//            $conn = DbUtil::connect();
+//            $sql_string = "SELECT tag FROM video NATURAL JOIN video_player NATURAL JOIN player WHERE video_id = :video_id";
+//            $stmt = $conn->prepare($sql_string);
+//            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+//            $players = $stmt->fetchAll();
+//            $counter = 0;
+//            while($row = $stmt->fetch()) {
+//                $this->players[$counter++] = $row["tag"];
+//            }
+//
+//            return $players;
+//        }
+//        catch(PDOException $e) {
+//            return $e->getMessage();
+//        }
+//    }
 }

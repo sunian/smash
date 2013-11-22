@@ -47,8 +47,7 @@ require_once('libs/Videos.php');
 <div class='body'>
 <iframe width="420" height="345"
         src="http://www.youtube.com/embed/aEd5doQuG9c?enablejsapi=1&playsinline=1&autoplay=1"
-        marginheight="60"
-        frameborder="0"
+        seamless
         >
 </iframe>
 </div>
