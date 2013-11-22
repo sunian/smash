@@ -9,11 +9,11 @@
 
 class JSONObject {
     public function __construct($json = false) {
+        echo "jsonData=", $json;
         if ($json) $this->set(json_decode($json, true));
     }
 
     public function set($data) {
-        echo "data=", $data;
         foreach ($data AS $key => $value) {
             if (is_object($value)) {
                 $refClass = new ReflectionClass($this->getFieldType($key));
