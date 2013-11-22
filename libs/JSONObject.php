@@ -6,6 +6,7 @@
  * Time: 4:23 PM
  * To change this template use File | Settings | File Templates.
  */
+require_once('browser.php');
 
 class JSONObject {
     public function __construct($json = false) {

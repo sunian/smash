@@ -74,11 +74,10 @@ $table->renderData = function ($row) {
 };
 $table->render();
 
-$searchbox = SearchBox::construct("filter", array(
+$searchbox = SearchBox::nu("filter", array(
     new QueryField("title", "Title"))
 );
 $searchbox->render();
-echo print_r(new SearchBox(json_encode($searchbox)));
 ?>
 </body>
 </html>
