@@ -11,6 +11,7 @@ require_once('libs/DataTable.php');
 <html>
 <head>
     <?php
+    include('libs/headers.php');
     $urlParams = $_CLEAN('GET');
     if(strlen($urlParams["t"])<1) {
         header("Location: http://plato.cs.virginia.edu/~jcs5sb/smash/versions.php");
