@@ -9,11 +9,10 @@ require_once('libs/browser.php');
 ?>
 <html>
 <head>
-    <h1>Test</h1>
     <?php
     include('libs/headers.php');
     $urlParams = $_CLEAN('GET');
-    if(strlen($urlParams["t"])<1) {
+    if(strlen($urlParams["t"])) {
         header("Location: http://plato.cs.virginia.edu/~jcs5sb/smash/versions.php");
         exit;
     }
