@@ -21,9 +21,12 @@ require_once('libs/Videos.php');
 <head>
     <title>Video</title>
     <?php include('libs/headers.php');
-    if($urlParams["t"]<0) {
+    if(!$urlParams["t"]) {
         header("Location: http://plato.cs.virginia.edu/~jcs5sb/smash/videos.php");
         exit;
+    }
+    else {
+        echo "<div id=\"div_urlParam\" style=\"display: none;\">" , $urlParams["t"] , "</div>";
     }
     ?>
     <script type="text/javascript">
@@ -31,9 +34,14 @@ require_once('libs/Videos.php');
     </script>
 </head>
 <body>
+
 <?php include('libs/navheader.php');
 
-
 ?>
+
+<iframe width="420" height="340"
+        src="http://www.youtube.com/embed/aEd5doQuG9c?enablejsapi=1&playsinline=1&autoplay=1">
+</iframe>
+
 </body>
 </html>

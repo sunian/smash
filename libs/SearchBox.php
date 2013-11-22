@@ -23,7 +23,7 @@ class QueryField extends JSONObject
 
     public function render()
     {
-        echo "<input id='$this->id' placeholder='$this->placeholder'/>";
+        echo "<br><input id='$this->id' placeholder='$this->placeholder'/>";
     }
 }
 
@@ -33,7 +33,7 @@ class SearchBox extends JSONObject
     public $fields = null;
     public $renderData; //$printData(rows)
 
-    public static function construct($title, $fields) {
+    public static function nu($title, $fields) {
         $instance = new self();
         $instance->title = $title;
         $instance->fields = $fields;
@@ -43,22 +43,20 @@ class SearchBox extends JSONObject
     public function getFieldType($fieldName) {
         echo "fieldName=", $fieldName;
         switch ($fieldName) {
-            case "fields": return "QueryField";
+            case "fields": return "QueryField[]";
         }
         return parent::getFieldType($fieldName);
     }
 
     public function render()
     {
-        echo "<div class='search-box'>$this->title", $this->renderFields(),
+        echo "<div class='search-box'>", json_encode($this),
         "</div>";
     }
 
-    private function renderFields() {
-        foreach ($this->fields as $field) {
-            $field->render();
-        }
-
-    }
-
 }
+
+?>
+<script type="text/javascript">
+    var hello;
+</script>

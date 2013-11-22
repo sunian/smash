@@ -112,7 +112,7 @@ a {
 div.search-box {
     display: inline-block;
     float: right;
-    margin-right: 1%;
+    margin: 8px;
     padding: 1%;
     color: white;
 }
