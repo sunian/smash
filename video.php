@@ -35,12 +35,6 @@ require_once('libs/Videos.php');
 </head>
 <body>
 
-<embed
-    width="420" height="340"
-    src="http://www.youtube.com/watch?v=aEd5doQuG9c"
-    type="application/x-shockwave-flash">
-</embed>
-
 <?php include('libs/navheader.php');
 
 try {
@@ -65,5 +59,13 @@ catch(PDOException $e) {
 }
 
 ?>
+
+
+<embed
+    width="420" height="345"
+    src="http://www.youtube.com/watch?v=aEd5doQuG9c"
+    type="application/x-shockwave-flash">
+</embed>
+
 </body>
 </html>
