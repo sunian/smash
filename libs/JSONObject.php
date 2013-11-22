@@ -13,6 +13,7 @@ class JSONObject {
     }
 
     public function set($data) {
+        echo "data=", $data;
         foreach ($data AS $key => $value) {
             if (is_object($value)) {
                 $refClass = new ReflectionClass($this->getFieldType($key));
