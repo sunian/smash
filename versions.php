@@ -34,16 +34,17 @@ if (strlen($json_input) > 0) {
         });
 
         function createVersions() {
-            var newObj = {};
-            newObj.name = newName.val();
-            newObj.release_date = newDate.val();
-            if (newObj.name.length == 0) {
-                alert("Please enter a name to create a new version of Smash.");
-                newName.focus();
-                return;
-            }
-//            console.log(JSON.stringify(newChar));
-            Helper.uploadObj(newObj);
+            document.location.href = "versions.php?t=newVersion";
+//            var newObj = {};
+//            newObj.name = newName.val();
+//            newObj.release_date = newDate.val();
+//            if (newObj.name.length == 0) {
+//                alert("Please enter a name to create a new version of Smash.");
+//                newName.focus();
+//                return;
+//            }
+////            console.log(JSON.stringify(newChar));
+//            Helper.uploadObj(newObj);
         }
     </script>
 </head>
