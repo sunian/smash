@@ -9,12 +9,19 @@
 
 class JSONObject {
     public function __construct($json = false) {
+        echo "jsonData=", $json;
         if ($json) $this->set(json_decode($json, true));
     }
 
     public function set($data) {
         foreach ($data AS $key => $value) {
-            if (is_array($value)) {
+            if (is_object($value)) {
+                $refClass = new ReflectionClass($this->getFieldType($key));
+                echo "refClass=", $refClass, "  ";
+                $sub = $refClass->newInstance();
+                $sub->set($value);
+                $value = $sub;
+            } else if (is_array($value)) {
                 if (sizeof($value) > 0 && is_object($value[0])) {
                     $refClass = new ReflectionClass($this->getFieldType($key));
                     foreach ($value AS $i => $val) {
@@ -23,11 +30,6 @@ class JSONObject {
                         $value[$i] = $sub;
                     }
                 }
-            } else if (is_object($value)) {
-                $refClass = new ReflectionClass($this->getFieldType($key));
-                $sub = $refClass->newInstance();
-                $sub->set($value);
-                $value = $sub;
             }
             $this->{$key} = $value;
         }
