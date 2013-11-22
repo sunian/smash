@@ -65,11 +65,12 @@ class Version extends JSONObject{
             $row = $stmt->fetch();
             $this->pretty_name = $row["name"];
 
-            $sqlString = "SELECT character_id AS id, character.name AS name, universe.name AS universe, weight, height" .
-                "falling_speed_rank AS falling_speed, air_speed_rank AS air_speed, nickname AS nick FROM character_identity NATURAL" .
+            $sqlString = "SELECT character_id AS id, character.name AS name, universe.name AS universe, weight, height," .
+                "falling_speed_rank AS falling_speed, air_speed_rank AS air_speed, nickname AS nick, :version_name AS version
+                FROM character_identity NATURAL" .
                 " JOIN character NATURAL JOIN universe NATURAL JOIN version WHERE version_id = :version_id";
             $stmt = $conn->prepare($sqlString);
-            echo "hello James";
+            $params["version_name"] = $this->pretty_name;
             $stmt->execute($params);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $characters = $stmt->fetchAll();
