@@ -43,9 +43,9 @@ require_once('libs/Videos.php');
     $urlID = $vid->getIDFromURL();
     $players = $vid->players;
     for($i=1; $i<count($vid->players); $i++) {
-    $outputString = $outputString . ", " . $vid->players[$i]->tag;
+    $output = $output . ", " . $vid->players[$i]->tag;
     }
-    echo $outputString;
+    echo $output;
     $characters = $vid->characters;
     $techniques = $vid->techniques;
     echo "<h1>", $vid->title , "</h1>";
