@@ -9,6 +9,12 @@ require_once('libs/browser.php');
 require_once('libs/Version.php');
 require_once('libs/Character.php');
 require_once('libs/DataTable.php');
+if (strlen($json_input) > 0) {
+    $character = new Character($json_input);
+    $error = $character->createCharacter();
+    if ($error) echo $error;
+    exit();
+}
 ?>
 <html>
 <head>
@@ -26,6 +32,8 @@ require_once('libs/DataTable.php');
         var newFallRank;
         var newAirRank;
 
+        var selectCharacter;
+
         $(function () {
             newName = $("#newName");
             newWeight = $("#newWeight");
@@ -42,7 +50,7 @@ require_once('libs/DataTable.php');
             newName[0].appendChild(selectCharacter);
 
             newName.keyup( function () {
-                Helper.displayBtnAdd(newName.val().length > 0 && newWeight.val().length > 0);
+                Helper.displayBtnAdd(true);
             });
 
             Helper.setupTables("Characters");
@@ -52,7 +60,12 @@ require_once('libs/DataTable.php');
 
         function createCharacters() {
             var newObj = {};
-            newObj.name = newName.val();
+            newObj.identity_id = $(selectCharacter).val();
+            newObj.weight = newWeight.val();
+            newObj.height = newHeight.val();
+            newObj.falling_speed_rank = newFallRank.val();
+            newObj.air_speed_rank = newAirRank.val();
+            newObj.version_id = $("#video_id_div").text();
 
             Helper.uploadObj(newObj);
         }
@@ -70,7 +83,6 @@ else {
     $version->populateFieldsFromID();
     echo "<h1>" , $version->pretty_name , "</h1>";
 
-    echo "<div class = \"body\">";
     $table = new DataTable("Characters", array(
         new TableColumn("Name", "newName", "select", "New Name"),
         new TableColumn("Weight", "newWeight", "input", "New Weight"),
@@ -91,9 +103,9 @@ else {
         echo "</tr>";
     };
     $table->render();
-    echo "</div>";
 
     include('libs/characters.php');
+    echo "<div id=\"video_id_div\" style=\"display: none;\">" . $version->version_id . "</div>";
 }
 ?>
 </body>
