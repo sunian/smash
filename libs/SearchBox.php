@@ -57,5 +57,7 @@ class SearchBox extends JSONObject
 
 ?>
 <script type="text/javascript">
-    var hello = $("body");
+    function setupSearchBox(){
+        console.log($("body"));
+    }
 </script>
