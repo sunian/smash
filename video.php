@@ -37,6 +37,7 @@ require_once('libs/Videos.php');
 
 <?php include('libs/navheader.php');
 
+    $vid = new Video();
     $urlID = $vid->getIDFromURL();
 
     if(strcmp($urlParams["t"], "0")==0) {
@@ -44,10 +45,9 @@ require_once('libs/Videos.php');
     }
 
     else {
-    $vid = new Video();
-    $vid->set(array("video_id"=>$urlParams["t"]));
-    echo $vid->populateFieldsFromID();
-    echo "<h1>", $vid->title , "</h1>";
+        $vid->set(array("video_id"=>$urlParams["t"]));
+        echo $vid->populateFieldsFromID();
+        echo "<h1>", $vid->title , "</h1>";
     }
 
 ?>
