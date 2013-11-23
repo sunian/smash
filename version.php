@@ -32,7 +32,7 @@ if(strcmp($urlParams["t"], "newVersion")==0) {
 else {
     $version = new Version();
     $version->set(array("version_id"=>$urlParams["t"]));
-    echo $version->populateFieldsFromID();
+    $version->populateFieldsFromID();
     echo "<h1>" , $version->pretty_name , "</h1>";
 }
 ?>

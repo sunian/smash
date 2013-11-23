@@ -7,7 +7,6 @@
  * To change this template use File | Settings | File Templates.
  */
 require_once('browser.php');
-require_once('JSONList.php');
 
 class JSONObject {
     public function __construct($json = false) {
