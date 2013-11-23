@@ -45,16 +45,23 @@ function QueryField(myParent, obj) {
     };
 
     this.renderNew = function () {
-        switch (this.type) {
-            case "input":
-                this.mySearchBox.parent.append(document.createElement('br'));
-                var newInput = $(document.createElement('input'));
-                newInput.attr("id", this.id);
-                newInput.attr("placeholder", this.placeholder);
-                this.mySearchBox.parent.append(newInput);
-                break;
-            case "select":
-                break;
+        var types = this.type.split(" ");
+        this.mySearchBox.parent.append(document.createElement('br'));
+        for (var i in types) {
+            var typeData = types[i].split(":");
+            switch (typeData[0]) {
+                case "input":
+                    var newInput = $(document.createElement('input'));
+                    newInput.attr("id", this.id + "-" + i);
+                    newInput.attr("placeholder", this.placeholder);
+                    this.mySearchBox.parent.append(newInput);
+                    break;
+                case "select":
+                    var newSelect = $(window[typeData[1]].call());
+                    newSelect.attr("id", this.id + "-" + i);
+                    this.mySearchBox.parent.append(newSelect);
+                    break;
+            }
         }
     };
 
@@ -67,6 +74,9 @@ function QueryField(myParent, obj) {
         newAnchor.append(newImage);
         newAnchor.append(this.placeholder);
         newAnchor.attr("href", "javascript:void(0)");
+        newAnchor.click(function () {
+            this.renderNew();
+        })
         this.mySearchBox.parent.append(newAnchor);
     }
 }
