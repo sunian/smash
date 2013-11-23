@@ -48,7 +48,7 @@ require_once('libs/Videos.php');
     echo $output;
     $characters = $vid->characters;
     for($i=0; $i<count($vid->characters); $i++) {
-    $output2 = $output2 . ", " . $vid->characters[$i]->tag;
+    $output2 = $output2 . ", " . $vid->characters[$i]->name;
     }
     echo $output2;
     $techniques = $vid->techniques;
