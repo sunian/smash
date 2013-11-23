@@ -33,6 +33,7 @@ function SearchBox(parent) {
 function QueryField(myParent, obj) {
     this.mySearchBox = myParent;
     this.myDiv = $(document.createElement('div'));
+    this.myDiv.css("display", "inline-block");
     for (var prop in obj) this[prop] = obj[prop];
 
     this.render = function () {
