@@ -48,11 +48,16 @@ require_once('libs/Videos.php');
     }
 
     $urlID = $vid->getIDFromURL();
-    '<iframe width="425" height="350" type="application/x-shockwave-flash" ' .
-    'data="http://www.youtube.com/embed/' . $urlID . ' "?enable?enablejsapi=1&playsinline=1&autoplay=1">' .
-//  '<param name="video" value="http://www.youtube.com/' . $urlID . '"></param>' .
-     '</iframe>';
+//    '<iframe width="425" height="350" type="application/x-shockwave-flash" ' .
+//    'data="http://www.youtube.com/embed/' . $urlID . ' "?enable?enablejsapi=1&playsinline=1&autoplay=1">' .
+//    '<param name="video" value="http://www.youtube.com/' . $urlID . '"></param>' .
+//     '</iframe>';
 ?>
+
+<iframe width="425" height="350"
+src="http://www.youtube.com/embed/ <?php echo $urlID;?> ?enable?enablejsapi=1&playsinline=1&autoplay=1">
+</iframe>
+
 <!--<script>-->
 <!--function setURL() {-->
 <!--    var iframe = document.getElementById("myframe");-->
