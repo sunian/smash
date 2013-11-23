@@ -8,6 +8,8 @@
 require_once('DbUtil.php');
 require_once('Technique.php');
 require_once('Player.php');
+require_once('Character.php');
+require_once('Version.php');
 
 class Video extends JSONObject {
     public $video_id = null;
@@ -59,11 +61,8 @@ class Video extends JSONObject {
 
         $this->populateTechniques();
         $this->populatePlayers();
-        echo "hello";
         $this->populateCharacters();
-        echo "hello";
         $this->populateVersions();
-        echo "hello";
     }
 
     private function populateTechniques() {
