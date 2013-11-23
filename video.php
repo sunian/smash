@@ -45,7 +45,7 @@ require_once('libs/Videos.php');
     $vid = new Video();
     $vid->set(array("video_id"=>$urlParams["t"]));
     echo $vid->populateFieldsFromID();
-    echo "<h1>" , $video->title , "</h1>";
+    echo "<h1>" , $vid->title , "</h1>";
     }
 ?>
 
