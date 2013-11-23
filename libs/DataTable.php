@@ -32,11 +32,19 @@ class DataTable
     public $sqlQuery = null;
     public $sqlParams = null;
     public $renderData; //$printData(rows)
+    public $hasFooter = false;
 
     function __construct($id, $columns)
     {
         $this->id = $id;
         $this->columns = $columns;
+        foreach ($columns as $column) {
+            if (strcmp($column->inputType, "none") != 0) {
+                $this->hasFooter = true;
+                break;
+            }
+        }
+
     }
 
     function setData($sqlQuery, $sqlParams){
@@ -61,8 +69,13 @@ class DataTable
                     </tfoot>
                     <tbody class='sortable'>", $this->printData(), "</tbody>
                 </table>
-            </div>
-            <div id='fixedFooter' class='fixedFooter'>
+            </div>", $this->hasFooter ? $this->printFooter() :
+            "<a href='javascript:void(0);' class='btnPlus' onclick='create$this->id();'></a>",
+        "</div>";
+    }
+
+    private function printFooter() {
+        echo "<div id='fixedFooter' class='fixedFooter'>
                 <table class='layout'>
                     <tr class='layout'>
                         <td style='vertical-align: bottom;' class='layout'>
@@ -77,8 +90,7 @@ class DataTable
                         </td>
                     </tr>
                 </table>
-            </div>
-        </div>";
+            </div>";
     }
 
     private function printHeaders($clickable)
