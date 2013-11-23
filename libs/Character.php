@@ -64,7 +64,6 @@ class Character extends JSONObject
                 return "That character already exists!";
             }
             $stmt->closeCursor();
-            echo "hello";
 
             if($this->weight) echo "hello";
             if($this->height) echo "height";
@@ -75,6 +74,7 @@ class Character extends JSONObject
                 $this->falling_speed_rank?", falling_speed_rank":"" . $this->air_speed_rank?", air_speed_rank)":")" .
                 "VALUES (:identity_id, :version_id" . $this->weight?", :weight":"" . $this->height?", :height":"" .
                 $this->falling_speed_rank?", :falling_speed_rank":"" . $this->air_speed_rank?", :air_speed_rank)":")";
+            echo "hello";
             echo $sql_string;
             $stmt = $conn->prepare($sql_string);
             $params = array("identity_id"=>$this->identity_id, "version_id"=>$this->version_id);
