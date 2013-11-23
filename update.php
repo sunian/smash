@@ -6,4 +6,4 @@
  * Time: 5:28 PM
  */
 
-echo shell_exec("ls");
+echo shell_exec("git status");
