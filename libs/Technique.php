@@ -11,25 +11,25 @@ require_once('JSONObject.php');
 
 class Technique extends JSONObject
 {
-    public $id = null;
+    public $technique_id = null;
     public $name = null;
-    public $abbrev = null;
+    public $abbreviation = null;
 
     public function createTechnique()
     {
         try {
             $conn = DbUtil::connect();
             $sql_string = "SELECT technique_id FROM technique WHERE name = :name " .
-                (is_null($this->abbrev) ? " AND abbreviation is null" : " AND abbreviation = :abbrev");
+                (is_null($this->abbreviation) ? " AND abbreviation is null" : " AND abbreviation = :abbrev");
             $params = array("name" => $this->name);
-            if (!is_null($this->abbrev)) $params["abbrev"] = $this->abbrev;
+            if (!is_null($this->abbreviation)) $params["abbrev"] = $this->abbreviation;
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
             if ($row = $stmt->fetch()) {
                 return "That technique already exists!";
             }
             $stmt->closeCursor();
-            $params["abbrev"] = $this->abbrev;
+            $params["abbrev"] = $this->abbreviation;
             $sql_string = "INSERT INTO technique (name, abbreviation) VALUES (:name, :abbrev)";
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
