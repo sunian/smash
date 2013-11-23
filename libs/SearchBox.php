@@ -15,10 +15,11 @@ class QueryField extends JSONObject
     public $type;
     public $count;//1 or + or *
 
-    function __construct($id, $placeholder)
-    {
-        $this->id = $id;
-        $this->placeholder = $placeholder;
+    public static function nu($id, $placeholder) {
+        $instance = new self();
+        $instance->id = $id;
+        $instance->placeholder = $placeholder;
+        return $instance;
     }
 
     public function render()
