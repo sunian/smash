@@ -57,7 +57,7 @@ function QueryField(myParent, obj) {
                     this.mySearchBox.parent.append(newInput);
                     break;
                 case "select":
-                    var newSelect = $(window[typeData[1]].call(true));
+                    var newSelect = $(window[typeData[1]].call(this, true));
                     newSelect.attr("id", this.id + "-" + i);
                     this.mySearchBox.parent.append(newSelect);
                     break;
