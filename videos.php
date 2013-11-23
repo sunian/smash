@@ -82,6 +82,8 @@ $searchbox = SearchBox::nu("Filter Videos", array(
 );
 $searchbox->render();
 
+include('libs/players.php');
+include('libs/characters.php');
 ?>
 </body>
 </html>
