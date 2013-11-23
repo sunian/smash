@@ -33,8 +33,8 @@ function SearchBox(parent) {
 function QueryField(myParent, obj) {
     this.mySearchBox = myParent;
     this.myDiv = $(document.createElement('div'));
-    this.values = [];
     for (var prop in obj) this[prop] = obj[prop];
+    this.values = [];
 
     this.render = function () {
         switch (this.count) {
@@ -54,10 +54,9 @@ function QueryField(myParent, obj) {
 
     this.renderNew = function () {
         var types = this.type.split(" ");
-        console.log(this.myDiv + " " + this.values);
-//        if (this.values.length > 0)
+        if (this.values.length > 0)
             this.myDiv.append(document.createElement('br'));
-//        this.values.push(null);
+        this.values.push(null);
         for (var i in types) {
             var typeData = types[i].split(":");
             switch (typeData[0]) {
