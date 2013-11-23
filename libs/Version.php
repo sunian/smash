@@ -70,14 +70,14 @@ class Version extends JSONObject{
                 FROM character_identity as i INNER JOIN `character` as c on i.identity_id = c.identity_id
                 INNER JOIN universe as u on i.universe_id = u.universe_id INNER JOIN version as v on v.version_id = c.version_id
                 WHERE v.version_id = :version_id";
-            echo "hello james....";
             $stmt = $conn->prepare($sqlString);
             $params["version_name"] = $this->pretty_name;
             $stmt->execute($params);
-            echo "hello again james....";
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $characters = $stmt->fetchAll();
+            echo "hello james....";
             $this->characters = JSONList::nu("Character", $characters);
+            echo "hello again james....";
             print_r($this->characters);
 //            $character_count = 0;
 //            foreach($characters as $row) {
