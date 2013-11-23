@@ -7,6 +7,7 @@
  */
 require_once('DbUtil.php');
 require_once('Technique.php');
+require_once('Player.php');
 
 class Video extends JSONObject {
     public $video_id = null;
@@ -16,6 +17,7 @@ class Video extends JSONObject {
     public $players = null;
     public $techniques = null;
     public $characters = null;
+    public $versions = null;
 
     public function createIdentity()
     {
@@ -56,12 +58,31 @@ class Video extends JSONObject {
         $this->title = $row["title"];
 
         $this->populateTechniques();
+        $this->populatePlayers();
+        $this->populateCharacters();
+        $this->populateVersions();
     }
 
     private function populateTechniques() {
         try {
             $conn = DbUtil::connect();
             $sql_string = "SELECT technique_id, name, abbreviation FROM video NATURAL JOIN video_player NATURAL JOIN technique_usage NATURAL JOIN technique" .
+                " WHERE video_id = :video_id";
+            $params = array("video_id" => $this->video_id);
+            $stmt = $conn->prepare($sql_string);
+            $stmt->execute($params);
+            $this->techniques = $stmt->fetchAll(PDO::FETCH_CLASS, "Technique");
+        }
+        catch(PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    private function populateVersions() {
+        try {
+            $conn = DbUtil::connect();
+            $sql_string = "SELECT v.title AS title, v.version_number, p.name AS pretty_name
+                FROM video NATURAL JOIN video_version NATURAL JOIN version AS v NATURAL JOIN pretty_version AS p" .
                 " WHERE video_id = :video_id";
             $params = array("video_id" => $this->video_id);
             $stmt = $conn->prepare($sql_string);
@@ -80,22 +101,37 @@ class Video extends JSONObject {
         return $query;
     }
 
-//    public function getPlayers() {
-//        try {
-//            $conn = DbUtil::connect();
-//            $sql_string = "SELECT tag FROM video NATURAL JOIN video_player NATURAL JOIN player WHERE video_id = :video_id";
-//            $stmt = $conn->prepare($sql_string);
-//            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-//            $players = $stmt->fetchAll();
-//            $counter = 0;
-//            while($row = $stmt->fetch()) {
-//                $this->players[$counter++] = $row["tag"];
-//            }
-//
-//            return $players;
-//        }
-//        catch(PDOException $e) {
-//            return $e->getMessage();
-//        }
-//    }
+    private function populatePlayers() {
+        try {
+            $conn = DbUtil::connect();
+            $sql_string = "SELECT player_id, region_id, player.name AS name, tag, region.name AS region_name
+                 FROM video NATURAL JOIN video_player NATURAL JOIN player NATURAL JOIN region WHERE video_id = :video_id";
+            $stmt = $conn->prepare($sql_string);
+            $params = array("video_id"=>$this->video_id);
+            $stmt->execute($params);
+            $this->players = $stmt->fetchAll(PDO::FETCH_CLASS, "Player");
+        }
+        catch(PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    private function populateCharacters() {
+        try {
+            $conn = DbUtil::connect();
+            $sql_string = "SELECT c.character_id AS id, i.name AS name, u.name AS universe, c.weight, c.height,
+                c.falling_speed_rank AS falling_speed, c.air_speed_rank AS air_speed, i.nickname AS nick
+                FROM character_identity as i INNER JOIN `character` as c on i.identity_id = c.identity_id
+                INNER JOIN universe as u on i.universe_id = u.universe_id INNER JOIN version as v on v.version_id = c.version_id
+                INNER JOIN video_player as vp on vp.character_id=c.character_id AND vp.player_id=p.player_id INNER JOIN
+                video ON vp.video_id = video.video_id WHERE video.video_id = :video_id";
+            $stmt = $conn->prepare($sql_string);
+            $params = array("video_id"=>$this->video_id);
+            $stmt->execute($params);
+            $this->players = $stmt->fetchAll(PDO::FETCH_CLASS, "Character");
+        }
+        catch(PDOException $e) {
+            return $e->getMessage();
+        }
+    }
 }

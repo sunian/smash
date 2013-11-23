@@ -11,10 +11,11 @@ require_once('JSONObject.php');
 
 class Player extends JSONObject
 {
-    public $id = null;
+    public $player_id = null;
     public $name = null;
     public $tag = null;
-    public $region = null;
+    public $region_id = null;
+    public $region_name = null;
 
     public function createPlayer()
     {
