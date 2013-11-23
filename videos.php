@@ -36,7 +36,7 @@ if (strlen($json_input) > 0) {
             });
 
             Helper.setupTables("Videos");
-
+            setupSearchBox();
             newTitle.focus();
         });
 
