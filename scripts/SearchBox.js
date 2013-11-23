@@ -19,6 +19,11 @@ function SearchBox(parent) {
         for (var i in this.fields) {
             this.fields[i].render();
         }
+        this.parent.append(document.createElement('br'));
+        var btnGo = $(document.createElement('input'));
+        btnGo.attr("type", "button");
+        btnGo.attr("value", "GO");
+        this.parent.append(btnGo);
     };
 
     this.render();
