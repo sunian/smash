@@ -3,7 +3,7 @@
  */
 function setupSearchBox(){
     $("div.search-box").each(function (i, elem) {
-        console.log(elem.html);
+        console.log($(elem).html);
     });
 }
 
