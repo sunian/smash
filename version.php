@@ -70,6 +70,7 @@ else {
     $version->populateFieldsFromID();
     echo "<h1>" , $version->pretty_name , "</h1>";
 
+    echo "<div class = \"body\">";
     $table = new DataTable("Characters", array(
         new TableColumn("Name", "newName", "select", "New Name"),
         new TableColumn("Weight", "newWeight", "input", "New Weight"),
@@ -90,6 +91,7 @@ else {
         echo "</tr>";
     };
     $table->render();
+    echo "</div>";
 
     include('libs/characters.php');
 }
