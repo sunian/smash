@@ -1,9 +1,11 @@
 /**
  * Created by Sun on 10/30/13.
  */
+var SearchBoxList = [];
 function setupSearchBox() {
     $("div.search-box").each(function (i, elem) {
-        $(elem).html(new SearchBox($(elem).html()).render());
+        SearchBoxList[i] = new SearchBox($(elem).html());
+        $(elem).html(SearchBoxList[i].render());
     });
 }
 
