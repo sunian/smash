@@ -16,11 +16,11 @@
     $stmt->closeCursor();
     ?></div>
 <script type="text/javascript">
-    function createPlayerSelector() {
+    function createPlayerSelector(includeBlank) {
         var select_player = document.createElement("select");
         var players = JSON.parse($("#div_players").text());
         for (var i in players) {
-            select_player.options[i] = new Option(players[i].name, players[i].id);
+            select_player.options.push(new Option(players[i].name, players[i].id));
         }
         return select_player;
     }
