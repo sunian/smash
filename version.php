@@ -49,9 +49,7 @@ if (strlen($json_input) > 0) {
             selectCharacter.id = "selectCharacter";
             newName[0].appendChild(selectCharacter);
 
-            newName.keyup( function () {
-                Helper.displayBtnAdd(true);
-            });
+            Helper.displayBtnAdd(true);
 
             Helper.setupTables("Characters");
 
