@@ -4,38 +4,41 @@
 var SearchBoxList = [];
 function setupSearchBox() {
     $("div.search-box").each(function (i, elem) {
-        SearchBoxList[i] = new SearchBox($(elem).html());
-        $(elem).html(SearchBoxList[i].render());
+        SearchBoxList.push(new SearchBox($(elem)));
     });
 }
 
-function SearchBox(json) {
-    var obj = JSON.parse(json);
+function SearchBox(parent) {
+    this.parent = parent;
+    var obj = JSON.parse(this.parent.html());
     for (var prop in obj) this[prop] = obj[prop];
-    for (var i in this.fields) this.fields[i] = new QueryField(this.fields[i]);
+    for (var i in this.fields) this.fields[i] = new QueryField(this, this.fields[i]);
 
     this.render = function () {
-        var output = this.title;
+        this.parent.html(this.title);
         for (var i in this.fields) {
-            output += this.fields[i].render();
+            this.fields[i].render();
         }
-        return output;
     };
+
+    this.render();
 }
 
-function QueryField(obj) {
+function QueryField(myParent, obj) {
+    this.parent = myParent;
     for (var prop in obj) this[prop] = obj[prop];
 
     this.render = function () {
         switch (this.count) {
             case "1":
-                return this.renderNew();
+                this.renderNew();
                 break;
             case "+":
-                return this.renderNew() + this.renderInsert();
+                this.renderNew();
+                this.renderInsert();
                 break;
             case "*":
-                return this.renderInsert();
+                this.renderInsert();
                 break;
         }
 
@@ -44,7 +47,12 @@ function QueryField(obj) {
     this.renderNew = function () {
         switch (this.type) {
             case "input":
-                return "<br><input id='" + this.id + "' placeholder='" + this.placeholder + "'/>";
+                this.parent.appendChild(document.createElement('br'));
+                var newInput = $(document.createElement('input'));
+                newInput.attr("id", this.id);
+                newInput.attr("placeholder", this.placeholder);
+                this.parent.appendChild(newInput);
+                break;
             case "select":
                 break;
         }
