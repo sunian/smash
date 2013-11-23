@@ -32,9 +32,10 @@ function QueryField(obj) {
                 return this.renderNew();
                 break;
             case "+":
-                return this.renderNew();
+                return this.renderNew() + this.renderInsert();
                 break;
             case "*":
+                return this.renderInsert();
                 break;
         }
 
@@ -48,4 +49,8 @@ function QueryField(obj) {
                 break;
         }
     };
+
+    this.renderInsert = function () {
+        return "<br><a><img src='../images/plus.png'>" + this.placeholder + "</a>";
+    }
 }
