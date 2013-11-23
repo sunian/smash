@@ -74,7 +74,6 @@ class Character extends JSONObject
                 . ($this->falling_speed_rank?", falling_speed_rank":"") . ($this->air_speed_rank?", air_speed_rank)":")") .
                 "VALUES (:identity_id, :version_id" . ($this->weight?", :weight":"") . ($this->height?", :height":"") .
                 ($this->falling_speed_rank?", :falling_speed_rank":"") . ($this->air_speed_rank?", :air_speed_rank)":")");
-            echo $sql_string;
             $stmt = $conn->prepare($sql_string);
             $params = array("identity_id"=>$this->identity_id, "version_id"=>$this->version_id);
             if($this->weight) $params["weight"]=$this->weight;
