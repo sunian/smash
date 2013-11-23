@@ -8,6 +8,7 @@
 require_once('libs/browser.php');
 require_once('libs/Version.php');
 require_once('libs/Character.php');
+require_once('libs/DataTable.php');
 ?>
 <html>
 <head>
