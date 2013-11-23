@@ -6,4 +6,4 @@
  * Time: 5:28 PM
  */
 
-echo shell_exec("git pull");
+echo shell_exec("ls");
