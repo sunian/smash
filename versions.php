@@ -8,13 +8,6 @@
  */
 require_once('libs/browser.php');
 require_once('libs/DataTable.php');
-//require_once('libs/Technique.php');
-if (strlen($json_input) > 0) {
-//    $technique = new Technique($json_input);
-//    $error = $technique->createTechnique();
-//    if ($error) echo $error;
-    exit();
-}
 ?>
 
 <html>
@@ -35,16 +28,6 @@ if (strlen($json_input) > 0) {
 
         function createVersions() {
             document.location.href = "version.php?t=newVersion";
-//            var newObj = {};
-//            newObj.name = newName.val();
-//            newObj.release_date = newDate.val();
-//            if (newObj.name.length == 0) {
-//                alert("Please enter a name to create a new version of Smash.");
-//                newName.focus();
-//                return;
-//            }
-////            console.log(JSON.stringify(newChar));
-//            Helper.uploadObj(newObj);
         }
     </script>
 </head>

@@ -44,9 +44,7 @@ Helper.uploadObj = function (newObj) {
     $.ajax({
         type: "POST",
         data: JSON.stringify(newObj),
-//                dataType: "json",
         success: function (data, textStatus, jqXHR) {
-            console.log(data);
             if (data.length > 0) {
                 alert(data);
             } else {
