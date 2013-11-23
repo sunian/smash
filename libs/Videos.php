@@ -117,6 +117,7 @@ class Video extends JSONObject {
             $this->players = $stmt->fetchAll(PDO::FETCH_CLASS, "Player");
         }
         catch(PDOException $e) {
+            echo "Error in populate players\n";
             echo $e->getMessage();
             return $e->getMessage();
         }
@@ -138,6 +139,7 @@ class Video extends JSONObject {
             $this->players = $stmt->fetchAll(PDO::FETCH_CLASS, "Character");
         }
         catch(PDOException $e) {
+            echo "Error in populate characters\n";
             echo $e->getMessage();
             return $e->getMessage();
         }
