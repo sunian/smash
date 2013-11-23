@@ -75,8 +75,7 @@ function QueryField(myParent, obj) {
         newAnchor.append(this.placeholder);
         newAnchor.attr("href", "javascript:void(0)");
         newAnchor.bind("click", [this], function (e) {
-            console.log(e.data);
-//            this.renderNew();
+            e.data[0].renderNew();
         })
         this.mySearchBox.parent.append(newAnchor);
     }
