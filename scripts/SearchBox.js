@@ -33,7 +33,7 @@ function SearchBox(parent) {
 function QueryField(myParent, obj) {
     this.mySearchBox = myParent;
     this.myDiv = $(document.createElement('div'));
-    this.myDiv.css("display", "inline-block");
+    this.values = [];
     for (var prop in obj) this[prop] = obj[prop];
 
     this.render = function () {
@@ -54,7 +54,9 @@ function QueryField(myParent, obj) {
 
     this.renderNew = function () {
         var types = this.type.split(" ");
-        this.myDiv.append(document.createElement('br'));
+        if (this.values.length > 0)
+            this.myDiv.append(document.createElement('br'));
+        this.values.push(null);
         for (var i in types) {
             var typeData = types[i].split(":");
             switch (typeData[0]) {
