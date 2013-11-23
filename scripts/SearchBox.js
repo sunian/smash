@@ -47,11 +47,11 @@ function QueryField(myParent, obj) {
     this.renderNew = function () {
         switch (this.type) {
             case "input":
-                this.mySearchBox.parent.appendChild(document.createElement('br'));
+                this.mySearchBox.parent.append(document.createElement('br'));
                 var newInput = $(document.createElement('input'));
                 newInput.attr("id", this.id);
                 newInput.attr("placeholder", this.placeholder);
-                this.mySearchBox.parent.appendChild(newInput);
+                this.mySearchBox.parent.append(newInput);
                 break;
             case "select":
                 break;
