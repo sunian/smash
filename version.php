@@ -69,12 +69,16 @@ else {
         new TableColumn("Falling Speed Rank", "newFallRank", "input", "Fall Speed Rank"),
         new TableColumn("Air Speed Rank", "newAirRank", "input", "Air Speed Rank")
     ));
-    $table->setData("SELECT * FROM pretty_version ORDER BY name", null);
+    $table->setData("SELECT name, weight, height, falling_speed_rank, air_speed_rank
+        FROM character NATURAL JOIN character_identity WHERE version_id = " . $version->version_id, null);
     $table->renderData = function ($row) {
         $leDate = $row["release_date"];
         echo "<tr>";
-        echo "<td><a href='version.php?t=", $row["version_id"], "'>", $row["name"], "</a></td>";
-        echo "<td raw='$leDate'>", DataTable::prettyDate($leDate), "</td>";
+        echo "<td>" . $row["name"] . "</td>";
+        echo "<td>". $row["weight"] . "</td>";
+        echo "<td>" . $row["height"] . "</td>";
+        echo "<td>" . $row["falling_speed_rank"] . "</td>";
+        echo "<td>". $row["air_speed_rank"] . "</td>";
         echo "</tr>";
     };
     $table->render();
