@@ -16,11 +16,11 @@ class JSONList extends JSONObject
         $instance = new self();
         $instance->elemType = $elemType;
         if ($obj) {
-            $data["list"] = $obj;
+            $temp["list"] = $obj;
 //            echo "_ ";
 //            print_r($data);
 //            echo " _";
-            $instance->set($data);
+            $instance->set($temp);
         }
         return $instance->list;
     }
