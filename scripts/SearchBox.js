@@ -22,7 +22,7 @@ function SearchBox(parent) {
         this.parent.append(document.createElement('br'));
         var btnGo = $(document.createElement('input'));
         btnGo.attr("type", "button");
-        btnGo.attr("value", "GO");
+        btnGo.attr("value", "Go");
         this.parent.append(btnGo);
     };
 
