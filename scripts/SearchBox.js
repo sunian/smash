@@ -59,6 +59,14 @@ function QueryField(myParent, obj) {
     };
 
     this.renderInsert = function () {
-        return "<br><a><img src='images/plus.png' class='smallBtn'>" + this.placeholder + "</a>";
+        this.mySearchBox.parent.append(document.createElement('br'));
+        var newAnchor = $(document.createElement('a'));
+        var newImage = $(document.createElement('img'));
+        newImage.attr("src", 'images/plus.png');
+        newImage.addClass("smallBtn");
+        newAnchor.text(this.placeholder);
+        newAnchor.append(newImage);
+        newAnchor.attr("href", "javascript:void(0)");
+        this.mySearchBox.parent.append(newAnchor);
     }
 }
