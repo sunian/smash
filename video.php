@@ -57,7 +57,7 @@ require_once('libs/Videos.php');
     <table border="1">
         <tr>
             <th> Characters </th>
-                <td> jfsdj;ak </td>
+                <td> jfdsdj;ak </td>
             <th> Players </th>
             <th> Techniques </th>
         </tr>
