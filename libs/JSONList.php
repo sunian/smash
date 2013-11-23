@@ -15,10 +15,13 @@ class JSONList extends JSONObject
     public static function nu($elemType, $obj = false) {
         $instance = new self();
         $instance->elemType = $elemType;
+        echo "##";
         if ($obj) {
             $data["list"] = $obj;
+            echo "$$";
             $instance->set($data);
         }
+        echo "%%";
         return $instance->list;
     }
 

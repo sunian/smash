@@ -75,9 +75,8 @@ class Version extends JSONObject{
             $stmt->execute($params);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $characters = $stmt->fetchAll();
-            echo "hello james....";
             $this->characters = JSONList::nu("Character", $characters);
-            echo "hello again james....";
+            echo "success!";
             print_r($this->characters);
 //            $character_count = 0;
 //            foreach($characters as $row) {
