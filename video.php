@@ -48,14 +48,14 @@ require_once('libs/Videos.php');
 <div class='body'>
 <table>
     <tr>
-        <td style="background-color:black;width:600px;">
+        <td style="background-color:black;width:425px;">
             <iframe name='video'
                     width="425" height="350"
                     src="http://www.youtube.com/embed/<?php echo $urlID;?>?enablejsapi=1&playsinline=1&autoplay=1"
                     seamless>
             </iframe>
         </td>
-        <td style="">
+        <td style="widt:600px">
             <h3>Information</h3><br>
             Characters<br>
             Players<br>
