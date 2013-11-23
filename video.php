@@ -46,23 +46,23 @@ require_once('libs/Videos.php');
 
 ?>
 <div class='body'>
+<table>
+    <tr>
+        <td style="background-color:black;width:600px;">
+            <h3>Information</h3><br>
+            Characters<br>
+            Players<br>
+            Techniques<br>
+        </td>
+        <td style="">
+            <iframe name='video'
+                    width="425" height="350"
+                    src="http://www.youtube.com/embed/<?php echo $urlID;?>?enablejsapi=1&playsinline=1&autoplay=1"
+                    seamless>
+            </iframe>
+    </tr>
 
-    <iframe name='video'
-        width="425" height="350"
-        src="http://www.youtube.com/embed/<?php echo $urlID;?>?enablejsapi=1&playsinline=1&autoplay=1"
-        seamless>
-    </iframe>
-
-    <br>
-    <table border="1">
-        <tr>
-            <th> Characters </th>
-                <td> jfdsdj;ak </td>
-            <th> Players </th>
-            <th> Techniques </th>
-        </tr>
-    </table>
-
+</table>
 </div>
 </body>
 </html>
