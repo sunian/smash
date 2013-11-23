@@ -27,6 +27,7 @@ class VideoListUnit {
         for($i=1; $i<count($this->video->players); $i++) {
             $outputString = $outputString . ", " . $this->video->players[$i]->tag;
         }
+        $outputString = $outputString . count($this->video->characters) . "\t" . count($this->video->versions);
         $outputString = $outputString . "</div>";
 
         return $outputString;
