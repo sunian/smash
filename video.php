@@ -33,10 +33,9 @@ require_once('libs/Videos.php');
 
     </script>
 </head>
-<body>
+<body text="white">
 
 <?php include('libs/navheader.php');
-
     if(strcmp($urlParams["t"], "0")==0) {
 
     }
@@ -45,14 +44,18 @@ require_once('libs/Videos.php');
     $vid = new Video();
     $vid->set(array("video_id"=>$urlParams["t"]));
     echo $vid->populateFieldsFromID();
-    echo "<h1>" , $vid->title , "</h1>";
+    echo "<h1>, $vid->title , </h1>";
     }
 ?>
 
-<!--function getURL() {-->
-<!--    var iframe = document.getElementById("myframe");-->
-<!--    iframe.src = "http://www.youtube.com/embed/",-->
-<!--}-->
+function getURL() {
+    var iframe = document.getElementById("myframe");
+    var str1 = "http://www.youtube.com/embed/";
+    var str2 = vid->getIDFromURL();
+    var str3 = "?enable?enablejsapi=1&playsinline=1&autoplay=1";
+    var str = str1.concat(str2,str3);
+    iframe.src = str,
+}
 
 <div class='body'>
 <iframe id="myframe"
