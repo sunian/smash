@@ -15,17 +15,15 @@ class QueryField extends JSONObject
     public $type;
     public $count;//1 or + or *
 
-    public static function nu($id, $placeholder) {
+    public static function nu($id, $placeholder, $type, $count) {
         $instance = new self();
         $instance->id = $id;
         $instance->placeholder = $placeholder;
+        $instance->type = $type;
+        $instance->count = $count;
         return $instance;
     }
 
-    public function render()
-    {
-        echo "<br><input id='$this->id' placeholder='$this->placeholder'/>";
-    }
 }
 
 class SearchBox extends JSONObject
