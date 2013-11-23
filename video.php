@@ -37,7 +37,6 @@ require_once('libs/Videos.php');
 
 <?php include('libs/navheader.php');
     $vid = new Videos();
-    $vid->video_id = $urlParams["t"];
     $vid->populateFieldsFromID();
     echo "<h1>" , $video->title , "</h1>";
 ?>
