@@ -41,7 +41,7 @@ require_once('libs/Videos.php');
 $vid = new Videos();
 $vid->set(array("video_id"=>$urlParams["t"]));
 
-echo "<h1>" , $version->pretty_name , "</h1>";
+echo "<h1>" , $video->title , "</h1>";
 
 <!--function getURL() {-->
 <!--    var iframe = document.getElementById("myframe");-->
