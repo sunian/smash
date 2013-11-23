@@ -14,7 +14,7 @@ class QueryField extends JSONObject
     public $placeholder;
     public $type;
     public $count;//1 or + or *
-    public $value;
+    public $values;
 
     public static function nu($id, $placeholder, $type, $count) {
         $instance = new self();
