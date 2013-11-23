@@ -36,12 +36,10 @@ require_once('libs/Videos.php');
 <body>
 
 <?php include('libs/navheader.php');
-
+    $vid = new Videos();
+    $vid->set(array("video_id"=>$urlParams["t"]));
+    echo "<h1>" , $video->title , "</h1>";
 ?>
-$vid = new Videos();
-$vid->set(array("video_id"=>$urlParams["t"]));
-
-echo "<h1>" , $video->title , "</h1>";
 
 <!--function getURL() {-->
 <!--    var iframe = document.getElementById("myframe");-->
