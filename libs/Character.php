@@ -55,7 +55,7 @@ class Character extends JSONObject
     public function createCharacter() {
         try {
             $conn = DbUtil::connect();
-            $sql_string = "SELECT identity_id FROM character WHERE identity_id = :identity_id AND version_id = :version_id";
+            $sql_string = "SELECT identity_id FROM `character` WHERE identity_id = :identity_id AND version_id = :version_id";
             $params = array("version_id" => $this->version_id, "identity_id" => $this->identity_id);
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
@@ -63,7 +63,7 @@ class Character extends JSONObject
                 return "That character already exists!";
             }
             $stmt->closeCursor();
-            $sql_string = "INSERT INTO character (identity_id, version_id, weight, height, falling_speed_rank, air_speed_rank)
+            $sql_string = "INSERT INTO `character` (identity_id, version_id, weight, height, falling_speed_rank, air_speed_rank)
                VALUES (:identity_id, :version_id, :weight, :height, :falling_speed_rank, :air_speed_rank)";
             $stmt = $conn->prepare($sql_string);
             $params = array("identity_id"=>$this->identity_id, "version_id"=>$this->version_id, "weight"=>$this->weight,
