@@ -56,6 +56,4 @@ class SearchBox extends JSONObject
 }
 
 ?>
-<script type="text/javascript">
-    var hello;
-</script>
+<script type="text/javascript" src="scripts/SearchBox.js"></script>

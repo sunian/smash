@@ -37,15 +37,25 @@ require_once('libs/Videos.php');
 
 <?php include('libs/navheader.php');
 
-    function getVID() {
-    $query = substr($this->url, strpos($this->url, "?"));
-    $query = substr($query, strpos($query, "v=")+2);
-    if(strpos($query, "&")>-1) $query = substr($query, 0, strpos($query, "&"));
-    return "<img src=\"http://img.youtube.com/vi/" . $query . "/1.jpg\">";
+    if(strcmp($urlParams["t"], "newVersion")==0) {
+
+    }
+
+    else {
+    $vid = new Videos();
+    echo $vid->populateFieldsFromID();
+    echo "<h1>" , $video->title , "</h1>";
     }
 ?>
+
+<!--function getURL() {-->
+<!--    var iframe = document.getElementById("myframe");-->
+<!--    iframe.src = "http://www.youtube.com/embed/",-->
+<!--}-->
+
 <div class='body'>
-<iframe width="420" height="345"
+<iframe id="myframe"
+        width="420" height="345"
         src="http://www.youtube.com/embed/aEd5doQuG9c?enablejsapi=1&playsinline=1&autoplay=1"
         seamless
         >
