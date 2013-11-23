@@ -42,6 +42,10 @@ require_once('libs/Videos.php');
     echo $vid->populateFieldsFromID();
     $urlID = $vid->getIDFromURL();
     $players = $vid->players;
+    for($i=1; $i<count($vid->players); $i++) {
+    $outputString = $outputString . ", " . $vid->players[$i]->tag;
+    }
+    echo $outputString;
     $characters = $vid->characters;
     $techniques = $vid->techniques;
     echo "<h1>", $vid->title , "</h1>";
@@ -61,11 +65,8 @@ require_once('libs/Videos.php');
         <td style="background-color:black;width:425px;height=350">
             <h2>Information</h2><br>
             Characters<br>
-            <?php echo print_r($characters); ?> <br>
             Players<br>
-            <?php echo print_r($players); ?> <br>
             Techniques<br>
-            <?php echo $techniques; ?> <br>
         </td>
     </tr>
 
