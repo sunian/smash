@@ -111,6 +111,7 @@ class Video extends JSONObject {
             $stmt = $conn->prepare($sql_string);
             $params = array("video_id"=>$this->video_id);
             $stmt->execute($params);
+            echo $stmt->rowCount();
             $this->players = $stmt->fetchAll(PDO::FETCH_CLASS, "Player");
         }
         catch(PDOException $e) {
@@ -130,6 +131,7 @@ class Video extends JSONObject {
             $stmt = $conn->prepare($sql_string);
             $params = array("video_id"=>$this->video_id);
             $stmt->execute($params);
+            echo $stmt->rowCount();
             $this->players = $stmt->fetchAll(PDO::FETCH_CLASS, "Character");
         }
         catch(PDOException $e) {
