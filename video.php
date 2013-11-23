@@ -41,28 +41,33 @@ require_once('libs/Videos.php');
     $vid->set(array("video_id"=>$urlParams["t"]));
     echo $vid->populateFieldsFromID();
     $urlID = $vid->getIDFromURL();
+    $players = $vid->players;
+    $characters = $vid->characters;
+    $techniques = $vid->techniques;
     echo "<h1>", $vid->title , "</h1>";
 
 
 ?>
 <div class='body'>
+<table>
+    <tr>
+        <td style="background-color:black;width:425px;height=350">
+            <iframe name='video'
+                    width="425" height="350"
+                    src="http://www.youtube.com/embed/<?php echo $urlID;?>?enablejsapi=1&playsinline=1&autoplay=1"
+                    seamless>
+            </iframe>
+        </td>
+        <td style="width:500px;height=350">
+            <h2>Information</h2><br>
+            Characters<br>
+            <?php echo $players; ?> <br>
+            Players<br>
+            Techniques<br>
+        </td>
+    </tr>
 
-    <iframe name='video'
-        width="425" height="350"
-        src="http://www.youtube.com/embed/<?php echo $urlID;?>?enablejsapi=1&playsinline=1&autoplay=1"
-        seamless>
-    </iframe>
-
-    <br>
-    <table border="1">
-        <tr>
-            <th> Characters </th>
-                <td> jfdsdj;ak </td>
-            <th> Players </th>
-            <th> Techniques </th>
-        </tr>
-    </table>
-
+</table>
 </div>
 </body>
 </html>
