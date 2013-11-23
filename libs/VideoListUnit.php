@@ -13,8 +13,7 @@ class VideoListUnit {
 
     function __construct($video_id) {
         $this->video = new Video();
-        $array = array("video_id"=>$video_id);
-        $this->video->set($array);
+        $this->video->video_id = $video_id;
         $this->video->populateFieldsFromID();
     }
 
