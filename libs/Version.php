@@ -74,9 +74,9 @@ class Version extends JSONObject{
             $params["version_name"] = $this->pretty_name;
             $stmt->execute($params);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $characters = $stmt->fetchAll();
-            $this->characters = JSONList::nu("Character", $characters);
-            print_r($this->characters);
+            $characters = $stmt->fetchAll(PDO::FETCH_CLASS, "Character");
+//            $this->characters = JSONList::nu("Character", $characters);
+            print_r($characters);
 //            $character_count = 0;
 //            foreach($characters as $row) {
 //                $row["version"] = $this->pretty_name;
