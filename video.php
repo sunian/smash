@@ -38,17 +38,11 @@ require_once('libs/Videos.php');
 <?php include('libs/navheader.php');
 
     $vid = new Video();
+    $vid->set(array("video_id"=>$urlParams["t"]));
+    echo $vid->populateFieldsFromID();
     $urlID = $vid->getIDFromURL();
+    echo "<h1>", $vid->title , "</h1>";
 
-    if(strcmp($urlParams["t"], "0")==0) {
-
-    }
-
-    else {
-        $vid->set(array("video_id"=>$urlParams["t"]));
-        echo $vid->populateFieldsFromID();
-        echo "<h1>", $vid->title , "</h1>";
-    }
 
 ?>
 <div class='body'>
@@ -59,12 +53,13 @@ require_once('libs/Videos.php');
         seamless>
     </iframe>
 
+    <br>
     <table border="1">
         <tr>
             <th> Characters </th>
+                <td> jfdsdj;ak </td>
             <th> Players </th>
             <th> Techniques </th>
-            <td> jfsdj;ak </td>
         </tr>
     </table>
 

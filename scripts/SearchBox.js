@@ -51,6 +51,6 @@ function QueryField(obj) {
     };
 
     this.renderInsert = function () {
-        return "<br><a><img src='../images/plus.png'>" + this.placeholder + "</a>";
+        return "<br><a><img src='images/plus.png' class='smallBtn'>" + this.placeholder + "</a>";
     }
 }

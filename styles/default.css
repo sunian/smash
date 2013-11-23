@@ -109,12 +109,17 @@ a {
     color: white;
 }
 
+img.smallBtn {
+    height: 1em;
+}
+
 div.search-box {
     display: inline-block;
     float: right;
     margin: 8px;
     padding: 1%;
     color: white;
+    text-align: left;
 }
 
 .naviLink {
