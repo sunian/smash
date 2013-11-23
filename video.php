@@ -36,9 +36,16 @@ require_once('libs/Videos.php');
 <body>
 
 <?php include('libs/navheader.php');
+
+    if(strcmp($urlParams["t"], "newVersion")==0) {
+
+    }
+
+    else {
     $vid = new Videos();
-    $vid->populateFieldsFromID();
+    echo $vid->populateFieldsFromID();
     echo "<h1>" , $video->title , "</h1>";
+    }
 ?>
 
 <!--function getURL() {-->
