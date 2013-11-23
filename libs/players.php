@@ -9,7 +9,7 @@
     require_once('DbUtil.php');
 
     $conn = DbUtil::connect();
-    $stmt = $conn->prepare("select player_id as id, COALESCE(tag, name) as name from player order by player_id");
+    $stmt = $conn->prepare("select player_id as id, COALESCE(tag, name) as name from player order by name");
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     echo json_encode($stmt->fetchAll());
