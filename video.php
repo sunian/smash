@@ -36,42 +36,38 @@ require_once('libs/Videos.php');
 <body text="white">
 
 <?php include('libs/navheader.php');
+
+    $vid = new Video();
+    $urlID = $vid->getIDFromURL();
+
     if(strcmp($urlParams["t"], "0")==0) {
 
     }
 
     else {
-    $vid = new Video();
-    $vid->set(array("video_id"=>$urlParams["t"]));
-    echo $vid->populateFieldsFromID();
-    echo "<h1>", $vid->title , "</h1>";
+        $vid->set(array("video_id"=>$urlParams["t"]));
+        echo $vid->populateFieldsFromID();
+        echo "<h1>", $vid->title , "</h1>";
     }
 
-    $urlID = $vid->getIDFromURL();
-    '<iframe width="425" height="350" type="application/x-shockwave-flash" ' .
-    'data="http://www.youtube.com/embed/' . $urlID . ' "?enable?enablejsapi=1&playsinline=1&autoplay=1">' .
-//  '<param name="video" value="http://www.youtube.com/' . $urlID . '"></param>' .
-     '</iframe>';
 ?>
-<!--<script>-->
-<!--function setURL() {-->
-<!--    var iframe = document.getElementById("myframe");-->
-<!--    var str1 = "http://www.youtube.com/embed/";-->
-<!--    var str2 = vid->getIDFromURL();-->
-<!--    var str3 = "?enable?enablejsapi=1&playsinline=1&autoplay=1";-->
-<!--    var str = str1.concat(str2,str3);-->
-<!--    iframe.src = str;-->
-<!--}-->
-<!--</script>-->
-<!--<div class='body'>-->
-<!---->
-<!--<iframe id="myframe"-->
-<!--        width="420" height="345"-->
-<!--        src=""-->
-<!--        seamless-->
-<!--        >-->
-<!--</iframe>-->
-<!---->
-<!--</div>-->
+<div class='body'>
+
+    <iframe name='video'
+        width="425" height="350"
+        src="http://www.youtube.com/embed/<?php echo $urlID;?>?enablejsapi=1&playsinline=1&autoplay=1"
+        seamless>
+    </iframe>
+
+    <table border="1">
+        <tr>
+            <th> Characters </th>
+            <th> Players </th>
+            <th> Techniques </th>
+            <td> jfsdj;ak </td>
+        </tr>
+    </table>
+
+</div>
 </body>
 </html>

@@ -27,6 +27,30 @@ function QueryField(obj) {
     for (var prop in obj) this[prop] = obj[prop];
 
     this.render = function () {
-        return "<br><input id='" + this.id + "' placeholder='" + this.placeholder + "'/>";
+        switch (this.count) {
+            case "1":
+                return this.renderNew();
+                break;
+            case "+":
+                return this.renderNew() + this.renderInsert();
+                break;
+            case "*":
+                return this.renderInsert();
+                break;
+        }
+
     };
+
+    this.renderNew = function () {
+        switch (this.type) {
+            case "input":
+                return "<br><input id='" + this.id + "' placeholder='" + this.placeholder + "'/>";
+            case "select":
+                break;
+        }
+    };
+
+    this.renderInsert = function () {
+        return "<br><a><img src='../images/plus.png'>" + this.placeholder + "</a>";
+    }
 }
