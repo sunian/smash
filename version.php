@@ -70,7 +70,7 @@ else {
         new TableColumn("Air Speed Rank", "newAirRank", "input", "Air Speed Rank")
     ));
     $table->setData("SELECT name, weight, height, falling_speed_rank, air_speed_rank
-        FROM character NATURAL JOIN character_identity WHERE version_id = " . $version->version_id, null);
+        FROM `character` NATURAL JOIN character_identity WHERE version_id = " . $version->version_id, null);
     $table->renderData = function ($row) {
         $leDate = $row["release_date"];
         echo "<tr>";
