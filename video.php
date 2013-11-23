@@ -58,12 +58,12 @@ require_once('libs/Videos.php');
                     seamless>
             </iframe>
         </td>
-        <td style="background-color:black;width:500px;height=350">
+        <td style="background-color:black;width:425px;height=350">
             <h2>Information</h2><br>
             Characters<br>
-            <?php echo $characters; ?> <br>
+            <?php echo print_r($characters); ?> <br>
             Players<br>
-            <?php echo $players; ?> <br>
+            <?php echo print_r($players); ?> <br>
             Techniques<br>
             <?php echo $techniques; ?> <br>
         </td>
