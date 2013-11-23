@@ -130,7 +130,7 @@ class Video extends JSONObject {
                 c.falling_speed_rank AS falling_speed, c.air_speed_rank AS air_speed, i.nickname AS nick
                 FROM character_identity as i INNER JOIN `character` as c on i.identity_id = c.identity_id
                 INNER JOIN universe as u on i.universe_id = u.universe_id INNER JOIN version as v on v.version_id = c.version_id
-                INNER JOIN video_player as vp on vp.character_id=c.character_id AND vp.player_id=p.player_id INNER JOIN
+                INNER JOIN video_player as vp on vp.character_id=c.character_id INNER JOIN
                 video ON vp.video_id = video.video_id WHERE video.video_id = :video_id";
             $stmt = $conn->prepare($sql_string);
             $params = array("video_id"=>$this->video_id);
