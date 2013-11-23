@@ -74,7 +74,7 @@ function QueryField(myParent, obj) {
         newAnchor.append(newImage);
         newAnchor.append(this.placeholder);
         newAnchor.attr("href", "javascript:void(0)");
-        newAnchor.click(function (e) {
+        newAnchor.bind("click", [this], function (e) {
             console.log(e.data);
 //            this.renderNew();
         })
