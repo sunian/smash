@@ -42,11 +42,15 @@ require_once('libs/Videos.php');
     echo $vid->populateFieldsFromID();
     $urlID = $vid->getIDFromURL();
     $players = $vid->players;
-    for($i=1; $i<count($vid->players); $i++) {
+    for($i=0; $i<count($vid->players); $i++) {
     $output = $output . ", " . $vid->players[$i]->tag;
     }
     echo $output;
     $characters = $vid->characters;
+    for($i=0; $i<count($vid->characters); $i++) {
+    $output2 = $output2 . ", " . $vid->characters[$i]->tag;
+    }
+    echo $output2;
     $techniques = $vid->techniques;
     echo "<h1>", $vid->title , "</h1>";
 
