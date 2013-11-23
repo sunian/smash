@@ -54,6 +54,7 @@ class Character extends JSONObject
 
     public function createCharacter() {
         try {
+            echo "hello";
             // Check if the character already exists
             $conn = DbUtil::connect();
             $sql_string = "SELECT identity_id FROM `character` WHERE identity_id = :identity_id AND version_id = :version_id";
