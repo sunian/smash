@@ -33,7 +33,6 @@ require_once('libs/Videos.php');
 
     </script>
 </head>
-<div class='body'>
 <body text="white">
 
 <?php include('libs/navheader.php');
@@ -45,7 +44,7 @@ require_once('libs/Videos.php');
     $vid = new Video();
     $vid->set(array("video_id"=>$urlParams["t"]));
     echo $vid->populateFieldsFromID();
-    echo "<h1>, $vid->title , </h1>";
+    echo "<h1>", $vid->title , "</h1>";
     }
 ?>
 <script>
@@ -58,6 +57,7 @@ function setURL() {
     iframe.src = str;
 }
 </script>
+<div class='body'>
 
 <iframe id="myframe"
         width="420" height="345"
