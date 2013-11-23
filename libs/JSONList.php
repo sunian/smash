@@ -27,7 +27,7 @@ class JSONList extends JSONObject
 
     public function getFieldType($fieldName) {
         switch ($fieldName) {
-            case "list": return elemType . "[]";
+            case "list": return $this->elemType . "[]";
         }
         return parent::getFieldType($fieldName);
     }
