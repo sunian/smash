@@ -119,6 +119,7 @@ div.search-box {
     margin: 8px;
     padding: 1%;
     color: white;
+    text-align: left;
 }
 
 .naviLink {
