@@ -18,7 +18,13 @@ function SearchBox(parent) {
         this.parent.html(this.title);
         for (var i in this.fields) {
             this.fields[i].render();
+            this.parent.append(this.fields[i].myDiv);
         }
+        this.parent.append(document.createElement('br'));
+        var btnGo = $(document.createElement('input'));
+        btnGo.attr("type", "button");
+        btnGo.attr("value", "Go");
+        this.parent.append(btnGo);
     };
 
     this.render();
@@ -26,6 +32,7 @@ function SearchBox(parent) {
 
 function QueryField(myParent, obj) {
     this.mySearchBox = myParent;
+    this.myDiv = $(document.createElement('div'));
     for (var prop in obj) this[prop] = obj[prop];
 
     this.render = function () {
@@ -46,7 +53,7 @@ function QueryField(myParent, obj) {
 
     this.renderNew = function () {
         var types = this.type.split(" ");
-        this.mySearchBox.parent.append(document.createElement('br'));
+        this.myDiv.append(document.createElement('br'));
         for (var i in types) {
             var typeData = types[i].split(":");
             switch (typeData[0]) {
@@ -54,19 +61,19 @@ function QueryField(myParent, obj) {
                     var newInput = $(document.createElement('input'));
                     newInput.attr("id", this.id + "-" + i);
                     newInput.attr("placeholder", this.placeholder);
-                    this.mySearchBox.parent.append(newInput);
+                    this.myDiv.append(newInput);
                     break;
                 case "select":
                     var newSelect = $(window[typeData[1]].call(this, true));
                     newSelect.attr("id", this.id + "-" + i);
-                    this.mySearchBox.parent.append(newSelect);
+                    this.myDiv.append(newSelect);
                     break;
             }
         }
     };
 
     this.renderInsert = function () {
-        this.mySearchBox.parent.append(document.createElement('br'));
+        this.myDiv.append(document.createElement('br'));
         var newAnchor = $(document.createElement('a'));
         var newImage = $(document.createElement('img'));
         newImage.attr("src", 'images/plus.png');
@@ -77,6 +84,6 @@ function QueryField(myParent, obj) {
         newAnchor.bind("click", [this], function (e) {
             e.data[0].renderNew();
         })
-        this.mySearchBox.parent.append(newAnchor);
+        this.myDiv.append(newAnchor);
     }
 }
