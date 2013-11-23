@@ -66,7 +66,7 @@ class Version extends JSONObject{
             $this->pretty_name = $row["name"];
 
             $sqlString = "SELECT c.character_id AS id, i.name AS name, u.name AS universe, c.weight, c.height,
-                c.falling_speed_rank AS falling_speed, c.air_speed_rank AS air_speed, i.nickname AS nick, 'fine' AS version
+                c.falling_speed_rank AS falling_speed, c.air_speed_rank AS air_speed, i.nickname AS nick, :version_name AS version
                 FROM character_identity as i INNER JOIN `character` as c on i.identity_id = c.identity_id
                 INNER JOIN universe as u on i.universe_id = u.universe_id INNER JOIN version as v on v.version_id = c.version_id
                 WHERE v.version_id = :version_id";
