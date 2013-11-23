@@ -11,12 +11,8 @@
     $conn = DbUtil::connect();
     $stmt = $conn->prepare("select distinct venue from tournament order by venue");
     $stmt->execute();
-    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    $venues = $stmt->fetchAll();
+    $venues = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
     $stmt->closeCursor();
-    foreach ($venues as $i => $venue) {
-        $venues[$i] = $venue["venue"];
-    }
 
     echo json_encode($venues);
     ?></div>
