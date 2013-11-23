@@ -33,6 +33,7 @@ require_once('libs/Videos.php');
 
     </script>
 </head>
+<div class='body'>
 <body text="white">
 
 <?php include('libs/navheader.php');
@@ -47,23 +48,24 @@ require_once('libs/Videos.php');
     echo "<h1>, $vid->title , </h1>";
     }
 ?>
-
-function getURL() {
+<script>
+function setURL() {
     var iframe = document.getElementById("myframe");
     var str1 = "http://www.youtube.com/embed/";
     var str2 = vid->getIDFromURL();
     var str3 = "?enable?enablejsapi=1&playsinline=1&autoplay=1";
     var str = str1.concat(str2,str3);
-    iframe.src = str,
+    iframe.src = str;
 }
+</script>
 
-<div class='body'>
 <iframe id="myframe"
         width="420" height="345"
         src="http://www.youtube.com/embed/aEd5doQuG9c?enablejsapi=1&playsinline=1&autoplay=1"
         seamless
         >
 </iframe>
+
 </div>
 </body>
 </html>
