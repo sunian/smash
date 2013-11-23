@@ -65,10 +65,6 @@ class Character extends JSONObject
             }
             $stmt->closeCursor();
 
-            if($this->weight) echo "hello";
-            if($this->height) echo "height";
-            if($this->falling_speed_rank) echo "fall";
-            if($this->air_speed_rank) echo "air";
             // Add the character
             $sql_string = "INSERT INTO `character` (identity_id, version_id" . ($this->weight?", weight":"") . ($this->height?", height":"")
                 . ($this->falling_speed_rank?", falling_speed_rank":"") . ($this->air_speed_rank?", air_speed_rank)":")") .
