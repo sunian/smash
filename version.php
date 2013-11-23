@@ -33,6 +33,14 @@ require_once('libs/DataTable.php');
             newFallRank = $("#newFallRank");
             newAirRank = $("#newAirRank");
 
+            selectCharacter = createCharacterSelector();
+            selectCharacter.id = "_selectCharacter";
+            selectCharacter.disabled = true;
+            $("#_newName")[0].appendChild(selectCharacter);
+            selectCharacter = createCharacterSelector();
+            selectCharacter.id = "selectCharacter";
+            newName[0].appendChild(selectCharacter);
+
             newName.keyup( function () {
                 Helper.displayBtnAdd(newName.val().length > 0 && newWeight.val().length > 0);
             });
@@ -63,7 +71,7 @@ else {
     echo "<h1>" , $version->pretty_name , "</h1>";
 
     $table = new DataTable("Characters", array(
-        new TableColumn("Name", "newName", "dropDown", "New Name"),
+        new TableColumn("Name", "newName", "select", "New Name"),
         new TableColumn("Weight", "newWeight", "input", "New Weight"),
         new TableColumn("Height", "newHeight", "input", "New Height"),
         new TableColumn("Falling Speed Rank", "newFallRank", "input", "Fall Speed Rank"),
@@ -82,6 +90,8 @@ else {
         echo "</tr>";
     };
     $table->render();
+
+    include('libs/characters.php');
 }
 ?>
 </body>
