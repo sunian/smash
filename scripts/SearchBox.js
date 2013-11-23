@@ -64,8 +64,8 @@ function QueryField(myParent, obj) {
         var newImage = $(document.createElement('img'));
         newImage.attr("src", 'images/plus.png');
         newImage.addClass("smallBtn");
-        newAnchor.text(this.placeholder);
         newAnchor.append(newImage);
+        newAnchor.text(this.placeholder);
         newAnchor.attr("href", "javascript:void(0)");
         this.mySearchBox.parent.append(newAnchor);
     }
