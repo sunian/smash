@@ -10,9 +10,7 @@ require_once('libs/Version.php');
 require_once('libs/Character.php');
 require_once('libs/DataTable.php');
 if (strlen($json_input) > 0) {
-    echo "whaaat?";
     $character = new Character($json_input);
-    echo "hi james";
     $error = $character->createCharacter();
     if ($error) echo $error;
     exit();
