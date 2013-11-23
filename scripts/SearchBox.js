@@ -25,7 +25,7 @@ function SearchBox(parent) {
 }
 
 function QueryField(myParent, obj) {
-    this.parent = myParent;
+    this.mySearchBox = myParent;
     for (var prop in obj) this[prop] = obj[prop];
 
     this.render = function () {
@@ -47,11 +47,11 @@ function QueryField(myParent, obj) {
     this.renderNew = function () {
         switch (this.type) {
             case "input":
-                this.parent.appendChild(document.createElement('br'));
+                this.mySearchBox.parent.appendChild(document.createElement('br'));
                 var newInput = $(document.createElement('input'));
                 newInput.attr("id", this.id);
                 newInput.attr("placeholder", this.placeholder);
-                this.parent.appendChild(newInput);
+                this.mySearchBox.parent.appendChild(newInput);
                 break;
             case "select":
                 break;

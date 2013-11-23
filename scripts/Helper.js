@@ -17,7 +17,7 @@ function Helper() {
 }
 
 Helper.setupTables = function (tableID) {
-    btnAdd = $("a.btnPlus").parent();
+    btnAdd = $("a.btnPlus").mySearchBox();
     Helper.alignCellWidths($.makeArray($("table#table" + tableID + " tr th")),
         $.makeArray($("div#fixedHeader table tr th")));
     Helper.alignCellWidths($.makeArray($("table#table" + tableID + " tfoot tr td")),
