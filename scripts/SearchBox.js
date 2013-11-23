@@ -56,7 +56,7 @@ function QueryField(myParent, obj) {
         var types = this.type.split(" ");
 //        if (this.values.length > 0)
             this.myDiv.append(document.createElement('br'));
-        this.values.push(null);
+//        this.values.push(null);
         for (var i in types) {
             var typeData = types[i].split(":");
             switch (typeData[0]) {
