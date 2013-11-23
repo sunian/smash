@@ -3,7 +3,7 @@
  */
 function setupSearchBox(){
     $("div.search-box").each(function (i, elem) {
-        console.log($(elem).html);
+        $(elem).html(new SearchBox($(elem).html()).render());
     });
 }
 
@@ -12,6 +12,6 @@ function SearchBox(json) {
     for (var prop in obj) this[prop] = obj[prop];
 
     this.render = function () {
-
+        return this.title;
     };
 }
