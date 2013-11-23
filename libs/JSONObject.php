@@ -16,10 +16,8 @@ class JSONObject {
 
     public function set($data) {
         foreach ($data AS $key => $value) {
-            echo "key:", $key, "\n";
             if (is_array($value)) {
                 $fieldType = $this->getFieldType($key);
-                echo "fieldType: ", $fieldType, "\n";
                 $refClass = new ReflectionClass(str_replace("[]","", $fieldType));
                 if (endsWith($fieldType, "[]")){
                     if (sizeof($value) > 0 && is_array($value[0])) {

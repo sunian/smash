@@ -17,9 +17,6 @@ class JSONList extends JSONObject
         $instance->elemType = $elemType;
         if ($obj) {
             $temp["list"] = $obj;
-//            echo "_ ";
-            print_r($temp);
-//            echo " _";
             $instance->set($temp);
         }
         return $instance->list;
