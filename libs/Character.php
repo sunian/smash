@@ -63,8 +63,10 @@ class Character extends JSONObject
                 return "That character already exists!";
             }
             $stmt->closeCursor();
-            $sql_string = "INSERT INTO `character` (identity_id, version_id, weight, height, falling_speed_rank, air_speed_rank)
-               VALUES (:identity_id, :version_id, :weight, :height, :falling_speed_rank, :air_speed_rank)";
+            $sql_string = "INSERT INTO `character` (identity_id, version_id" . $this->weight?", weight":"" . $this->height?", height":"" .
+                $this->falling_speed_rank?", falling_speed_rank":"" . $this->air_speed_rank?", air_speed_rank)":")" .
+                "VALUES (:identity_id, :version_id" . $this->weight?", :weight":"" . $this->height?", :height":"" .
+                $this->falling_speed_rank?", :falling_speed_rank":"" . $this->air_speed_rank?", :air_speed_rank)":")";
             $stmt = $conn->prepare($sql_string);
             $params = array("identity_id"=>$this->identity_id, "version_id"=>$this->version_id, "weight"=>$this->weight,
                 "height"=>$this->height, "falling_speed_rank"=>$this->falling_speed_rank, "air_speed_rank"=>$this->air_speed_rank);
