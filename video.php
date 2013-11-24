@@ -71,7 +71,7 @@ include('libs/techniques.php');
         </td>
         <td style="background-color:black;width:425px;height=350">
             <h2>Information</h2><br>
-            <?php $outputString; ?>
+            <?php echo $outputString; ?>
         </td>
     </tr>
 </table>
