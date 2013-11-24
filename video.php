@@ -67,17 +67,6 @@ require_once('libs/Videos.php');
 
     echo "<h1>", $vid->title , "</h1>";
 
-//    $table = new DataTable("Techniques", array(
-//    new TableColumn("Technique", "newTechnique", "select", "New Technique"),
-//    ));
-//
-//    $table->renderData = function ($row) {
-//    echo "<tr>";
-//    echo "<td>" . $row["techniques"] . "</td>";
-//    echo "</tr>";
-//    };
-//    $table->render();
-
 include('libs/techniques.php');
 ?>
 
