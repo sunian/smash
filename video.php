@@ -38,7 +38,7 @@ require_once('libs/Videos.php');
             newTechnique = $("#newTechnique");
             selectTechnique = createTechniqueSelector();
             selectTechnique.id = "selectTechnique";
-            $("#_newTechnique")[0].appendChild(selectTechnique);
+            newTechnique[0].appendChild(selectTechnique);
         });
     </script>
 </head>
@@ -80,6 +80,7 @@ include('libs/techniques.php');
             <h2>Information</h2><br>
         </td>
     </tr>
+    <tr><div id="newTechnique"> </tr></div>
 </table>
 </div>
 </body>
