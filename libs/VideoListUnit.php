@@ -12,10 +12,12 @@ require_once('Player.php');
 class VideoListUnit {
     var $video;
 
-    function __construct($video_id) {
-        $this->video = new Video();
-        $this->video->video_id = $video_id;
-        $this->video->populateFieldsFromID();
+    function __construct($video_id = false) {
+        if($video_id) {
+            $this->video = new Video();
+            $this->video->video_id = $video_id;
+            $this->video->populateFieldsFromID();
+        }
     }
 
     public function getThumbnail() {
