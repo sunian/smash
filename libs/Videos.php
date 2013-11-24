@@ -166,6 +166,7 @@ class Video extends JSONObject {
                 $thisCharacter->id = $row["character_id"];
                 $thisCharacter->populateFieldsFromID();
                 $this->characters[$count++] = $thisCharacter;
+                echo "Name: " , $thisCharacter->name;
             }
         }
         catch(PDOException $e) {
