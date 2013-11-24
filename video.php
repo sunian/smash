@@ -35,17 +35,11 @@ require_once('libs/Videos.php');
         var newTechnique;
         var selectTechnique;
         $(function () {
-            alert("wat");
             newTechnique = $("#newTechnique");
             selectTechnique = createTechniqueSelector();
             selectTechnique.id = "selectTechnique";
-//            selectTechnique.disabled = true;
             $("#_newTechnique")[0].appendChild(selectTechnique);
-//            selectTechnique = createTechniqueSelector();
-//            selectTechnique.id = "selectTechnique";
-//            newTechnique[0].appendChild(selectTechnique);
         });
-        alert("done");
     </script>
 </head>
 <body text="white">

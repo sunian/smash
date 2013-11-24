@@ -7,6 +7,7 @@
      * Time: 3:30 AM
      * To change this template use File | Settings | File Templates.
      */
+    echo "yup";
     require_once('DbUtil.php');
     require_once('Techniques.php');
 
