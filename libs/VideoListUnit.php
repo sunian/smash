@@ -8,6 +8,7 @@
 require_once('DbUtil.php');
 require_once('Videos.php');
 require_once('Player.php');
+require_once('Character.php');
 
 class VideoListUnit {
     var $video;
