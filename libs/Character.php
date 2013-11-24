@@ -15,12 +15,8 @@ class Character extends JSONObject
     public $name = null;
     public $nick = null;
     public $universe = null;
-    public $version = null;
     public $weight = null;
     public $height = null;
-    public $falling_speed = null;
-    public $air_speed = null;
-
     public $identity_id = null;
     public $version_id = null;
     public $falling_speed_rank = null;
@@ -81,6 +77,31 @@ class Character extends JSONObject
             return false;
 
         } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function populateFieldsFromID() {
+        try {
+            $conn = DbUtil::connect();
+            $sql_string = "SELECT c.character_id AS id, nickname AS nick, c.identity_id, name, universe.name AS universe,
+                weight, height, air_speed_rank, falling_speed_rank, version_id FROM `character` AS c NATURAL JOIN character_identity
+                NATURAL JOIN universe WHERE c.character_id = :character_id";
+            $params = array("character_id"=>$this->id);
+            $stmt = $conn->prepare($sql_string);
+            $stmt->execute($params);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->version_id = $row["version_id"];
+            $this->air_speed_rank = $row["air_speed_rank"];
+            $this->falling_speed_rank = $row["falling_speed_rank"];
+            $this->weight = $row["weight"];
+            $this->height = $row["height"];
+            $this->nick = $row["nick"];
+            $this->identity_id = $row["identity_id"];
+            $this->name = $row["name"];
+            $this->universe = $row["universe"];
+        }
+        catch(PDOException $e) {
             return $e->getMessage();
         }
     }
