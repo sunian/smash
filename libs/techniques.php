@@ -9,7 +9,7 @@
     require_once('DbUtil.php');
 
     $conn = DbUtil::connect();
-    $stmt = $conn->prepare("select technique_id as id, name from technique order by name");
+    $stmt = $conn->prepare("select name from technique order by name");
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     echo json_encode($stmt->fetchAll());
@@ -20,7 +20,7 @@
         var select_technique = document.createElement("select");
         var techniques = JSON.parse($("#div_techniques").text());
         for (var i in techniques) {
-            select_technique.options[i] = new Option(techniques[i].name, techniques[i].id);
+            select_technique.options[i] = new Option(techniques[i].name);
         }
         return select_technique;
     }
