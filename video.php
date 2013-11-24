@@ -9,8 +9,8 @@
 require_once('libs/browser.php');
 require_once('libs/DbUtil.php');
 require_once('libs/Videos.php');
-require_once('libs/DataTable.php');
-require_once('libs/Techniques.php');
+//require_once('libs/DataTable.php');
+//require_once('libs/Techniques.php');
 
 //if (strlen($json_input) > 0) {
    // $video = new Video($json_input);
