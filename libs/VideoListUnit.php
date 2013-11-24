@@ -40,7 +40,7 @@ class VideoListUnit {
             }
         }
         else {
-            echo "Unknown";
+            $outputString = $outputString . "Unknown";
         }
         $outputString = $outputString . "</div>\n";
 
