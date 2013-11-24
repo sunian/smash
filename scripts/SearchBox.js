@@ -55,7 +55,7 @@ function QueryField(myParent, obj) {
     this.renderNew = function () {
         var types = this.type.split(" ");
         if (this.values.length > 0)
-            this.myDiv.append(document.createElement('br'));
+            this.myDiv.prepend(document.createElement('br'));
         this.values.push(null);
         for (var i in types) {
             var typeData = types[i].split(":");
@@ -64,12 +64,12 @@ function QueryField(myParent, obj) {
                     var newInput = $(document.createElement('input'));
                     newInput.attr("id", this.id + "-" + i);
                     newInput.attr("placeholder", this.placeholder);
-                    this.myDiv.append(newInput);
+                    this.myDiv.prepend(newInput);
                     break;
                 case "select":
                     var newSelect = $(window[typeData[1]].call(this, true));
                     newSelect.attr("id", this.id + "-" + i);
-                    this.myDiv.append(newSelect);
+                    this.myDiv.prepend(newSelect);
                     break;
             }
         }
