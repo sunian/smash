@@ -38,11 +38,7 @@ require_once('libs/Videos.php');
             newTechnique = $("#newTechnique");
             selectTechnique = createTechniqueSelector();
             selectTechnique.id = "selectTechnique";
-//            selectTechnique.disabled = true;
             $("#_newTechnique")[0].appendChild(selectTechnique);
-//            selectTechnique = createTechniqueSelector();
-//            selectTechnique.id = "selectTechnique";
-//            newTechnique[0].appendChild(selectTechnique);
         });
     </script>
 </head>
@@ -66,17 +62,6 @@ require_once('libs/Videos.php');
     echo $output2;
 
     echo "<h1>", $vid->title , "</h1>";
-
-//    $table = new DataTable("Techniques", array(
-//    new TableColumn("Technique", "newTechnique", "select", "New Technique"),
-//    ));
-//
-//    $table->renderData = function ($row) {
-//    echo "<tr>";
-//    echo "<td>" . $row["techniques"] . "</td>";
-//    echo "</tr>";
-//    };
-//    $table->render();
 
 include('libs/techniques.php');
 ?>

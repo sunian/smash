@@ -1,5 +1,4 @@
-<div id="div_techniques" style="display: none;">
-    <?php
+<div id="div_techniques" style="display: none;"><?php
     /**
      * Created by JetBrains PhpStorm.
      * User: Student
@@ -11,8 +10,10 @@
     require_once('Techniques.php');
 
     $conn = DbUtil::connect();
+    echo "weee";
     $stmt = $conn->prepare("select technique_id as id, name from technique order by name");
     $stmt->execute();
+    echo "executed";
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     echo json_encode($stmt->fetchAll());
     $stmt->closeCursor();
