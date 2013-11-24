@@ -1,4 +1,5 @@
-<div id="div_techniques" style="display: none;"><?php
+<div id="div_techniques" style="display: none;">
+    <?php
     /**
      * Created by JetBrains PhpStorm.
      * User: Student
@@ -15,14 +16,15 @@
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     echo json_encode($stmt->fetchAll());
     $stmt->closeCursor();
-    ?></div>
+    ?>
+</div>
 <script type="text/javascript">
-//    function createTechniqueSelector() {
-//        var select_technique = document.createElement("select");
-//        var techniques = JSON.parse($("#div_techniques").text());
-//        for (var i in techniques) {
-//            select_technique.options[i] = new Option(techniques[i].name, techniques[i].id);
-//        }
-//        return select_technique;
-//    }
+    function createTechniqueSelector() {
+        var select_technique = document.createElement("select");
+        var techniques = JSON.parse($("#div_techniques").text());
+        for (var i in techniques) {
+            select_technique.options[i] = new Option(techniques[i].name, techniques[i].id);
+        }
+        return select_technique;
+    }
 </script>

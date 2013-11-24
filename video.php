@@ -9,8 +9,7 @@
 require_once('libs/browser.php');
 require_once('libs/DbUtil.php');
 require_once('libs/Videos.php');
-require_once('libs/DataTable.php');
-require_once('libs/Techniques.php');
+//require_once('libs/Techniques.php');
 
 //if (strlen($json_input) > 0) {
    // $video = new Video($json_input);
@@ -33,18 +32,18 @@ require_once('libs/Techniques.php');
     }
     ?>
     <script type="text/javascript">
-//        var newTechnique;
-//        var selectTechnique;
-//        $(function () {
-//            newTechnique = $("#newTechnique");
-//            selectTechnique = createTechniqueSelector();
-//            selectTechnique.id = "_selectTechnique";
-//            selectTechnique.disabled = true;
-//            $("#_newTechnique")[0].appendChild(selectTechnique);
-//            selectTechnique = createTechniqueSelector();
-//            selectTechnique.id = "selectTechnique";
-//            newTechnique[0].appendChild(selectTechnique);
-//        });
+        var newTechnique;
+        var selectTechnique;
+        $(function () {
+            newTechnique = $("#newTechnique");
+            selectTechnique = createTechniqueSelector();
+            selectTechnique.id = "_selectTechnique";
+            selectTechnique.disabled = true;
+            $("#_newTechnique")[0].appendChild(selectTechnique);
+            selectTechnique = createTechniqueSelector();
+            selectTechnique.id = "selectTechnique";
+            newTechnique[0].appendChild(selectTechnique);
+        });
     </script>
 </head>
 <body text="white">
@@ -67,6 +66,7 @@ require_once('libs/Techniques.php');
     echo $output2;
 
     echo "<h1>", $vid->title , "</h1>";
+
 //    $table = new DataTable("Techniques", array(
 //    new TableColumn("Technique", "newTechnique", "select", "New Technique"),
 //    ));
