@@ -58,7 +58,7 @@ function QueryField(myParent, obj) {
         if (this.count != "1")
             this.myDiv.prepend(document.createElement('br'));
         this.values.push(null);
-        for (var i in types) {
+        for (var i = types.length - 1; i >= 0; i--) {
             var typeData = types[i].split(":");
             switch (typeData[0]) {
                 case "input":
