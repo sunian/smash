@@ -33,7 +33,7 @@ function SearchBox(parent) {
 function QueryField(myParent, obj) {
     this.mySearchBox = myParent;
     this.myDiv = $(document.createElement('div'));
-    this.myDiv.addClass("query-field")
+    if (this.count != "1") this.myDiv.addClass("query-field")
     for (var prop in obj) this[prop] = obj[prop];
     this.values = [];
 
