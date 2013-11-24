@@ -36,7 +36,7 @@ require_once('libs/DataTable.php');
         var newTechnique;
         var selectTechnique;
         $(function () {
-            newTechnique = document.getElementsByName("newTechnique");
+            newTechnique = $(#"newTechnique");
             selectTechnique = createTechniqueSelector();
             selectTechnique.id = "selectTechnique";
             newTechnique[0].appendChild(selectTechnique);
@@ -82,7 +82,7 @@ include('libs/techniques.php');
         </td>
     </tr>
 </table>
-    <div class='newTechnique'> Add Techniques </div>
+    <div id='newTechnique'> Add Techniques </div>
 </div>
 </body>
 </html>
