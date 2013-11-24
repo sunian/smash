@@ -78,7 +78,7 @@ require_once('libs/Videos.php');
 //    };
 //    $table->render();
 
-include('libs/techniques.php');
+//include('libs/techniques.php');
 ?>
 
 <div class='body'>

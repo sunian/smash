@@ -1,4 +1,5 @@
-<div id="div_techniques" style="display: none;"><?php
+<div id="div_techniques" style="display: none;">
+    <?php
     /**
      * Created by JetBrains PhpStorm.
      * User: Student
@@ -15,7 +16,8 @@
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     echo json_encode($stmt->fetchAll());
     $stmt->closeCursor();
-    ?></div>
+    ?>
+</div>
 <script type="text/javascript">
     function createTechniqueSelector() {
         var select_technique = document.createElement("select");
