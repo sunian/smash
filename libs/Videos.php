@@ -108,7 +108,20 @@ class Video extends JSONObject {
     }
 
     private function populateVersions() {
-    }
+        try {
+            $conn = DbUtil::connect();
+            $sql_string = "SELECT v.title AS title, v.version_number, p.name AS pretty_name
+                FROM video NATURAL JOIN video_version NATURAL JOIN version AS v NATURAL JOIN pretty_version AS p" .
+                " WHERE video_id = :video_id";
+            $params = array("video_id" => $this->video_id);
+            $stmt = $conn->prepare($sql_string);
+            $stmt->execute($params);
+            $this->versions = $stmt->fetchAll(PDO::FETCH_CLASS, "Technique");
+        }
+        catch(PDOException $e) {
+            return $e->getMessage();
+        }
+}
 
     public function getIDFromURL() {
         $query = substr($this->url, strpos($this->url, "?"));
