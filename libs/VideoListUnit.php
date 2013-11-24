@@ -23,7 +23,7 @@ class VideoListUnit {
     }
 
     public function getVideoInformation() {
-        $outputString = "<div><h2>" . $this->video->title . "</h1><br>";
+        $outputString = "<div><h2>" . $this->video->title . "</h2><br>";
         if(count($this->video->playerPlaysChar)>0) {
             $outputString = $outputString . $this->video->playerPlaysChar[0]->character->name . "(" .
                 $this->video->playerPlaysChar[0]->player->tag . ")";
