@@ -45,4 +45,22 @@ class Player extends JSONObject
             return $e->getMessage();
         }
     }
+
+    public function populateFieldsFromID() {
+        try {
+            $conn = DbUtil::connect();
+            $sql_string = "SELECT name AS region_name, region_id, name, tag FROM player NATURAL JOIN region WHERE player_id = :player_id";
+            $params = array("player_id"=>$this->player_id);
+            $stmt = $conn->prepare($sql_string);
+            $stmt->execute($params);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->region_name = $row["region_name"];
+            $this->name = $row["name"];
+            $this->tag = $row["tag"];
+            $this->region_id = $row["region_id"];
+        }
+        catch(PDOException $e) {
+            return $e->getMessage();
+        }
+    }
 }
