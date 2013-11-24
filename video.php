@@ -9,7 +9,7 @@
 require_once('libs/browser.php');
 require_once('libs/DbUtil.php');
 require_once('libs/Videos.php');
-require_once('libs/DataTable.php');
+require_once('libs/VideoListUnit.php');
 //require_once('libs/Techniques.php');
 
 //if (strlen($json_input) > 0) {
@@ -51,16 +51,8 @@ require_once('libs/DataTable.php');
     $vid->set(array("video_id"=>$urlParams["t"]));
     echo $vid->populateFieldsFromID();
     $urlID = $vid->getIDFromURL();
-
-    for($i=0; $i<count($vid->players); $i++) {
-        $output = $output . ", " . $vid->players[$i]->tag;
-    }
-    echo $output;
-
-    for($i=0; $i<count($vid->characters); $i++) {
-        $output2 = $output2 . ", " . $vid->characters[$i]->name;
-    }
-    echo $output2;
+    $vidUnit = new VideoListUnit($vid->video_id);
+    $outputString = $vidUnit->getVideoInformation();
 
     echo "<h1>", $vid->title , "</h1>";
 
@@ -79,10 +71,21 @@ include('libs/techniques.php');
         </td>
         <td style="background-color:black;width:425px;height=350">
             <h2>Information</h2><br>
+            <?php $outputString; ?>
         </td>
     </tr>
 </table>
-    <div id='newTechnique'> Add Techniques </div>
+    <br>
+
+    <div id='newTechnique'>
+        <table>
+            <tr>
+                <td style="background-color:black;width:850px">
+                    Add Techniques here?
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 </body>
 </html>
