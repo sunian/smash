@@ -35,7 +35,7 @@ class VideoListUnit {
         echo "<br>Version: ";
         if($this->video->versions) {
             echo $this->video->versions[0]->pretty_name;
-            for($i=1; i<count($this->video->versions); i++) {
+            for($i=1; $i<count($this->video->versions); $i++) {
                 echo ", " + $this->video->versions[$i]->pretty_name;
             }
         }
