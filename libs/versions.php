@@ -22,7 +22,7 @@
     function createVersionSelector(includeBlank) {
         var select_version = document.createElement("select");
         var versions = JSON.parse($("#div_versions").text());
-        if (includeBlank) select_character.options[0] = new Option("Character", -1);
+        if (includeBlank) select_version.options[0] = new Option("Version", -1);
         for (var i in versions) {
             select_version.options[select_version.options.length] = new Option(versions[i].name, versions[i].id);
         }
