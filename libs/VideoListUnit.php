@@ -23,7 +23,7 @@ class VideoListUnit {
     }
 
     public function getVideoInformation() {
-        $outputString = "<div><h2>" . $this->video->title . "</h2><br>";
+        $outputString = "<div><h3>" . $this->video->title . "</h3><br>";
         if(count($this->video->playerPlaysChar)>0) {
             $outputString = $outputString . $this->video->playerPlaysChar[0]->character->name . "(" .
                 $this->video->playerPlaysChar[0]->player->tag . ")";
@@ -32,11 +32,11 @@ class VideoListUnit {
                     $this->video->playerPlaysChar[$i]->player->tag . ")";
             }
         }
-        echo "<br>Version: ";
+        $outputString = $outputString . "<br>Version: ";
         if($this->video->versions) {
-            echo $this->video->versions[0]->pretty_name;
+             $outputString = $outputString . $this->video->versions[0]->pretty_name;
             for($i=1; $i<count($this->video->versions); $i++) {
-                echo ", " + $this->video->versions[$i]->pretty_name;
+                $outputString = $outputString . ", " + $this->video->versions[$i]->pretty_name;
             }
         }
         else {
