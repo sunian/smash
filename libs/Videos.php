@@ -20,6 +20,7 @@ class Video extends JSONObject {
     public $techniques = null;
     public $characters = null;
     public $versions = null;
+    public $playerplayschar = null;
 
     public function createIdentity()
     {
@@ -63,6 +64,7 @@ class Video extends JSONObject {
         $this->populatePlayers();
         $this->populateCharacters();
         $this->populateVersions();
+        $this->populatePlayerPlaysChar();
     }
 
     private function populateTechniques() {
@@ -76,6 +78,34 @@ class Video extends JSONObject {
             $this->techniques = $stmt->fetchAll(PDO::FETCH_CLASS, "Technique");
         }
         catch(PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    private function populatePlayerPlaysChar() {
+        try {
+            $conn = DbUtil::connect();
+            $sql_string = "SELECT c.character_id AS id, i.name AS name, u.name AS universe, c.weight, c.height,
+                c.falling_speed_rank AS falling_speed, c.air_speed_rank AS air_speed, i.nickname AS nick,
+                p.player_id, p.tag, p.name as player_name, p.region_id
+                FROM character_identity as i INNER JOIN `character` as c on i.identity_id = c.identity_id
+                INNER JOIN universe as u on i.universe_id = u.universe_id INNER JOIN version as v on v.version_id = c.version_id
+                INNER JOIN video_player as vp on vp.character_id=c.character_id INNER JOIN video ON
+                vp.video_id = video.video_id INNER JOIN player AS p ON p.player_id = video.player_id WHERE video.video_id = :video_id";
+            $stmt = $conn->prepare($sql_string);
+            $params = array("video_id"=>$this->video_id);
+            $stmt->execute($params);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $count = 0;
+            while($row = $stmt->fetch()) {
+                $playerPlays = new PlayerPlaysChar();
+                $playerPlays->character = new Character();
+                $playerPlays->player = new Player();
+            }
+        }
+        catch(PDOException $e) {
+//            echo "Error in populate characters\n";
+//            echo $e->getMessage();
             return $e->getMessage();
         }
     }
@@ -125,16 +155,18 @@ class Video extends JSONObject {
     private function populateCharacters() {
         try {
             $conn = DbUtil::connect();
-            $sql_string = "SELECT c.character_id AS id, i.name AS name, u.name AS universe, c.weight, c.height,
-                c.falling_speed_rank AS falling_speed, c.air_speed_rank AS air_speed, i.nickname AS nick
-                FROM character_identity as i INNER JOIN `character` as c on i.identity_id = c.identity_id
-                INNER JOIN universe as u on i.universe_id = u.universe_id INNER JOIN version as v on v.version_id = c.version_id
-                INNER JOIN video_player as vp on vp.character_id=c.character_id INNER JOIN
-                video ON vp.video_id = video.video_id WHERE video.video_id = :video_id";
+            $sql_string = "SELECT character_id FROM video_player WHERE video_id = :video_id";
             $stmt = $conn->prepare($sql_string);
             $params = array("video_id"=>$this->video_id);
             $stmt->execute($params);
-            $this->characters = $stmt->fetchAll(PDO::FETCH_CLASS, "Character");
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $count = 0;
+            while($row = $stmt->fetch()) {
+                $thisCharacter = new Character();
+                $thisCharacter->id = $row["character_id"];
+                $thisCharacter->populateFieldsFromID();
+                $this->characters[$count++] = $thisCharacter;
+            }
         }
         catch(PDOException $e) {
 //            echo "Error in populate characters\n";
@@ -142,4 +174,9 @@ class Video extends JSONObject {
             return $e->getMessage();
         }
     }
+}
+
+class PlayerPlaysChar {
+    public $player;
+    public $character;
 }
