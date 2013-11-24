@@ -44,7 +44,7 @@ require_once('libs/Techniques.php');
 //            selectTechnique = createTechniqueSelector();
 //            selectTechnique.id = "selectTechnique";
 //            newTechnique[0].appendChild(selectTechnique);
-        });
+//        });
     </script>
 </head>
 <body text="white">
