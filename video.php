@@ -37,7 +37,7 @@ require_once('libs/Videos.php');
         $(function () {
             newTechnique = $("#newTechnique");
             selectTechnique = createTechniqueSelector();
-            selectTechnique.id = "_selectTechnique";
+            selectTechnique.id = "selectTechnique";
 //            selectTechnique.disabled = true;
             $("#_newTechnique")[0].appendChild(selectTechnique);
 //            selectTechnique = createTechniqueSelector();
