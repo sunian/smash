@@ -39,7 +39,7 @@ require_once('libs/DataTable.php');
             newTechnique = $("#newTechnique");
             selectTechnique = createTechniqueSelector();
             selectTechnique.id = "selectTechnique";
-            newTechnique[0].appendChild(selectTechnique);
+            newTechnique.appendChild(selectTechnique);
         });
     </script>
 </head>
