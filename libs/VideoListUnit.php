@@ -23,11 +23,14 @@ class VideoListUnit {
     }
 
     public function getVideoInformation() {
-        $outputString = "<div>Players: " . count($this->video->players) . $this->video->players[0]->tag;
+        $outputString = "<div>Players: " . $this->video->players[0]->tag;
         for($i=1; $i<count($this->video->players); $i++) {
             $outputString = $outputString . ", " . $this->video->players[$i]->tag;
         }
-        $outputString = $outputString . count($this->video->characters) . "\t" . count($this->video->versions);
+        $outputString = $outputString . "\nCharacters: " . $this->video->characters[0]->name;
+        for($i=1; $i<count($this->video->characters); $i++) {
+            $outputString = $outputString . ", " . $this->video->characters[$i]->name;
+        }
         $outputString = $outputString . "</div>";
 
         return $outputString;
