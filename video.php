@@ -80,7 +80,7 @@ include('libs/techniques.php');
             <h2>Information</h2><br>
         </td>
     </tr>
-    <tr id="newTechnique"> </tr>
+    <tr><div id="newTechnique"> </tr></div>
 </table>
 </div>
 </body>
