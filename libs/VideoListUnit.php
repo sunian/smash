@@ -23,19 +23,24 @@ class VideoListUnit {
     }
 
     public function getVideoInformation() {
-        $outputString = "<div>Players: " . $this->video->players[0]->tag;
-        for($i=1; $i<count($this->video->players); $i++) {
-            $outputString = $outputString . ", " . $this->video->players[$i]->tag;
+        $outputString = "<div><h2>" . $this->video->title . "</h1><br>";
+        if(count($this->video->playerPlaysChar)>0) {
+            $outputString = $outputString . $this->video->playerPlaysChar[0]->character->name . "(" .
+                $this->video->playerPlaysChar[0]->player->tag . ")";
+            for($i=1; $i<count($this->video->playerPlaysChar); $i++) {
+                $outputString = $outputString . ", " . $this->video->playerPlaysChar[$i]->character->name . "(" .
+                    $this->video->playerPlaysChar[$i]->player->tag . ")";
+            }
         }
-        $outputString = $outputString . "<br>Characters: " . $this->video->characters[0]->name;
-        for($i=1; $i<count($this->video->characters); $i++) {
-            $outputString = $outputString . ", " . $this->video->characters[$i]->name;
+        echo "<br>Version: ";
+        if($this->video->versions) {
+            echo $this->video->versions[0]->pretty_name;
+            for($i=1; i<count($this->video->versions); i++) {
+                echo ", " + $this->video->versions[$i]->pretty_name;
+            }
         }
-        $outputString = $outputString . "<br>" . $this->video->playerPlaysChar[0]->character->name . "(" .
-            $this->video->playerPlaysChar[0]->player->tag . ")";
-        for($i=1; $i<count($this->video->playerPlaysChar); $i++) {
-            $outputString = $outputString . ", " . $this->video->playerPlaysChar[$i]->character->name . "(" .
-                $this->video->playerPlaysChar[$i]->player->tag . ")";
+        else {
+            echo "Unknown";
         }
         $outputString = $outputString . "</div>";
 
