@@ -9,6 +9,7 @@
 require_once('libs/browser.php');
 require_once('libs/DbUtil.php');
 require_once('libs/Videos.php');
+require_once('libs/DataTable.php');
 //require_once('libs/Techniques.php');
 
 //if (strlen($json_input) > 0) {
@@ -80,8 +81,18 @@ include('libs/techniques.php');
             <h2>Information</h2><br>
         </td>
     </tr>
-    <tr><div id="newTechnique"> </tr></div>
 </table>
+    <?php
+    $table = new DataTable("addTechniques", array(
+    new TableColumn("Technique", "newTechnique", "select", "New technique"),
+    ));
+    $table->renderData = function ($row) {
+        echo "<tr>";
+        echo "<td>", $row["technique"], "</td>";
+        echo "</tr>";
+    };
+    $table->render();
+    ?>
 </div>
 </body>
 </html>
