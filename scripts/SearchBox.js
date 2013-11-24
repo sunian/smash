@@ -59,7 +59,6 @@ function QueryField(myParent, obj) {
         var types = this.type.split(" ");
         if (this.count != "1")
             this.myDiv.prepend(document.createElement('br'));
-        this.values.push(null);
         for (var i = types.length - 1; i >= 0; i--) {
             var typeData = types[i].split(":");
             switch (typeData[0]) {
@@ -79,7 +78,6 @@ function QueryField(myParent, obj) {
     };
 
     this.renderInsert = function () {
-//        this.myDiv.append(document.createElement('br'));
         var newAnchor = $(document.createElement('a'));
         var newImage = $(document.createElement('img'));
         newImage.attr("src", 'images/plus.png');

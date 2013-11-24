@@ -21,7 +21,7 @@
         var characters = JSON.parse($("#div_characters").text());
         if (includeBlank) select_character.options[0] = new Option("Character", -1);
         for (var i in characters) {
-            select_character.options[select_character.length] = new Option(characters[i].name, characters[i].id);
+            select_character.options[select_character.options.length] = new Option(characters[i].name, characters[i].id);
         }
         return select_character;
     }

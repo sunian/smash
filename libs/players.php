@@ -21,7 +21,7 @@
         var players = JSON.parse($("#div_players").text());
         if (includeBlank) select_player.options[0] = new Option("Player", -1);
         for (var i in players) {
-            select_player.options[select_player.length] = new Option(players[i].name, players[i].id);
+            select_player.options[select_player.options.length] = new Option(players[i].name, players[i].id);
         }
         return select_player;
     }
