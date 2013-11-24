@@ -7,6 +7,7 @@
      * To change this template use File | Settings | File Templates.
      */
     require_once('DbUtil.php');
+    require_once('Techniques.php');
 
     $conn = DbUtil::connect();
     $stmt = $conn->prepare("select technique_id as id, name from technique order by name");
@@ -16,12 +17,12 @@
     $stmt->closeCursor();
     ?></div>
 <script type="text/javascript">
-    function createTechniqueSelector() {
-        var select_technique = document.createElement("select");
-        var techniques = JSON.parse($("#div_techniques").text());
-        for (var i in techniques) {
-            select_technique.options[i] = new Option(techniques[i].name, techniques[i].id);
-        }
-        return select_technique;
-    }
+//    function createTechniqueSelector() {
+//        var select_technique = document.createElement("select");
+//        var techniques = JSON.parse($("#div_techniques").text());
+//        for (var i in techniques) {
+//            select_technique.options[i] = new Option(techniques[i].name, techniques[i].id);
+//        }
+//        return select_technique;
+//    }
 </script>

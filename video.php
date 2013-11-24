@@ -33,11 +33,11 @@ require_once('libs/Techniques.php');
     }
     ?>
     <script type="text/javascript">
-        var newTechnique;
-        var selectTechnique;
-        $(function () {
-            newTechnique = $("#newTechnique");
-            selectTechnique = createTechniqueSelector();
+//        var newTechnique;
+//        var selectTechnique;
+//        $(function () {
+//            newTechnique = $("#newTechnique");
+//            selectTechnique = createTechniqueSelector();
 //            selectTechnique.id = "_selectTechnique";
 //            selectTechnique.disabled = true;
 //            $("#_newTechnique")[0].appendChild(selectTechnique);
