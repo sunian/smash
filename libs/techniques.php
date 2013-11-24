@@ -1,5 +1,4 @@
-<div id="div_techniques" style="display: none;">
-    <?php
+<div id="div_techniques" style="display: none;"><?php
     /**
      * Created by JetBrains PhpStorm.
      * User: Student
@@ -7,7 +6,6 @@
      * Time: 3:30 AM
      * To change this template use File | Settings | File Templates.
      */
-    echo "yup";
     require_once('DbUtil.php');
     require_once('Techniques.php');
 
