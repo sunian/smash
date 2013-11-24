@@ -1,4 +1,4 @@
-<div id="div_regions" style="...">
+<div id="div_regions">
     <?php
     /**
      * Created by JetBrains PhpStorm.
