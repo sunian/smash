@@ -33,18 +33,18 @@ require_once('libs/Techniques.php');
     }
     ?>
     <script type="text/javascript">
-        var newTechnique;
-        var selectTechnique;
-        $(function () {
-            newTechnique = $("#newTechnique");
-            selectTechnique = createTechniqueSelector();
-            selectTechnique.id = "_selectTechnique";
-            selectTechnique.disabled = true;
-            $("#_newTechnique")[0].appendChild(selectTechnique);
-            selectTechnique = createTechniqueSelector();
-            selectTechnique.id = "selectTechnique";
-            newTechnique[0].appendChild(selectTechnique);
-        });
+//        var newTechnique;
+//        var selectTechnique;
+//        $(function () {
+//            newTechnique = $("#newTechnique");
+//            selectTechnique = createTechniqueSelector();
+//            selectTechnique.id = "_selectTechnique";
+//            selectTechnique.disabled = true;
+//            $("#_newTechnique")[0].appendChild(selectTechnique);
+//            selectTechnique = createTechniqueSelector();
+//            selectTechnique.id = "selectTechnique";
+//            newTechnique[0].appendChild(selectTechnique);
+//        });
     </script>
 </head>
 <body text="white">
@@ -67,19 +67,18 @@ require_once('libs/Techniques.php');
     echo $output2;
 
     echo "<h1>", $vid->title , "</h1>";
-    $table = new DataTable("Techniques", array(
-    new TableColumn("Technique", "newTechnique", "select", "New Technique"),
-    ));
-    $table->setData("SELECT name
-            FROM `technique` WHERE technique_id = " . $vid->video_id, null);
-    $table->renderData = function ($row) {
-    echo "<tr>";
-    echo "<td>" . $row["techniques"] . "</td>";
-    echo "</tr>";
-    };
-    $table->render();
+//    $table = new DataTable("Techniques", array(
+//    new TableColumn("Technique", "newTechnique", "select", "New Technique"),
+//    ));
+//
+//    $table->renderData = function ($row) {
+//    echo "<tr>";
+//    echo "<td>" . $row["techniques"] . "</td>";
+//    echo "</tr>";
+//    };
+//    $table->render();
 
-include('libs/techniques.php');
+//include('libs/techniques.php');
 ?>
 
 <div class='body'>
