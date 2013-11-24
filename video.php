@@ -37,12 +37,12 @@ require_once('libs/Videos.php');
         $(function () {
             newTechnique = $("#newTechnique");
             selectTechnique = createTechniqueSelector();
-            selectTechnique.id = "_selectTechnique";
-            selectTechnique.disabled = true;
-            $("#_newTechnique")[0].appendChild(selectTechnique);
-            selectTechnique = createTechniqueSelector();
             selectTechnique.id = "selectTechnique";
-            newTechnique[0].appendChild(selectTechnique);
+//            selectTechnique.disabled = true;
+            $("#_newTechnique")[0].appendChild(selectTechnique);
+//            selectTechnique = createTechniqueSelector();
+//            selectTechnique.id = "selectTechnique";
+//            newTechnique[0].appendChild(selectTechnique);
         });
     </script>
 </head>
@@ -78,7 +78,7 @@ require_once('libs/Videos.php');
 //    };
 //    $table->render();
 
-//include('libs/techniques.php');
+include('libs/techniques.php');
 ?>
 
 <div class='body'>
