@@ -12,6 +12,7 @@ function SearchBox(parent) {
     this.parent = parent;
     var obj = JSON.parse(this.parent.html());
     for (var prop in obj) this[prop] = obj[prop];
+
     for (var i in this.fields) this.fields[i] = new QueryField(this, this.fields[i]);
 
     this.render = function () {
@@ -31,10 +32,11 @@ function SearchBox(parent) {
 }
 
 function QueryField(myParent, obj) {
+    for (var prop in obj) this[prop] = obj[prop];
+
     this.mySearchBox = myParent;
     this.myDiv = $(document.createElement('div'));
-    this.myDiv.addClass("query-field")
-    for (var prop in obj) this[prop] = obj[prop];
+    if (this.count != "1") this.myDiv.addClass("query-field")
     this.values = [];
 
     this.render = function () {
