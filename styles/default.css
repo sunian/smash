@@ -21,6 +21,8 @@ div.body {
 
 div.query-field {
     border: 1px solid rgba(54, 64, 134, 1);
+    border-radius: 4px;
+    margin: 1px;
 }
 
 input, select {
