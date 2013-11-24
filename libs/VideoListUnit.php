@@ -31,6 +31,12 @@ class VideoListUnit {
         for($i=1; $i<count($this->video->characters); $i++) {
             $outputString = $outputString . ", " . $this->video->characters[$i]->name;
         }
+        $outputString = $outputString . "<br>" . $this->video->playerPlaysChar[0]->character->name . "(" .
+            $this->video->playerPlaysChar[0]->player->tag . ")";
+        for($i=1; $i<count($this->video->playerPlaysChar); $i++) {
+            $outputString = $outputString . ", " . $this->video->playerPlaysChar[$i]->character->name . "("
+                $this->video->playerPlaysChar[$i]->player->tag . ")";
+        }
         $outputString = $outputString . "</div>";
 
         return $outputString;
