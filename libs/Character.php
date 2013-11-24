@@ -84,9 +84,9 @@ class Character extends JSONObject
     public function populateFieldsFromID() {
         try {
             $conn = DbUtil::connect();
-            $sql_string = "SELECT c.character_id AS id, nickname AS nick, c.identity_id, name, universe.name AS universe,
-                weight, height, air_speed_rank, falling_speed_rank, version_id FROM `character` AS c NATURAL JOIN character_identity
-                NATURAL JOIN universe WHERE c.character_id = :character_id";
+            $sql_string = "SELECT c.character_id AS id, nickname AS nick, c.identity_id, ci.name, universe.name AS universe, weight,
+                height, air_speed_rank, falling_speed_rank, version_id FROM `character` AS c INNER JOIN character_identity AS ci ON
+                c.identity_id = ci.identity_id INNER JOIN universe ON universe.universe_id = ci.universe_id WHERE c.character_id = :character_id";
             $params = array("character_id"=>$this->id);
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
