@@ -49,7 +49,8 @@ class Player extends JSONObject
     public function populateFieldsFromID() {
         try {
             $conn = DbUtil::connect();
-            $sql_string = "SELECT name AS region_name, region_id, name, tag FROM player NATURAL JOIN region WHERE player_id = :player_id";
+            $sql_string = "SELECT r.name AS region_name, r.region_id, p.name, p.tag FROM player AS p INNER JOIN region AS r ON
+               p.region_id = r.region_id WHERE player_id = :player_id";
             $params = array("player_id"=>$this->player_id);
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
