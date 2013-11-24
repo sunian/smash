@@ -76,6 +76,7 @@ $table->render();
 
 $searchbox = SearchBox::nu("Filter Videos", array(
     QueryField::nu("title", "Title", "input", "1"),
+    QueryField::nu("version", "Game Version", "select:createVersionSelector", "*"),
     QueryField::nu("video_player", "Player(Character)",
         "select:createPlayerSelector select:createCharacterSelector", "*")
     )
@@ -84,6 +85,7 @@ $searchbox->render();
 
 include('libs/players.php');
 include('libs/characters.php');
+include('libs/versions.php');
 ?>
 </body>
 </html>
