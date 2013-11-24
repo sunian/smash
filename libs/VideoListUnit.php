@@ -8,7 +8,6 @@
 require_once('DbUtil.php');
 require_once('Videos.php');
 require_once('Player.php');
-require_once('Character.php');
 
 class VideoListUnit {
     var $video;
@@ -35,7 +34,7 @@ class VideoListUnit {
         $outputString = $outputString . "<br>" . $this->video->playerPlaysChar[0]->character->name . "(" .
             $this->video->playerPlaysChar[0]->player->tag . ")";
         for($i=1; $i<count($this->video->playerPlaysChar); $i++) {
-            $outputString = $outputString . ", " . $this->video->playerPlaysChar[$i]->character->name . "("
+            $outputString = $outputString . ", " . $this->video->playerPlaysChar[$i]->character->name . "(" .
                 $this->video->playerPlaysChar[$i]->player->tag . ")";
         }
         $outputString = $outputString . "</div>";
