@@ -136,14 +136,18 @@ class Video extends JSONObject {
     private function populatePlayers() {
         try {
             $conn = DbUtil::connect();
-            $sql_string = "SELECT player.player_id, player.region_id, player.name AS name, tag, region.name AS region_name
-                FROM video INNER JOIN video_player ON (video.video_id = video_player.video_id) INNER JOIN player ON
-                video_player.player_id = player.player_id INNER JOIN region ON region.region_id = player.region_id WHERE
-                video.video_id = :video_id";
+            $sql_string = "SELECT player_id FROM video_player WHERE video_id = :video_id";
             $stmt = $conn->prepare($sql_string);
             $params = array("video_id"=>$this->video_id);
             $stmt->execute($params);
-            $this->players = $stmt->fetchAll(PDO::FETCH_CLASS, "Player");
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $count = 0;
+            while($row = $stmt->fetch()) {
+                $thisPlayer = new Player();
+                $thisPlayer->player_id = $row["player_id"];
+                $thisPlayer->populateFieldsFromID();
+                $this->players[$count++] = $thisPlayer;
+            }
         }
         catch(PDOException $e) {
 //            echo "Error in populate players\n";
