@@ -1,4 +1,4 @@
-<div id="div_regions">
+<div id="div_techniques">
     <?php
     /**
      * Created by JetBrains PhpStorm.
