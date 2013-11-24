@@ -1,4 +1,4 @@
-<div id="div_techniques" style="display: none;">
+<div id="div_regions" style="...">
     <?php
     /**
      * Created by JetBrains PhpStorm.
