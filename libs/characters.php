@@ -9,7 +9,7 @@
     require_once('DbUtil.php');
 
     $conn = DbUtil::connect();
-    $stmt = $conn->prepare("select identity_id as id, name from character_identity order by universe_id");
+    $stmt = $conn->prepare("select identity_id as id, name from character_identity order by name");
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     echo json_encode($stmt->fetchAll());
