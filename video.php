@@ -69,7 +69,7 @@ include('libs/techniques.php');
                     seamless>
             </iframe>
         </td>
-        <td style="background-color:black;width:425px;height=350">
+        <td style="width:425px;height=350">
             <h2>Information</h2><br>
             <?php echo $outputString; ?>
         </td>
@@ -77,15 +77,14 @@ include('libs/techniques.php');
 </table>
     <br>
 
-    <div id='newTechnique'>
-        <table>
-            <tr>
-                <td style="background-color:black;width:850px">
-                    Add Techniques here?
-                </td>
-            </tr>
-        </table>
-    </div>
+    <table id='newTechnique'>
+        <tr>
+            <td style="background-color:black;width:850px">
+                Add Techniques here?
+            </td>
+        </tr>
+    </table>
+
 </div>
 </body>
 </html>
