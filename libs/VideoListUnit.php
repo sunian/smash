@@ -19,7 +19,7 @@ class VideoListUnit {
     }
 
     public function getThumbnail() {
-        return "<img src=\"http://img.youtube.com/vi/" . $this->video->getIDFromURL() . "/1.jpg\">";
+        return "<img src=\"http://img.youtube.com/vi/" . $this->video->getIDFromURL() . "/mqdefault.jpg\">";
     }
 
     public function getVideoInformation() {
