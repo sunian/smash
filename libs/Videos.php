@@ -22,7 +22,7 @@ class Video extends JSONObject {
     public $versions = null;
     public $playerPlaysChar = null;
 
-    public function createIdentity()
+    public function createVideo()
     {
         try {
             if($this->url{strlen($this->url)-1}=='/') $this->url = substr($this->url, 0, strlen($this->url)-1);

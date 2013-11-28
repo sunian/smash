@@ -12,9 +12,14 @@ require_once('libs/SearchBox.php');
 require_once('libs/Videos.php');
 echo strcmp($urlParams["t"], "q");
 if (strlen($json_input) > 0) {
-    $video = new Video($json_input);
-    $error = $video->createIdentity();
-    if ($error) echo $error;
+    if (strcmp($urlParams["t"], "q") == 0) {//user performed search
+        $searchbox = new SearchBox($json_input);
+
+    } else {
+        $video = new Video($json_input);
+        $error = $video->createVideo();
+        if ($error) echo $error;
+    }
     exit();
 }
 ?>

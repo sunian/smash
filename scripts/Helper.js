@@ -75,3 +75,23 @@ Helper.sortTable = function (table, col, dir) {
 Helper.displayBtnAdd = function (bool) {
     btnAdd.css("display", bool ? "inline-block" : "none");
 }
+
+Helper.cleanForJSON = function (obj) {
+    switch ($.type(obj)) {
+        case "array":
+            var clean = [];
+            break;
+        case "object":
+            if (obj instanceof $) return undefined;
+            var clean = {};
+            break;
+        case "function":
+            return undefined;
+        default :
+            return obj;
+    }
+    for (var i in obj) {
+        clean[i] = Helper.cleanForJSON(obj[i]);
+    }
+    return clean;
+}
