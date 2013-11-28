@@ -16,7 +16,7 @@ if (strlen($json_input) > 0) {
 
     } else {
         $video = new Video($json_input);
-//        $error = $video->createVideo();
+        $error = $video->createVideo();
         if ($error) echo $error;
     }
     exit();
