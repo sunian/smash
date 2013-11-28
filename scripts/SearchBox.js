@@ -55,23 +55,28 @@ function QueryField(myParent, obj) {
 
     };
 
-    this.renderNew = function () {
+    this.renderNew = function (anchor) {
         var types = this.type.split(" ");
-        if (this.count != "1")
-            this.myDiv.prepend(document.createElement('br'));
-        for (var i = types.length - 1; i >= 0; i--) {
+        if (anchor) anchor.before(document.createElement('br'));
+        for (var i in types) {
             var typeData = types[i].split(":");
             switch (typeData[0]) {
                 case "input":
                     var newInput = $(document.createElement('input'));
                     newInput.attr("id", this.id + "-" + i);
                     newInput.attr("placeholder", this.placeholder);
-                    this.myDiv.prepend(newInput);
+                    if (anchor)
+                        anchor.before(newInput);
+                    else
+                        this.myDiv.append(newInput);
                     break;
                 case "select":
                     var newSelect = $(window[typeData[1]].call(this, true));
                     newSelect.attr("id", this.id + "-" + i);
-                    this.myDiv.prepend(newSelect);
+                    if (anchor)
+                        anchor.before(newSelect);
+                    else
+                        this.myDiv.append(newSelect);
                     break;
             }
         }
@@ -86,7 +91,7 @@ function QueryField(myParent, obj) {
         newAnchor.append(this.placeholder);
         newAnchor.attr("href", "javascript:void(0)");
         newAnchor.bind("click", [this], function (e) {
-            e.data[0].renderNew();
+            e.data[0].renderNew(newAnchor);
         })
         this.myDiv.append(newAnchor);
     }
