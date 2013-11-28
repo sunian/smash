@@ -92,6 +92,7 @@ Helper.cleanForJSON = function (obj) {
     }
     for (var i in obj) {
         clean[i] = Helper.cleanForJSON(obj[i]);
+        console.log(i);
     }
     return clean;
 }
