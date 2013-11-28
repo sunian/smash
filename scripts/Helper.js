@@ -89,6 +89,7 @@ Helper.sortTable = function (table, col, dir) {
     rows.sort(function (a, b) {
         var aText = $(a.cells[col]).attr("raw") ? $(a.cells[col]).attr("raw") : $(a.cells[col]).text();
         var bText = $(b.cells[col]).attr("raw") ? $(b.cells[col]).attr("raw") : $(b.cells[col]).text();
+        if ($(a.cells[col]).attr("type") === "#") return (aText * 1) - (bText * 1);
         return aText.localeCompare(bText) * dir;
     });
     table.append(rows);

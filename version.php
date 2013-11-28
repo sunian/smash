@@ -41,14 +41,6 @@ if (strlen($json_input) > 0) {
             newFallRank = $("#newFallRank");
             newAirRank = $("#newAirRank");
 
-            selectCharacter = createCharacterSelector();
-            selectCharacter.id = "_selectCharacter";
-            selectCharacter.disabled = true;
-            $("#_newName")[0].appendChild(selectCharacter);
-            selectCharacter = createCharacterSelector();
-            selectCharacter.id = "selectCharacter";
-            newName[0].appendChild(selectCharacter);
-
             Helper.setupDataTable("Characters");
             Helper.displayBtnAdd(true);
 
@@ -57,7 +49,7 @@ if (strlen($json_input) > 0) {
 
         function createCharacters() {
             var newObj = {};
-            newObj.identity_id = $(selectCharacter).val();
+            newObj.identity_id = newName.val();
             newObj.weight = newWeight.val();
             newObj.height = newHeight.val();
             newObj.falling_speed_rank = newFallRank.val();
@@ -81,7 +73,7 @@ else {
     echo "<h1>" , $version->pretty_name , "</h1>";
 
     $table = new DataTable("Characters", array(
-        new TableColumn("Name", "newName", "select", "New Name"),
+        new TableColumn("Name", "newName", "select", "createCharacterSelector"),
         new TableColumn("Weight", "newWeight", "input", "New Weight"),
         new TableColumn("Height", "newHeight", "input", "New Height"),
         new TableColumn("Falling Speed Rank", "newFallRank", "input", "Fall Speed Rank"),
