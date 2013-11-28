@@ -57,7 +57,6 @@ function QueryField(myParent, obj) {
 
     this.renderNew = function (anchor) {
         var types = this.type.split(" ");
-        if (anchor) anchor.before(document.createElement('br'));
         for (var i in types) {
             var typeData = types[i].split(":");
             switch (typeData[0]) {
@@ -92,6 +91,7 @@ function QueryField(myParent, obj) {
         newAnchor.attr("href", "javascript:void(0)");
         newAnchor.bind("click", [this], function (e) {
             e.data[0].renderNew(newAnchor);
+            anchor.before(document.createElement('br'));
         })
         this.myDiv.append(newAnchor);
     }
