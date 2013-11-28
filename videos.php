@@ -13,7 +13,7 @@ require_once('libs/Videos.php');
 if (strlen($json_input) > 0) {
     if (strcmp($input_type, "q") == 0) {//user performed search
         $searchbox = new SearchBox($json_input);
-
+        print_r($searchbox);
     } else {
         $video = new Video($json_input);
         $error = $video->createVideo();

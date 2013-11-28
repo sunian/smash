@@ -51,7 +51,7 @@ Helper.makeQuery = function (searchBox) {
 Helper.postJSON = function (json, type) {
     $.ajax({
         type: "POST",
-        data: "_" + type + JSON.stringify(json),
+        data: "_" + type + Helper.stringify(json),
         success: function (data, textStatus, jqXHR) {
             if (data.length > 0) {
                 alert(data);

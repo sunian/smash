@@ -25,8 +25,15 @@ function SearchBox(parent) {
         var btnGo = $(document.createElement('input'));
         btnGo.attr("type", "button");
         btnGo.attr("value", "Go");
+        btnGo.bind("click", [this], function (e) {
+            e.data[0].clickedGo();
+        });
         this.parent.append(btnGo);
     };
+
+    this.clickedGo = function () {
+        Helper.makeQuery(this);
+    }
 
     this.render();
 }
@@ -92,7 +99,7 @@ function QueryField(myParent, obj) {
         newAnchor.bind("click", [this], function (e) {
             e.data[0].renderNew(newAnchor);
             newAnchor.before(document.createElement('br'));
-        })
+        });
         this.myDiv.append(newAnchor);
     }
 }
