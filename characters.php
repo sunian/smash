@@ -22,17 +22,9 @@ if (strlen($json_input) > 0) {
     <title>Characters</title>
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
-        var selectUniverse;
         var newName;
         $(function () {
             newName = $("#newName");
-            selectUniverse = createUniverseSelector();
-            selectUniverse.id = "_selectUniverse";
-            selectUniverse.disabled = true;
-            $("#_newChar")[0].appendChild(selectUniverse);
-            selectUniverse = createUniverseSelector();
-            selectUniverse.id = "selectUniverse";
-            $("#newChar")[0].appendChild(selectUniverse);
             newName.keyup( function () {
                 Helper.displayBtnAdd(newName.val().length > 0);
             });
@@ -52,8 +44,7 @@ if (strlen($json_input) > 0) {
                 return;
             }
             if (newObj.nick.length == 0) newObj.nick = undefined;
-            newObj.universe = $(selectUniverse).val();
-//            console.log(JSON.stringify(newChar));
+            newObj.universe = $("#newChar").val();
             Helper.uploadObj(newObj);
         }
     </script>
@@ -66,7 +57,7 @@ include('libs/navheader.php');
 $table = new DataTable("Chars", array(
     new TableColumn("Name", "newName", "input", "New name"),
     new TableColumn("Nickname", "newNick", "input", "New nickname"),
-    new TableColumn("Universe", "newChar", "select", "")
+    new TableColumn("Universe", "newChar", "select", "createUniverseSelector")
 ));
 $table->setData("SELECT i.name, i.nickname, u.name as universe
                     FROM character_identity AS i INNER JOIN universe AS u on i.universe_id = u.universe_id
