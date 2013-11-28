@@ -55,6 +55,7 @@ Helper.postJSON = function (json, type) {
         success: function (data, textStatus, jqXHR) {
             if (data.length > 0) {
                 alert(data);
+                console.log(data);
             } else {
                 location.reload();
             }
