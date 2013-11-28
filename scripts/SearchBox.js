@@ -64,6 +64,7 @@ function QueryField(myParent, obj) {
 
     this.renderNew = function (anchor) {
         var types = this.type.split(" ");
+        var newField = $(document.createElement('div'));
         for (var i in types) {
             var typeData = types[i].split(":");
             switch (typeData[0]) {
@@ -71,21 +72,19 @@ function QueryField(myParent, obj) {
                     var newInput = $(document.createElement('input'));
                     newInput.attr("id", this.id + "-" + i);
                     newInput.attr("placeholder", this.placeholder);
-                    if (anchor)
-                        anchor.before(newInput);
-                    else
-                        this.myDiv.append(newInput);
+                    newField.append(newInput);
                     break;
                 case "select":
                     var newSelect = $(window[typeData[1]].call(this, true));
                     newSelect.attr("id", this.id + "-" + i);
-                    if (anchor)
-                        anchor.before(newSelect);
-                    else
-                        this.myDiv.append(newSelect);
+                    newField.append(newSelect);
                     break;
             }
         }
+        if (anchor)
+            anchor.before(newField);
+        else
+            this.myDiv.append(newField);
     };
 
     this.renderInsert = function () {
