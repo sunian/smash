@@ -50,6 +50,49 @@ class Video extends JSONObject {
         }
     }
 
+    public static function constructDataTableFrom($searchbox = false) {
+
+        $table = new DataTable("Videos", array(
+            new TableColumn("Title", "newTitle", "input", "Title"),
+            new TableColumn("Video URL", "newURL", "input", "Video URL"),
+            new TableColumn("Tournament", "newTourny", "select", "createTournamentSelector"),
+            new TableColumn("Date Added", "newDate", "none", "")
+        ));
+        $params = array();
+        $joins = "";
+        $where = "";
+        $table->renderData = function ($row) {
+            echo "<tr>";
+            echo "<td><a href='video.php?t=", $row["video_id"], "'>", $row["title"], "</a></td>";
+            echo "<td> <a href='", $row["url"], "'>", $row["url"], "</a> </td>";
+            if ($row["t_id"])
+                echo "<td> <a href='tournaments.php?t=", $row["t_id"], "'>", $row["name"], "</a> </td>";
+            else
+                echo "<td>none</td>";
+            echo "<td>", $row["date_added"], "</td>";
+            echo "</tr>";
+        };
+        if ($searchbox) {
+            foreach ($searchbox->fields as $queryField) {
+                switch ($queryField->id) {
+                    case "version":
+                        $joins .= " left outer join video_version as vv on v.video_id = vv.video_id";
+                        break;
+                    case "video_player":
+                        $joins .= " left outer join video_player as vp on v.video_id = vp.video_id";
+                        break;
+
+                }
+            }
+
+        }
+        $table->setData("SELECT v.title, v.url, v.date_added, v.video_id, v.tournament_id as t_id, t.name
+            FROM video as v left outer join tournament as t on v.tournament_id = t.tournament_id " . $joins .
+            (strlen($where) > 0 ? " where " . $where : "") .
+            " ORDER BY v.date_added DESC", $params);
+        return $table;
+    }
+
     public function populateFieldsFromID() {
         $conn = DbUtil::connect();
         $sqlString = "SELECT title, url, date_added, tournament_id as tournament FROM video WHERE video_id = :video_id";

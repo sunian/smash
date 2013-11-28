@@ -37,5 +37,5 @@ if ($activePage == null) {
         }
         ?>
     </nav>
-
+    <div style="display: inline-block; color: white; margin-left: 8px">Happy Thanksgiving, group!</div>
 </div>
