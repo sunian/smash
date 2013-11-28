@@ -43,7 +43,7 @@ Helper.setupTables = function (tableID) {
 
 Helper.makeSelectors = function () {
     $("td.select").each(function (i, elem) {
-        var select = window[$(elem).text()];
+        var select = window[$(elem).text()].call(this);
         $(elem).html("");
         select.id = $(elem).attr("id");
         select.disabled = $(elem).hasClass("disabled");
