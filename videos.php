@@ -9,7 +9,7 @@
 require_once('libs/browser.php');
 require_once('libs/DataTable.php');
 require_once('libs/SearchBox.php');
-require_once('libs/Videos.php');
+require_once('libs/Video.php');
 if (strlen($json_input) > 0) {
     if (strcmp($input_type, "q") == 0) {//user performed search
         $searchbox = new SearchBox($json_input);
@@ -54,7 +54,8 @@ if (strlen($json_input) > 0) {
                 newTitle.focus();
                 return;
             }
-//            console.log(JSON.stringify(newChar));
+            newObj.tournament = $("#newTourny").val();
+            if (newObj.tournament < 0) newObj.tournament = undefined;
             Helper.uploadObj(newObj);
         }
     </script>

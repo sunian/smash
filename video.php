@@ -8,7 +8,7 @@
  */
 require_once('libs/browser.php');
 require_once('libs/DbUtil.php');
-require_once('libs/Videos.php');
+require_once('libs/Video.php');
 require_once('libs/VideoListUnit.php');
 //require_once('libs/Techniques.php');
 

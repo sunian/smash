@@ -6,7 +6,7 @@
  * Time: 10:23 PM
  */
 require_once('DbUtil.php');
-require_once('Videos.php');
+require_once('Video.php');
 require_once('Player.php');
 
 class VideoListUnit {
