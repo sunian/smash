@@ -18,16 +18,20 @@ class JSONObject {
         foreach ($data AS $key => $value) {
             if (is_array($value)) {
                 $fieldType = $this->getFieldType($key);
-                $refClass = new ReflectionClass(str_replace("[]","", $fieldType));
+                try {
+                    $refClass = new ReflectionClass(str_replace("[]","", $fieldType));
+                } catch (Exception $ex) {
+                }
+
                 if (endsWith($fieldType, "[]")){
-                    if (sizeof($value) > 0 && is_array($value[0])) {
+                    if (sizeof($value) > 0 && is_array($value[0]) && $refClass != null) {
                         foreach ($value AS $i => $val) {
                             $sub = $refClass->newInstance();
                             $sub->set($val);
                             $value[$i] = $sub;
                         }
                     }
-                } else {
+                } else if ($refClass != null) {
                     $sub = $refClass->newInstance();
                     $sub->set($value);
                     $value = $sub;
