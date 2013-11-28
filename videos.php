@@ -65,6 +65,7 @@ if (strlen($json_input) > 0) {
 $table = new DataTable("Videos", array(
     new TableColumn("Title", "newTitle", "input", "Title"),
     new TableColumn("Video URL", "newURL", "input", "Video URL"),
+    new TableColumn("Tournament", "newTourny", "select", "createTournamentSelector"),
     new TableColumn("Date Added", "newDate", "none", "")
 ));
 $table->setData("SELECT title, url, date_added, video_id
@@ -91,6 +92,7 @@ $searchbox->render();
 include('libs/players.php');
 include('libs/characters.php');
 include('libs/versions.php');
+include('libs/tournaments.php');
 ?>
 </body>
 </html>
