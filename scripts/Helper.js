@@ -86,7 +86,7 @@ Helper.cleanForJSON = function (obj) {
             var clean = [];
             break;
         case "object":
-            if (obj instanceof $) return undefined;
+            if (obj instanceof $) return undefined;//don't serialize jQuery objects
             var clean = {};
             break;
         case "function":
@@ -95,7 +95,7 @@ Helper.cleanForJSON = function (obj) {
             return obj;
     }
     for (var i in obj) {
-        if ((i + "").substring(0, 1) !== "_")
+        if ((i + "").substring(0, 1) !== "_")//don't serialize fields starting with underscore
             clean[i] = Helper.cleanForJSON(obj[i]);
     }
     return clean;
