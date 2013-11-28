@@ -103,8 +103,11 @@ Helper.cleanForJSON = function (obj) {
             return obj;
     }
     for (var i in obj) {
-        if ((i + "").substring(0, 1) !== "_")//don't serialize fields starting with underscore
-            clean[i] = Helper.cleanForJSON(obj[i]);
+        if ((i + "").substring(0, 1) !== "_") {//don't serialize fields starting with underscore
+            var value = Helper.cleanForJSON(obj[i]);
+            if (value !== undefined)
+                clean[i] = value;
+        }
     }
     return clean;
 }
