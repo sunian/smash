@@ -35,7 +35,6 @@ if (strlen($json_input) > 0) {
         var selectCharacter;
 
         $(function () {
-            newName = $("#newName");
             newWeight = $("#newWeight");
             newHeight = $("#newHeight");
             newFallRank = $("#newFallRank");
@@ -44,6 +43,7 @@ if (strlen($json_input) > 0) {
             Helper.setupDataTable("Characters");
             Helper.displayBtnAdd(true);
 
+            newName = $("#newName");
             newName.focus();
         });
 
