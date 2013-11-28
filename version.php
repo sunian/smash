@@ -85,10 +85,10 @@ else {
         $leDate = $row["release_date"];
         echo "<tr>";
         echo "<td>" . $row["name"] . "</td>";
-        echo "<td>". $row["weight"] . "</td>";
-        echo "<td>" . $row["height"] . "</td>";
-        echo "<td>" . $row["falling_speed_rank"] . "</td>";
-        echo "<td>". $row["air_speed_rank"] . "</td>";
+        echo "<td type='#'>". $row["weight"] . "</td>";
+        echo "<td type='#'>" . $row["height"] . "</td>";
+        echo "<td type='#'>" . $row["falling_speed_rank"] . "</td>";
+        echo "<td type='#'>". $row["air_speed_rank"] . "</td>";
         echo "</tr>";
     };
     $table->render();
