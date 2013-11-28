@@ -10,14 +10,14 @@ require_once('libs/browser.php');
 require_once('libs/DataTable.php');
 require_once('libs/SearchBox.php');
 require_once('libs/Videos.php');
-echo strcmp($urlParams["t"], "q");
 if (strlen($json_input) > 0) {
-    if (strcmp($urlParams["t"], "q") == 0) {//user performed search
+    echo "input=", $input_type;
+    if (strcmp($input_type, "q") == 0) {//user performed search
         $searchbox = new SearchBox($json_input);
 
     } else {
         $video = new Video($json_input);
-        $error = $video->createVideo();
+//        $error = $video->createVideo();
         if ($error) echo $error;
     }
     exit();

@@ -41,9 +41,17 @@ Helper.setupTables = function (tableID) {
 }
 
 Helper.uploadObj = function (newObj) {
+    Helper.postJSON(newObj, "n");
+}
+
+Helper.makeQuery = function (searchBox) {
+    Helper.postJSON(searchBox, "q");
+}
+
+Helper.postJSON = function (json, type) {
     $.ajax({
         type: "POST",
-        data: JSON.stringify(newObj),
+        data: "_" + type + JSON.stringify(json),
         success: function (data, textStatus, jqXHR) {
             if (data.length > 0) {
                 alert(data);

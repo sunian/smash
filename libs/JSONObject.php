@@ -44,3 +44,8 @@ class JSONObject {
 }
 
 $json_input = file_get_contents("php://input");
+$input_type = "";
+if ($json_input[0] == '_') {
+    $input_type += $json_input[1];
+    $json_input = substr($json_input, 2, strlen($json_input) - 2);
+}
