@@ -76,6 +76,10 @@ Helper.displayBtnAdd = function (bool) {
     btnAdd.css("display", bool ? "inline-block" : "none");
 }
 
+Helper.stringify = function (json) {
+    return JSON.stringify(Helper.cleanForJSON(json));
+}
+
 Helper.cleanForJSON = function (obj) {
     switch ($.type(obj)) {
         case "array":
