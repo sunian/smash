@@ -45,9 +45,10 @@ Helper.makeSelectors = function () {
     $("td.select").each(function (i, elem) {
         var select = window[$(elem).text()];
         $(elem).html("");
-        select.id = elem.id;
+        select.id = $(elem).attr("id");
         select.disabled = $(elem).hasClass("disabled");
         $(elem).append(select);
+        $(elem).removeClass("select disabled");
     });
 }
 
