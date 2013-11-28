@@ -108,13 +108,14 @@ function QueryField(myParent, obj) {
     }
 
     this.populateValues = function () {
-        this.values = [];
+        var newValues = [];
         $(this.myDiv).find("div.field").each(function (i, elem) {
             var values = [];
             $(elem).find("input, select").each(function (i, elem) {
                values.push($(elem).val());
             });
-            this.values.push(values);
+            newValues.push(values);
         });
+        this.values = newValues;
     }
 }
