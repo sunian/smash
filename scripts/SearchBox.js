@@ -65,6 +65,7 @@ function QueryField(myParent, obj) {
     this.renderNew = function (anchor) {
         var types = this.type.split(" ");
         var newField = $(document.createElement('div'));
+        newField.addClass("field");
         for (var i in types) {
             var typeData = types[i].split(":");
             switch (typeData[0]) {
