@@ -69,14 +69,17 @@ $table = new DataTable("Videos", array(
     new TableColumn("Tournament", "newTourny", "select", "createTournamentSelector"),
     new TableColumn("Date Added", "newDate", "none", "")
 ));
-$table->setData("SELECT title, url, date_added, video_id, tournament_id
-FROM video
-ORDER BY date_added DESC", null);
+$table->setData("SELECT v.title, v.url, v.date_added, v.video_id, coalesce(v.tournament_id, -1) as t_id, coalesce(t.name, 'none') as name
+FROM video as v left outer join tournament as t on v.tournament_id = t.tournament_id
+ORDER BY v.date_added DESC", null);
 $table->renderData = function ($row) {
     echo "<tr>";
     echo "<td><a href='video.php?t=", $row["video_id"], "'>", $row["title"], "</a></td>";
-    echo "<td> <a href=\"", $row["url"], "\">", $row["url"], "</a> </td>";
-    echo "<td> <a href=\"", $row["url"], "\">", $row["tournament_id"], "</a> </td>";
+    echo "<td> <a href='", $row["url"], "'>", $row["url"], "</a> </td>";
+    if ($row["t_id"] > 0)
+        echo "<td> <a href='tournaments.php?t=", $row["t_id"], "'>", $row["name"], "</a> </td>";
+    else
+        echo "<td>", $row["name"], "</td>";
     echo "<td>", $row["date_added"], "</td>";
     echo "</tr>";
 };
