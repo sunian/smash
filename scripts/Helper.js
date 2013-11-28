@@ -91,8 +91,8 @@ Helper.cleanForJSON = function (obj) {
             return obj;
     }
     for (var i in obj) {
-        clean[i] = Helper.cleanForJSON(obj[i]);
-        console.log(i);
+        if ((i + "").substring(0, 1) !== "_")
+            clean[i] = Helper.cleanForJSON(obj[i]);
     }
     return clean;
 }
