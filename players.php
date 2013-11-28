@@ -22,19 +22,10 @@ if (strlen($json_input) > 0) {
     <title>Players</title>
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
-        var newTag, newName, newRegion;
-        var selectRegion;
+        var newTag, newName;
         $(function () {
             newName = $("#newName");
             newTag = $("#newTag");
-            newRegion = $("#newRegion");
-            selectRegion = createRegionSelector();
-            selectRegion.id = "_selectRegion";
-            selectRegion.disabled = true;
-            $("#_newRegion")[0].appendChild(selectRegion);
-            selectRegion = createRegionSelector();
-            selectRegion.id = "selectRegion";
-            newRegion[0].appendChild(selectRegion);
             newTag.keyup(function () {
                 Helper.displayBtnAdd(newName.val().length > 0 || newTag.val().length > 0);
             });
@@ -58,7 +49,7 @@ if (strlen($json_input) > 0) {
             }
             if (newObj.tag.length == 0) newObj.tag = undefined;
             if (newObj.name.length == 0) newObj.name = undefined;
-            newObj.region = $(selectRegion).val();
+            newObj.region = $("#newRegion").val();
             Helper.uploadObj(newObj);
         }
     </script>
@@ -68,7 +59,7 @@ if (strlen($json_input) > 0) {
 include('libs/navheader.php');
 $table = new DataTable("Players", array(
     new TableColumn("Tag", "newTag", "input", "New tag"),
-    new TableColumn("Region", "newRegion", "select", "New region"),
+    new TableColumn("Region", "newRegion", "select", "createRegionSelector"),
     new TableColumn("Name", "newName", "input", "New name")
 ));
 $table->sqlQuery = "SELECT p.name, p.tag, r.name as region

@@ -23,20 +23,11 @@ if (strlen($json_input) > 0) {
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
         var newDate, newVenue;
-        var newName, newRegion;
-        var selectRegion;
+        var newName;
         $(function () {
             newName = $("#newName");
             newDate = $("#newDate");
             newVenue = $("#newVenue");
-//            newRegion = $("#newRegion");
-//            selectRegion = createRegionSelector();
-//            selectRegion.id = "_selectRegion";
-//            selectRegion.disabled = true;
-//            $("#_newRegion")[0].appendChild(selectRegion);
-//            selectRegion = createRegionSelector();
-//            selectRegion.id = "selectRegion";
-//            newRegion[0].appendChild(selectRegion);
             newName.keyup(function () {
                 Helper.displayBtnAdd(newName.val().length > 0);
             });
@@ -47,7 +38,7 @@ if (strlen($json_input) > 0) {
                 source: getVenues()
             });
 
-            Helper.setupTables("Tournys")
+            Helper.setupTables("Tournys");
 
             newName.focus();
         });
@@ -68,8 +59,7 @@ if (strlen($json_input) > 0) {
             } else {
                 newObj.date = Date.parse(newObj.date).toString("yyyy-MM-dd");
             }
-            newObj.region = $(selectRegion).val();
-//            alert(JSON.stringify(newObj));
+            newObj.region = $("#newRegion").val();
             Helper.uploadObj(newObj);
         }
     </script>
