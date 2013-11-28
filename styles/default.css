@@ -113,7 +113,7 @@ a.btnPlus:active {
     background-size: cover;
 }
 
-a {
+a, h1 {
     color: white;
 }
 
