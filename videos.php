@@ -10,6 +10,7 @@ require_once('libs/browser.php');
 require_once('libs/DataTable.php');
 require_once('libs/SearchBox.php');
 require_once('libs/Videos.php');
+echo strcmp($urlParams["t"], "q");
 if (strlen($json_input) > 0) {
     $video = new Video($json_input);
     $error = $video->createIdentity();
