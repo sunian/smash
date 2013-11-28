@@ -112,9 +112,9 @@ function QueryField(myParent, obj) {
         $(this.myDiv).find("div.field").each(function (i, elem) {
             values = [];
             $(elem).find("input, select").each(function (i, elem) {
-               values.push($(elem).val());
+               values[i] = $(elem).val();
             });
-            this.values.push(values);
+            this.values[i] = values;
         });
     }
 }
