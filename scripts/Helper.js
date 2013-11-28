@@ -18,6 +18,7 @@ function Helper() {
 
 Helper.setupTables = function (tableID) {
     btnAdd = $("a.btnPlus").parent();
+    Helper.makeSelectors();
     Helper.alignCellWidths($.makeArray($("table#table" + tableID + " tr th")),
         $.makeArray($("div#fixedHeader table tr th")));
     Helper.alignCellWidths($.makeArray($("table#table" + tableID + " tfoot tr td")),
@@ -37,6 +38,16 @@ Helper.setupTables = function (tableID) {
         // Animation complete.
         $("div#fixedFooter table.content, div#fixedHeader table")
             .css("width", $("table#table" + tableID).css("width"));
+    });
+}
+
+Helper.makeSelectors = function () {
+    $("td.select").each(function (i, elem) {
+        var select = window[$(elem).text()];
+        $(elem).html("");
+        select.id = elem.id;
+        select.disabled = $(elem).hasClass("disabled");
+        $(elem).append(select);
     });
 }
 

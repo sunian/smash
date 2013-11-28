@@ -115,9 +115,9 @@ class DataTable
                     break;
                 case "select":
                     if ($enabled) {
-                        echo "<td id='$col->id'></td>";
+                        echo "<td id='$col->id' class='select'>$col->placeholder</td>";
                     } else {
-                        echo "<td id='_$col->id'></td>";
+                        echo "<td id='_$col->id' class='select.disabled'>$col->placeholder</td>";
                     }
                     break;
                 case "date":
