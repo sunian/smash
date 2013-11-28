@@ -20,7 +20,7 @@ require_once('libs/DataTable.php');
             newName = $("#newName");
             newDate = $("#newDate");
 
-            Helper.setupTables("Versions");
+            Helper.setupDataTable("Versions");
             Helper.displayBtnAdd(true);
 
             newName.focus();

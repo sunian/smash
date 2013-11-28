@@ -49,7 +49,7 @@ if (strlen($json_input) > 0) {
             selectCharacter.id = "selectCharacter";
             newName[0].appendChild(selectCharacter);
 
-            Helper.setupTables("Characters");
+            Helper.setupDataTable("Characters");
             Helper.displayBtnAdd(true);
 
             newName.focus();

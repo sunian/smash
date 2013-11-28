@@ -40,7 +40,7 @@ if (strlen($json_input) > 0) {
                 Helper.displayBtnAdd(newTitle.val().length > 0 && newURL.val().length > 0);
             });
 
-            Helper.setupTables("Videos");
+            Helper.setupDataTable("Videos");
             setupSearchBox();
             newTitle.focus();
         });

@@ -16,7 +16,7 @@ function Helper() {
 //nothing here, just a Helper class with static methods
 }
 
-Helper.setupTables = function (tableID) {
+Helper.setupDataTable = function (tableID) {
     btnAdd = $("a.btnPlus").parent();
     Helper.makeSelectors();
     Helper.alignCellWidths($.makeArray($("table#table" + tableID + " tr th")),

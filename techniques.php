@@ -29,7 +29,7 @@ if (strlen($json_input) > 0) {
                 Helper.displayBtnAdd(newName.val().length > 0);
             });
 
-            Helper.setupTables("Techs");
+            Helper.setupDataTable("Techs");
 
             newName.focus();
         });

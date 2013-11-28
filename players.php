@@ -33,7 +33,7 @@ if (strlen($json_input) > 0) {
                 Helper.displayBtnAdd(newName.val().length > 0 || newTag.val().length > 0);
             });
 
-            Helper.setupTables("Players");
+            Helper.setupDataTable("Players");
 
             newTag.focus();
         });

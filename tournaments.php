@@ -38,7 +38,7 @@ if (strlen($json_input) > 0) {
                 source: getVenues()
             });
 
-            Helper.setupTables("Tournys");
+            Helper.setupDataTable("Tournys");
 
             newName.focus();
         });
