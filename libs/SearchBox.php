@@ -31,7 +31,7 @@ class SearchBox extends JSONObject
 {
     public $title = null;
     public $fields = null;
-    public $renderData; //$printData(rows)
+//    public $renderData; //$printData(rows)
 
     public static function nu($title, $fields) {
         $instance = new self();
