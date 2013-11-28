@@ -11,7 +11,6 @@ require_once('libs/DataTable.php');
 require_once('libs/SearchBox.php');
 require_once('libs/Videos.php');
 if (strlen($json_input) > 0) {
-    echo "input=", $input_type;
     if (strcmp($input_type, "q") == 0) {//user performed search
         $searchbox = new SearchBox($json_input);
 
