@@ -32,6 +32,9 @@ function SearchBox(parent) {
     };
 
     this.clickedGo = function () {
+        for (var i in this.fields) {
+            this.fields[i].populateValues();
+        }
         Helper.makeQuery(this);
     }
 
@@ -102,5 +105,16 @@ function QueryField(myParent, obj) {
             e.data[0].renderNew(newAnchor);
         });
         this.myDiv.append(newAnchor);
+    }
+
+    this.populateValues = function () {
+        this.values = [];
+        $(this.myDiv).find("div.field").each(function (i, elem) {
+            values = [];
+            $(elem).find("input, select").each(function (i, elem) {
+               values.push($(elem).val());
+            });
+            this.values.push(values);
+        });
     }
 }
