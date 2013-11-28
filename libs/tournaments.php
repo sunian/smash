@@ -21,7 +21,7 @@
     function createTournamentSelector(includeBlank) {
         var select_tournament = document.createElement("select");
         var tournaments = JSON.parse($("#div_tournaments").text());
-        if (includeBlank) select_tournament.options[0] = new Option("Tournament", -1);
+        if (includeBlank !== false) select_tournament.options[0] = new Option("Tournament", -1);
         for (var i in tournaments) {
             select_tournament.options[select_tournament.options.length] = new Option(tournaments[i].name, tournaments[i].id);
         }
