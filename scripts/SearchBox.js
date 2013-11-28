@@ -110,11 +110,11 @@ function QueryField(myParent, obj) {
     this.populateValues = function () {
         this.values = [];
         $(this.myDiv).find("div.field").each(function (i, elem) {
-            values = [];
+            var values = [];
             $(elem).find("input, select").each(function (i, elem) {
-               values[i] = $(elem).val();
+               values.push($(elem).val());
             });
-            this.values[i] = values;
+            this.values.push(values);
         });
     }
 }
