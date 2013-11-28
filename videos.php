@@ -85,9 +85,9 @@ $searchbox = SearchBox::nu("Filter Videos", array(
     QueryField::nu("title", "Title", "input", "1"),
     QueryField::nu("version", "Game Version", "select:createVersionSelector", "*"),
     QueryField::nu("video_player", "Player(Character)",
-        "select:createPlayerSelector select:createCharacterSelector", "*")
-    ),
+        "select:createPlayerSelector select:createCharacterSelector", "*"),
     QueryField::nu("tournament", "Tourny", "select:createTournamentSelector", "1")
+    )
 );
 $searchbox->render();
 
