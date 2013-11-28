@@ -83,7 +83,6 @@ $table->renderData = function ($row) {
     echo "<td>", $row["date_added"], "</td>";
     echo "</tr>";
 };
-$table->render();
 
 $searchbox = SearchBox::nu("Filter Videos", array(
     QueryField::nu("title", "Title", "input", "1"),
@@ -93,7 +92,9 @@ $searchbox = SearchBox::nu("Filter Videos", array(
     QueryField::nu("tournament", "Tourny", "select:createTournamentSelector", "1")
     )
 );
+
 $searchbox->render();
+$table->render();
 
 include('libs/players.php');
 include('libs/characters.php');
