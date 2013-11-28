@@ -91,7 +91,7 @@ function QueryField(myParent, obj) {
         newAnchor.attr("href", "javascript:void(0)");
         newAnchor.bind("click", [this], function (e) {
             e.data[0].renderNew(newAnchor);
-            anchor.before(document.createElement('br'));
+            newAnchor.before(document.createElement('br'));
         })
         this.myDiv.append(newAnchor);
     }
