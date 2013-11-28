@@ -49,6 +49,7 @@ Helper.makeSelectors = function () {
         select.disabled = $(elem).hasClass("disabled");
         $(elem).append(select);
         $(elem).removeClass("select disabled");
+        $(elem).removeAttr("id");
     });
 }
 
