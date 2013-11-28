@@ -25,6 +25,12 @@ class QueryField extends JSONObject
         return $instance;
     }
 
+    public function getFieldType($fieldName) {
+        switch ($fieldName) {
+            case "values": return "[]";
+        }
+        return parent::getFieldType($fieldName);
+    }
 }
 
 class SearchBox extends JSONObject
