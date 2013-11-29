@@ -157,7 +157,7 @@ class Video extends JSONObject {
             " FROM video as v left outer join tournament as t on v.tournament_id = t.tournament_id " . $joins .
             (strlen($where) > 0 ? " where " . $where : "") .
             " ) as x " . $crazy . " group by x.video_id ORDER BY x.date_added DESC";
-        echo "query=$sqlQuery _ ";
+//        echo "query=$sqlQuery _ ";
         $table->setData($sqlQuery, $params);
         return $table;
     }
