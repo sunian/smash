@@ -23,7 +23,7 @@ Helper.callInit = function () {
         $(elem).attr("title", $(elem).text());
         $(elem).html(moment($(elem).text()).fromNow());
     }).removeClass("moment");
-    if ($.type(init) === "function") init();
+    if ($.type(window["init"]) === "function") init();
 }
 
 Helper.setupDataTable = function (tableID) {

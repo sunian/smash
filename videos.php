@@ -12,9 +12,7 @@ require_once('libs/SearchBox.php');
 require_once('libs/Video.php');
 if (strlen($json_input) > 0) {
     if (strcmp($input_type, "q") == 0) {//user performed search
-        $searchbox = new SearchBox($json_input);
-//        print_r($searchbox);
-        Video::constructDataTableFrom($searchbox)->render();
+        Video::constructDataTableFrom(new SearchBox($json_input))->render();
     } else {
         $video = new Video($json_input);
         $error = $video->createVideo();
@@ -66,15 +64,7 @@ if (strlen($json_input) > 0) {
 <?php include('libs/navheader.php');
 
 
-$searchbox = SearchBox::nu("Filter Videos", array(
-    QueryField::nu("title", "Title", "input", "1"),
-    QueryField::nu("version", "Game Version", "select:createVersionSelector", "*"),
-    QueryField::nu("video_player", "Player(Character)",
-        "select:createPlayerSelector select:createCharacterSelector", "*"),
-    QueryField::nu("tournament", "Tourny", "select:createTournamentSelector", "1")
-    )
-);
-
+$searchbox = SearchBox::nu("Filter Videos", Video::getQueryFields());
 $searchbox->render();
 
 $table = Video::constructDataTableFrom($searchbox);

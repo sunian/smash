@@ -32,9 +32,7 @@ if (strlen($json_input) > 0) {
         var newFallRank;
         var newAirRank;
 
-        var selectCharacter;
-
-        $(function () {
+        function init() {
             newWeight = $("#newWeight");
             newHeight = $("#newHeight");
             newFallRank = $("#newFallRank");
@@ -45,7 +43,7 @@ if (strlen($json_input) > 0) {
 
             newName = $("#newName");
             newName.focus();
-        });
+        }
 
         function createCharacters() {
             var newObj = {};

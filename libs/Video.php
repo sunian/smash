@@ -10,6 +10,7 @@ require_once('Technique.php');
 require_once('Player.php');
 require_once('Character.php');
 require_once('Version.php');
+require_once('SearchBox.php');
 
 class Video extends JSONObject {
     public $video_id = null;
@@ -50,6 +51,16 @@ class Video extends JSONObject {
         }
     }
 
+    public static function getQueryFields() {
+        return array(
+            QueryField::nu("title", "Title", "input", "1"),
+            QueryField::nu("version", "Game Version", "select:createVersionSelector", "*"),
+            QueryField::nu("video_player", "Player(Character)",
+                "select:createPlayerSelector select:createCharacterSelector", "*"),
+            QueryField::nu("tournament", "Tourny", "select:createTournamentSelector", "1")
+        );
+    }
+
     public static function constructDataTableFrom($searchbox = false) {
 
         $table = new DataTable("Videos", array(
@@ -59,8 +70,10 @@ class Video extends JSONObject {
             new TableColumn("Date Added", "newDate", "none", "")
         ));
         $params = array();
+        $projection = "v.title, v.url, v.date_added, v.video_id, v.tournament_id as t_id, t.name";
         $joins = "";
         $where = "";
+        $crazy = "";
         $table->renderData = function ($row) {
             echo "<tr>";
             echo "<td><a href='video.php?t=", $row["video_id"], "'>", $row["title"], "</a></td>";
@@ -81,18 +94,26 @@ class Video extends JSONObject {
                         break;
                     case "video_player":
                         $joins .= " left outer join video_player as vp on v.video_id = vp.video_id";
+                        $projection .= ", vp.player_id, vp.character_id";
                         break;
                 }
                 $i = 0;
+                if (strlen($where) > 0) $where .= " and";
                 foreach ($queryField->values as $field) {
                     switch ($queryField->id) {
                         case "title":
                             $where .= " v.title like concat('%',:title$i,'%')";
                             $params["title$i"] = $field[0];
                             break;
+                        case "tournament":
+                            $where .= " t.tournament_id = :tournament$i";
+                            $params["tournament$i"] = $field[0];
+                            break;
                         case "version":
                             break;
                         case "video_player":
+                            $crazy .= " inner join (select * from video_player where player_id = :player$i) as vp$i on x.player_id = vp$i.player_id";
+                            $params["player$i"] = $field[0];
                             break;
                     }
                     $i++;
@@ -101,10 +122,10 @@ class Video extends JSONObject {
             }
 
         }
-        $table->setData("SELECT v.title, v.url, v.date_added, v.video_id, v.tournament_id as t_id, t.name
-            FROM video as v left outer join tournament as t on v.tournament_id = t.tournament_id " . $joins .
+        $table->setData("(SELECT " . $projection .
+            "FROM video as v left outer join tournament as t on v.tournament_id = t.tournament_id " . $joins .
             (strlen($where) > 0 ? " where " . $where : "") .
-            " ORDER BY v.date_added DESC", $params);
+            " ORDER BY v.date_added DESC) as x " . $crazy, $params);
         return $table;
     }
 
