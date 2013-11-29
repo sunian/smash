@@ -136,7 +136,7 @@ class DataTable
         }
     }
 
-    private function printData()
+    public function printData()
     {
         $conn = DbUtil::connect();
         $stmt = $conn->prepare($this->sqlQuery);
