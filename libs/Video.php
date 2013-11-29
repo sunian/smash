@@ -77,7 +77,7 @@ class Video extends JSONObject {
         $table->renderData = function ($row) {
             echo "<tr>";
             echo "<td><a href='video.php?t=", $row["video_id"], "'>", $row["title"], "</a></td>";
-            echo "<td><a href='", $row["url"], "'>", $row["url"], "</a></td>";
+            echo "<td><a href='", $row["url"], "'>go to source</a></td>";
             if ($row["t_id"])
                 echo "<td><a href='tournaments.php?t=", $row["t_id"], "'>", $row["name"], "</a></td>";
             else
