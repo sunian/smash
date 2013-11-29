@@ -4,16 +4,21 @@
 
 var btnAdd;
 $(function () {
+    Helper.callInit();
+});
+
+function Helper() {
+//nothing here, just a Helper class with static methods
+}
+
+Helper.callInit = function () {
     $("input.date").datepicker({
         onSelect: function (dateText, inst) {
             this.focus();
         },
         constrainInput: false
-    });
-});
-
-function Helper() {
-//nothing here, just a Helper class with static methods
+    }).removeClass("date");
+    if ($.type(init) === "function") init();
 }
 
 Helper.setupDataTable = function (tableID) {
@@ -54,26 +59,33 @@ Helper.makeSelectors = function () {
 }
 
 Helper.uploadObj = function (newObj) {
-    Helper.postJSON(newObj, "n");
-}
-
-Helper.makeQuery = function (searchBox) {
-    Helper.postJSON(searchBox, "q");
-}
-
-Helper.postJSON = function (json, type) {
-    $.ajax({
-        type: "POST",
-        data: "_" + type + Helper.stringify(json),
-        success: function (data, textStatus, jqXHR) {
+    Helper.postJSON(newObj, "n",
+        function (data, textStatus, jqXHR) {
             if (data.length > 0) {
                 alert(data);
                 console.log(data);
             } else {
                 location.reload();
             }
-        }
+        });
+}
 
+Helper.makeQuery = function (searchBox) {
+    Helper.postJSON(searchBox, "q",
+        function (data, textStatus, jqXHR) {
+            if (data.length > 0) {
+                $("div#body").first().after(data).remove();
+                Helper.callInit();
+                console.log(data);
+            }
+        });
+}
+
+Helper.postJSON = function (json, type, success) {
+    $.ajax({
+        type: "POST",
+        data: "_" + type + Helper.stringify(json),
+        success: success
     });
 }
 

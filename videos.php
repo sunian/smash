@@ -14,7 +14,7 @@ if (strlen($json_input) > 0) {
     if (strcmp($input_type, "q") == 0) {//user performed search
         $searchbox = new SearchBox($json_input);
 //        print_r($searchbox);
-        Video::constructDataTableFrom($searchbox)->printData();
+        Video::constructDataTableFrom($searchbox)->render();
     } else {
         $video = new Video($json_input);
         $error = $video->createVideo();
@@ -31,7 +31,8 @@ if (strlen($json_input) > 0) {
     <script type="text/javascript">
         var newTitle;
         var newURL;
-        $(function () {
+
+        function init() {
             newTitle = $("#newTitle");
             newURL = $("#newURL");
             newTitle.keyup( function () {
@@ -44,7 +45,7 @@ if (strlen($json_input) > 0) {
             Helper.setupDataTable("Videos");
             setupSearchBox();
             newTitle.focus();
-        });
+        }
 
         function createVideos() {
             var newObj = {};
