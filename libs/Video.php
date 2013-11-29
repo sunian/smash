@@ -69,7 +69,7 @@ class Video extends JSONObject {
                 echo "<td> <a href='tournaments.php?t=", $row["t_id"], "'>", $row["name"], "</a> </td>";
             else
                 echo "<td>none</td>";
-            echo "<td>", $row["date_added"], "</td>";
+            echo "<td class='moment'>", $row["date_added"], "</td>";
             echo "</tr>";
         };
         if ($searchbox) {

@@ -18,6 +18,10 @@ Helper.callInit = function () {
         },
         constrainInput: false
     }).removeClass("date");
+    $(".moment").each(function (i, elem) {
+        $(elem).attr("raw", $(elem).text());
+        $(elem).html(moment($(elem).text()).fromNow());
+    }).removeClass("moment");
     if ($.type(init) === "function") init();
 }
 
