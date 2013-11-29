@@ -123,7 +123,7 @@ class Video extends JSONObject {
 
         }
         $table->setData("Select * from (SELECT " . $projection .
-            "FROM video as v left outer join tournament as t on v.tournament_id = t.tournament_id " . $joins .
+            " FROM video as v left outer join tournament as t on v.tournament_id = t.tournament_id " . $joins .
             (strlen($where) > 0 ? " where " . $where : "") .
             " ORDER BY v.date_added DESC) as x " . $crazy, $params);
         return $table;
