@@ -121,15 +121,22 @@ class Video extends JSONObject {
                         case "video_player":
                             $crazy .= " inner join (select v.video_id from video_player as v";
                             if ($field[1] > 0) {
-                                $crazy .= " inner join `character` as c on v.character_id = c.character_id";
+                                $crazy .= " inner join `character` as c$i on v.character_id = c$i.character_id";
                             }
-                            $crazy .= " where ";
+                            if ($field[2] > 0) {
+                                $crazy .= " inner join
+                                    (select video_player_id from technique_usage where technique_id = :technique$i )
+                                    as tch$i on v.video_player_id = tch$i.video_player_id";
+                                $params["technique$i"] = $field[2];
+                            }
                             if ($field[0] > 0) {
+                                $crazy .= " where ";
                                 $crazy .= " v.player_id = :player$i";
                                 $params["player$i"] = $field[0];
                                 if ($field[1] > 0) $crazy .= " and";
                             }
                             if ($field[1] > 0) {
+                                if ($field[0] < 0) $crazy .= " where ";
                                 $crazy .= " c.identity_id = :character$i";
                                 $params["character$i"] = $field[1];
                             }
