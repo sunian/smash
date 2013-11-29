@@ -16,7 +16,8 @@ require_once('libs/DataTable.php');
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
         var newName, newDate;
-        $(function () {
+
+        function init() {
             newName = $("#newName");
             newDate = $("#newDate");
 
@@ -24,7 +25,7 @@ require_once('libs/DataTable.php');
             Helper.displayBtnAdd(true);
 
             newName.focus();
-        });
+        }
 
         function createVersions() {
             document.location.href = "version.php?t=newVersion";

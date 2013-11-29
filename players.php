@@ -23,7 +23,8 @@ if (strlen($json_input) > 0) {
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
         var newTag, newName;
-        $(function () {
+
+        function init() {
             newName = $("#newName");
             newTag = $("#newTag");
             newTag.keyup(function () {
@@ -36,7 +37,7 @@ if (strlen($json_input) > 0) {
             Helper.setupDataTable("Players");
 
             newTag.focus();
-        });
+        }
 
         function createPlayers() {
             var newObj = {};

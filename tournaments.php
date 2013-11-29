@@ -24,7 +24,8 @@ if (strlen($json_input) > 0) {
     <script type="text/javascript">
         var newDate, newVenue;
         var newName;
-        $(function () {
+
+        function init() {
             newName = $("#newName");
             newDate = $("#newDate");
             newVenue = $("#newVenue");
@@ -41,7 +42,7 @@ if (strlen($json_input) > 0) {
             Helper.setupDataTable("Tournys");
 
             newName.focus();
-        });
+        }
 
         function createTournys() {
             var newObj = {};
