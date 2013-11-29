@@ -74,6 +74,8 @@ $searchbox = SearchBox::nu("Filter Videos", array(
 );
 
 $searchbox->render();
+
+$table = Video::constructDataTableFrom();
 $table->render();
 
 include('libs/players.php');
