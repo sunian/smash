@@ -139,7 +139,6 @@ class Video extends JSONObject {
                                 if ($field[0] < 0) $crazy .= " where ";
                                 $crazy .= " c$i.identity_id = :character$i";
                                 $params["character$i"] = $field[1];
-                                //ha. told ya
                             }
                             $crazy .= " group by v.video_id) as vp$i on x.video_id = vp$i.video_id";
                             break;
@@ -154,10 +153,12 @@ class Video extends JSONObject {
             }
 
         }
-        $table->setData("Select * from (SELECT " . $projection .
+        $sqlQuery = "Select * from (SELECT " . $projection .
             " FROM video as v left outer join tournament as t on v.tournament_id = t.tournament_id " . $joins .
             (strlen($where) > 0 ? " where " . $where : "") .
-            " ) as x " . $crazy . " group by x.video_id ORDER BY x.date_added DESC", $params);
+            " ) as x " . $crazy . " group by x.video_id ORDER BY x.date_added DESC";
+        echo "query=$sqlQuery _ ";
+        $table->setData($sqlQuery, $params);
         return $table;
     }
 
