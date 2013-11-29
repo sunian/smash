@@ -104,7 +104,7 @@ class Video extends JSONObject {
                         case "version":
                             break;
                         case "video_player":
-                            $crazy .= " inner join (select distinct v.video_id from video_player as v";
+                            $crazy .= " inner join (select v.video_id from video_player as v";
                             if ($field[1] > 0) {
                                 $crazy .= " inner join `character` as c on v.character_id = c.character_id";
                             }
@@ -118,7 +118,7 @@ class Video extends JSONObject {
                                 $crazy .= " c.identity_id = :character$i";
                                 $params["character$i"] = $field[1];
                             }
-                            $crazy .= ") as vp$i on x.video_id = vp$i.video_id";
+                            $crazy .= " group by v.video_id) as vp$i on x.video_id = vp$i.video_id";
                             break;
                     }
                     $i++;
