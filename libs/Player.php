@@ -14,6 +14,7 @@ class Player extends JSONObject
     public $player_id = null;
     public $name = null;
     public $tag = null;
+    public $abbrev = null;//tag abbreviation
     public $region_id = null;
     public $region_name = null;
 
@@ -34,8 +35,9 @@ class Player extends JSONObject
             }
             $stmt->closeCursor();
             $params["tag"] = $this->tag;
+            $params["abbrev"] = $this->abbrev;
             $params["name"] = $this->name;
-            $sql_string = "INSERT INTO player (name, tag, region_id) VALUES (:name, :tag, :region)";
+            $sql_string = "INSERT INTO player (name, tag, region_id, tag_abbreviation) VALUES (:name, :tag, :region, :abbrev)";
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
             $stmt->closeCursor();
