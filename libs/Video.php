@@ -106,7 +106,7 @@ class Video extends JSONObject {
                         case "video_player":
                             $crazy .= " inner join (select distinct v.video_id from video_player as v";
                             if ($field[1] > 0) {
-                                $crazy .= " inner join character as c on v.character_id = c.character_id";
+                                $crazy .= " inner join `character` as c on v.character_id = c.character_id";
                             }
                             $crazy .= " where ";
                             if ($field[0] > 0) {
