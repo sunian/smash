@@ -6,6 +6,7 @@
  * Time: 12:39 PM
  */
 require_once('DbUtil.php');
+require_once('browser.php');
 
 class TableColumn
 {
@@ -145,7 +146,7 @@ class DataTable
             $stmt->setFetchMode(PDO::FETCH_BOTH);
             $callback = $this->renderData;
             while ($row = $stmt->fetch()) {
-                $callback($row);
+                $callback(clean($row));
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
