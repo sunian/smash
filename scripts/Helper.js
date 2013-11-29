@@ -74,7 +74,7 @@ Helper.makeQuery = function (searchBox) {
     Helper.postJSON(searchBox, "q",
         function (data, textStatus, jqXHR) {
             if (data.length > 0) {
-                $("div#body").first().remove().after(data);
+                $("div.body").first().after(data).remove();
                 Helper.callInit();
                 console.log(data);
             }
