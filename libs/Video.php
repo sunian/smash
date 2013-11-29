@@ -137,7 +137,7 @@ class Video extends JSONObject {
                             }
                             if ($field[1] > 0) {
                                 if ($field[0] < 0) $crazy .= " where ";
-                                $crazy .= " c.identity_id = :character$i";
+                                $crazy .= " c$i.identity_id = :character$i";
                                 $params["character$i"] = $field[1];
                             }
                             $crazy .= " group by v.video_id) as vp$i on x.video_id = vp$i.video_id";
