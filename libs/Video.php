@@ -82,8 +82,22 @@ class Video extends JSONObject {
                     case "video_player":
                         $joins .= " left outer join video_player as vp on v.video_id = vp.video_id";
                         break;
-
                 }
+                $i = 0;
+                foreach ($queryField->values as $field) {
+                    switch ($queryField->id) {
+                        case "title":
+                            $where .= " v.title like concat('%',:title$i,'%')";
+                            $params["title$i"] = $field[0];
+                            break;
+                        case "version":
+                            break;
+                        case "video_player":
+                            break;
+                    }
+                    $i++;
+                }
+
             }
 
         }
