@@ -74,6 +74,7 @@ class Video extends JSONObject {
         };
         if ($searchbox) {
             foreach ($searchbox->fields as $queryField) {
+                if (count($queryField->values) == 0) continue;
                 switch ($queryField->id) {
                     case "version":
                         $joins .= " left outer join video_version as vv on v.video_id = vv.video_id";

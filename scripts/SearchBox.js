@@ -111,10 +111,13 @@ function QueryField(myParent, obj) {
         var newValues = [];
         $(this.myDiv).find("div.field").each(function (i, elem) {
             var values = [];
+            var hasValue = false;
             $(elem).find("input, select").each(function (i, elem) {
-               values.push($(elem).val());
+                var value = $(elem).val();
+                if (value.length > 0 && value != -1) hasValue = true;
+                values.push(value);
             });
-            newValues.push(values);
+            if (hasValue) newValues.push(values);
         });
         this.values = newValues;
     }
