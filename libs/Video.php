@@ -119,7 +119,6 @@ class Video extends JSONObject {
                                 $params["character$i"] = $field[1];
                             }
                             $crazy .= " group by v.video_id) as vp$i on x.video_id = vp$i.video_id";
-                            //TODO: why returning duplicate results
                             break;
                     }
                     $i++;
@@ -136,6 +135,12 @@ class Video extends JSONObject {
             }
 
         }
+        echo "query=";
+        echo "Select * from (SELECT " . $projection .
+            " FROM video as v left outer join tournament as t on v.tournament_id = t.tournament_id " . $joins .
+            (strlen($where) > 0 ? " where " . $where : "") .
+            " ORDER BY v.date_added DESC) as x " . $crazy;
+        echo " _";
         $table->setData("Select * from (SELECT " . $projection .
             " FROM video as v left outer join tournament as t on v.tournament_id = t.tournament_id " . $joins .
             (strlen($where) > 0 ? " where " . $where : "") .
