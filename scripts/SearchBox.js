@@ -84,6 +84,9 @@ function QueryField(myParent, obj) {
                     newSelect.attr("id", this.id + "-" + i);
                     newField.append(newSelect);
                     break;
+                default :
+                    newField.append(types[i]);
+                    break;
             }
         }
         if (anchor)

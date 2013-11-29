@@ -55,8 +55,8 @@ class Video extends JSONObject {
         return array(
             QueryField::nu("title", "Title", "input", "1"),
             QueryField::nu("version", "Game Version", "select:createVersionSelector", "*"),
-            QueryField::nu("video_player", "Player(Character)",
-                "select:createPlayerSelector select:createCharacterSelector", "*"),
+            QueryField::nu("video_player", "Player(Character) uses Technique",
+                "select:createPlayerSelector select:createCharacterSelector <br>uses select:createTechniqueSelector", "*"),
             QueryField::nu("tournament", "Tourny", "select:createTournamentSelector", "1")
         );
     }
