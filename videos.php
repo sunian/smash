@@ -74,6 +74,7 @@ include('libs/players.php');
 include('libs/characters.php');
 include('libs/versions.php');
 include('libs/tournaments.php');
+include('libs/techniques.php');
 ?>
 </body>
 </html>
