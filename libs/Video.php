@@ -88,6 +88,18 @@ class Video extends JSONObject {
         if ($searchbox) {
             foreach ($searchbox->fields as $queryField) {
                 if (count($queryField->values) == 0) continue;
+                switch ($queryField->id) {
+                    case "version":
+//                        $joins .= " left outer join video_version as vv on v.video_id = vv.video_id";
+//                        if (strlen($where) > 0) $where .= " and";
+//                        $where .= " vv.version_id in (";
+                        break;
+                    case "video_player":
+//                        $joins .= " left outer join video_player as vp on v.video_id = vp.video_id";
+//                        $projection .= ", vp.player_id, vp.character_id";
+                        break;
+                }
+
                 $i = 0;
                 foreach ($queryField->values as $field) {
                     switch ($queryField->id) {
@@ -102,6 +114,7 @@ class Video extends JSONObject {
                             $params["tournament$i"] = $field[0];
                             break;
                         case "version":
+
                             break;
                         case "video_player":
                             $crazy .= " inner join (select v.video_id from video_player as v";
@@ -125,11 +138,7 @@ class Video extends JSONObject {
                 }
                 switch ($queryField->id) {
                     case "version":
-                        $joins .= " left outer join video_version as vv on v.video_id = vv.video_id";
-                        break;
-                    case "video_player":
-                        $joins .= " left outer join video_player as vp on v.video_id = vp.video_id";
-                        $projection .= ", vp.player_id, vp.character_id";
+//                        $where .= ")";
                         break;
                 }
             }
