@@ -138,13 +138,17 @@ class DataTable
 
     private function printData()
     {
-        $conn = DbUtil::connect();
-        $stmt = $conn->prepare($this->sqlQuery);
-        $stmt->execute($this->sqlParams);
-        $stmt->setFetchMode(PDO::FETCH_BOTH);
-        $callback = $this->renderData;
-        while ($row = $stmt->fetch()) {
-            $callback($row);
+        try {
+            $conn = DbUtil::connect();
+            $stmt = $conn->prepare($this->sqlQuery);
+            $stmt->execute($this->sqlParams);
+            $stmt->setFetchMode(PDO::FETCH_BOTH);
+            $callback = $this->renderData;
+            while ($row = $stmt->fetch()) {
+                $callback($row);
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
         }
     }
 
