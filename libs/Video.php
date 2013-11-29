@@ -88,6 +88,41 @@ class Video extends JSONObject {
         if ($searchbox) {
             foreach ($searchbox->fields as $queryField) {
                 if (count($queryField->values) == 0) continue;
+                $i = 0;
+                foreach ($queryField->values as $field) {
+                    switch ($queryField->id) {
+                        case "title":
+                            if (strlen($where) > 0) $where .= " and";
+                            $where .= " v.title like concat('%',:title$i,'%')";
+                            $params["title$i"] = $field[0];
+                            break;
+                        case "tournament":
+                            if (strlen($where) > 0) $where .= " and";
+                            $where .= " t.tournament_id = :tournament$i";
+                            $params["tournament$i"] = $field[0];
+                            break;
+                        case "version":
+                            break;
+                        case "video_player":
+                            $crazy .= " inner join (select distinct v.video_id from video_player as v";
+                            if ($field[1] > 0) {
+                                $crazy .= " inner join character as c on v.character_id = c.character_id";
+                            }
+                            $crazy .= " where ";
+                            if ($field[0] > 0) {
+                                $crazy .= " v.player_id = :player$i";
+                                $params["player$i"] = $field[0];
+                                if ($field[1] > 0) $crazy .= " and";
+                            }
+                            if ($field[1] > 0) {
+                                $crazy .= " c.identity_id = :character$i";
+                                $params["character$i"] = $field[1];
+                            }
+                            $crazy .= ") as vp$i on x.video_id = vp$i.video_id";
+                            break;
+                    }
+                    $i++;
+                }
                 switch ($queryField->id) {
                     case "version":
                         $joins .= " left outer join video_version as vv on v.video_id = vv.video_id";
@@ -97,28 +132,6 @@ class Video extends JSONObject {
                         $projection .= ", vp.player_id, vp.character_id";
                         break;
                 }
-                $i = 0;
-                if (strlen($where) > 0) $where .= " and";
-                foreach ($queryField->values as $field) {
-                    switch ($queryField->id) {
-                        case "title":
-                            $where .= " v.title like concat('%',:title$i,'%')";
-                            $params["title$i"] = $field[0];
-                            break;
-                        case "tournament":
-                            $where .= " t.tournament_id = :tournament$i";
-                            $params["tournament$i"] = $field[0];
-                            break;
-                        case "version":
-                            break;
-                        case "video_player":
-                            $crazy .= " inner join (select * from video_player where player_id = :player$i) as vp$i on x.player_id = vp$i.player_id";
-                            $params["player$i"] = $field[0];
-                            break;
-                    }
-                    $i++;
-                }
-
             }
 
         }
