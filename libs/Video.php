@@ -184,15 +184,15 @@ class Video extends JSONObject
         $this->date_added = $row["date_added"];
         $this->url = $row["url"];
         $this->title = $row["title"];
-        $this->populateTechniques();
+        echo $this->populateTechniques();
         echo "called tech\n";
-        $this->populatePlayers();
+        echo $this->populatePlayers();
         echo "called play\n";
-        $this->populateCharacters();
+        echo $this->populateCharacters();
         echo "called chars\n";
-        $this->populateVersions();
+        echo $this->populateVersions();
         echo "called versions\n";
-        $this->populatePlayerPlaysChar();
+        echo $this->populatePlayerPlaysChar();
         echo "called last\n";
     }
 
