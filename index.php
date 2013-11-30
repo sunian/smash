@@ -35,11 +35,8 @@ try {
     echo "<div class='body'>";
     echo "<table id='most_recent_vids'>";
     while($row = clean($stmt->fetch())) {
-        echo "vid=", $row["video_id"], "\n";
         $listUnit = Video::nu($row["video_id"]);
-        echo "now populate\n";
         $listUnit->populateFieldsFromID();
-        echo "populated\n";
         echo "<tr id='" , $row["video_id"] , "'>
                 <td><a href='video.php?t=", $row["video_id"], "'>", $listUnit->renderThumbnail() , "</a></td>
                 <td>" , $listUnit->render() , "</td>
