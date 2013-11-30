@@ -216,7 +216,7 @@ class Video extends JSONObject
             if (count($this->techniques) > 0) {
                 foreach ($this->techniques[0] as $field => $value) {
                     echo "tech field=$field: $value\n";
-                    $this->techniques[0]{$field} = "deadbeef";
+                    $this->techniques[0]->{$field} = "deadbeef";
                 }
 
             }
