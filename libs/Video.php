@@ -257,7 +257,7 @@ class Video extends JSONObject
     {
         try {
             $conn = DbUtil::connect();
-            $sql_string = "SELECT p.version_id, p.title, p.version_number, p.name AS pretty_name, p.abbrev_name as pretty_abbrev
+            $sql_string = "SELECT p.version_id, p.title, p.version_number, p.name AS pretty_name, p.abbrev_name AS pretty_abbrev
                 FROM video AS v INNER JOIN video_version AS vv ON v.video_id = vv.video_id
                 INNER JOIN pretty_version AS p ON vv.version_id = p.version_id
                 WHERE v.video_id = :video_id";
@@ -295,12 +295,38 @@ class Video extends JSONObject
         }
     }
 
+    public function renderThumbnail()
+    {
+        echo "<img src='http://img.youtube.com/vi/", $this->getIDFromURL(), "/mqdefault.jpg'>";
+    }
+
     public function getIDFromURL()
     {
         $query = substr($this->url, strpos($this->url, "v=", strpos($this->url, "?")) + 2);
         $strposAmp = strpos($query, "&");
         if ($strposAmp > -1) return substr($query, 0, $strposAmp);
         return $query;
+    }
+
+    public function render($expanded = false)
+    {
+        echo "<div>";
+        if (count($this->playerPlaysChar) > 0) {
+            foreach ($this->playerPlaysChar as $i => $video_player) {
+                if ($i > 0) echo ", ";
+                echo $video_player->player->tag, " (", $video_player->character->name, ")";
+            }
+        }
+        echo "<br>Version: ";
+        if ($this->versions) {
+            foreach ($this->versions as $i => $version) {
+                if ($i > 0) echo ", ";
+                echo $version->render($expanded);
+            }
+        } else {
+            echo "Unknown";
+        }
+        echo "</div>\n";
     }
 }
 

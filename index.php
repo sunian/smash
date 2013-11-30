@@ -8,7 +8,6 @@
  */
 require_once('libs/browser.php');
 require_once('libs/DbUtil.php');
-require_once('libs/VideoListUnit.php');
 
 ?>
 
@@ -36,9 +35,10 @@ try {
     echo "<div class='body'>";
     echo "<table id='most_recent_vids'>";
     while($row = $stmt->fetch()) {
-        $listUnit = new VideoListUnit($row["video_id"]);
+        $listUnit = Video::nu($row["video_id"]);
+        $listUnit->populateFieldsFromID();
         echo "<tr id='" , $row["video_id"] , "'>
-                <td><a href='video.php?t=", $row["video_id"], "'>", $listUnit->getThumbnail() , "</a></td>
+                <td><a href='video.php?t=", $row["video_id"], "'>", $listUnit->renderThumbnail() , "</a></td>
                 <td>" , $listUnit->render() , "</td>
               </tr>";
     }

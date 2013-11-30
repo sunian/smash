@@ -9,7 +9,6 @@
 require_once('libs/browser.php');
 require_once('libs/DbUtil.php');
 require_once('libs/Video.php');
-require_once('libs/VideoListUnit.php');
 //require_once('libs/Techniques.php');
 
 //if (strlen($json_input) > 0) {
@@ -22,9 +21,9 @@ if (!$urlParams["t"]) {
     header("Location: http://plato.cs.virginia.edu/~jcs5sb/smash/videos.php");
     exit();
 }
-$vidUnit = new VideoListUnit($urlParams["t"], true);
-$vid = $vidUnit->video;
-$urlID = $vid->getIDFromURL();
+$video = Video::nu($urlParams["t"]);
+$video->populateFieldsFromID();
+$urlID = $video->getIDFromURL();
 ?>
 
 <html>
@@ -49,7 +48,7 @@ $urlID = $vid->getIDFromURL();
 
 include('libs/navheader.php');
 
-echo "<h1>$vid->title</h1>";
+echo "<h1>$video->title</h1>";
 
 ?>
 
@@ -65,7 +64,7 @@ echo "<h1>$vid->title</h1>";
             </td>
             <td style="width:425px; height:350px">
                 <h2>Information</h2><br>
-                <?php $vidUnit->render(); ?>
+                <?php $video->render(true); ?>
             </td>
         </tr>
     </table>
