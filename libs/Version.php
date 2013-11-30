@@ -85,6 +85,6 @@ class Version extends JSONObject
 
     public function render($expanded)
     {
-        echo "<a href='version.php?t=", $this->version_id, "'>", $expanded ? $this->pretty_name : $this->pretty_abbrev, "</a>";
+        echo "<a href='version.php?t=$this->version_id'>", $expanded ? $this->pretty_name : $this->pretty_abbrev, "</a>";
     }
 }
