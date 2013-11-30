@@ -8,7 +8,7 @@
  */
 require_once('libs/browser.php');
 require_once('libs/DbUtil.php');
-
+require_once('libs/Video.php');
 ?>
 
 <html>
