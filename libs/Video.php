@@ -220,7 +220,7 @@ class Video extends JSONObject
                 }
 
             }
-        } catch (PDOException $e) {
+        } catch (Exception $e) {
             return $e->getMessage();
         }
     }
