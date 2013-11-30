@@ -21,7 +21,7 @@ if (strlen($json_input) > 0) {
     <?php
     include('libs/headers.php');
     if (!$urlParams["t"]) {
-        header("Location: http://plato.cs.virginia.edu/~jcs5sb/smash/versions.php");
+        header("Location: https://plato.cs.virginia.edu/~jcs5sb/smash/versions.php");
         exit;
     }
     ?>

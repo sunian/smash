@@ -199,7 +199,7 @@ class Video extends JSONObject
                 FROM video AS v
                 INNER JOIN video_player AS vp ON v.video_id = vp.video_id
                 INNER JOIN technique_usage AS tu ON vp.video_player_id = tu.video_player_id
-                INNER JOIN technique AS t on tu.technique_id = t.technique_id
+                INNER JOIN technique AS t ON tu.technique_id = t.technique_id
                 WHERE v.video_id = :video_id";
             $params = array("video_id" => $this->video_id);
             $stmt = $conn->prepare($sql_string);
@@ -293,7 +293,7 @@ class Video extends JSONObject
 
     public function renderThumbnail()
     {
-        echo "<img src='http://img.youtube.com/vi/", $this->getIDFromURL(), "/mqdefault.jpg'>";
+        echo "<img src='https://img.youtube.com/vi/", $this->getIDFromURL(), "/mqdefault.jpg'>";
     }
 
     public function getIDFromURL()
@@ -302,6 +302,12 @@ class Video extends JSONObject
         $strposAmp = strpos($query, "&");
         if ($strposAmp > -1) return substr($query, 0, $strposAmp);
         return $query;
+    }
+
+    public function getEmbedURL()
+    {
+        $vid_id = $this->getIDFromURL();
+        return "https://www.youtube.com/embed/$vid_id?enablejsapi=1&playsinline=1&autoplay=1";
     }
 
     public function render($expanded = false)

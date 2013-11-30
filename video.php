@@ -18,12 +18,11 @@ require_once('libs/Video.php');
 // exit();
 //}
 if (!$urlParams["t"]) {
-    header("Location: http://plato.cs.virginia.edu/~jcs5sb/smash/videos.php");
+    header("Location: https://plato.cs.virginia.edu/~jcs5sb/smash/videos.php");
     exit();
 }
 $video = Video::nu($urlParams["t"]);
 $video->populateFieldsFromID();
-$urlID = $video->getIDFromURL();
 ?>
 
 <html>
@@ -58,7 +57,7 @@ echo "<h1>$video->title</h1>";
             <td style="width:425px; height:350px">
                 <iframe name='video'
                         width="425" height="350"
-                        src="http://www.youtube.com/embed/<?php echo $urlID; ?>?enablejsapi=1&playsinline=1&autoplay=1"
+                        src="<?php echo $video->getEmbedURL(); ?>"
                         seamless>
                 </iframe>
             </td>
