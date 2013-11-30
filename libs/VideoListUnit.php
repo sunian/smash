@@ -37,7 +37,7 @@ class VideoListUnit {
         if($this->video->versions) {
             foreach ($this->video->versions as $i => $version) {
                 if ($i > 0) echo  ", ";
-                echo $this->expanded ? $version->pretty_name : $version->pretty_abbrev;
+                echo $version->render($this->expanded);
             }
         }
         else {
