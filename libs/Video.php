@@ -184,17 +184,11 @@ class Video extends JSONObject
         $this->date_added = $row["date_added"];
         $this->url = $row["url"];
         $this->title = $row["title"];
-        echo "calling others\n";
         echo $this->populateTechniques();
-        echo "called tech\n";
         echo $this->populatePlayers();
-        echo "called play\n";
         echo $this->populateCharacters();
-        echo "called chars\n";
         echo $this->populateVersions();
-        echo "called versions\n";
         echo $this->populatePlayerPlaysChar();
-        echo "called last\n";
     }
 
     private function populateTechniques()
@@ -211,16 +205,7 @@ class Video extends JSONObject
             $params = array("video_id" => $this->video_id);
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
-            echo "executed\n";
-            $this->techniques = $stmt->fetchAll(PDO::FETCH_CLASS, "Technique");
-            if (count($this->techniques) > 0) {
-                foreach ($this->techniques[0] as $field => $value) {
-                    echo "tech field=$field: $value\n";
-                    $this->techniques[0]->{$field} = "deadbeef";
-                }
-
-            }
-            print_r($this->techniques);
+            $this->techniques = clean($stmt->fetchAll(PDO::FETCH_CLASS, "Technique"));
         } catch (Exception $e) {
             return $e->getMessage();
         }

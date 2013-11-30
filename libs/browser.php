@@ -15,13 +15,16 @@ if (stripos($_SERVER['HTTP_USER_AGENT'], "MSIE", 0) === false) {
 }
 function clean($elem)
 {
-    if(!is_array($elem) )
-        $elem = htmlentities($elem,ENT_QUOTES,"UTF-8");
-    else
+    if (is_array($elem))
         foreach ($elem as $key => $value) {
-            echo $key, "=>", $value, "\n";
             $elem[$key] = clean($value);
         }
+    elseif (is_object($elem))
+        foreach ($elem as $key => $value) {
+            $elem->{$key} = clean($value);
+        }
+    else
+        $elem = htmlentities($elem, ENT_QUOTES, "UTF-8");
     return $elem;
 }
 
@@ -31,6 +34,7 @@ function startsWith($haystack, $needle)
 {
     return $needle === "" || strpos($haystack, $needle) === 0;
 }
+
 function endsWith($haystack, $needle)
 {
     return $needle === "" || substr($haystack, -strlen($needle)) === $needle;
