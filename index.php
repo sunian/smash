@@ -26,7 +26,7 @@ require_once('libs/Video.php');
 <body>
 
 <?php include('libs/navheader.php');
-echo "ciphertext=", crypt("password", "salt"), "[|]\n";
+echo "ciphertext=", crypt('password', '$2a$05$F2rnMfkI1QZhG2mEgyN2Du'), "[|]\n";
 try {
     $conn = DbUtil::connect();
     $stmt = $conn->prepare("SELECT video_id FROM video ORDER BY date_added DESC LIMIT 0, 10");
