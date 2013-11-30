@@ -207,10 +207,13 @@ class Video extends JSONObject
                 INNER JOIN technique_usage AS tu ON vp.video_player_id = tu.video_player_id
                 INNER JOIN technique AS t on tu.technique_id = t.technique_id
                 WHERE v.video_id = :video_id";
+            echo $sql_string;
             $params = array("video_id" => $this->video_id);
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
+            echo "executed\n";
             $this->techniques = clean($stmt->fetchAll(PDO::FETCH_CLASS, "Technique"));
+            print_r($this->techniques);
         } catch (PDOException $e) {
             return $e->getMessage();
         }
