@@ -212,8 +212,12 @@ class Video extends JSONObject
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
             echo "executed\n";
-            $this->techniques = clean($stmt->fetchAll(PDO::FETCH_CLASS, "Technique"));
+            $this->techniques = $stmt->fetchAll(PDO::FETCH_CLASS, "Technique");
             print_r($this->techniques);
+            echo is_array($this->techniques);
+            if (count($this->techniques) > 0) echo is_array($this->techniques[0]);
+            echo is_object($this->techniques);
+            if (count($this->techniques) > 0) echo is_object($this->techniques[0]);
         } catch (PDOException $e) {
             return $e->getMessage();
         }
