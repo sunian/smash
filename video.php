@@ -22,7 +22,7 @@ if (!$urlParams["t"]) {
     header("Location: http://plato.cs.virginia.edu/~jcs5sb/smash/videos.php");
     exit();
 }
-$vidUnit = new VideoListUnit($urlParams["t"]);
+$vidUnit = new VideoListUnit($urlParams["t"], true);
 $vid = $vidUnit->video;
 $urlID = $vid->getIDFromURL();
 ?>

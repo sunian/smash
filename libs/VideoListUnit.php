@@ -11,11 +11,13 @@ require_once('Player.php');
 
 class VideoListUnit {
     public $video;
+    public $expanded; //whether or not to prefer abbreviations or long form
 
-    function __construct($video_id = false) {
+    function __construct($video_id = false, $expanded = false) {
         if($video_id) {
             $this->video = Video::nu($video_id);
             $this->video->populateFieldsFromID();
+            $this->expanded = $expanded;
         }
     }
 
@@ -35,7 +37,7 @@ class VideoListUnit {
         if($this->video->versions) {
             foreach ($this->video->versions as $i => $version) {
                 if ($i > 0) echo  ", ";
-                echo $version->pretty_abbrev;
+                echo $this->expanded ? $version->pretty_name : $version->pretty_abbrev;
             }
         }
         else {
