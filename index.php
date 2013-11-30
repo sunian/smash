@@ -26,7 +26,11 @@ require_once('libs/Video.php');
 <body>
 
 <?php include('libs/navheader.php');
-
+if (defined("CRYPT_BLOWFISH") && CRYPT_BLOWFISH) {
+    echo "CRYPT_BLOWFISH is enabled!";
+}else {
+    echo "CRYPT_BLOWFISH is not available";
+}
 try {
     $conn = DbUtil::connect();
     $stmt = $conn->prepare("SELECT video_id FROM video ORDER BY date_added DESC LIMIT 0, 10");
