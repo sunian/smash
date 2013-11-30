@@ -39,7 +39,7 @@ try {
         $listUnit = new VideoListUnit($row["video_id"]);
         echo "<tr id='" , $row["video_id"] , "'>
                 <td><a href='video.php?t=", $row["video_id"], "'>", $listUnit->getThumbnail() , "</a></td>
-                <td>" , $listUnit->getVideoInformation() , "</td>
+                <td>" , $listUnit->render() , "</td>
               </tr>";
     }
     echo "</table>";

@@ -10,12 +10,11 @@ require_once('Video.php');
 require_once('Player.php');
 
 class VideoListUnit {
-    var $video;
+    public $video;
 
     function __construct($video_id = false) {
         if($video_id) {
-            $this->video = new Video();
-            $this->video->video_id = $video_id;
+            $this->video = Video::nu($video_id);
             $this->video->populateFieldsFromID();
         }
     }
@@ -24,28 +23,24 @@ class VideoListUnit {
         return "<img src=\"http://img.youtube.com/vi/" . $this->video->getIDFromURL() . "/mqdefault.jpg\">";
     }
 
-    public function getVideoInformation() {
-        $outputString = "<div>";
+    public function render() {
+        echo "<div>";
         if(count($this->video->playerPlaysChar)>0) {
-            $outputString = $outputString . $this->video->playerPlaysChar[0]->character->name . "(" .
-                $this->video->playerPlaysChar[0]->player->tag . ")";
-            for($i=1; $i<count($this->video->playerPlaysChar); $i++) {
-                $outputString = $outputString . ", " . $this->video->playerPlaysChar[$i]->character->name . "(" .
-                    $this->video->playerPlaysChar[$i]->player->tag . ")";
+            foreach ($this->video->playerPlaysChar as $i => $video_player) {
+                if ($i > 0) echo  ", ";
+                echo $video_player->character->tag , "(" , $video_player->player->name , ")";
             }
         }
-        $outputString = $outputString . "<br>Version: ";
+        echo "<br>Version: ";
         if($this->video->versions) {
-             $outputString = $outputString . $this->video->versions[0]->pretty_name;
-            for($i=1; $i<count($this->video->versions); $i++) {
-                $outputString = $outputString . ", " + $this->video->versions[$i]->pretty_name;
+            foreach ($this->video->versions as $i => $version) {
+                if ($i > 0) echo  ", ";
+                echo $version->pretty_name;
             }
         }
         else {
-            $outputString = $outputString . "Unknown";
+            echo "Unknown";
         }
-        $outputString = $outputString . "</div>\n";
-
-        return $outputString;
+        echo "</div>\n";
     }
 }

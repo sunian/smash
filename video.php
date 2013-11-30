@@ -13,78 +13,76 @@ require_once('libs/VideoListUnit.php');
 //require_once('libs/Techniques.php');
 
 //if (strlen($json_input) > 0) {
-   // $video = new Video($json_input);
-   // $error = $video->createIdentity();
-   // if ($error) echo $error;
-   // exit();
+// $video = new Video($json_input);
+// $error = $video->createIdentity();
+// if ($error) echo $error;
+// exit();
 //}
+if (!$urlParams["t"]) {
+    header("Location: http://plato.cs.virginia.edu/~jcs5sb/smash/videos.php");
+    exit();
+}
+$vidUnit = new VideoListUnit($urlParams["t"]);
+$vid = $vidUnit->video;
+$urlID = $vid->getIDFromURL();
 ?>
 
 <html>
 <head>
     <title>Video</title>
     <?php include('libs/headers.php');
-    if(!$urlParams["t"]) {
-        header("Location: http://plato.cs.virginia.edu/~jcs5sb/smash/videos.php");
-        exit;
-    }
-    else {
-        echo "<div id=\"div_urlParam\" style=\"display: none;\">" , $urlParams["t"] , "</div>";
-    }
     ?>
     <script type="text/javascript">
         var newTechnique;
         var selectTechnique;
-        $(function () {
+        function init() {
             newTechnique = $("#newTechnique");
             selectTechnique = createTechniqueSelector();
             selectTechnique.id = "selectTechnique";
             newTechnique.appendChild(selectTechnique);
-        });
+        }
     </script>
 </head>
-<body text="white">
+<body>
 
-<?php include('libs/navheader.php');
+<?php
 
-    $vid = new Video();
-    $vid->set(array("video_id"=>$urlParams["t"]));
-    echo $vid->populateFieldsFromID();
-    $urlID = $vid->getIDFromURL();
-    $vidUnit = new VideoListUnit($vid->video_id);
-    $outputString = $vidUnit->getVideoInformation();
+include('libs/navheader.php');
 
-    echo "<h1>", $vid->title , "</h1>";
+echo "<h1>$vid->title</h1>";
 
-include('libs/techniques.php');
 ?>
 
 <div class='body'>
-<table>
-    <tr>
-        <td style="background-color:black;width:425px;height=350">
-            <iframe name='video'
-                    width="425" height="350"
-                    src="http://www.youtube.com/embed/<?php echo $urlID;?>?enablejsapi=1&playsinline=1&autoplay=1"
-                    seamless>
-            </iframe>
-        </td>
-        <td style="width:425px;height=350">
-            <h2>Information</h2><br>
-            <?php echo $outputString; ?>
-        </td>
-    </tr>
-</table>
+    <table>
+        <tr>
+            <td style="width:425px; height:350px">
+                <iframe name='video'
+                        width="425" height="350"
+                        src="http://www.youtube.com/embed/<?php echo $urlID; ?>?enablejsapi=1&playsinline=1&autoplay=1"
+                        seamless>
+                </iframe>
+            </td>
+            <td style="width:425px; height:350px">
+                <h2>Information</h2><br>
+                <?php $vidUnit->render(); ?>
+            </td>
+        </tr>
+    </table>
     <br>
 
     <table id='newTechnique'>
         <tr>
-            <td style="background-color:black;width:850px">
+            <td style="width:850px">
                 Add Techniques here?
             </td>
         </tr>
     </table>
 
 </div>
+<?php
+echo "<div id='div_urlParam' style='display: none;'>", $urlParams["t"], "</div>";
+include('libs/techniques.php');
+?>
 </body>
 </html>
