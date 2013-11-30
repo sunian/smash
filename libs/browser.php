@@ -6,6 +6,12 @@
  * Time: 12:57 PM
  * To change this template use File | Settings | File Templates.
  */
+if(empty($_SERVER["HTTPS"]) || $_SERVER["HTTPS"] !== "on")//force https
+{
+    header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
+    exit();
+}
+
 if (stripos($_SERVER['HTTP_USER_AGENT'], "MSIE", 0) === false) {
 //    echo "you're safe </br>";
 } elseif (isset($_COOKIE["msie"]) && $_COOKIE["msie"] == "bypass") {
