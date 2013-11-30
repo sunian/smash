@@ -9,7 +9,7 @@
 echo shell_exec("git pull");
 ?>
 <body style="font-family: sans-serif">
-So once I sell all my litecoins, I'll have a total of $2000.
+So once I sell all my litecoins, I'll have a total of $2000.<br>
 With that sum of money, I could buy:
 <table>
 <tr><td>A new computer 	  </td><td>  MS Surface	 </td><td> ~ $280</td></tr>
