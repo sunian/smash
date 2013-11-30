@@ -215,8 +215,8 @@ class Video extends JSONObject
             $this->techniques = $stmt->fetchAll(PDO::FETCH_CLASS, "Technique");
             print_r($this->techniques);
             if (count($this->techniques) > 0) {
-                foreach ($this->techniques as $field) {
-                    echo "tech field=$field\n";
+                foreach ($this->techniques as $field => $value) {
+                    echo "tech field=$field: $value\n";
                 }
 
             }
