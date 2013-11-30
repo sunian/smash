@@ -17,6 +17,7 @@ class Version extends JSONObject{
     var $version_id = null;
     var $characters;
     var $pretty_name;
+    var $pretty_abbrev;
 
     public function createIdentity() {
         try {
