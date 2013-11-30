@@ -20,7 +20,7 @@ if (strlen($json_input) > 0) {
 <head>
     <?php
     include('libs/headers.php');
-    if(!$urlParams["t"]) {
+    if (!$urlParams["t"]) {
         header("Location: http://plato.cs.virginia.edu/~jcs5sb/smash/versions.php");
         exit;
     }
@@ -62,13 +62,12 @@ if (strlen($json_input) > 0) {
 <?php
 include('libs/navheader.php');
 
-if(strcmp($urlParams["t"], "newVersion")==0) {
-}
-else {
+if (strcmp($urlParams["t"], "newVersion") == 0) {
+} else {
     $version = new Version();
-    $version->set(array("version_id"=>$urlParams["t"]));
+    $version->set(array("version_id" => $urlParams["t"]));
     $version->populateFieldsFromID();
-    echo "<h1>" , $version->pretty_name , "</h1>";
+    echo "<h1>", $version->pretty_name, "</h1>";
 
     $table = new DataTable("Characters", array(
         new TableColumn("Name", "newName", "select", "createCharacterSelector"),
@@ -77,16 +76,17 @@ else {
         new TableColumn("Falling Speed Rank", "newFallRank", "input", "Fall Speed Rank"),
         new TableColumn("Air Speed Rank", "newAirRank", "input", "Air Speed Rank")
     ));
-    $table->setData("SELECT name, weight, height, falling_speed_rank, air_speed_rank
-        FROM `character` NATURAL JOIN character_identity WHERE version_id = " . $version->version_id, null);
+    $table->setData("SELECT ci.name, c.weight, c.height, c.falling_speed_rank, c.air_speed_rank
+        FROM `character` AS c INNER JOIN character_identity AS ci on c.identity_id = ci.identity_id
+        WHERE c.version_id = :version",
+        array("version" => $version->version_id));
     $table->renderData = function ($row) {
-        $leDate = $row["release_date"];
         echo "<tr>";
         echo "<td>" . $row["name"] . "</td>";
-        echo "<td type='#'>". $row["weight"] . "</td>";
+        echo "<td type='#'>" . $row["weight"] . "</td>";
         echo "<td type='#'>" . $row["height"] . "</td>";
         echo "<td type='#'>" . $row["falling_speed_rank"] . "</td>";
-        echo "<td type='#'>". $row["air_speed_rank"] . "</td>";
+        echo "<td type='#'>" . $row["air_speed_rank"] . "</td>";
         echo "</tr>";
     };
     $table->render();
