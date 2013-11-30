@@ -21,3 +21,4 @@
 <link href="styles/default.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="scripts/Helper.js"></script>
 <?php if (class_exists("SearchBox")) echo "<script type='text/javascript' src='scripts/SearchBox.js'></script>", "\n"; ?>
+<?php if (class_exists("Crypto") || true) echo "<script type='text/javascript' src='scripts/cryptico.min.js'></script>", "\n"; ?>

@@ -219,12 +219,10 @@ class Video extends JSONObject
             $params = array("video_id" => $this->video_id);
             $stmt->execute($params);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $count = 0;
             while ($row = clean($stmt->fetch())) {
-                $thisPlayer = new Player();
-                $thisPlayer->player_id = $row["player_id"];
+                $thisPlayer = Player::nu($row["player_id"]);
                 $thisPlayer->populateFieldsFromID();
-                $this->players[$count++] = $thisPlayer;
+                array_push($this->players, $thisPlayer);
             }
         } catch (PDOException $e) {
 //            echo "Error in populate players\n";
@@ -242,12 +240,10 @@ class Video extends JSONObject
             $params = array("video_id" => $this->video_id);
             $stmt->execute($params);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $count = 0;
             while ($row = clean($stmt->fetch())) {
-                $thisCharacter = new Character();
-                $thisCharacter->id = $row["character_id"];
+                $thisCharacter = Character::nu($row["character_id"]);
                 $thisCharacter->populateFieldsFromID();
-                $this->characters[$count++] = $thisCharacter;
+                array_push($this->characters, $thisCharacter);
             }
         } catch (PDOException $e) {
 //            echo "Error in populate characters\n";
@@ -282,16 +278,13 @@ class Video extends JSONObject
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $count = 0;
             while ($row = clean($stmt->fetch())) {
                 $thisPlayerPlays = new PlayerPlaysChar();
-                $thisPlayerPlays->player = new Player();
-                $thisPlayerPlays->character = new Character();
-                $thisPlayerPlays->player->player_id = $row["player_id"];
-                $thisPlayerPlays->character->id = $row["character_id"];
+                $thisPlayerPlays->player = Player::nu($row["player_id"]);
+                $thisPlayerPlays->character = Character::nu($row["character_id"]);
                 $thisPlayerPlays->player->populateFieldsFromID();
                 $thisPlayerPlays->character->populateFieldsFromID();
-                $this->playerPlaysChar[$count++] = $thisPlayerPlays;
+                array_push($this->playerPlaysChar, $thisPlayerPlays);
             }
         } catch (PDOException $e) {
             return $e->getMessage();

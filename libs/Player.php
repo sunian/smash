@@ -18,6 +18,12 @@ class Player extends JSONObject
     public $region_id = null;
     public $region_name = null;
 
+    public static function nu($id) {
+        $instance = new self();
+        $instance->player_id = $id;
+        return $instance;
+    }
+
     public function createPlayer()
     {
         try {

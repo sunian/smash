@@ -22,6 +22,12 @@ class Character extends JSONObject
     public $falling_speed_rank = null;
     public $air_speed_rank = null;
 
+    public static function nu($id) {
+        $instance = new self();
+        $instance->id = $id;
+        return $instance;
+    }
+
     public function createIdentity()
     {
         try {
