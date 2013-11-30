@@ -22,11 +22,11 @@ With that sum of money, I could buy:
 <tr><td>A LeapMotion Controller		   </td><td></td><td>     ~ $80</td></tr>
 <tr><td>Some RWBY merchandise</td><td>	:D</td><td>	< $50</td></tr>
 </table>
-And still have more than $100 left over<br>
+And still have more than $100 left over, meaning I have more money than I have imagination to come up with things I want to buy.<br>
 <br>
-...or....<br>
+but if I were an Apple fanboy....<br>
 <br>
 I could buy:<br>
-An Apple product (Macbook Pro) $1999<br>
+An Apple computer (Macbook Pro) $1999<br>
 And have exactly $1 left over :/<br>
 </body>
