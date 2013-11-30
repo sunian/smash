@@ -90,7 +90,7 @@ class Character extends JSONObject
             $params = array("character_id"=>$this->id);
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $row = clean($stmt->fetch(PDO::FETCH_ASSOC));
             $this->version_id = $row["version_id"];
             $this->air_speed_rank = $row["air_speed_rank"];
             $this->falling_speed_rank = $row["falling_speed_rank"];

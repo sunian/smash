@@ -57,7 +57,7 @@ class Version extends JSONObject
             $stmt = $conn->prepare($sqlString);
             $stmt->execute($params);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $row = $stmt->fetch();
+            $row = clean($stmt->fetch());
             $this->title = $row["title"];
             $this->abbreviation = $row["abbreviation"];
             $this->release_date = $row["release_date"];
@@ -66,7 +66,7 @@ class Version extends JSONObject
             $stmt = $conn->prepare("SELECT name FROM pretty_version WHERE version_id = :version_id");
             $stmt->execute($params);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $row = $stmt->fetch();
+            $row = clean($stmt->fetch());
             $this->pretty_name = $row["name"];
 
             $sqlString = "SELECT c.character_id AS id, i.name AS name, u.name AS universe, c.weight, c.height,
@@ -77,7 +77,7 @@ class Version extends JSONObject
             $stmt = $conn->prepare($sqlString);
             $params["version_name"] = $this->pretty_name;
             $stmt->execute($params);
-            $this->characters = $stmt->fetchAll(PDO::FETCH_CLASS, "Character");
+            $this->characters = clean($stmt->fetchAll(PDO::FETCH_CLASS, "Character"));
         } catch (PDOException $e) {
             return $e->getMessage();
         }

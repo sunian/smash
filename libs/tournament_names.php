@@ -12,7 +12,7 @@
     $stmt = $conn->prepare("select distinct name from tournament order by name");
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    $names = $stmt->fetchAll();
+    $names = clean($stmt->fetchAll());
     $stmt->closeCursor();
     foreach ($names as $i => $name) {
         $names[$i] = $name["name"];

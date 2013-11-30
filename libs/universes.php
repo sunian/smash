@@ -12,7 +12,7 @@
     $stmt = $conn->prepare("select universe_id as id, name from universe order by universe_id");
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    echo json_encode($stmt->fetchAll());
+    echo json_encode(clean($stmt->fetchAll()));
     $stmt->closeCursor();
     ?></div>
 <script type="text/javascript">

@@ -180,7 +180,7 @@ class Video extends JSONObject
         $stmt = $conn->prepare($sqlString);
         $stmt->execute($params);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $row = $stmt->fetch();
+        $row = clean($stmt->fetch());
         $this->date_added = $row["date_added"];
         $this->url = $row["url"];
         $this->title = $row["title"];
@@ -201,7 +201,7 @@ class Video extends JSONObject
             $params = array("video_id" => $this->video_id);
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
-            $this->techniques = $stmt->fetchAll(PDO::FETCH_CLASS, "Technique");
+            $this->techniques = clean($stmt->fetchAll(PDO::FETCH_CLASS, "Technique"));
         } catch (PDOException $e) {
             return $e->getMessage();
         }
@@ -217,7 +217,7 @@ class Video extends JSONObject
             $stmt->execute($params);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $count = 0;
-            while ($row = $stmt->fetch()) {
+            while ($row = clean($stmt->fetch())) {
                 $thisPlayer = new Player();
                 $thisPlayer->player_id = $row["player_id"];
                 $thisPlayer->populateFieldsFromID();
@@ -240,7 +240,7 @@ class Video extends JSONObject
             $stmt->execute($params);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $count = 0;
-            while ($row = $stmt->fetch()) {
+            while ($row = clean($stmt->fetch())) {
                 $thisCharacter = new Character();
                 $thisCharacter->id = $row["character_id"];
                 $thisCharacter->populateFieldsFromID();
@@ -264,7 +264,7 @@ class Video extends JSONObject
             $params = array("video_id" => $this->video_id);
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
-            $this->versions = $stmt->fetchAll(PDO::FETCH_CLASS, "Version");
+            $this->versions = clean($stmt->fetchAll(PDO::FETCH_CLASS, "Version"));
         } catch (PDOException $e) {
             return $e->getMessage();
         }
@@ -280,7 +280,7 @@ class Video extends JSONObject
             $stmt->execute($params);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $count = 0;
-            while ($row = $stmt->fetch()) {
+            while ($row = clean($stmt->fetch())) {
                 $thisPlayerPlays = new PlayerPlaysChar();
                 $thisPlayerPlays->player = new Player();
                 $thisPlayerPlays->character = new Character();

@@ -15,7 +15,7 @@ if (stripos($_SERVER['HTTP_USER_AGENT'], "MSIE", 0) === false) {
 }
 function clean($elem)
 {
-    if(!is_array($elem))
+    if(!is_array($elem) && !is_object($elem))
         $elem = htmlentities($elem,ENT_QUOTES,"UTF-8");
     else
         foreach ($elem as $key => $value)

@@ -12,7 +12,7 @@
     $stmt = $conn->prepare("select identity_id as id, name from character_identity order by name");
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    echo json_encode($stmt->fetchAll());
+    echo json_encode(clean($stmt->fetchAll()));
     $stmt->closeCursor();
     ?></div>
 <script type="text/javascript">

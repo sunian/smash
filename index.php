@@ -34,7 +34,7 @@ try {
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     echo "<div class='body'>";
     echo "<table id='most_recent_vids'>";
-    while($row = $stmt->fetch()) {
+    while($row = clean($stmt->fetch())) {
         $listUnit = Video::nu($row["video_id"]);
         $listUnit->populateFieldsFromID();
         echo "<tr id='" , $row["video_id"] , "'>

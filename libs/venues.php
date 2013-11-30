@@ -11,7 +11,7 @@
     $conn = DbUtil::connect();
     $stmt = $conn->prepare("select distinct venue from tournament order by venue");
     $stmt->execute();
-    $venues = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+    $venues = clean($stmt->fetchAll(PDO::FETCH_COLUMN, 0));
     $stmt->closeCursor();
 
     echo json_encode($venues);

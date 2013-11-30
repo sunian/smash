@@ -56,7 +56,7 @@ class Player extends JSONObject
             $params = array("player_id"=>$this->player_id);
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $row = clean($stmt->fetch(PDO::FETCH_ASSOC));
             $this->region_name = $row["region_name"];
             $this->name = $row["name"];
             $this->tag = $row["tag"];
