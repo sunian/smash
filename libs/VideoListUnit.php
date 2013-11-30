@@ -28,7 +28,7 @@ class VideoListUnit {
         if(count($this->video->playerPlaysChar)>0) {
             foreach ($this->video->playerPlaysChar as $i => $video_player) {
                 if ($i > 0) echo  ", ";
-                echo $video_player->player->tag , "(" , $video_player->character->name , ")";
+                echo $video_player->player->tag , " (" , $video_player->character->name , ")";
             }
         }
         echo "<br>Version: ";
