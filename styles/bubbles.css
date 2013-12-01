@@ -421,7 +421,7 @@ is to other properties or values in creating the effect */
 	left:40px; /* controls horizontal position */
     border-width:20px 20px 0;
 	border-style:solid;
-    border-color:#5a8f00 transparent;
+    border-color:#c81e2b transparent;
     /* reduce the damage in FF3.0 */
     display:block; 
     width:0;
@@ -435,7 +435,7 @@ is to other properties or values in creating the effect */
 	left:47px; /* value = (:before left) + (:before border-left) - (:after border-left) */
 	border-width:13px 13px 0;
 	border-style:solid;
-	border-color:#fff transparent;
+	border-color:#333 transparent;
     /* reduce the damage in FF3.0 */
     display:block; 
     width:0;
