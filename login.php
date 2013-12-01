@@ -14,9 +14,14 @@
     <?php include('libs/headers.php');
     ?>
     <script type="text/javascript">
+        function signin() {
+
+        }
+
         function signup() {
 
         }
+
         var newUsername, newPassword, newConfirm, newName, newEmail, btnSignUp;
         function init() {
             newUsername = $("input#newUsername");
@@ -96,6 +101,13 @@ include('libs/navheader.php');
         <input id="newName" placeholder="full name" disabled><br>
         <input id="newEmail" placeholder="email address" disabled><br>
         <input id="btnSignUp" type="button" value="Sign Up" onclick="signup();" disabled>
+    </div>
+</div>
+    <div id="sign_in" class="container">
+        <p>Sign up:</p>
+        <input id="username" placeholder="username"><br>
+        <input id="password" placeholder="password" type="password" disabled><br>
+        <input id="btnSignIn" type="button" value="Sign Up" onclick="signin();" disabled>
     </div>
 </div>
 <?php
