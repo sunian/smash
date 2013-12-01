@@ -153,6 +153,7 @@ Helper.makeToast = function (parent, element, text) {
     var position = element.offset();
     notify.css("position", "absolute").click(function () {
         notify.remove();
+        element.focus();
     });
     $(document.body).append(notify);
     notify.css({
