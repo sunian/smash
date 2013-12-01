@@ -33,7 +33,9 @@
                 }
             })
                 .blur(function () {
-                    Helper.makeToast($("div.body"), $("#newUsername"), "Username must be at least 4 characters long!");
+                    if (newUsername.val().length < 4)
+                        Helper.makeToast($("div.body"), $("#newUsername"),
+                            "Username must be at least 4 characters long!");
                 });
         }
     </script>
