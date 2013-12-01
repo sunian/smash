@@ -154,7 +154,7 @@ Helper.makeToast = function (parent, element, text) {
     notify.css({
         position: "absolute",
         top: (position.top + (element.height() / 2)) + "px",
-        left: (position.left + (element.width() / 2)) + "px"
+        left: (position.left) + "px"
     });
-    $("body").append(notify);
+    $(document.body).append(notify);
 }
