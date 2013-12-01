@@ -35,11 +35,11 @@ include('libs/navheader.php');
     <div id="sign_up" class="container">
         <p>Sign up:</p>
         <input id="newUsername" placeholder="username"><br>
-        <input id="newPassword" placeholder="password"><br>
-        <input id="newConfirm" placeholder="confirm password"><br>
-        <input id="newName" placeholder="full name"><br>
-        <input id="newEmail" placeholder="email address"><br>
-        <input id="btnSignUp" type="button" value="Sign Up" onclick="signup();">
+        <input id="newPassword" placeholder="password" disabled><br>
+        <input id="newConfirm" placeholder="confirm password" disabled><br>
+        <input id="newName" placeholder="full name" disabled><br>
+        <input id="newEmail" placeholder="email address" disabled><br>
+        <input id="btnSignUp" type="button" value="Sign Up" onclick="signup();" disabled>
     </div>
 </div>
 <?php
