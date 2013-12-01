@@ -51,7 +51,7 @@ catch(PDOException $e) {
 try {
     $conn = DbUtil::connect();
     $stmt = $conn->prepare("SELECT t.name, t.date, t.venue, r.name AS rName FROM tournament AS t INNER JOIN region as r on t.region_id
-        = r.region_id ORDER BY t.date LIMIT 0,3");
+        = r.region_id ORDER BY t.date DESC LIMIT 0,3");
     echo "<div class='sideBlock'>";
     $stmt->execute();
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
