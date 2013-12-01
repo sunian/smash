@@ -23,7 +23,7 @@ function User(username, password) {
     };
 
     this.verifyPassword = function () {
-
+        return true;
     };
 
 }
