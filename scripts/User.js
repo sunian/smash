@@ -11,7 +11,7 @@ function User(username, password) {
     this.email = null;
 
     function setPassword(h) {
-        this.password = h;
+        self.password = h;
     }
 
     this.generateServerPassword = function () {
