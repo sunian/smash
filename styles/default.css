@@ -33,7 +33,7 @@ input, select {
     color: #526FC3;
 }
 
-table, div.search-box {
+table, div.search-box, div.container {
     background-color: rgba(54, 64, 134, 0.4);
     text-align: center;
 }

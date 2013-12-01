@@ -32,7 +32,7 @@ include('libs/navheader.php');
 ?>
 
 <div class='body'>
-    <div id="sign_up">
+    <div id="sign_up" class="container">
         <p>Sign up:</p>
         <input id="newUsername" placeholder="username"><br>
         <input id="newPassword" placeholder="password"><br>
