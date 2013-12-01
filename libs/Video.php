@@ -309,7 +309,7 @@ class Video extends JSONObject
 
     public function render($expanded = false)
     {
-        echo "<div>";
+        echo "<div><h3>" , $this->title , "</h3>";
         if (count($this->playerPlaysChar) > 0) {
             foreach ($this->playerPlaysChar as $i => $video_player) {
                 if ($i > 0) echo ", ";
