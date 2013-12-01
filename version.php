@@ -63,7 +63,8 @@ if (strlen($json_input) > 0) {
 include('libs/navheader.php');
 
 if (strcmp($urlParams["t"], "newVersion") == 0) {
-} else {
+}
+else {
     $version = new Version();
     $version->set(array("version_id" => $urlParams["t"]));
     $version->populateFieldsFromID();
