@@ -102,7 +102,6 @@ include('libs/navheader.php');
         <input id="newEmail" placeholder="email address" disabled><br>
         <input id="btnSignUp" type="button" value="Sign Up" onclick="signup();" disabled>
     </div>
-</div>
     <div id="sign_in" class="container">
         <p>Sign up:</p>
         <input id="username" placeholder="username"><br>
