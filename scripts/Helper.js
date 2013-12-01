@@ -153,8 +153,8 @@ Helper.makeToast = function (parent, element, text) {
     var position = element.position();
     notify.css({
         position: "absolute",
-        top: position.top + 5 + "px",
-        left: position.left + 10 + "px"
+        top: position.top + element.width() / 2 + "px",
+        left: position.left + element.height() / 2 + "px"
     });
     parent.append(notify);
 }
