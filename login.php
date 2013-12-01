@@ -65,14 +65,14 @@
                             "The passwords you entered don't match!");
                 });
             newEmail.keyup(function () {
-                if (newEmail.val().length > 5) {
+                if (Helper.validateEmail(newEmail.val())) {
                     btnSignUp.removeAttr("disabled");
                 } else {
                     btnSignUp.attr("disabled", "disabled");
                 }
             })
                 .blur(function () {
-                    if (newEmail.val().length < 5)
+                    if (!Helper.validateEmail(newEmail.val()))
                         Helper.makeToast($("div.body"), $("#newEmail"),
                             "You must enter a valid email!");
                 });
