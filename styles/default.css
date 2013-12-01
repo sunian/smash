@@ -33,6 +33,10 @@ input, select {
     color: #526FC3;
 }
 
+input[disabled] {
+    opacity: 0.75;
+}
+
 table, div.search-box, div.container {
     background-color: rgba(54, 64, 134, 0.4);
     text-align: center;
