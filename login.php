@@ -37,6 +37,44 @@
                         Helper.makeToast($("div.body"), $("#newUsername"),
                             "Username must be at least 4 characters long!");
                 });
+            newPassword.keyup(function () {
+                if (newPassword.val().length > 7) {
+                    newConfirm.removeAttr("disabled");
+                } else {
+                    newConfirm.val("").attr("disabled", "disabled");
+                }
+            })
+                .blur(function () {
+                    if (newUsername.val().length < 8)
+                        Helper.makeToast($("div.body"), $("#newPassword"),
+                            "Password must be at least 8 characters long!");
+                });
+            newConfirm.keyup(function () {
+                if (newPassword.val() === newConfirm.val()) {
+                    newName.removeAttr("disabled");
+                    newEmail.removeAttr("disabled");
+                } else {
+                    newName.attr("disabled", "disabled");
+                    newEmail.attr("disabled", "disabled");
+                }
+            })
+                .blur(function () {
+                    if (newPassword.val() !== newConfirm.val())
+                        Helper.makeToast($("div.body"), $("#newConfirm"),
+                            "The passwords you entered don't match!");
+                });
+            newEmail.keyup(function () {
+                if (newEmail.val().length > 5) {
+                    btnSignUp.removeAttr("disabled");
+                } else {
+                    btnSignUp.attr("disabled", "disabled");
+                }
+            })
+                .blur(function () {
+                    if (newEmail.val().length < 5)
+                        Helper.makeToast($("div.body"), $("#newEmail"),
+                            "You must enter a valid email!");
+                });
         }
     </script>
 </head>
