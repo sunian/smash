@@ -29,7 +29,123 @@ class Video extends JSONObject
     {
         $instance = new self();
         $instance->video_id = $id;
+        $instance->populateFieldsFromID();
         return $instance;
+    }
+
+    public function populateFieldsFromID()
+    {
+        $conn = DbUtil::connect();
+        $sqlString = "SELECT title, url, date_added, tournament_id AS tournament FROM video WHERE video_id = :video_id";
+        $params = array("video_id" => $this->video_id);
+        $stmt = $conn->prepare($sqlString);
+        $stmt->execute($params);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $row = clean($stmt->fetch());
+        $this->date_added = $row["date_added"];
+        $this->url = $row["url"];
+        $this->title = $row["title"];
+        echo $this->populateTechniques();
+        echo $this->populatePlayers();
+        echo $this->populateCharacters();
+        echo $this->populateVersions();
+        echo $this->populatePlayerPlaysChar();
+    }
+
+    private function populateTechniques()
+    {
+        try {
+            $conn = DbUtil::connect();
+            $sql_string = "SELECT tu.technique_id, t.name, t.abbreviation
+                FROM video AS v
+                INNER JOIN video_player AS vp ON v.video_id = vp.video_id
+                INNER JOIN technique_usage AS tu ON vp.video_player_id = tu.video_player_id
+                INNER JOIN technique AS t ON tu.technique_id = t.technique_id
+                WHERE v.video_id = :video_id";
+            $params = array("video_id" => $this->video_id);
+            $stmt = $conn->prepare($sql_string);
+            $stmt->execute($params);
+            $this->techniques = clean($stmt->fetchAll(PDO::FETCH_CLASS, "Technique"));
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    private function populatePlayers()
+    {
+        try {
+            $conn = DbUtil::connect();
+            $sql_string = "SELECT player_id FROM video_player WHERE video_id = :video_id";
+            $stmt = $conn->prepare($sql_string);
+            $params = array("video_id" => $this->video_id);
+            $stmt->execute($params);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            while ($row = clean($stmt->fetch())) {
+                $thisPlayer = Player::nu($row["player_id"]);
+                array_push($this->players, $thisPlayer);
+            }
+        } catch (PDOException $e) {
+//            echo "Error in populate players\n";
+//            echo $e->getMessage();
+            return $e->getMessage();
+        }
+    }
+
+    private function populateCharacters()
+    {
+        try {
+            $conn = DbUtil::connect();
+            $sql_string = "SELECT character_id FROM video_player WHERE video_id = :video_id";
+            $stmt = $conn->prepare($sql_string);
+            $params = array("video_id" => $this->video_id);
+            $stmt->execute($params);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            while ($row = clean($stmt->fetch())) {
+                $thisCharacter = Character::nu($row["character_id"]);
+                array_push($this->characters, $thisCharacter);
+            }
+        } catch (PDOException $e) {
+//            echo "Error in populate characters\n";
+//            echo $e->getMessage();
+            return $e->getMessage();
+        }
+    }
+
+    private function populateVersions()
+    {
+        try {
+            $conn = DbUtil::connect();
+            $sql_string = "SELECT p.version_id, p.title, p.version_number, p.name AS pretty_name, p.abbrev_name AS pretty_abbrev
+                FROM video AS v INNER JOIN video_version AS vv ON v.video_id = vv.video_id
+                INNER JOIN pretty_version AS p ON vv.version_id = p.version_id
+                WHERE v.video_id = :video_id";
+            $params = array("video_id" => $this->video_id);
+            $stmt = $conn->prepare($sql_string);
+            $stmt->execute($params);
+            $this->versions = clean($stmt->fetchAll(PDO::FETCH_CLASS, "Version"));
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    private function populatePlayerPlaysChar()
+    {
+        try {
+            $conn = DbUtil::connect();
+            $sql_string = "SELECT player_id, character_id FROM video_player WHERE video_id = :video_id";
+            $params = array("video_id" => $this->video_id);
+            $stmt = $conn->prepare($sql_string);
+            $stmt->execute($params);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            while ($row = clean($stmt->fetch())) {
+                $thisPlayerPlays = new PlayerPlaysChar();
+                $thisPlayerPlays->player = Player::nu($row["player_id"]);
+                $thisPlayerPlays->character = Character::nu($row["character_id"]);
+                array_push($this->playerPlaysChar, $thisPlayerPlays);
+            }
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
     }
 
     public static function getQueryFields()
@@ -167,125 +283,6 @@ class Video extends JSONObject
             $stmt->closeCursor();
             return false;
 
-        } catch (PDOException $e) {
-            return $e->getMessage();
-        }
-    }
-
-    public function populateFieldsFromID()
-    {
-        $conn = DbUtil::connect();
-        $sqlString = "SELECT title, url, date_added, tournament_id AS tournament FROM video WHERE video_id = :video_id";
-        $params = array("video_id" => $this->video_id);
-        $stmt = $conn->prepare($sqlString);
-        $stmt->execute($params);
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $row = clean($stmt->fetch());
-        $this->date_added = $row["date_added"];
-        $this->url = $row["url"];
-        $this->title = $row["title"];
-        echo $this->populateTechniques();
-        echo $this->populatePlayers();
-        echo $this->populateCharacters();
-        echo $this->populateVersions();
-        echo $this->populatePlayerPlaysChar();
-    }
-
-    private function populateTechniques()
-    {
-        try {
-            $conn = DbUtil::connect();
-            $sql_string = "SELECT tu.technique_id, t.name, t.abbreviation
-                FROM video AS v
-                INNER JOIN video_player AS vp ON v.video_id = vp.video_id
-                INNER JOIN technique_usage AS tu ON vp.video_player_id = tu.video_player_id
-                INNER JOIN technique AS t ON tu.technique_id = t.technique_id
-                WHERE v.video_id = :video_id";
-            $params = array("video_id" => $this->video_id);
-            $stmt = $conn->prepare($sql_string);
-            $stmt->execute($params);
-            $this->techniques = clean($stmt->fetchAll(PDO::FETCH_CLASS, "Technique"));
-        } catch (PDOException $e) {
-            return $e->getMessage();
-        }
-    }
-
-    private function populatePlayers()
-    {
-        try {
-            $conn = DbUtil::connect();
-            $sql_string = "SELECT player_id FROM video_player WHERE video_id = :video_id";
-            $stmt = $conn->prepare($sql_string);
-            $params = array("video_id" => $this->video_id);
-            $stmt->execute($params);
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            while ($row = clean($stmt->fetch())) {
-                $thisPlayer = Player::nu($row["player_id"]);
-                $thisPlayer->populateFieldsFromID();
-                array_push($this->players, $thisPlayer);
-            }
-        } catch (PDOException $e) {
-//            echo "Error in populate players\n";
-//            echo $e->getMessage();
-            return $e->getMessage();
-        }
-    }
-
-    private function populateCharacters()
-    {
-        try {
-            $conn = DbUtil::connect();
-            $sql_string = "SELECT character_id FROM video_player WHERE video_id = :video_id";
-            $stmt = $conn->prepare($sql_string);
-            $params = array("video_id" => $this->video_id);
-            $stmt->execute($params);
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            while ($row = clean($stmt->fetch())) {
-                $thisCharacter = Character::nu($row["character_id"]);
-                $thisCharacter->populateFieldsFromID();
-                array_push($this->characters, $thisCharacter);
-            }
-        } catch (PDOException $e) {
-//            echo "Error in populate characters\n";
-//            echo $e->getMessage();
-            return $e->getMessage();
-        }
-    }
-
-    private function populateVersions()
-    {
-        try {
-            $conn = DbUtil::connect();
-            $sql_string = "SELECT p.version_id, p.title, p.version_number, p.name AS pretty_name, p.abbrev_name AS pretty_abbrev
-                FROM video AS v INNER JOIN video_version AS vv ON v.video_id = vv.video_id
-                INNER JOIN pretty_version AS p ON vv.version_id = p.version_id
-                WHERE v.video_id = :video_id";
-            $params = array("video_id" => $this->video_id);
-            $stmt = $conn->prepare($sql_string);
-            $stmt->execute($params);
-            $this->versions = clean($stmt->fetchAll(PDO::FETCH_CLASS, "Version"));
-        } catch (PDOException $e) {
-            return $e->getMessage();
-        }
-    }
-
-    private function populatePlayerPlaysChar()
-    {
-        try {
-            $conn = DbUtil::connect();
-            $sql_string = "SELECT player_id, character_id FROM video_player WHERE video_id = :video_id";
-            $params = array("video_id" => $this->video_id);
-            $stmt = $conn->prepare($sql_string);
-            $stmt->execute($params);
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            while ($row = clean($stmt->fetch())) {
-                $thisPlayerPlays = new PlayerPlaysChar();
-                $thisPlayerPlays->player = Player::nu($row["player_id"]);
-                $thisPlayerPlays->character = Character::nu($row["character_id"]);
-                $thisPlayerPlays->player->populateFieldsFromID();
-                $thisPlayerPlays->character->populateFieldsFromID();
-                array_push($this->playerPlaysChar, $thisPlayerPlays);
-            }
         } catch (PDOException $e) {
             return $e->getMessage();
         }

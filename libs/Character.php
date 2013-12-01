@@ -22,10 +22,37 @@ class Character extends JSONObject
     public $falling_speed_rank = null;
     public $air_speed_rank = null;
 
-    public static function nu($id) {
+    public static function nu($id)
+    {
         $instance = new self();
         $instance->id = $id;
+        $instance->populateFieldsFromID();
         return $instance;
+    }
+
+    public function populateFieldsFromID()
+    {
+        try {
+            $conn = DbUtil::connect();
+            $sql_string = "SELECT c.character_id AS id, nickname AS nick, c.identity_id, ci.name, universe.name AS universe, weight,
+                height, air_speed_rank, falling_speed_rank, version_id FROM `character` AS c INNER JOIN character_identity AS ci ON
+                c.identity_id = ci.identity_id INNER JOIN universe ON universe.universe_id = ci.universe_id WHERE c.character_id = :character_id";
+            $params = array("character_id" => $this->id);
+            $stmt = $conn->prepare($sql_string);
+            $stmt->execute($params);
+            $row = clean($stmt->fetch(PDO::FETCH_ASSOC));
+            $this->version_id = $row["version_id"];
+            $this->air_speed_rank = $row["air_speed_rank"];
+            $this->falling_speed_rank = $row["falling_speed_rank"];
+            $this->weight = $row["weight"];
+            $this->height = $row["height"];
+            $this->nick = $row["nick"];
+            $this->identity_id = $row["identity_id"];
+            $this->name = $row["name"];
+            $this->universe = $row["universe"];
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
     }
 
     public function createIdentity()
@@ -54,7 +81,8 @@ class Character extends JSONObject
         }
     }
 
-    public function createCharacter() {
+    public function createCharacter()
+    {
         try {
             // Check if the character already exists
             $conn = DbUtil::connect();
@@ -68,46 +96,21 @@ class Character extends JSONObject
             $stmt->closeCursor();
 
             // Add the character
-            $sql_string = "INSERT INTO `character` (identity_id, version_id" . ($this->weight?", weight":"") . ($this->height?", height":"")
-                . ($this->falling_speed_rank?", falling_speed_rank":"") . ($this->air_speed_rank?", air_speed_rank)":")") .
-                "VALUES (:identity_id, :version_id" . ($this->weight?", :weight":"") . ($this->height?", :height":"") .
-                ($this->falling_speed_rank?", :falling_speed_rank":"") . ($this->air_speed_rank?", :air_speed_rank)":")");
+            $sql_string = "INSERT INTO `character` (identity_id, version_id" . ($this->weight ? ", weight" : "") . ($this->height ? ", height" : "")
+                . ($this->falling_speed_rank ? ", falling_speed_rank" : "") . ($this->air_speed_rank ? ", air_speed_rank)" : ")") .
+                "VALUES (:identity_id, :version_id" . ($this->weight ? ", :weight" : "") . ($this->height ? ", :height" : "") .
+                ($this->falling_speed_rank ? ", :falling_speed_rank" : "") . ($this->air_speed_rank ? ", :air_speed_rank)" : ")");
             $stmt = $conn->prepare($sql_string);
-            $params = array("identity_id"=>$this->identity_id, "version_id"=>$this->version_id);
-            if($this->weight) $params["weight"]=$this->weight;
-            if($this->height) $params["height"]=$this->height;
-            if($this->falling_speed_rank) $params["falling_speed_rank"]=$this->falling_speed_rank;
-            if($this->air_speed_rank) $params["air_speed_rank"]=$this->air_speed_rank;
+            $params = array("identity_id" => $this->identity_id, "version_id" => $this->version_id);
+            if ($this->weight) $params["weight"] = $this->weight;
+            if ($this->height) $params["height"] = $this->height;
+            if ($this->falling_speed_rank) $params["falling_speed_rank"] = $this->falling_speed_rank;
+            if ($this->air_speed_rank) $params["air_speed_rank"] = $this->air_speed_rank;
             $stmt->execute($params);
             $stmt->closeCursor();
             return false;
 
         } catch (PDOException $e) {
-            return $e->getMessage();
-        }
-    }
-
-    public function populateFieldsFromID() {
-        try {
-            $conn = DbUtil::connect();
-            $sql_string = "SELECT c.character_id AS id, nickname AS nick, c.identity_id, ci.name, universe.name AS universe, weight,
-                height, air_speed_rank, falling_speed_rank, version_id FROM `character` AS c INNER JOIN character_identity AS ci ON
-                c.identity_id = ci.identity_id INNER JOIN universe ON universe.universe_id = ci.universe_id WHERE c.character_id = :character_id";
-            $params = array("character_id"=>$this->id);
-            $stmt = $conn->prepare($sql_string);
-            $stmt->execute($params);
-            $row = clean($stmt->fetch(PDO::FETCH_ASSOC));
-            $this->version_id = $row["version_id"];
-            $this->air_speed_rank = $row["air_speed_rank"];
-            $this->falling_speed_rank = $row["falling_speed_rank"];
-            $this->weight = $row["weight"];
-            $this->height = $row["height"];
-            $this->nick = $row["nick"];
-            $this->identity_id = $row["identity_id"];
-            $this->name = $row["name"];
-            $this->universe = $row["universe"];
-        }
-        catch(PDOException $e) {
             return $e->getMessage();
         }
     }

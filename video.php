@@ -22,7 +22,6 @@ if (!$urlParams["t"]) {
     exit();
 }
 $video = Video::nu($urlParams["t"]);
-$video->populateFieldsFromID();
 ?>
 
 <html>

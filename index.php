@@ -26,7 +26,7 @@ require_once('libs/Video.php');
 <body>
 
 <?php include('libs/navheader.php');
-echo "ciphertext=", crypt('password', '$2a$05$F2rnMfkI1QZhG2mEgyN2Du'), "[|]\n";
+
 try {
     $conn = DbUtil::connect();
     $stmt = $conn->prepare("SELECT video_id FROM video ORDER BY date_added DESC LIMIT 0, 10");
@@ -36,7 +36,6 @@ try {
     echo "<table id='most_recent_vids'>";
     while($row = clean($stmt->fetch())) {
         $listUnit = Video::nu($row["video_id"]);
-        $listUnit->populateFieldsFromID();
         echo "<tr id='" , $row["video_id"] , "'>
                 <td><a href='video.php?t=", $row["video_id"], "'>", $listUnit->renderThumbnail() , "</a></td>
                 <td>" , $listUnit->render() , "</td>

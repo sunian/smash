@@ -14,14 +14,35 @@ class Player extends JSONObject
     public $player_id = null;
     public $name = null;
     public $tag = null;
-    public $abbrev = null;//tag abbreviation
+    public $abbrev = null; //tag abbreviation
     public $region_id = null;
     public $region_name = null;
 
-    public static function nu($id) {
+    public static function nu($id)
+    {
         $instance = new self();
         $instance->player_id = $id;
+        $instance->populateFieldsFromID();
         return $instance;
+    }
+
+    public function populateFieldsFromID()
+    {
+        try {
+            $conn = DbUtil::connect();
+            $sql_string = "SELECT r.name AS region_name, r.region_id, p.name, p.tag FROM player AS p INNER JOIN region AS r ON
+               p.region_id = r.region_id WHERE player_id = :player_id";
+            $params = array("player_id" => $this->player_id);
+            $stmt = $conn->prepare($sql_string);
+            $stmt->execute($params);
+            $row = clean($stmt->fetch(PDO::FETCH_ASSOC));
+            $this->region_name = $row["region_name"];
+            $this->name = $row["name"];
+            $this->tag = $row["tag"];
+            $this->region_id = $row["region_id"];
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
     }
 
     public function createPlayer()
@@ -50,25 +71,6 @@ class Player extends JSONObject
             return false;
 
         } catch (PDOException $e) {
-            return $e->getMessage();
-        }
-    }
-
-    public function populateFieldsFromID() {
-        try {
-            $conn = DbUtil::connect();
-            $sql_string = "SELECT r.name AS region_name, r.region_id, p.name, p.tag FROM player AS p INNER JOIN region AS r ON
-               p.region_id = r.region_id WHERE player_id = :player_id";
-            $params = array("player_id"=>$this->player_id);
-            $stmt = $conn->prepare($sql_string);
-            $stmt->execute($params);
-            $row = clean($stmt->fetch(PDO::FETCH_ASSOC));
-            $this->region_name = $row["region_name"];
-            $this->name = $row["name"];
-            $this->tag = $row["tag"];
-            $this->region_id = $row["region_id"];
-        }
-        catch(PDOException $e) {
             return $e->getMessage();
         }
     }

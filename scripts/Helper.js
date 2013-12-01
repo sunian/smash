@@ -3,7 +3,9 @@
  */
 
 var btnAdd;
+var hasher;
 $(function () {
+    hasher = new bCrypt();
     Helper.callInit();
 });
 
