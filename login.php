@@ -38,10 +38,11 @@
                             "Username must be at least 4 characters long!");
                 });
             newPassword.keyup(function () {
+                newConfirm.val("")
                 if (newPassword.val().length > 7) {
                     newConfirm.removeAttr("disabled");
                 } else {
-                    newConfirm.val("").attr("disabled", "disabled");
+                    newConfirm.attr("disabled", "disabled");
                 }
             })
                 .blur(function () {
@@ -90,8 +91,8 @@ include('libs/navheader.php');
     <div id="sign_up" class="container">
         <p>Sign up:</p>
         <input id="newUsername" placeholder="username"><br>
-        <input id="newPassword" placeholder="password" disabled><br>
-        <input id="newConfirm" placeholder="confirm password" disabled><br>
+        <input id="newPassword" placeholder="password" type="password" disabled><br>
+        <input id="newConfirm" placeholder="confirm password" type="password" disabled><br>
         <input id="newName" placeholder="full name" disabled><br>
         <input id="newEmail" placeholder="email address" disabled><br>
         <input id="btnSignUp" type="button" value="Sign Up" onclick="signup();" disabled>
