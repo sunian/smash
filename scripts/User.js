@@ -2,13 +2,15 @@
  * Created by Sun on 11/30/13.
  */
 
-function User(username, password) {
+function User(obj) {
     var self = this;
-    this.username = username;
-    this.password = null;
-    var plaintext = password;
+    this.username = null;
     this.name = null;
     this.email = null;
+    this.login_count = 0;
+    for (var prop in obj) this[prop] = obj[prop];
+    var plaintext = this.password;
+    this.password = null;
 
     function setPassword(h) {
         self.password = h;
