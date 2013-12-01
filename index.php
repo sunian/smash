@@ -55,8 +55,8 @@ try {
     echo "<div class='sideBlock'>";
     $stmt->execute();
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        echo "<b>" , $row["name"] , "</b><br><t>Date: " , $row["date"] , "<br><t>Venue: " , $row["venue"] , "<br><t>Region: "
-            , $row["rName"], "<t><br>";
+        echo "<b>" , $row["name"] , "</b><br><t>nbsp<t>nbsp<t>nbsp<t>nbspDate: " , $row["date"] , "<br><t>nbsp<t>nbsp<t>nbsp<t>nbspVenue: "
+        , $row["venue"] , "<br><t>nbsp<t>nbsp<t>nbsp<t>nbspRegion: " , $row["rName"], "<t>nbsp<t>nbsp<t>nbsp<t>nbsp<br>";
     }
     echo "</div>";
 }
