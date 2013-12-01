@@ -146,19 +146,22 @@ Helper.cleanForJSON = function (obj) {
     return clean;
 }
 
+var theToast;
 Helper.makeToast = function (parent, element, text) {
-    var notify = $(document.createElement('p'));
-    notify.text(text);
-    notify.addClass("triangle-border top");
+    if (theToast != null) theToast.remove();
+    theToast = $(document.createElement('p'));
+    theToast.text(text);
+    theToast.addClass("triangle-border top");
     var position = element.offset();
-    notify.css("position", "absolute").click(function () {
-        notify.remove();
+    theToast.css("position", "absolute").click(function () {
+        theToast.remove();
+        theToast = null;
         element.focus();
     });
-    $(document.body).append(notify);
-    notify.css({
+    $(document.body).append(theToast);
+    theToast.css({
         cursor: "pointer",
         top: (position.top + (element.height() / 2)) + "px",
-        left: (position.left + element.outerWidth() - notify.outerWidth()) + "px"
+        left: (position.left + element.outerWidth() - theToast.outerWidth()) + "px"
     });
 }
