@@ -3,6 +3,7 @@
  */
 
 function User(username, password) {
+    var self = this;
     this.username = username;
     this.password = null;
     var plaintext = password;
@@ -10,7 +11,7 @@ function User(username, password) {
     this.email = null;
 
     function setPassword(h) {
-        this.password = h;
+        self.password = h;
     }
 
     this.generateServerPassword = function () {
