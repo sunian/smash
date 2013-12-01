@@ -52,13 +52,13 @@ try {
     $conn = DbUtil::connect();
     $stmt = $conn->prepare("SELECT t.name, t.date, t.venue, r.name AS rName FROM tournament AS t INNER JOIN region as r on t.region_id
         = r.region_id ORDER BY t.date DESC LIMIT 0,3");
-    echo "<div class='sideBlock'>";
+    echo "<div class='sideBlock'><table><tr><td>Recent Tournaments</td></tr><tr><td>";
     $stmt->execute();
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         echo "<b>" , $row["name"] , "</b><br><t>&nbsp<t>&nbsp<t>&nbsp<t>&nbspDate: " , $row["date"] , "<br><t>&nbsp<t>&nbsp<t>&nbsp<t>&nbspVenue: "
         , $row["venue"] , "<br><t>&nbsp<t>&nbsp<t>&nbsp<t>&nbspRegion: " , $row["rName"], "<t>&nbsp<t>&nbsp<t>&nbsp<t>&nbsp<br>";
     }
-    echo "</div>";
+    echo "</td></tr></table></div>";
 }
 catch(PDOException $e) {
     echo $e->getMessage();
