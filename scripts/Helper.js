@@ -145,3 +145,16 @@ Helper.cleanForJSON = function (obj) {
     }
     return clean;
 }
+
+Helper.makeToast = function (parent, element, text) {
+    var notify = $(document.createElement('p'));
+    notify.text(text);
+    notify.addClass("triangle-border top");
+    var position = element.position();
+    notify.css({
+        position: "absolute",
+        top: position.top + 5 + "px",
+        left: position.left + 10 + "px"
+    });
+    parent.append(notify);
+}

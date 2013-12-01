@@ -15,13 +15,7 @@
     ?>
     <script type="text/javascript">
         function signup() {
-            var notify = $(document.createElement('p'));
-            notify.text("Username must be at least 4 characters long!");
-            notify.addClass("triangle-border top");
-            notify.css({
-                position: "absolute"
-            }).css($("#newUsername").position());
-            $("div.body").append(notify);
+            Helper.makeToast($("div.body"), $("#newUsername"), "Username must be at least 4 characters long!");
         }
 
         function init() {
