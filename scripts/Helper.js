@@ -150,11 +150,11 @@ Helper.makeToast = function (parent, element, text) {
     var notify = $(document.createElement('p'));
     notify.text(text);
     notify.addClass("triangle-border top");
-    var position = element.position();
+    var position = element.offset();
     notify.css({
         position: "absolute",
         top: (position.top + (element.height() / 2)) + "px",
         left: (position.left + (element.width() / 2)) + "px"
     });
-    parent.append(notify);
+    $(document).append(notify);
 }
