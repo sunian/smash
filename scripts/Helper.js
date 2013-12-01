@@ -156,5 +156,5 @@ Helper.makeToast = function (parent, element, text) {
         top: (position.top + (element.height() / 2)) + "px",
         left: (position.left + (element.width() / 2)) + "px"
     });
-    $(document).append(notify);
+    $("body").append(notify);
 }
