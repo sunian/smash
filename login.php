@@ -45,7 +45,7 @@
                 }
             })
                 .blur(function () {
-                    if (newUsername.val().length < 8)
+                    if (newPassword.val().length < 8)
                         Helper.makeToast($("div.body"), $("#newPassword"),
                             "Password must be at least 8 characters long!");
                 });
