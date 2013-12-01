@@ -14,13 +14,25 @@ function User(obj) {
 
     function setPassword(h) {
         self.password = h;
+        if (passwordCallback != null) passwordCallback.call(self);
     }
 
-    this.generateServerPassword = function () {
+    var passwordCallback;
+
+    this.generateServerPassword = function (callback) {
         if (!this.verifyPassword()) return;
         if (!hasher.ready()) return;
-        hasher.hashpw(plaintext, hasher.gensalt(8), setPassword, null);
+        if (this.username == null) return;
+        passwordCallback = callback;
+        hasher.hashpw(plaintext + md5(this.username.toLowerCase()), "$2a$31$KenCombo.RedLikeRoses.", setPassword, null);
     };
+
+    this.authenticateWithServer = function (callback) {
+        this.generateServerPassword(function () {
+            passwordCallback = callback;
+            hasher.hashpw(md5(this.login_count) + this.password, hasher.gensalt(8), setPassword, null);
+        });
+    }
 
     this.verifyPassword = function () {
         return true;
@@ -28,6 +40,8 @@ function User(obj) {
 
 }
 
-User.checkUsernameIsAvailable = function (callback) {
+User.checkUsernameIsAvailable = function (username, callback) {
+    if (username == null || username.length < 4) return false;
+    Helper.postJSON(username, "u", callback);
     return true;
 }
