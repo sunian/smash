@@ -5,6 +5,15 @@ body {
     text-align: center;
 }
 
+div.sideBlock {
+    margin: 8px;
+    position: relative;
+    display: inline-block;
+    text-align: left;
+    color: #ffffff;
+    float: right;
+}
+
 div.body {
     margin: 8px;
     position: relative;

@@ -52,10 +52,11 @@ try {
     $conn = DbUtil::connect();
     $stmt = $conn->prepare("SELECT t.name, t.date, t.venue, r.name AS rName FROM tournament AS t INNER JOIN region as r on t.region_id
         = r.region_id ORDER BY t.date LIMIT 0,3");
-    echo "<div class='search-box'>";
+    echo "<div class='sideBlock'>";
     $stmt->execute();
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        echo $row["name"] , "<br>" , t.date , "<br>";
+        echo "<b>" , $row["name"] , "</b><br>Date: " , $row["date"] , "<br>Venue: " , $row["venue"] , "<br>Region: "
+            , $row["rName"];
     }
     echo "</div>";
 }
