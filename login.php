@@ -18,7 +18,7 @@
             var notify = $(document.createElement('p'));
             notify.text("Username must be at least 4 characters long!");
             notify.addClass("triangle-border top");
-            $("input#newUsername").append(notify);
+            $("div#sign_up").append(notify);
         }
 
         function init() {
