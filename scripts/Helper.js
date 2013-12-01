@@ -157,7 +157,7 @@ Helper.makeToast = function (parent, element, text) {
     });
     $(document.body).append(notify);
     notify.css({
-//        position: "absolute",
+        cursor: "not-allowed",
         top: (position.top + (element.height() / 2)) + "px",
         left: (position.left + element.outerWidth() - notify.outerWidth()) + "px"
     });
