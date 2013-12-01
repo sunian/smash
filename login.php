@@ -15,11 +15,26 @@
     ?>
     <script type="text/javascript">
         function signup() {
-            Helper.makeToast($("div.body"), $("#newUsername"), "Username must be at least 4 characters long!");
+
         }
-
+        var newUsername, newPassword, newConfirm, newName, newEmail, btnSignUp;
         function init() {
-
+            newUsername = $("input#newUsername");
+            newPassword = $("input#newPassword");
+            newConfirm = $("input#newConfirm");
+            newName = $("input#newName");
+            newEmail = $("input#newEmail");
+            btnSignUp = $("input#btnSignUp");
+            newUsername.keyup(function () {
+                if (newUsername.val().length > 3) {
+                    newPassword.removeAttr("disabled");
+                } else {
+                    newPassword.val("").attr("disabled", "disabled");
+                }
+            })
+                .blur(function () {
+                    Helper.makeToast($("div.body"), $("#newUsername"), "Username must be at least 4 characters long!");
+                });
         }
     </script>
 </head>
