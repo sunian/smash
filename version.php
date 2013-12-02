@@ -63,6 +63,8 @@ if (strlen($json_input) > 0) {
 include('libs/navheader.php');
 
 if (strcmp($urlParams["t"], "newVersion") == 0) {
+    echo "<h1>New Version Form</h1>";
+    echo "<input id='version_number' placeholder='Version Number'>";
 }
 else {
     $version = new Version();
