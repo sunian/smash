@@ -9,6 +9,7 @@
 require_once('libs/browser.php');
 require_once('libs/DbUtil.php');
 require_once('libs/Video.php');
+require_once('libs/DataTable.php');
 ?>
 
 <html>
@@ -55,7 +56,7 @@ try {
     echo "<div class='sideBlock'><table><tr><th>Recent Tournaments</th></tr><tr><td class='sideBlock'>";
     $stmt->execute();
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        echo "<b>" , $row["name"] , "</b><br>&nbsp&nbsp&nbsp&nbspDate: " , $row["date"] , "<br>&nbsp&nbsp&nbsp&nbspVenue: "
+        echo "<b>" , $row["name"] , "</b><br>&nbsp&nbsp&nbsp&nbspDate: " , DataTable::prettyDate($row["date"]) , "<br>&nbsp&nbsp&nbsp&nbspVenue: "
         , $row["venue"] , "<br>&nbsp&nbsp&nbsp&nbspRegion: " , $row["rName"], "&nbsp&nbsp&nbsp&nbsp<br>";
     }
     echo "</td></tr></table></div>";
