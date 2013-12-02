@@ -64,7 +64,9 @@ include('libs/navheader.php');
 
 if (strcmp($urlParams["t"], "newVersion") == 0) {
     echo "<h1>New Version Form</h1>";
+    echo "<div id='version_title'></div>";
     echo "<input id='version_number' placeholder='Version Number'>";
+
 }
 else {
     $version = new Version();
@@ -93,10 +95,10 @@ else {
         echo "</tr>";
     };
     $table->render();
-
-    include('libs/characters.php');
-    echo "<div id=\"video_id_div\" style=\"display: none;\">" . $version->version_id . "</div>";
 }
+include('libs/characters.php');
+include('libs/versions.php');
+echo "<div id=\"video_id_div\" style=\"display: none;\">" . $version->version_id . "</div>";
 ?>
 </body>
 </html>
