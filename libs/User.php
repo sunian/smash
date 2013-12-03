@@ -73,7 +73,7 @@ class User extends JSONObject
             $password = crypt(clean($stmt->fetchColumn()), $this->password);
             $stmt->closeCursor();
             if (strcmp($password, $this->password) == 0) {
-                $sql_string = "call getAccessToken(:username, @token);select @token as token;";
+                $sql_string = "call getAccessToken(:username, @token); select @token as token;";
                 $stmt = $conn->prepare($sql_string);
                 $stmt->execute($params);
                 $token = clean($stmt->fetchColumn());
