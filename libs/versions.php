@@ -22,7 +22,7 @@
     require_once('DbUtil.php');
 
     $conn = DbUtil::connect();
-    $stmt = $conn->prepare("select distinct title from version order by title");
+    $stmt = $conn->prepare("select distinct title, abbreviation from version order by title");
     $stmt->execute();
     $names = clean($stmt->fetchAll(PDO::FETCH_COLUMN, 0));
     $stmt->closeCursor();
@@ -31,8 +31,17 @@
     ?></div>
 <script type="text/javascript">
     function getVersionTitles() {
-        var names = JSON.parse($("#div_version_titles").text());
-        return names;
+        var titles_abbrevs = JSON.parse($("#div_version_titles").text());
+        var titles = [];
+        for(var i=0; i<titles_abbrevs.length; i++) {
+            var row = titles_abbrevs[i];
+            titles[i] = row["title"];
+        }
+        return titles;
+    }
+    function getAbbreviationForTitle(title) {
+        var titles_abbrevs = JSON.parse($("#div_version_titles").text());
+        return titles_abbrevs[title];
     }
 </script>
 <script type="text/javascript">
