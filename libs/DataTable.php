@@ -86,9 +86,9 @@ class DataTable
                                 </tfoot>
                             </table>
                         </td>
-                        <td class='layout' style='padding-left: 20px; display: none'>
-                            <a href='javascript:void(0);' class='btnPlus' onclick='create$this->id();'></a>
-                        </td>
+                        <td class='layout' style='padding-left: 20px; display: none'>"
+                            ,($authenticatedUser == null) ? "" : "<a href='javascript:void(0);' class='btnPlus' onclick='create$this->id();'></a>",
+                        "</td>
                     </tr>
                 </table>
             </div>";
