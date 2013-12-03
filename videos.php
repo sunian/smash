@@ -49,7 +49,7 @@ if (strlen($json_input) > 0) {
             setInterval(function() {
                 if ( didScroll ) {
                     if ($(window).scrollTop() + $(window).height() > $(document).height() - 0) {
-                        alert("Near bottom!");
+                        console.log($(window).scrollTop() +"\n"+ $(window).height() +"\n"+ $(document).height());
                     }
                     didScroll = false;
                 }
