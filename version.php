@@ -84,7 +84,7 @@ if (strlen($json_input) > 0) {
                 newName.autocomplete({
                    source: getVersionTitles()
                 });
-                newName.addEventListener('input', function(){alert("blah");}, true);
+                newName.on('input', function(){alert("blah");});
 //                newName.keyup(function() {
 //                   newWeight.val(getAbbreviationForTitle(newName.val()));
 //                });
