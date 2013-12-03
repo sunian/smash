@@ -102,12 +102,12 @@ echo "<div id=\"div_players\" style=\"display: none;\">";
         }
         return select_player;
     }
+    var $player_id;
+    var $video_id;
+    var $vp;
+    $player_id = $(\"#newPlayer\").val();
+    $video_id = $urlParams[t];
 </script>";
-            echo "var $player_id;";
-            echo "var $video_id;";
-            echo "var $vp;";
-            echo "$player_id = $(\"#newPlayer\").val();";
-            echo "$video_id = $urlParams[t];";
 echo"<div id=\"div_vp\" style=\"display: none;\">";
             $conn = DbUtil::connect();
             $stmt = $conn->prepare("select video_player_id from video_player
