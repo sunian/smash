@@ -57,12 +57,12 @@ $video = Video::nu($urlParams["t"]);
 //        echo "YAYhttps://plato.cs.virginia.edu/~jcs5sb/smash/video.php?t=" , $id;
 //        exit();
 //
-            $video = Video->nu($urlParams["t"]);
-            var newObj = {};
-//            newObj.technique_id = $("#newTechnique").val();
-            newObj.player_id = $("#newPlayer").val();
-            newObj.video_id = $video->video_id;
-            Helper.uploadObj(newObj);
+//            $video = Video->nu($urlParams["t"]);
+//            var newObj = {};
+////            newObj.technique_id = $("#newTechnique").val();
+//            newObj.player_id = $("#newPlayer").val();
+//            newObj.video_id = $video->video_id;
+//            Helper.uploadObj(newObj);
         }
     </script>
 </head>
