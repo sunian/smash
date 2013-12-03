@@ -14,7 +14,6 @@ if (strlen($json_input) > 0) {
         $character = new Character($json_input);
         $error = $character->createCharacter();
         if ($error) echo $error;
-        else echo "YAYhttps://plato.cs.virginia.edu/~jcs5sb/smash/version.php?t=" , $urlParams["t"];
         exit();
     }
     else {
