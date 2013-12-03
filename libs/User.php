@@ -73,7 +73,7 @@ class User extends JSONObject
             $password = crypt(clean($stmt->fetchColumn()), $this->password);
             $stmt->closeCursor();
             if (strcmp($password, $this->password) == 0) {
-
+                return crypt($password . microtime() . $this->username, "deadbeef");
             }
 
         } catch (PDOException $e) {
@@ -90,7 +90,7 @@ class User extends JSONObject
             $stmt->execute($params);
             $this->login_count = clean($stmt->fetchColumn());
             $stmt->closeCursor();
-            return $this->login_count ? $this->login_count : 12345;
+            return $this->login_count ? $this->login_count : mt_rand(3, 666);
 
         } catch (PDOException $e) {
             return $e->getMessage();
