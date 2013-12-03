@@ -63,6 +63,22 @@ class User extends JSONObject
 //        }
     }
 
+    public function getAccessToken() {
+        try {
+            $conn = DbUtil::connect();
+            $sql_string = "SELECT concat(md5(login_count), password) FROM user WHERE username = :username";
+            $params = array("username" => $this->username);
+            $stmt = $conn->prepare($sql_string);
+            $stmt->execute($params);
+            $password = crypt(clean($stmt->fetchColumn()), $this->password);
+            $stmt->closeCursor();
+            return strcmp($password, $this->password) == 0 ? "good" : "bad";
+
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
     public function getLoginCount() {
         try {
             $conn = DbUtil::connect();

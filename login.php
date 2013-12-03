@@ -9,12 +9,13 @@ require_once('libs/browser.php');
 require_once('libs/User.php');
 
 if (strlen($json_input) > 0) {
+    $user = new User($json_input);
     if (strcmp($input_type, "u") == 0) {//user signed up
-        $user = new User($json_input);
         $error = $user->createUser();
         if ($error) echo $error;
+    } else if (strcmp($input_type, "i") == 0) {//user signed in
+        echo $user->getAccessToken();
     } else if (strcmp($input_type, "c") == 0) {//get login count
-        $user = User::nu($json_input);
         echo $user->getLoginCount();
     }
     exit();
@@ -33,7 +34,15 @@ if (strlen($json_input) > 0) {
             newObj.password = password.val();
             var newUser = new User(newObj);
             newUser.authenticateWithServer(function () {
-                console.log(JSON.stringify(this));
+//                console.log(JSON.stringify(this));
+                Helper.postJSON(this, "i", function (data, textStatus, jqXHR) {
+                    if (data.length > 0) {
+                        alert(data);
+                        console.log(data);
+                    } else {
+                        alert("signed in!");
+                    }
+                });
             });
         }
 
