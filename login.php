@@ -36,7 +36,7 @@
                 }
             })
                 .blur(function () {
-                    console.log($(document.activeElement).prop("tagName"));
+                    console.log($(':focus').prop("tagName"));
                     if ($(document.activeElement).prop("tagName") === "INPUT") return;
                     if (newUsername.val().length < 4)
                         Helper.makeToast($("div.body"), $("#newUsername"),
