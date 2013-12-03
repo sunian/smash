@@ -125,7 +125,8 @@ echo "<div id=\"div_players\" style=\"display: none;\">";
 </script>";
             echo "var $player_id";
             echo "var $video_id";
-            echo"$player_id = $(\"#newPlayer\").val()";
+            echo "var $vp";
+            echo "$player_id = $(\"#newPlayer\").val()";
             echo "$video_id = $urlParams[t]";
 echo"<div id=\"div_vp\" style=\"display: none;\">";
             $conn = DbUtil::connect();
@@ -137,7 +138,7 @@ echo"<div id=\"div_vp\" style=\"display: none;\">";
             echo json_encode(clean($stmt->fetchAll()));
             $stmt->closeCursor();
     echo "</div><script type=\"text/javascript\">
-            var vp = JSON.parse($(\"#div_vp\").text());
+            $vp = JSON.parse($(\"#div_vp\").text());
             </script>";
 ?>
 </body>
