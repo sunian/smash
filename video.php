@@ -133,7 +133,7 @@ echo"<div id=\"div_vp\" style=\"display: none;\">";
             newPlayer.append(selectPlayer);
 
             Helper.displayBtnAdd(true);
-        }
+
             $vp = JSON.parse($("#div_vp").text());
             alert('$vp');
             $("#submit").click(function() {
@@ -141,6 +141,7 @@ echo"<div id=\"div_vp\" style=\"display: none;\">";
             newObj.technique_id = $("#newTechnique").val();
             newObj.video_player_id = vp;
             Helper.uploadObj(newObj);
+        }
         }
             </script>
 
