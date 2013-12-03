@@ -86,6 +86,7 @@ if (strlen($json_input) > 0) {
                                 }
                             }
                             else {
+                                alert("hello");
                                 spinner.remove();
                             }
                         });
