@@ -38,6 +38,11 @@ $video = Video::nu($urlParams["t"]);
             selectTechnique.id = "selectTechnique";
             newTechnique.appendChild(selectTechnique);
         }
+        function addTechniques() {
+            var newObj = {};
+            newObj.technique = $("#newTechnique").val();
+            Helper.uploadObj(newObj);
+        }
     </script>
 </head>
 <body>
