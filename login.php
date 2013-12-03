@@ -5,7 +5,17 @@
  * Date: 12/1/13
  * Time: 12:55 AM
  */
+require_once('libs/browser.php');
+require_once('libs/User.php');
 
+if (strlen($json_input) > 0) {
+    if (strcmp($input_type, "u") == 0) {//user signed up
+        $user = new User($json_input);
+        $error = $user->createUser();
+        if ($error) echo $error;
+    }
+    exit();
+}
 ?>
 
 <html>
@@ -26,10 +36,15 @@
             newObj.email = newEmail.val();
             var newUser = new User(newObj);
             newUser.generateServerPassword(function () {
-                console.log(JSON.stringify(this));
-//                Helper.postJSON(this, "", function () {
-//
-//                });
+//                console.log(JSON.stringify(this));
+                Helper.postJSON(this, "u", function (data, textStatus, jqXHR) {
+                    if (data.length > 0) {
+                        alert(data);
+                        console.log(data);
+                    } else {
+                        alert("signed up!");
+                    }
+                });
             });
         }
 
