@@ -21,7 +21,7 @@ class DbUtil
     {
         $conn = DbUtil::$connection;
         if (!is_object($conn)) {
-            print_r($GLOBALS['authenticatedUser']);
+//            print_r($GLOBALS['authenticatedUser']);
             try {
                 $conn = new PDO("mysql:host=" . DbUtil::$host . ";dbname=" . DbUtil::$database,
                     DbUtil::$user, DbUtil::$pass,
