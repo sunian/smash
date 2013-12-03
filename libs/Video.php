@@ -201,12 +201,22 @@ class Video extends JSONObject
     public static function insertVideo($searchbox)
     {
         if ($searchbox) {
-            $sqlQuery = "insert into video (title, url, date_added, tournament_id) VALUES (:title, :url, NOW(),:tourny)";
-            $params = array();
-            $params["title"] = $searchbox->fields['title']->values[0][0];
-            $params["url"] = $searchbox->fields['url']->values[0][0];
-            $params["tourny"] = $searchbox->fields['tournament']->values[0][0];
-            print_r($params);
+            try {
+                $conn = DbUtil::connect();
+                $sql_string = "insert into video (title, url, date_added, tournament_id) VALUES (:title, :url, NOW(),:tourny);
+                            SELECT LAST_INSERT_ID();";
+                $params = array();
+                $params["title"] = $searchbox->fields['title']->values[0][0];
+                $params["url"] = $searchbox->fields['url']->values[0][0];
+                $params["tourny"] = $searchbox->fields['tournament']->values[0][0];
+                $stmt = $conn->prepare($sql_string);
+                $stmt->execute($params);
+                $video_id = clean($stmt->fetch(PDO::FETCH_COLUMN));
+                print_r($video_id);
+            } catch (PDOException $e) {
+                return $e->getMessage();
+            }
+
         }
     }
 
