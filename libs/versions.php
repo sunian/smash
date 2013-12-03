@@ -24,7 +24,7 @@
     $conn = DbUtil::connect();
     $stmt = $conn->prepare("select distinct title, abbreviation from version order by title");
     $stmt->execute();
-    $names = clean($stmt->fetchAll(PDO::FETCH_COLUMN, 0));
+    $names = clean($stmt->fetchAll(PDO::FETCH_ASSOC));
     $stmt->closeCursor();
 
     echo json_encode($names);
