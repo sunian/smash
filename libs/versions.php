@@ -41,7 +41,13 @@
     }
     function getAbbreviationForTitle(title) {
         var titles_abbrevs = JSON.parse($("#div_version_titles").text());
-        return titles_abbrevs[title];
+        for(var i=0; i<titles_abbrevs.length; i++) {
+            var row = titles_abbrevs[i];
+            if(row["title"]==title) {
+                return row["abbreviation"];
+            }
+        }
+        return "";
     }
 </script>
 <script type="text/javascript">
