@@ -6,6 +6,7 @@
  * Time: 1:50 PM
  * To change this template use File | Settings | File Templates.
  */
+require_once('browser.php');
 
 class DbUtil
 {
@@ -19,6 +20,7 @@ class DbUtil
     {
         $conn = DbUtil::$connection;
         if (!is_object($conn)) {
+            print_r($GLOBALS['authenticatedUser']);
             try {
                 $conn = new PDO("mysql:host=" . DbUtil::$host . ";dbname=" . DbUtil::$database,
                     DbUtil::$user, DbUtil::$pass,
