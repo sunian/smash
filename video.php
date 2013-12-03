@@ -66,7 +66,8 @@ $video = Video::nu($urlParams["t"]);
         function addNewTechnique() {
             var newObj = {};
             newObj.technique_id = $("#newTechnique").val();
-     //       newObj.video_player_id = $()
+            newObj.player_id = $("#newPlayer").val();
+            newObj.video_id = $video->video_id;
             Helper.uploadObj(newObj);
         }
     </script>
@@ -109,7 +110,7 @@ echo "<h1>$video->title</h1>";
     <br>
     <table id='newPlayer'>
         <tr>
-            <td style = width:350px">
+            <td style = "width:350px">
                 To Player
             </td>
         </tr>
