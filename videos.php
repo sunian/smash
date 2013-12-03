@@ -76,8 +76,7 @@ $searchbox->render();
 $table = Video::constructDataTableFrom($searchbox);
 $table->render();
 
-$queryAndParams = Video::constructQuery($searchbox);
-list($params, $sqlQuery) = self::constructQuery($searchbox);
+list($params, $sqlQuery) = Video::constructQuery($searchbox);
 $sqlQuery = $sqlQuery . " LIMIT 0,10";
 $conn = DbUtil::connect();
 $stmt = $conn->prepare($sqlQuery);
