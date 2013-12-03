@@ -206,7 +206,7 @@ class Video extends JSONObject
             $params["title"] = $searchbox->fields->title->values[0];
             $params["url"] = $searchbox->fields->url->values[0];
             $params["tourny"] = $searchbox->fields->tournaments->values[0];
-            print_r($params);
+            print_r($searchbox);
         }
     }
 
