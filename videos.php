@@ -142,9 +142,6 @@ if (strlen($json_input) > 0) {
 $searchbox = SearchBox::nu("Filter Videos", Video::getQueryFields());
 $searchbox->render();
 
-$table = Video::constructDataTableFrom($searchbox);
-$table->render();
-
 list($params, $sqlQueryOriginal) = Video::constructQuery($searchbox);
 $sqlQuery = $sqlQueryOriginal . " LIMIT 0,10";
 $conn = DbUtil::connect();
