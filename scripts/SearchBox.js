@@ -31,7 +31,7 @@ function SearchBox(parent) {
         this.parent.append(btnGo);
         var btnAdd = $(document.createElement('input'));
         btnAdd.attr("type", "button");
-        btnAdd.attr("value", "Filter");
+        btnAdd.attr("value", "Add Video");
         btnAdd.bind("click", [this], function (e) {
             e.data[0].clickedAdd();
         });
@@ -49,7 +49,7 @@ function SearchBox(parent) {
         for (var i in this.fields) {
             this.fields[i].populateValues();
         }
-        Helper.makeQuery(this);
+        Helper.uploadObj(this);
     }
 
     this.render();
