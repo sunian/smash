@@ -30,21 +30,7 @@ $video = Video::nu($urlParams["t"]);
     <?php include('libs/headers.php');
     ?>
     <script type="text/javascript">
-        var newTechnique;
-        var selectTechnique;
-        function init() {
-            newTechnique = $("#newTechnique");
-            selectTechnique = createTechniqueSelector();
-            selectTechnique.id = "selectTechnique";
-            newTechnique.append(selectTechnique);
 
-            newPlayer = $("#newPlayer");
-            selectPlayer = createPlayerSelector();
-            selectPlayer.id = "selectPlayer";
-            newPlayer.append(selectPlayer);
-
-            Helper.displayBtnAdd(true);
-        }
     </script>
 </head>
 <body>
@@ -91,7 +77,7 @@ echo "<h1>$video->title</h1>";
         </tr>
     </table>
     <br>
-    <a href='javascript:void(0);' class='btnPlus' onclick='addNewTechnique()'> </a>
+    <a href='javascript:void(0);' class='btnPlus' id='submit'> </a>
 </div>
 </div>
 <?php
@@ -132,8 +118,23 @@ echo"<div id=\"div_vp\" style=\"display: none;\">";
             echo json_encode(clean($stmt->fetchAll()));
             $stmt->closeCursor();
     echo "</div><script type=\"text/javascript\">
+      var newTechnique;
+        var selectTechnique;
+        function init() {
+            newTechnique = $(\"#newTechnique\");
+            selectTechnique = createTechniqueSelector();
+            selectTechnique.id = \"selectTechnique\";
+            newTechnique.append(selectTechnique);
+
+            newPlayer = $(\"#newPlayer\");
+            selectPlayer = createPlayerSelector();
+            selectPlayer.id = \"selectPlayer\";
+            newPlayer.append(selectPlayer);
+
+            Helper.displayBtnAdd(true);
+        }
             $vp = JSON.parse($(\"#div_vp\").text());
-            function addNewTechnique() {
+            $(\"#submit\").click(function() {
             var newObj = {};
             newObj.technique_id = $(\"#newTechnique\").val();
             newObj.video_player_id = vp;
