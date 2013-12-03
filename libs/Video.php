@@ -203,7 +203,7 @@ class Video extends JSONObject
         if ($searchbox) {
             try {
                 $conn = DbUtil::connect();
-                $sql_string = "insert into video (title, url, date_added, tournament_id) VALUES (:title, :url, NOW(),:tourny);
+                $sql_string = "insert into video (video_id, title, url, date_added, tournament_id) VALUES (NULL, :title, :url, NOW(),:tourny);
                             SELECT LAST_INSERT_ID();";
                 $params = array();
                 $params["title"] = $searchbox->fields['title']->values[0][0];
