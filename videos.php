@@ -88,6 +88,7 @@ while($row = clean($stmt->fetch())) {
 }
 echo "</table>";
 echo "</div>";
+echo "<img src='images/maxresdefault.jpg' class='spin'>";
 
 include('libs/players.php');
 include('libs/characters.php');
