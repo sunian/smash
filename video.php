@@ -56,7 +56,7 @@ $video = Video::nu($urlParams["t"]);
             selectTechnique.id = "selectTechnique";
             newTechnique.append(selectTechnique);
 
-            newPlayer = $"#newPlayer");
+            newPlayer = $("#newPlayer");
             selectPlayer = createPlayerSelector();
             selectPlayer.id = "selectPlayer";
             newPlayer.append(selectPlayer);
@@ -106,6 +106,7 @@ echo "<h1>$video->title</h1>";
             </td>
         </tr>
     </table>
+    <br>
     <table id='newPlayer'>
         <tr>
             <td style = width:350px">
