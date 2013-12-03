@@ -136,7 +136,26 @@ echo "<h1>$video->title</h1>";
 <?php
 //echo "<div id='div_urlParam' style='display: none;'>", $urlParams["t"], "</div>";
 include('libs/techniques.php');
-include('libs/players.php');
+echo "<div id=\"div_players\" style=\"display: none;\">";
+    $conn = DbUtil::connect();
+    $stmt = $conn->prepare("select p.player_id as id, COALESCE(p.tag, p.name) as name from player AS p INNER JOIN video_player as v
+         ON v.player_id = p.player_id WHERE video_id = :video_id order by name");
+    $params = array("video_id"=>$urlParams["t"]);
+    $stmt->execute($params);
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    echo json_encode(clean($stmt->fetchAll()));
+    $stmt->closeCursor();
+    echo "</div><script type=\"text/javascript\">
+    function createPlayerSelector(includeBlank) {
+        var select_player = document.createElement(\"select\");
+        var players = JSON.parse($(\"#div_players\").text());
+        if (includeBlank) select_player.options[0] = new Option(\"Player\", -1);
+        for (var i in players) {
+            select_player.options[select_player.options.length] = new Option(players[i].name, players[i].id);
+        }
+        return select_player;
+    }
+</script>";
 ?>
 </body>
 </html>
