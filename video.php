@@ -39,7 +39,7 @@ $video = Video::nu($urlParams["t"]);
             newTechnique.append(selectTechnique);
             Helper.displayBtnAdd(true);
         }
-        function createNewTechnique() {
+        function createnewTechnique() {
             alert("create new technique");
 //            var newObj = {};
 //            newObj.technique = $("#newTechnique").val();
@@ -82,8 +82,8 @@ echo "<h1>$video->title</h1>";
                 Add Techniques
             </td>
         </tr>
-        <a href='javascript:void(0);' class='btnPlus' onclick='create$this->id();'> </a>
     </table>
+    <a href='javascript:void(0);' class='btnPlus' onclick='createnewTechnique()'> </a>
 </div>
 </div>
 <?php
