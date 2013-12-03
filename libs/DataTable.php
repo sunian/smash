@@ -71,8 +71,8 @@ class DataTable
                     <tbody class='sortable'>", $this->printData(), "</tbody>
                 </table>
             </div>", $this->hasFooter ? $this->printFooter() :
-            ($GLOBALS['authenticatedUser'] == null) ? "" :
-            "<a href='javascript:void(0);' class='btnPlus' onclick='create$this->id();'></a>",
+            (($GLOBALS['authenticatedUser'] == null) ? "" :
+            "<a href='javascript:void(0);' class='btnPlus' onclick='create$this->id();'></a>"),
         "</div>";
     }
 
