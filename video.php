@@ -64,11 +64,12 @@ $video = Video::nu($urlParams["t"]);
             Helper.displayBtnAdd(true);
         }
         function addNewTechnique() {
-            var newObj = {};
-            newObj.technique_id = $("#newTechnique").val();
-            newObj.player_id = $("#newPlayer").val();
-            newObj.video_id = $video->video_id;
-            Helper.uploadObj(newObj);
+            alert("adding new technique");
+//            var newObj = {};
+//            newObj.technique_id = $("#newTechnique").val();
+//            newObj.player_id = $("#newPlayer").val();
+//            newObj.video_id = $video->video_id;
+//            Helper.uploadObj(newObj);
         }
     </script>
 </head>
