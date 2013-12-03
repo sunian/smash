@@ -31,7 +31,7 @@ function SearchBox(parent) {
         this.parent.append(btnGo);
         var btnAdd = $(document.createElement('input'));
         btnAdd.attr("type", "button");
-        btnAdd.attr("value", "Filter");
+        btnAdd.attr("value", "Add Video");
         btnAdd.bind("click", [this], function (e) {
             e.data[0].clickedAdd();
         });

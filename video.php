@@ -21,7 +21,6 @@ if (!$urlParams["t"]) {
     header("Location: https://plato.cs.virginia.edu/~jcs5sb/smash/videos.php");
     exit();
 }
-$video = Video::nu($urlParams["t"]);
 ?>
 
 <html>
@@ -29,8 +28,34 @@ $video = Video::nu($urlParams["t"]);
     <title>Video</title>
     <?php include('libs/headers.php');
     ?>
-    <script type="text/javascript">
 
+    <script type="text/javascript">
+        function init() {
+            var newTechnique;
+            var selectTechnique;
+            function init() {
+                newTechnique = $("#newTechnique");
+                selectTechnique = createTechniqueSelector();
+                selectTechnique.id = "selectTechnique";
+                newTechnique.append(selectTechnique);
+
+                newPlayer = $("#newPlayer");
+                selectPlayer = createPlayerSelector();
+                selectPlayer.id = "selectPlayer";
+                newPlayer.append(selectPlayer);
+
+                Helper.displayBtnAdd(true);
+
+//            $vp = JSON.parse($("#div_vp").text());
+                $("#submit").click(function() {
+                    var newObj = {};
+//            newObj.technique_id = $("#newTechnique").val();
+//            newObj.video_player_id = vp;
+//                    Helper.uploadObj(newObj);
+                    alert("trying to add");
+                }
+            }
+        }
     </script>
 </head>
 <body>
@@ -39,6 +64,7 @@ $video = Video::nu($urlParams["t"]);
 
 include('libs/navheader.php');
 
+$video = Video::nu($urlParams["t"]);
 echo "<h1>$video->title</h1>";
 
 ?>
@@ -101,53 +127,8 @@ echo "<div id=\"div_players\" style=\"display: none;\">";
             select_player.options[select_player.options.length] = new Option(players[i].name, players[i].id);
         }
         return select_player;
-    }
-    var player_id;
-    var video_id;
-    var vp;
-    player_id = $(\"#newPlayer\").val();";
-echo "video_id = " . $urlParams["t"] . ";" ;
-echo "alert($(\"#newPlayer\").val());
-    alert(video_id);";
-echo"</script>";
-echo"<div id=\"div_vp\" style=\"display: none;\">";
-            $conn = DbUtil::connect();
-            $stmt = $conn->prepare("select video_player_id from video_player
-                where video_player->video_id = :video_id and video_player->player_id = :player_id");
-            $params = array("video_id"=>$urlParams["t"]);
-            $stmt->execute($params);
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            echo json_encode(clean($stmt->fetchAll()));
-            $stmt->closeCursor();
-echo "hello";
+    }";
+echo "</script>";
 ?>
-    </div><script type="text/javascript">
-    alert("hey");
-      var newTechnique;
-        var selectTechnique;
-        function init() {
-            newTechnique = $("#newTechnique");
-            selectTechnique = createTechniqueSelector();
-            selectTechnique.id = "selectTechnique";
-            newTechnique.append(selectTechnique);
-
-            newPlayer = $("#newPlayer");
-            selectPlayer = createPlayerSelector();
-            selectPlayer.id = "selectPlayer";
-            newPlayer.append(selectPlayer);
-
-            Helper.displayBtnAdd(true);
-
-//            $vp = JSON.parse($("#div_vp").text());
-              alert('blah');
-            $("#submit").click(function() {
-            var newObj = {};
-//            newObj.technique_id = $("#newTechnique").val();
-//            newObj.video_player_id = vp;
-            Helper.uploadObj(newObj);
-        }
-        }
-            </script>
-
 </body>
 </html>
