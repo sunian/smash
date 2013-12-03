@@ -52,12 +52,12 @@ if (!$urlParams["t"]) {
             Helper.displayBtnAdd(true);
 
             $("#submit").click(function() {
-//                var newObj = {};
-//                newObj.technique_id = selectTechnique.val();
-//                newObj.player_id = selectPlayer.val();
-//                newObj.video_id = $("#video_id_div").text();
-//                Helper.uploadObj(newObj);
-            }
+                var newObj = {};
+                newObj.technique_id = selectTechnique.val();
+                newObj.player_id = selectPlayer.val();
+                newObj.video_id = $("#video_id_div").text();
+                Helper.uploadObj(newObj);
+            });
         }
     </script>
 </head>
@@ -121,7 +121,8 @@ $stmt->execute($params);
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
 echo json_encode(clean($stmt->fetchAll()));
 $stmt->closeCursor();
-echo "</div><script type=\"text/javascript\">
+echo "</div>
+    <script type=\"text/javascript\">
     function createPlayerSelector(includeBlank) {
         var select_player = document.createElement(\"select\");
         var players = JSON.parse($(\"#div_players\").text());
@@ -130,8 +131,7 @@ echo "</div><script type=\"text/javascript\">
             select_player.options[select_player.options.length] = new Option(players[i].name, players[i].id);
         }
         return select_player;
-    }";
-echo "</script>";
+    }</script>";
 echo "<div id=\"video_id_div\" style=\"display: none;\">" . $urlParams["t"] . "</div>";
 ?>
 </body>
