@@ -37,12 +37,15 @@ class SearchBox extends JSONObject
 {
     public $title = null;
     public $fields = null;
+    public $canAdd = false;
 //    public $renderData; //$printData(rows)
 
     public static function nu($title, $fields) {
         $instance = new self();
         $instance->title = $title;
         $instance->fields = $fields;
+        if ($GLOBALS['authenticatedUser'] != null)
+            $instance->canAdd = true;
         return $instance;
     }
 
