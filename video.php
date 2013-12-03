@@ -48,18 +48,18 @@ $video = Video::nu($urlParams["t"]);
             var $video_id;
             $player_id = $("#newPlayer").val();
             $video_id = $urlParams["t"];
-        <div id="div_vp"; style="display: none;">";
+        <div id="div_vp" style="display: none">;
             <?php
             $conn = DbUtil::connect();
             $stmt = $conn->prepare("select video_player_id from video_player " +
-                "where video_player->video_id = :video_id and video_player->player_id = :player_id"):
+                "where video_player->video_id = :video_id and video_player->player_id = :player_id");
             $params = array("video_id"=>$urlParams["t"]);
             $stmt->execute($params);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             echo json_encode(clean($stmt->fetchAll()));
             $stmt->closeCursor();
             ?>
-            </div>;
+            </div>
             var vp = JSON.parse($("#div_vp").text());
             newObj.technique_id = $("#newTechnique").val();
             newObj.video_player_id = vp;
