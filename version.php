@@ -82,11 +82,10 @@ if (strlen($json_input) > 0) {
                 newHeight = $("#new_version_release_date");
                 newFallRank = $("#new_version_number");
                 newName.autocomplete({
-                   source: getVersionTitles()
-                });
-//                newName.on('input', function(){alert("blah");});
-                newName.keyup(function() {
-                   newWeight.val(getAbbreviationForTitle(newName.val()));
+                    source: getVersionTitles(),
+                    select: function( event, ui ) {
+                        newWeight.val(getAbbreviationForTitle(newName.val()));
+                    }
                 });
                 $("#submit").click(function() {
                     var newObj = {};
