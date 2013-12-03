@@ -10,10 +10,32 @@ require_once('libs/Version.php');
 require_once('libs/Character.php');
 require_once('libs/DataTable.php');
 if (strlen($json_input) > 0) {
-    $character = new Character($json_input);
-    $error = $character->createCharacter();
-    if ($error) echo $error;
-    exit();
+    if (strcmp($urlParams["t"], "newVersion") != 0) {
+        $character = new Character($json_input);
+        $error = $character->createCharacter();
+        if ($error) echo $error;
+        exit();
+    }
+    else {
+        $version = new Version($json_input);
+        $error = $version->createIdentity();
+        if($error) {
+            echo $error;
+            exit();
+        }
+        $conn = DbUtil::connect();
+        $stmt = $conn->prepare("SELECT version_id FROM version WHERE title = :title" . $version->abbreviation?" AND
+            abbreviation = :abbrev":"" . $version->release_date?" AND release_date = :date":"" . $version->version_number?" AND
+            version_number = :version_number":"");
+        $params = array("title"=>$version->title);
+        if($version->release_date) $params["date"] = $version->release_date;
+        if($version->version_number) $params["version_number"] = $version->version_number;
+        if($version->abbreviation) $params["abbrev"] = $version->abbreviation;
+        $stmt->execute($params);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $id = $row["version_id"];
+        header("Location: https://plato.cs.virginia.edu/~jcs5sb/smash/version.php?t=" . $id);
+    }
 }
 ?>
 <html>
@@ -65,7 +87,32 @@ if (strlen($json_input) > 0) {
                    newWeight.val(getAbbreviationForTitle(newName.val()));
                 });
                 $("#submit").click(function() {
+                    var newObj = {};
+                    if(!newName.val()) {
+                        alert("You must enter a version title!");
+                        newName.focus();
+                        return;
+                    }
+                    newObj.title = newName.val();
 
+                    if(newHeight.val()) {
+                        newObj.date = Date.parse(newHeight.val());
+                        if(!newObj.date) {
+                            alert("Incorrect format for release date!");
+                            newHeight.focus();
+                            return;
+                        }
+                        newObj.date = newObj.date.toString("yyyy-MM-dd");
+                    }
+
+                    if(newWeight.val()) {
+                        newObj.abbreviation = newWeight.val();
+                    }
+                    if(newFallRank.val()) {
+                        newObj.version_number = newFallRank.val();
+                    }
+
+                    Helper.uploadObj(newObj);
                 });
             }
             else {
