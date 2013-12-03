@@ -8,6 +8,7 @@ function User(obj) {
     this.name = null;
     this.email = null;
     this.login_count = 0;
+    this.role = 0;
     for (var prop in obj) this[prop] = obj[prop];
     var plaintext = this.password;
     this.password = null;

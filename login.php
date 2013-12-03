@@ -57,6 +57,12 @@ if (strlen($json_input) > 0) {
             newObj.password = newPassword.val();
             newObj.name = newName.val();
             newObj.email = newEmail.val();
+            newObj.role = $(newRole).val();
+            if (newObj.role < 0) {
+                alert("You must select a user type!");
+                newRole.focus();
+                return;
+            }
             var newUser = new User(newObj);
             newUser.generateServerPassword(function () {
 //                console.log(JSON.stringify(this));
@@ -73,7 +79,7 @@ if (strlen($json_input) > 0) {
             });
         }
 
-        var newUsername, newPassword, newConfirm, newName, newEmail, btnSignUp;
+        var newUsername, newPassword, newConfirm, newName, newEmail, newRole, btnSignUp;
         var username, password, btnSignIn;
         function init() {
             newUsername = $("input#newUsername");
@@ -85,6 +91,9 @@ if (strlen($json_input) > 0) {
             username = $("input#username");
             password = $("input#password");
             btnSignIn = $("input#btnSignIn");
+            newRole = createRoleSelector(true);
+            newRole.id = "newRole";
+            $("#roleContainer").append(newRole);
             newUsername.keyup(function () {
                 if (newUsername.val().length > 3) {
                     newPassword.removeAttr("disabled");
@@ -149,7 +158,7 @@ include('libs/navheader.php');
     <input id="newConfirm" placeholder="confirm password" type="password" disabled><br>
     <input id="newName" placeholder="full name" disabled><br>
     <input id="newEmail" placeholder="email address" disabled><br>
-    <select id="newType"></select><br>
+    <div id="roleContainer"></div>
     <input id="btnSignUp" type="button" value="Sign Up" onclick="signup();" disabled>
 </div>
 <div id="sign_in" class="body container">
@@ -159,6 +168,7 @@ include('libs/navheader.php');
     <input id="btnSignIn" type="button" value="Sign In" onclick="signin();" disabled>
 </div>
 <?php
+include('libs/roles.php');
 ?>
 </body>
 </html>
