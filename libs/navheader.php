@@ -24,6 +24,7 @@ if ($activePage == null) {
     background: -webkit-linear-gradient(top,  rgba(19,23,50,.9) 0%,rgba(5,6,13,0.5) 100%);
     text-align: left;
          ">
+    <a id="loginLink" href="login.php" style="float: right;margin: 1%;">Login or Sign Up</a>
     <a href="index.php"><img src="images/title_logo.png" style="margin: 0 8px;
         max-height: 11%;
         vertical-align: text-bottom;
@@ -37,5 +38,4 @@ if ($activePage == null) {
         }
         ?>
     </nav>
-    <a href="login.php" style="float: right;margin: 1%;">Login or Sign Up</a>
 </div>
