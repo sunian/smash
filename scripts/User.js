@@ -13,8 +13,12 @@ function User(obj) {
     this.password = null;
 
     function setPassword(h) {
-        self.password = h.substring(29);
+        self.password = h;
         if (passwordCallback != null) passwordCallback.call(self);
+    }
+
+    function setServerPassword(h) {
+        setPassword(h.substring(29));
     }
 
     var passwordCallback;
@@ -24,7 +28,7 @@ function User(obj) {
         if (!hasher.ready()) return;
         if (this.username == null) return;
         passwordCallback = callback;
-        hasher.hashpw(plaintext + md5(this.username.toLowerCase()), "$2a$31$KenCombo.RedLikeRoses.", setPassword, null);
+        hasher.hashpw(plaintext + md5(this.username.toLowerCase()), "$2a$31$KenCombo.RedLikeRoses.", setServerPassword, null);
     };
 
     this.getLoginCount = function (callback) {
