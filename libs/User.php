@@ -148,7 +148,6 @@ class User extends JSONObject
             $params = array("username" => $this->username, "token" => $this->access_token);
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
-            echo "auth!";
             $this->user_id = clean($stmt->fetchColumn());
             $stmt->closeCursor();
             if ($this->user_id) {
