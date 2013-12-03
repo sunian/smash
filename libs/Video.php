@@ -141,8 +141,7 @@ class Video extends JSONObject
                 $thisPlayerPlays = new PlayerPlaysChar();
                 $thisPlayerPlays->player = Player::nu($row["player_id"]);
                 $thisPlayerPlays->character = Character::nu($row["character_id"]);
-                $this->playerPlaysChar[count($this->playerPlaysChar)] = $thisPlayerPlays;
-//                array_push($this->playerPlaysChar, $thisPlayerPlays);
+                $this->playerPlaysChar[] = $thisPlayerPlays;
             }
         } catch (PDOException $e) {
             return $e->getMessage();
