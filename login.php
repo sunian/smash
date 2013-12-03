@@ -149,6 +149,7 @@ include('libs/navheader.php');
     <input id="newConfirm" placeholder="confirm password" type="password" disabled><br>
     <input id="newName" placeholder="full name" disabled><br>
     <input id="newEmail" placeholder="email address" disabled><br>
+    <select id="newType"></select><br>
     <input id="btnSignUp" type="button" value="Sign Up" onclick="signup();" disabled>
 </div>
 <div id="sign_in" class="body container">

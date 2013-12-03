@@ -12,7 +12,9 @@ require_once('libs/SearchBox.php');
 require_once('libs/Video.php');
 if (strlen($json_input) > 0) {
     if (strcmp($input_type, "q") == 0) {//user performed search
-        list($params, $sqlQueryOriginal) = Video::constructQuery(new SearchBox($json_input));
+        $searchbox = new SearchBox($json_input);
+        $searchbox->makeUseful();
+        list($params, $sqlQueryOriginal) = Video::constructQuery($searchbox);
         $sqlQuery = $sqlQueryOriginal . " LIMIT 0,10";
         $conn = DbUtil::connect();
         $stmt = $conn->prepare($sqlQuery);
@@ -56,9 +58,9 @@ if (strlen($json_input) > 0) {
         }
     }
     else {
-        $video = new Video($json_input);
-        $error = $video->createVideo();
-        if ($error) echo $error;
+        $searchbox = new SearchBox($json_input);
+        $searchbox->makeUseful();
+        Video::insertVideo($searchbox);
     }
     exit();
 }

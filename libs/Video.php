@@ -167,7 +167,8 @@ class Video extends JSONObject
             QueryField::nu("version", "Game Version", "select:createVersionSelector", "*"),
             QueryField::nu("video_player", "Player(Character) uses Technique",
                 "select:createPlayerSelector select:createCharacterSelector <br>uses&nbsp; select:createTechniqueSelector", "*"),
-            QueryField::nu("tournament", "Tourny", "select:createTournamentSelector", "1")
+            QueryField::nu("tournament", "Tourny", "select:createTournamentSelector", "1"),
+            QueryField::nu("url", "Url", "input", "1")
         );
     }
 
@@ -195,6 +196,28 @@ class Video extends JSONObject
 //        echo "query=$sqlQuery _ ";
         $table->setData($sqlQuery, $params);
         return $table;
+    }
+
+    public static function insertVideo($searchbox)
+    {
+        if ($searchbox) {
+            try {
+                $conn = DbUtil::connect();
+                $sql_string = "insert into video (title, url, date_added, tournament_id) VALUES (:title, :url, NOW(),:tourny);
+                            SELECT LAST_INSERT_ID();";
+                $params = array();
+                $params["title"] = $searchbox->fields['title']->values[0][0];
+                $params["url"] = $searchbox->fields['url']->values[0][0];
+                $params["tourny"] = $searchbox->fields['tournament']->values[0][0];
+                $stmt = $conn->prepare($sql_string);
+                $stmt->execute($params);
+                $video_id = clean($stmt->fetch(PDO::FETCH_COLUMN));
+                print_r($video_id);
+            } catch (PDOException $e) {
+                return $e->getMessage();
+            }
+
+        }
     }
 
     /**
