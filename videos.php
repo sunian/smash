@@ -92,6 +92,9 @@ if (strlen($json_input) > 0) {
                         });
                 }
             });
+            if(!spinner) {
+                $(window).unbind("scroll");
+            }
 
             Helper.setupDataTable("Videos");
             setupSearchBox();
@@ -131,7 +134,9 @@ $stmt->execute($params);
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
 echo "<div class='body'>";
 echo "<table id='all_videos'>";
+$rowCount = 0;
 while($row = clean($stmt->fetch())) {
+    $rowCount++;
     $listUnit = Video::nu($row["video_id"]);
     echo "<tr id='" , $row["video_id"] , "'>
                 <td><a href='video.php?t=", $row["video_id"], "'>", $listUnit->renderThumbnail() , "</a></td>
@@ -140,7 +145,7 @@ while($row = clean($stmt->fetch())) {
 }
 echo "</table>";
 echo "</div>";
-echo "<br><div class='spin' id='spinner'></div>";
+if($rowCount==10) echo "<br><div class='spin' id='spinner'></div>";
 
 echo "<div id='query' style='display: none;'>" , $sqlQueryOriginal , "</div>";
 echo "<div id='params' style='display: none;'>" , json_encode($params) , "</div>";
