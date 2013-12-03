@@ -43,8 +43,9 @@ if (strlen($json_input) > 0) {
                 Helper.displayBtnAdd(newTitle.val().length > 0 && newURL.val().length > 0);
             });
 
-            spinner.waypoint(function() {
-                alert("hello");
+            $(window).scroll(function() {
+                if (document.body.scrollTop + document.body.clientHeight >= $(document.body).height())
+                    alert("hello!");
             });
 
             Helper.setupDataTable("Videos");

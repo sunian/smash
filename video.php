@@ -11,29 +11,8 @@ require_once('libs/DbUtil.php');
 require_once('libs/Video.php');
 //require_once('libs/Technique.php');
 
-//if (strlen($json_input) > 0) {
-//$vp
-//$technique = new Technique(("#newTechnique").val());
-// $error = $technique->createTechnique();
-// if ($error){
-//     echo $error;
-//     exit();
-// }
-//$conn = DbUtil::connect();
-//$tech_id=$technique->technique_id;
-//$v_id=$video->video_id;
-//$vp_id1 = "select max(video_player_id) from video player where video_id=$v_id";
-//$vp_id2 = "select min(video_player_id) from video player where video_id=$v_id";
-//$stmt = $conn->prepare("INSERT INTO technique_usage VALUES($tech_id,$vp_id1),($tech_id,$vp_id2)");
-//$params = array("technique_id"=>$technique->technique_id);
-//if($technique->) $params["date"] = $version->release_date;
-//if($version->version_number) $params["version_number"] = $version->version_number;
-//if($version->abbreviation) $params["abbrev"] = $version->abbreviation;
-//$stmt->execute($params);
-//$row = $stmt->fetch(PDO::FETCH_ASSOC);
-//exit();
+// insert json input into technique_usage
 //INSERT INTO `cs4750jcs5sb`.`technique_usage` (`technique_id`, `video_player_id`) VALUES ('1', '4'), ('1', '5');
-//}
 
 if (!$urlParams["t"]) {
     header("Location: https://plato.cs.virginia.edu/~jcs5sb/smash/videos.php");
@@ -64,7 +43,7 @@ $video = Video::nu($urlParams["t"]);
             Helper.displayBtnAdd(true);
         }
         function addNewTechnique() {
-<!--            --><?php
+// PHP!
 //                $v_id = $video->video_id;
 //                $p_id = ("#newPlayer").val();
 //                 $conn = DbUtil::connect();
@@ -77,12 +56,13 @@ $video = Video::nu($urlParams["t"]);
 //        $id = $row["video"];
 //        echo "YAYhttps://plato.cs.virginia.edu/~jcs5sb/smash/video.php?t=" , $id;
 //        exit();
-//            ?>
-            var newObj = {};
-//            newObj.technique_id = $("#newTechnique").val();
-            newObj.player_id = $("#newPlayer").val();
-            newObj.video_id = $video->video_id;
-            Helper.uploadObj(newObj);
+//
+//            $video = Video->nu($urlParams["t"]);
+//            var newObj = {};
+////            newObj.technique_id = $("#newTechnique").val();
+//            newObj.player_id = $("#newPlayer").val();
+//            newObj.video_id = $video->video_id;
+//            Helper.uploadObj(newObj);
         }
     </script>
 </head>
