@@ -35,13 +35,15 @@ class Version extends JSONObject
                 return "That version already exists!";
             }
             $stmt->closeCursor();
+
+            echo "The version does not exist\n";
             $sql_string = "INSERT INTO version (title" . $this->release_date ? ", release_date" : "" .
             $this->version_number ? ", version_number" : "" . $this->abbreviation ? ", abbreviation)" : ")";
             $sql_string = $sql_string . "VALUES(:title" . $this->release_date ? ", :release_date" : "" .
             $this->version_number ? ", :version_number" : "" . $this->abbreviation ? ", :abbreviation)" : ")";
-            $stmt = $conn->prepare($sql_string);
             if($this->abbreviation) $params["abbreviation"] = $this->abbreviation;
             if($this->release_date) $params["release_date"] = $this->release_date;
+            $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
             $stmt->closeCursor();
             return false;
