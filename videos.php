@@ -19,15 +19,20 @@ if (strlen($json_input) > 0) {
         $query = $jsonInput["query"];
         $params = $jsonInput["params"];
         $params = json_decode($params, true);
-        $conn = DbUtil::connect();
-        $stmt = $conn->prepare($query . " LIMIT " . ($nextMax-1)*10 . ", " . $nextMax*10);
-        $stmt->execute($params);
-        while($row = clean($stmt->fetch(PDO::FETCH_ASSOC))) {
-            $listUnit = Video::nu($row["video_id"]);
-            echo "<tr id='" , $row["video_id"] , "'>
+        try {
+            $conn = DbUtil::connect();
+            $stmt = $conn->prepare($query . " LIMIT " . ($nextMax-1)*10 . ", " . $nextMax*10);
+            $stmt->execute($params);
+            while($row = clean($stmt->fetch(PDO::FETCH_ASSOC))) {
+                $listUnit = Video::nu($row["video_id"]);
+                echo "<tr id='" , $row["video_id"] , "'>
                 <td><a href='video.php?t=", $row["video_id"], "'>", $listUnit->renderThumbnail() , "</a></td>
                 <td>" , $listUnit->render() , "</td>
               </tr>";
+            }
+        }
+        catch(PDOException $e) {
+            echo $e->getMessage();
         }
     }
     else {
