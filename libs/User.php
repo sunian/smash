@@ -20,6 +20,7 @@ class User extends JSONObject
     var $date_created;
     var $date_changed_username;
     var $access_token;
+    var $role;
 
     public static function nu($username)
     {
@@ -118,11 +119,12 @@ class User extends JSONObject
                 return "That username has already been taken!";
             }
             $stmt->closeCursor();
-            $sql_string = "INSERT INTO user (username, password, name, email, date_created)
-                VALUES (:username, :password, :name, :email, CURDATE())";
+            $sql_string = "INSERT INTO user (username, password, name, email, date_created, role_id)
+                VALUES (:username, :password, :name, :email, CURDATE(), :role)";
             $params["password"] = $this->password;
             $params["name"] = $this->name;
             $params["email"] = $this->email;
+            $params["role"] = $this->role;
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
             $stmt->closeCursor();

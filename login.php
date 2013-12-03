@@ -57,6 +57,12 @@ if (strlen($json_input) > 0) {
             newObj.password = newPassword.val();
             newObj.name = newName.val();
             newObj.email = newEmail.val();
+            newObj.role = $(newRole).val();
+            if (newObj.role < 0) {
+                alert("You must select a user type!");
+                newRole.focus();
+                return;
+            }
             var newUser = new User(newObj);
             newUser.generateServerPassword(function () {
 //                console.log(JSON.stringify(this));
