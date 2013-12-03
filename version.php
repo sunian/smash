@@ -114,12 +114,12 @@ if (strlen($json_input) > 0) {
                     }
                     Helper.postJSON(newObj, "n",
                         function (data, textStatus, jqXHR) {
-                            if(data.charAt(0)=='$' && data.charAt(1)=='$' && data.charAt(2)=='$') {
-                                window.location.href(data.substring(3)));
-                            }
-                            else {
-                                alert(data);
-                            }
+//                            if(data.charAt(0)=='$' && data.charAt(1)=='$' && data.charAt(2)=='$') {
+//                                window.location.href(data.substring(3)));
+//                            }
+//                            else {
+//                                alert(data);
+//                            }
                         });
                 });
             }
