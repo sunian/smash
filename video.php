@@ -13,6 +13,9 @@ require_once('libs/Video.php');
 
 // insert json input into technique_usage
 //INSERT INTO `cs4750jcs5sb`.`technique_usage` (`technique_id`, `video_player_id`) VALUES ('1', '4'), ('1', '5');
+if (strlen($json_input) > 0) {
+    echo $json_input;
+}
 
 if (!$urlParams["t"]) {
     header("Location: https://plato.cs.virginia.edu/~jcs5sb/smash/videos.php");
@@ -41,16 +44,6 @@ $video = Video::nu($urlParams["t"]);
             newPlayer.append(selectPlayer);
 
             Helper.displayBtnAdd(true);
-        }
-        function addNewTechnique() {
-            var newObj = {};
-            var $player_id;
-            var $video_id;
-            $player_id = $("#newPlayer").val();
-            $video_id = $urlParams["t"];
-            newObj.technique_id = $("#newTechnique").val();
-            newObj.video_player_id = vp;
-            Helper.uploadObj(newObj);
         }
     </script>
 </head>
@@ -124,17 +117,28 @@ echo "<div id=\"div_players\" style=\"display: none;\">";
         return select_player;
     }
 </script>";
+            echo "var $player_id";
+            echo "var $video_id";
+            echo "var $vp";
+            echo "$player_id = $(\"#newPlayer\").val()";
+            echo "$video_id = $urlParams[t]";
 echo"<div id=\"div_vp\" style=\"display: none;\">";
             $conn = DbUtil::connect();
-            $stmt = $conn->prepare("select video_player_id from video_player " +
-                "where video_player->video_id = :video_id and video_player->player_id = :player_id");
+            $stmt = $conn->prepare("select video_player_id from video_player
+                where video_player->video_id = :video_id and video_player->player_id = :player_id");
             $params = array("video_id"=>$urlParams["t"]);
             $stmt->execute($params);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             echo json_encode(clean($stmt->fetchAll()));
             $stmt->closeCursor();
     echo "</div><script type=\"text/javascript\">
-            var vp = JSON.parse($(\"#div_vp\").text());
+            $vp = JSON.parse($(\"#div_vp\").text());
+            function addNewTechnique() {
+            var newObj = {};
+            newObj.technique_id = $(\"#newTechnique\").val();
+            newObj.video_player_id = vp;
+            Helper.uploadObj(newObj);
+        }
             </script>";
 ?>
 </body>
