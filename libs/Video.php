@@ -203,9 +203,9 @@ class Video extends JSONObject
         if ($searchbox) {
             $sqlQuery = "insert into video (title, url, date_added, tournament_id) VALUES (:title, :url, NOW(),:tourny)";
             $params = array();
-            $params["title"] = $searchbox->fields->title->values[0][0];
-            $params["url"] = $searchbox->fields->url->values[0][0];
-            $params["tourny"] = $searchbox->fields->tournaments->values[0][0];
+            $params["title"] = $searchbox->fields['title']->values[0][0];
+            $params["url"] = $searchbox->fields['url']->values[0][0];
+            $params["tourny"] = $searchbox->fields['tournament']->values[0][0];
             print_r($params);
         }
     }
