@@ -15,18 +15,18 @@
     ?>
     <script type="text/javascript">
         function signin() {
-
             var newObj = {};
             newObj.username = newUsername.val();
-            newObj.url = newURL.val();
-            if (newObj.title.length == 0) {
-                alert("Please enter a video title.");
-                newTitle.focus();
-                return;
-            }
-            newObj.tournament = $("#newTourny").val();
-            if (newObj.tournament < 0) newObj.tournament = undefined;
-            Helper.uploadObj(newObj);
+            newObj.password = newPassword.val();
+            newObj.name = newName.val();
+            newObj.email = newEmail.val();
+            var newUser = new User(newObj);
+            newUser.generateServerPassword(function () {
+                console.log(JSON.stringify(this));
+//                Helper.postJSON(this, "", function () {
+//
+//                });
+            });
         }
 
         function signup() {
