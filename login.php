@@ -8,6 +8,7 @@
 require_once('libs/browser.php');
 require_once('libs/User.php');
 
+setcookie("user_token", "", time()-3600);
 if (strlen($json_input) > 0) {
     $user = new User($json_input);
     if (strcmp($input_type, "u") == 0) {//user signed up
@@ -40,6 +41,7 @@ if (strlen($json_input) > 0) {
                         console.log(data);
                         $.cookie('user_name', newUser.username);
                         $.cookie('user_token', data, { expires: 14 });
+                        window.location.href='index.php';
                     } else {
                         alert("Incorrect username or password!");
                     }
@@ -61,7 +63,9 @@ if (strlen($json_input) > 0) {
                         alert(data);
                         console.log(data);
                     } else {
-                        alert("signed up!");
+                        username.val(newUsername.val());
+                        password.val(newPassword.val());
+                        signin();
                     }
                 });
             });
