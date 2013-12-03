@@ -27,7 +27,7 @@ if ($activePage == null) {
     <?php
     if ($authenticatedUser) {
         echo "<span style='float: right;margin: 1%;color: white'>",
-        "Signed in as <a id='loginLink' href='login.php' >", $authenticatedUser->username, "</a>";
+        "Signed in as <a id='loginLink' href='' >", $authenticatedUser->username, "</a>";
         echo "&nbsp;&nbsp;<a id='loginLink' href='login.php' >Sign Out</a></span>";
     } else {
         echo "<a id='loginLink' href='login.php' style='float: right;margin: 1%;'>Login or Sign Up</a>";
