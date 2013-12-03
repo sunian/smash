@@ -11,17 +11,22 @@ require_once('libs/DbUtil.php');
 require_once('libs/Video.php');
 
 if (strlen($json_input) > 0) {
-    $input = json_decode($json_input, true);
-    $conn = DbUtil::connect();
-    $stmt = $conn->prepare("SELECT video_player_id FROM video_player WHERE video_id = :video_id AND player_id = :player_id");
-    $params = array("player_id"=>$input["player_id"], "video_id"=>$input["video_id"]);
-    $stmt->execute($params);
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    $vp_id = $row["video_player_id"];
+    try {
+        $input = json_decode($json_input, true);
+        $conn = DbUtil::connect();
+        $stmt = $conn->prepare("SELECT video_player_id FROM video_player WHERE video_id = :video_id AND player_id = :player_id");
+        $params = array("player_id"=>$input["player_id"], "video_id"=>$input["video_id"]);
+        $stmt->execute($params);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $vp_id = $row["video_player_id"];
 
-    $stmt = $conn->prepare("INSERT INTO technique_usage(video_player_id, technique_id) VALUES (:vp_id, :tech_id)");
-    $params = array("vp_id"=>$vp_id, "tech_id"=>$input["technique_id"]);
-    $stmt->execute($params);
+        $stmt = $conn->prepare("INSERT INTO technique_usage(video_player_id, technique_id) VALUES (:vp_id, :tech_id)");
+        $params = array("vp_id"=>$vp_id, "tech_id"=>$input["technique_id"]);
+        $stmt->execute($params);
+    }
+    catch(PDOException $e) {
+        echo $e->getMessage();
+    }
     exit();
 }
 
@@ -51,8 +56,8 @@ if (!$urlParams["t"]) {
 
             $("#submit").click(function() {
                 var newObj = {};
-                newObj.technique_id = newTechnique.val();
-                newObj.player_id = newPlayer.val();
+                newObj.technique_id = $("#selectTechnique").val();
+                newObj.player_id = $("#selectPlayer").val();
                 newObj.video_id = $("#video_id_div").text();
                 Helper.uploadObj(newObj);
             });
