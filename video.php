@@ -139,7 +139,7 @@ echo "hello";
             Helper.displayBtnAdd(true);
 
 //            $vp = JSON.parse($("#div_vp").text());
-//            alert('blah');
+              alert('blah');
             $("#submit").click(function() {
             var newObj = {};
 //            newObj.technique_id = $("#newTechnique").val();
