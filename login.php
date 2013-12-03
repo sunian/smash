@@ -13,6 +13,9 @@ if (strlen($json_input) > 0) {
         $user = new User($json_input);
         $error = $user->createUser();
         if ($error) echo $error;
+    } else if (strcmp($input_type, "c") == 0) {//get login count
+        $user = User::nu($json_input);
+        echo $user->getLoginCount();
     }
     exit();
 }
@@ -25,7 +28,13 @@ if (strlen($json_input) > 0) {
     ?>
     <script type="text/javascript">
         function signin() {
-
+            var newObj = {};
+            newObj.username = username.val();
+            newObj.password = password.val();
+            var newUser = new User(newObj);
+            newUser.authenticateWithServer(function () {
+                console.log(JSON.stringify(this));
+            });
         }
 
         function signup() {
@@ -49,6 +58,7 @@ if (strlen($json_input) > 0) {
         }
 
         var newUsername, newPassword, newConfirm, newName, newEmail, btnSignUp;
+        var username, password, btnSignIn;
         function init() {
             newUsername = $("input#newUsername");
             newPassword = $("input#newPassword");
@@ -56,6 +66,9 @@ if (strlen($json_input) > 0) {
             newName = $("input#newName");
             newEmail = $("input#newEmail");
             btnSignUp = $("input#btnSignUp");
+            username = $("input#username");
+            password = $("input#password");
+            btnSignIn = $("input#btnSignIn");
             newUsername.keyup(function () {
                 if (newUsername.val().length > 3) {
                     newPassword.removeAttr("disabled");
@@ -98,6 +111,11 @@ if (strlen($json_input) > 0) {
                         Helper.makeToast($("div.body"), $("#newEmail"),
                             "You must enter a valid email!");
                 });
+            password.keyup(function () {
+                if (username.val().length > 3 && password.val().length > 7) {
+                    btnSignIn.removeAttr("disabled");
+                }
+            });
         }
     </script>
 </head>
@@ -120,7 +138,7 @@ include('libs/navheader.php');
 <div id="sign_in" class="body container">
     <p>Sign in</p>
     <input id="username" placeholder="username"><br>
-    <input id="password" placeholder="password" type="password" disabled><br>
+    <input id="password" placeholder="password" type="password"><br>
     <input id="btnSignIn" type="button" value="Sign In" onclick="signin();" disabled>
 </div>
 <?php
