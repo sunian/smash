@@ -211,9 +211,9 @@ class Video extends JSONObject
                 $params["tourny"] = $searchbox->fields['tournament']->values[0][0];
                 $stmt = $conn->prepare($sql_string);
                 $stmt->execute($params);
-                $video_id = clean($stmt->fetch(PDO::FETCH_COLUMN));
-                echo $video_id;
-//                print_r($video_id);
+                $video_id = clean($stmt->fetchAll(PDO::FETCH_ASSOC));
+//                echo $video_id;
+                print_r($video_id);
             } catch (PDOException $e) {
                 return $e->getMessage();
             }
