@@ -27,6 +27,10 @@ function User(obj) {
         hasher.hashpw(plaintext + md5(this.username.toLowerCase()), "$2a$31$KenCombo.RedLikeRoses.", setPassword, null);
     };
 
+    this.getLoginCount = function (callback) {
+
+    }
+
     this.authenticateWithServer = function (callback) {
         this.generateServerPassword(function () {
             passwordCallback = callback;
