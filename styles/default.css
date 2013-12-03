@@ -225,7 +225,7 @@ nav {
     background: url("../images/jiggly.png") no-repeat;
     background-size: cover;
     width: 50px;
-    height: 49px;
+    height: 45px;
     display: inline-block;
 }
 @-ms-keyframes spin {
