@@ -12,7 +12,26 @@ require_once('libs/SearchBox.php');
 require_once('libs/Video.php');
 if (strlen($json_input) > 0) {
     if (strcmp($input_type, "q") == 0) {//user performed search
-        Video::constructDataTableFrom(new SearchBox($json_input))->render();
+        list($params, $sqlQueryOriginal) = Video::constructQuery(new SearchBox($json_input));
+        $sqlQuery = $sqlQueryOriginal . " LIMIT 0,10";
+        $conn = DbUtil::connect();
+        $stmt = $conn->prepare($sqlQuery);
+        $stmt->execute($params);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        echo "<div class='body'>";
+        echo "<table id='all_videos'>";
+        $rowCount = 0;
+        while($row = clean($stmt->fetch())) {
+            $rowCount++;
+            $listUnit = Video::nu($row["video_id"]);
+            echo "<tr id='" , $row["video_id"] , "'>
+                <td><a href='video.php?t=", $row["video_id"], "'>", $listUnit->renderThumbnail() , "</a></td>
+                <td>" , $listUnit->render() , "</td>
+              </tr>";
+        }
+        echo "</table>";
+        if($rowCount==10) echo "<br><div class='spin' id='spinner'></div>";
+        echo "</div>";
     }
     elseif (strcmp($input_type, "z") == 0) {
         $json_input = json_decode($json_input, true);
@@ -144,8 +163,8 @@ while($row = clean($stmt->fetch())) {
               </tr>";
 }
 echo "</table>";
-echo "</div>";
 if($rowCount==10) echo "<br><div class='spin' id='spinner'></div>";
+echo "</div>";
 
 echo "<div id='query' style='display: none;'>" , $sqlQueryOriginal , "</div>";
 echo "<div id='params' style='display: none;'>" , json_encode($params) , "</div>";
