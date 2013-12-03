@@ -19,6 +19,7 @@ class Tournament extends JSONObject
 
     public function createTournament()
     {
+        if ($GLOBALS['authenticatedUser'] == null) return;
         try {
             $conn = DbUtil::connect();
             $sql_string = "SELECT tournament_id FROM tournament WHERE name = :name AND date = :date" .

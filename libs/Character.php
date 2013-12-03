@@ -57,6 +57,7 @@ class Character extends JSONObject
 
     public function createIdentity()
     {
+        if ($GLOBALS['authenticatedUser'] == null) return;
         try {
             $conn = DbUtil::connect();
             $sql_string = "SELECT identity_id FROM character_identity WHERE name = :name AND universe_id = :universe" .

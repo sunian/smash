@@ -17,6 +17,7 @@ class Technique extends JSONObject
 
     public function createTechnique()
     {
+        if ($GLOBALS['authenticatedUser'] == null) return;
         try {
             $conn = DbUtil::connect();
             $sql_string = "SELECT technique_id FROM technique WHERE name = :name " .

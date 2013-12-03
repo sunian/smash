@@ -22,6 +22,7 @@ class Version extends JSONObject
 
     public function createIdentity()
     {
+        if ($GLOBALS['authenticatedUser'] == null) return;
         try {
             $conn = DbUtil::connect();
             $sql_string = "SELECT title FROM version WHERE title = :title" . ($this->version_number ? " AND version_number =

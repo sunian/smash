@@ -285,6 +285,7 @@ class Video extends JSONObject
 
     public function createVideo()
     {
+        if ($GLOBALS['authenticatedUser'] == null) return;
         try {
             if ($this->url{strlen($this->url) - 1} == '/') $this->url = substr($this->url, 0, strlen($this->url) - 1);
             $conn = DbUtil::connect();

@@ -47,6 +47,7 @@ class Player extends JSONObject
 
     public function createPlayer()
     {
+        if ($GLOBALS['authenticatedUser'] == null) return;
         try {
             $conn = DbUtil::connect();
             $sql_string = "SELECT player_id FROM player WHERE region_id = :region " .
