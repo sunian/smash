@@ -85,7 +85,7 @@ if (strlen($json_input) > 0) {
             username = $("input#username");
             password = $("input#password");
             btnSignIn = $("input#btnSignIn");
-            newRole = createRoleSelector();
+            newRole = createRoleSelector(true);
             newRole.id = "newRole";
             $("#roleContainer").append(newRole);
             newUsername.keyup(function () {
