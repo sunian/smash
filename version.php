@@ -97,13 +97,13 @@ include('libs/navheader.php');
 if (strcmp($urlParams["t"], "newVersion") == 0) {
     echo "<h1>New Version Form</h1>";
     echo "<div id='version_form' class='body'>
-        <div id='title_fields' class='body'><div style=\"display: inline-block\">Title: </div>
+        <div id='title_fields'><div style=\"display: inline-block\">Title: </div>
         <div style=\"display: inline-block\"><input id='new_version_title'></div></div>
-        <div id='abbrev_fields' class='body'><div style=\"display: inline-block\">Abbreviation: </div>
+        <div id='abbrev_fields'><div style=\"display: inline-block\">Abbreviation: </div>
         <div style=\"display: inline-block\"><input id='new_version_abbrev'></div></div>
-        <div id='title_fields' class='body'><div style=\"display: inline-block\">Version Number: </div>
+        <div id='title_fields'><div style=\"display: inline-block\">Version Number: </div>
         <div style=\"display: inline-block\"><input id='new_version_number'></div></div>
-        <div id='title_fields' class='body'><div style=\"display: inline-block\">Release Date: </div>
+        <div id='title_fields'><div style=\"display: inline-block\">Release Date: </div>
         <div style=\"display: inline-block\"><input id='new_version_release_date' class='date'></div></div>
         </div>";
 }
