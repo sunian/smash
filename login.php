@@ -34,7 +34,7 @@ if (strlen($json_input) > 0) {
             newObj.password = password.val();
             var newUser = new User(newObj);
             newUser.authenticateWithServer(function () {
-//                console.log(JSON.stringify(this));
+                console.log(JSON.stringify(this));
                 Helper.postJSON(this, "i", function (data, textStatus, jqXHR) {
                     if (data.length > 0) {
                         alert(data);
