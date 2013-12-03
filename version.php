@@ -36,6 +36,7 @@ if (strlen($json_input) > 0) {
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $id = $row["version_id"];
         echo "YAYhttps://plato.cs.virginia.edu/~jcs5sb/smash/version.php?t=" , $id;
+        exit();
     }
 }
 ?>
