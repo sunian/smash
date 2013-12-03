@@ -49,8 +49,6 @@ if (!$urlParams["t"]) {
             selectPlayer.id = "selectPlayer";
             newPlayer.append(selectPlayer);
 
-            Helper.displayBtnAdd(true);
-
             $("#submit").click(function() {
                 var newObj = {};
                 newObj.technique_id = selectTechnique.val();
