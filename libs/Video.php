@@ -168,11 +168,6 @@ class Video extends JSONObject
             new TableColumn("Tournament", "newTourny", "select", "createTournamentSelector"),
             new TableColumn("Date Added", "newDate", "none", "")
         ));
-        $params = array();
-        $projection = "v.title, v.url, v.date_added, v.video_id, v.tournament_id as t_id, t.name";
-        $joins = "";
-        $where = "";
-        $crazy = "";
         $table->renderData = function ($row) {
             echo "<tr>";
             echo "<td><a href='video.php?t=", $row["video_id"], "'>", $row["title"], "</a></td>";
@@ -184,6 +179,23 @@ class Video extends JSONObject
             echo "<td class='moment'>", $row["date_added"], "</td>";
             echo "</tr>";
         };
+        list($params, $sqlQuery) = self::constructQuery($searchbox);
+//        echo "query=$sqlQuery _ ";
+        $table->setData($sqlQuery, $params);
+        return $table;
+    }
+
+    /**
+     * @param $searchbox
+     * @return array
+     */
+    public static function constructQuery($searchbox)
+    {
+        $params = array();
+        $projection = "v.title, v.url, v.date_added, v.video_id, v.tournament_id as t_id, t.name";
+        $joins = "";
+        $where = "";
+        $crazy = "";
         if ($searchbox) {
             foreach ($searchbox->fields as $queryField) {
                 if (count($queryField->values) == 0) continue;
@@ -256,9 +268,7 @@ class Video extends JSONObject
             " FROM video as v left outer join tournament as t on v.tournament_id = t.tournament_id " . $joins .
             (strlen($where) > 0 ? " where " . $where : "") .
             " ) as x " . $crazy . " group by x.video_id ORDER BY x.date_added DESC";
-//        echo "query=$sqlQuery _ ";
-        $table->setData($sqlQuery, $params);
-        return $table;
+        return array($params, $sqlQuery);
     }
 
     public function createVideo()
