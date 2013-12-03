@@ -43,26 +43,27 @@ $video = Video::nu($urlParams["t"]);
             Helper.displayBtnAdd(true);
         }
         function addNewTechnique() {
-// PHP!
-//                $v_id = $video->video_id;
-//                $p_id = ("#newPlayer").val();
-//                 $conn = DbUtil::connect();
-//        $stmt = $conn->prepare("SELECT video_player_id FROM video_player WHERE " . ($v_id?" AND
-//            video_id = :video_id":"") . ($p_id?" AND player_id = :player_id":""));
-//        $params = array("video_id"=>$v_id);
-//        if($p_id) $params["player_id"] = $p_id;
-//        $stmt->execute($params);
-//        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-//        $id = $row["video"];
-//        echo "YAYhttps://plato.cs.virginia.edu/~jcs5sb/smash/video.php?t=" , $id;
-//        exit();
-//
-//            $video = Video->nu($urlParams["t"]);
-//            var newObj = {};
-////            newObj.technique_id = $("#newTechnique").val();
-//            newObj.player_id = $("#newPlayer").val();
-//            newObj.video_id = $video->video_id;
-//            Helper.uploadObj(newObj);
+            var newObj = {};
+            var $player_id;
+            var $video_id;
+            $player_id = $("#newPlayer").val();
+            $video_id = $urlParams["t"];
+        <div id="div_vp"; style="display: none;">";
+            <?php
+            $conn = DbUtil::connect();
+            $stmt = $conn->prepare("select video_player_id from video_player " +
+                "where video_player->video_id = :video_id and video_player->player_id = :player_id"):
+            $params = array("video_id"=>$urlParams["t"]);
+            $stmt->execute($params);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            echo json_encode(clean($stmt->fetchAll()));
+            $stmt->closeCursor();
+            ?>
+            </div>;
+            var vp = JSON.parse($("#div_vp").text());
+            newObj.technique_id = $("#newTechnique").val();
+            newObj.video_player_id = vp;
+            Helper.uploadObj(newObj);
         }
     </script>
 </head>

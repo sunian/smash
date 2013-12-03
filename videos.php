@@ -13,7 +13,31 @@ require_once('libs/Video.php');
 if (strlen($json_input) > 0) {
     if (strcmp($input_type, "q") == 0) {//user performed search
         Video::constructDataTableFrom(new SearchBox($json_input))->render();
-    } else {
+    }
+    elseif (strcmp($input_type, "z") == 0) {
+        $json_input = json_decode($json_input, true);
+        print_r($json_input);
+        $nextMax = $json_input["nextMax"];
+        $query = $json_input["query"];
+        $params = $json_input["params"];
+        $params = json_decode($params, true);
+        try {
+            $conn = DbUtil::connect();
+            $stmt = $conn->prepare($query . " LIMIT " . ($nextMax-1)*10 . ", " . $nextMax*10);
+            $stmt->execute($params);
+            while($row = clean($stmt->fetch(PDO::FETCH_ASSOC))) {
+                $listUnit = Video::nu($row["video_id"]);
+                echo "<tr id='" , $row["video_id"] , "'>
+                <td><a href='video.php?t=", $row["video_id"], "'>", $listUnit->renderThumbnail() , "</a></td>
+                <td>" , $listUnit->render() , "</td>
+              </tr>";
+            }
+        }
+        catch(PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+    else {
         $video = new Video($json_input);
         $error = $video->createVideo();
         if ($error) echo $error;
@@ -31,11 +55,13 @@ if (strlen($json_input) > 0) {
         var newURL;
         var spinner;
         var displayCount = 1;
+        var display;
 
         function init() {
             newTitle = $("#newTitle");
             newURL = $("#newURL");
             spinner = $("#spinner");
+            display = $("#all_videos");
             newTitle.keyup( function () {
                 Helper.displayBtnAdd(newTitle.val().length > 0 && newURL.val().length > 0);
             });
@@ -44,8 +70,28 @@ if (strlen($json_input) > 0) {
             });
 
             $(window).scroll(function() {
-                if (document.body.scrollTop + document.body.clientHeight >= $(document.body).height())
-                    alert("hello!");
+                if (document.body.scrollTop + document.body.clientHeight >= $(document.body).height()) {
+                    var newObj = {};
+                    displayCount++;
+                    newObj.nextMax = displayCount;
+                    newObj.query = $("#query").text();
+                    newObj.params = $("#params").text();
+                    Helper.postJSON(newObj, "z",
+                        function (data, textStatus, jqXHR) {
+                            if(data) {
+                                if(data.charAt(1)=='t' && data.charAt(2)=='r') {
+                                    display.append(data);
+                                }
+                                else {
+                                    alert(data);
+                                }
+                            }
+                            else {
+                                alert("hello");
+                                spinner.remove();
+                            }
+                        });
+                }
             });
 
             Helper.setupDataTable("Videos");
@@ -78,8 +124,8 @@ $searchbox->render();
 $table = Video::constructDataTableFrom($searchbox);
 $table->render();
 
-list($params, $sqlQuery) = Video::constructQuery($searchbox);
-$sqlQuery = $sqlQuery . " LIMIT 0,10";
+list($params, $sqlQueryOriginal) = Video::constructQuery($searchbox);
+$sqlQuery = $sqlQueryOriginal . " LIMIT 0,10";
 $conn = DbUtil::connect();
 $stmt = $conn->prepare($sqlQuery);
 $stmt->execute($params);
@@ -97,6 +143,8 @@ echo "</table>";
 echo "</div>";
 echo "<br><div class='spin' id='spinner'></div>";
 
+echo "<div id='query' style='display: none;'>" , $sqlQueryOriginal , "</div>";
+echo "<div id='params' style='display: none;'>" , json_encode($params) , "</div>";
 include('libs/players.php');
 include('libs/characters.php');
 include('libs/versions.php');
