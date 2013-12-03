@@ -76,6 +76,25 @@ $searchbox->render();
 $table = Video::constructDataTableFrom($searchbox);
 $table->render();
 
+$queryAndParams = Video::constructQuery($searchbox);
+list($params, $sqlQuery) = self::constructQuery($searchbox);
+$sqlQuery = $sqlQuery . " LIMIT 0,10";
+$conn = DbUtil::connect();
+$stmt = $conn->prepare($sqlQuery);
+$stmt->execute($params);
+$stmt->setFetchMode(PDO::FETCH_ASSOC);
+echo "<div class='body'>";
+echo "<table id='all_videos'>";
+while($row = clean($stmt->fetch())) {
+    $listUnit = Video::nu($row["video_id"]);
+    echo "<tr id='" , $row["video_id"] , "'>
+                <td><a href='video.php?t=", $row["video_id"], "'>", $listUnit->renderThumbnail() , "</a></td>
+                <td>" , $listUnit->render() , "</td>
+              </tr>";
+}
+echo "</table>";
+echo "</div>";
+
 include('libs/players.php');
 include('libs/characters.php');
 include('libs/versions.php');
