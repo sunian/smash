@@ -24,9 +24,9 @@ if (strlen($json_input) > 0) {
             exit();
         }
         $conn = DbUtil::connect();
-        $stmt = $conn->prepare("SELECT version_id FROM version WHERE title = :title" . ($version->abbreviation)?" AND
-            abbreviation = :abbrev":"" . ($version->release_date)?" AND release_date = :date":"" . ($version->version_number)?" AND
-            version_number = :version_number":"");
+        $stmt = $conn->prepare("SELECT version_id FROM version WHERE title = :title" . ($version->abbreviation?" AND
+            abbreviation = :abbrev":"") . ($version->release_date?" AND release_date = :date":"") . ($version->version_number?" AND
+            version_number = :version_number":""));
         $params = array("title"=>$version->title);
         if($version->release_date) $params["date"] = $version->release_date;
         if($version->version_number) $params["version_number"] = $version->version_number;
