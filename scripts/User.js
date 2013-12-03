@@ -13,7 +13,7 @@ function User(obj) {
     this.password = null;
 
     function setPassword(h) {
-        self.password = h;
+        self.password = h.substring(29);
         if (passwordCallback != null) passwordCallback.call(self);
     }
 

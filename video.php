@@ -38,6 +38,11 @@ $video = Video::nu($urlParams["t"]);
             selectTechnique.id = "selectTechnique";
             newTechnique.appendChild(selectTechnique);
         }
+        function addTechniques() {
+            var newObj = {};
+            newObj.technique = $("#newTechnique").val();
+            Helper.uploadObj(newObj);
+        }
     </script>
 </head>
 <body>
@@ -71,7 +76,7 @@ echo "<h1>$video->title</h1>";
     <table id='newTechnique'>
         <tr>
             <td style="width:850px">
-                Add Techniques here?
+                Add Techniques here..?
             </td>
         </tr>
     </table>
