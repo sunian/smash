@@ -16,6 +16,7 @@ if (strlen($json_input) > 0) {
     }
     elseif (strcmp($input_type, "z") == 0) {
         $json_input = json_decode($json_input);
+        print_r($json_input);
         $nextMax = $json_input["nextMax"];
         $query = $json_input["query"];
         $params = $json_input["params"];
@@ -34,9 +35,6 @@ if (strlen($json_input) > 0) {
         }
         catch(PDOException $e) {
             echo $e->getMessage();
-        }
-        catch(Exception $ex) {
-            echo $ex->getMessage();
         }
     }
     else {
