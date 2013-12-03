@@ -66,7 +66,7 @@ class User extends JSONObject
     public function getAccessToken() {
         try {
             $conn = DbUtil::connect();
-            $sql_string = "SELECT concat(md5(login_count), password) FROM user WHERE username = :username";
+            $sql_string = "SELECT concat(md5(CAST(login_count as CHAR(20))), password) FROM user WHERE username = :username";
             $params = array("username" => $this->username);
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
