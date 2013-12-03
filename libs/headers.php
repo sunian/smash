@@ -16,6 +16,7 @@
     <script type="text/javascript"
             src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <script type="text/javascript" src="https://datejs.googlecode.com/files/date.js"></script>
+    <script type="text/javascript" src="scripts/jquery.cookie.js"></script>
     <script type="text/javascript" src="scripts/moment.min.js"></script>
     <script type="text/javascript" src="scripts/isaac.js"></script>
     <script type="text/javascript" src="scripts/bCrypt.js"></script>
