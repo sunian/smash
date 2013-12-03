@@ -30,21 +30,7 @@ $video = Video::nu($urlParams["t"]);
     <?php include('libs/headers.php');
     ?>
     <script type="text/javascript">
-        var newTechnique;
-        var selectTechnique;
-        function init() {
-            newTechnique = $("#newTechnique");
-            selectTechnique = createTechniqueSelector();
-            selectTechnique.id = "selectTechnique";
-            newTechnique.append(selectTechnique);
 
-            newPlayer = $("#newPlayer");
-            selectPlayer = createPlayerSelector();
-            selectPlayer.id = "selectPlayer";
-            newPlayer.append(selectPlayer);
-
-            Helper.displayBtnAdd(true);
-        }
     </script>
 </head>
 <body>
@@ -132,6 +118,21 @@ echo"<div id=\"div_vp\" style=\"display: none;\">";
             echo json_encode(clean($stmt->fetchAll()));
             $stmt->closeCursor();
     echo "</div><script type=\"text/javascript\">
+      var newTechnique;
+        var selectTechnique;
+        function init() {
+            newTechnique = $(\"#newTechnique\");
+            selectTechnique = createTechniqueSelector();
+            selectTechnique.id = \"selectTechnique\";
+            newTechnique.append(selectTechnique);
+
+            newPlayer = $(\"#newPlayer\");
+            selectPlayer = createPlayerSelector();
+            selectPlayer.id = \"selectPlayer\";
+            newPlayer.append(selectPlayer);
+
+            Helper.displayBtnAdd(true);
+        }
             $vp = JSON.parse($(\"#div_vp\").text());
             $(\"#submit\").click(function() {
             var newObj = {};
