@@ -87,22 +87,20 @@ include('libs/navheader.php');
 
 ?>
 
-<div class='body'>
-    <div id="sign_up" class="container">
-        <p>Sign up:</p>
-        <input id="newUsername" placeholder="username"><br>
-        <input id="newPassword" placeholder="password" type="password" disabled><br>
-        <input id="newConfirm" placeholder="confirm password" type="password" disabled><br>
-        <input id="newName" placeholder="full name" disabled><br>
-        <input id="newEmail" placeholder="email address" disabled><br>
-        <input id="btnSignUp" type="button" value="Sign Up" onclick="signup();" disabled>
-    </div>
-    <div id="sign_in" class="container">
-        <p>Sign in:</p>
-        <input id="username" placeholder="username"><br>
-        <input id="password" placeholder="password" type="password" disabled><br>
-        <input id="btnSignIn" type="button" value="Sign Up" onclick="signin();" disabled>
-    </div>
+<div id="sign_up" class="body container">
+    <p>Sign up:</p>
+    <input id="newUsername" placeholder="username"><br>
+    <input id="newPassword" placeholder="password" type="password" disabled><br>
+    <input id="newConfirm" placeholder="confirm password" type="password" disabled><br>
+    <input id="newName" placeholder="full name" disabled><br>
+    <input id="newEmail" placeholder="email address" disabled><br>
+    <input id="btnSignUp" type="button" value="Sign Up" onclick="signup();" disabled>
+</div>
+<div id="sign_in" class="body container">
+    <p>Sign in:</p>
+    <input id="username" placeholder="username"><br>
+    <input id="password" placeholder="password" type="password" disabled><br>
+    <input id="btnSignIn" type="button" value="Sign Up" onclick="signin();" disabled>
 </div>
 <?php
 ?>
