@@ -35,6 +35,9 @@ if (strlen($json_input) > 0) {
         catch(PDOException $e) {
             echo $e->getMessage();
         }
+        catch(Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
     else {
         $video = new Video($json_input);
