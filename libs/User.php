@@ -63,6 +63,22 @@ class User extends JSONObject
 //        }
     }
 
+    public function getLoginCount() {
+        try {
+            $conn = DbUtil::connect();
+            $sql_string = "SELECT login_count FROM user WHERE username = :username";
+            $params = array("username" => $this->username);
+            $stmt = $conn->prepare($sql_string);
+            $stmt->execute($params);
+            $this->login_count = clean($stmt->fetchColumn());
+            $stmt->closeCursor();
+            return $this->login_count;
+
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
     public function createUser()
     {
         try {

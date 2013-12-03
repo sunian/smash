@@ -28,14 +28,24 @@ function User(obj) {
     };
 
     this.getLoginCount = function (callback) {
-
+        Helper.postJSON(this.username, "c", function (data, textStatus, jqXHR) {
+            if (data.length > 0) {
+                console.log(data);
+                self.login_count = data * 1;
+                callback.call(self);
+            } else {
+                alert("Incorrect username or password!");
+            }
+        });
     }
 
     this.authenticateWithServer = function (callback) {
-        this.generateServerPassword(function () {
-            passwordCallback = callback;
-            hasher.hashpw(md5(this.login_count) + this.password, hasher.gensalt(8), setPassword, null);
-        });
+        this.getLoginCount(function () {
+            this.generateServerPassword(function () {
+                passwordCallback = callback;
+                hasher.hashpw(md5(this.login_count) + this.password, hasher.gensalt(8), setPassword, null);
+            });
+        })
     }
 
     this.verifyPassword = function () {
