@@ -98,8 +98,8 @@ if (strcmp($urlParams["t"], "newVersion") == 0) {
     echo "<h1>New Version Form</h1>";
     echo "<div id='version_form' class='body'><div id='version_title'>Version Title: <input id='new_version_title'><br>
         Version Abbreviation: <input id='new_version_abbrev'></div><br>";
-    echo "Version Number: <input id='version_number' placeholder='Version Number'><br>";
-    echo "Release Date: <input id='version_release_date' placeholder='Version Release Date'><br>";
+    echo "Version Number: <input id='version_number'><br>";
+    echo "Release Date: <input id='version_release_date' class='date'><br>";
     echo "</div>";
 
 }
