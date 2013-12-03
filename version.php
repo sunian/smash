@@ -36,6 +36,7 @@ if (strlen($json_input) > 0) {
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $id = $row["version_id"];
         echo "YAYhttps://plato.cs.virginia.edu/~jcs5sb/smash/version.php?t=" , $id;
+        exit();
     }
 }
 ?>
@@ -82,12 +83,11 @@ if (strlen($json_input) > 0) {
                 newHeight = $("#new_version_release_date");
                 newFallRank = $("#new_version_number");
                 newName.autocomplete({
-                   source: getVersionTitles()
+                    source: getVersionTitles(),
+                    select: function( event, ui ) {
+                        newWeight.val(getAbbreviationForTitle(ui.item.value));
+                    }
                 });
-                newName.addEventListener('input', function(){alert("blah");}, true);
-//                newName.keyup(function() {
-//                   newWeight.val(getAbbreviationForTitle(newName.val()));
-//                });
                 $("#submit").click(function() {
                     var newObj = {};
                     if(!newName.val()) {
@@ -167,7 +167,7 @@ if (strcmp($urlParams["t"], "newVersion") == 0) {
         <div id='title_fields'><div style=\"display: inline-block\">Release Date: </div>
         <div style=\"display: inline-block\"><input id='new_version_release_date' class='date'></div></div>
         </div>";
-    echo "<button id='submit'>Create Version</button>";
+    echo "<a class='btnPlus' href='javascript:void' id='submit'></a>";
 }
 else {
     $version = new Version();

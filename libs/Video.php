@@ -36,7 +36,7 @@ class Video extends JSONObject
     public function populateFieldsFromID()
     {
         $conn = DbUtil::connect();
-        $sqlString = "SELECT title, url, date_added, tournament_id AS tournament FROM video WHERE video_id = :video_id";
+        $sqlString = "SELECT v.title, v.url, v.date_added, tournament_id AS tournament FROM video AS v WHERE video_id = :video_id";
         $params = array("video_id" => $this->video_id);
         $stmt = $conn->prepare($sqlString);
         $stmt->execute($params);
@@ -45,6 +45,18 @@ class Video extends JSONObject
         $this->date_added = $row["date_added"];
         $this->url = $row["url"];
         $this->title = $row["title"];
+        $this->tournament = $row["tournament"];
+
+        if($this->tournament) {
+            $sqlString = "SELECT t.name AS tournament FROM video AS v INNER JOIN tournament AS t ON
+              t.tournament_id = v.tournament_id WHERE video_id = :video_id";
+            $stmt = $conn->prepare($sqlString);
+            $stmt->execute($params);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->tournament = $row["tournament"];
+        }
+
+
         echo $this->populateTechniques();
         echo $this->populatePlayers();
         echo $this->populateCharacters();
@@ -326,7 +338,7 @@ class Video extends JSONObject
                 echo $video_player->player->tag, " (", $video_player->character->name, ")";
             }
         }
-        echo "<br>Version: ";
+        echo "<br><br>Version: ";
         if ($this->versions) {
             foreach ($this->versions as $i => $version) {
                 if ($i > 0) echo ", ";
@@ -334,6 +346,9 @@ class Video extends JSONObject
             }
         } else {
             echo "Unknown";
+        }
+        if($this->tournament) {
+            echo "<br>Tournament: " , $this->tournament;
         }
         echo "</div>\n";
     }

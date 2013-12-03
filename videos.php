@@ -40,6 +40,12 @@ if (strlen($json_input) > 0) {
                 Helper.displayBtnAdd(newTitle.val().length > 0 && newURL.val().length > 0);
             });
 
+            $(window).scroll(function () {
+                if ($(document).height() <= $(window).scrollTop() + $(window).height()) {
+                    alert("End Of The Page");
+                }
+            });
+
             Helper.setupDataTable("Videos");
             setupSearchBox();
             newTitle.focus();
