@@ -45,12 +45,6 @@ $video = Video::nu($urlParams["t"]);
 
             Helper.displayBtnAdd(true);
         }
-        function addNewTechnique() {
-            var newObj = {};
-            newObj.technique_id = $("#newTechnique").val();
-            newObj.video_player_id = vp;
-            Helper.uploadObj(newObj);
-        }
     </script>
 </head>
 <body>
@@ -139,6 +133,12 @@ echo"<div id=\"div_vp\" style=\"display: none;\">";
             $stmt->closeCursor();
     echo "</div><script type=\"text/javascript\">
             $vp = JSON.parse($(\"#div_vp\").text());
+            function addNewTechnique() {
+            var newObj = {};
+            newObj.technique_id = $(\"#newTechnique\").val();
+            newObj.video_player_id = vp;
+            Helper.uploadObj(newObj);
+        }
             </script>";
 ?>
 </body>
