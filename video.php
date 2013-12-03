@@ -117,7 +117,7 @@ echo "<h1>$video->title</h1>";
     <table id='newTechnique'>
         <tr>
             <td style="width:350px">
-                Add Technique
+                Add Technique...
             </td>
         </tr>
     </table>
