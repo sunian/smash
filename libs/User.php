@@ -73,7 +73,7 @@ class User extends JSONObject
             $password = crypt(clean($stmt->fetchColumn()), $this->password);
             $stmt->closeCursor();
             if (strcmp($password, $this->password) == 0) {
-                return crypt($password . microtime() . $this->username, '$2a$31$KenCombo.RedLikeRoses.');
+                return crypt($password . microtime() . $this->username, '$2a$05$KenCombo.RedLikeRoses.');
             }
 
         } catch (PDOException $e) {
