@@ -37,6 +37,7 @@ $video = Video::nu($urlParams["t"]);
             selectTechnique = createTechniqueSelector();
             selectTechnique.id = "selectTechnique";
             newTechnique.append(selectTechnique);
+            Helper.setupDataTable("newTechnique");
             Helper.displayBtnAdd(true);
         }
         function addTechniques() {
@@ -74,15 +75,15 @@ echo "<h1>$video->title</h1>";
         </tr>
     </table>
     <br>
-
-    <table id='newTechnique'>
+<div class='body'>
+    <table id='newTechnique' >
         <tr>
             <td style="width:350px">
                 Add Techniques
             </td>
         </tr>
     </table>
-
+</div>
 </div>
 <?php
 //echo "<div id='div_urlParam' style='display: none;'>", $urlParams["t"], "</div>";
