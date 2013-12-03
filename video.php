@@ -9,12 +9,20 @@
 require_once('libs/browser.php');
 require_once('libs/DbUtil.php');
 require_once('libs/Video.php');
-//require_once('libs/Technique.php');
 
-// insert json input into technique_usage
-//INSERT INTO `cs4750jcs5sb`.`technique_usage` (`technique_id`, `video_player_id`) VALUES ('1', '4'), ('1', '5');
 if (strlen($json_input) > 0) {
-    echo $json_input;
+    $input = json_decode($json_input, true);
+    $conn = DbUtil::connect();
+    $stmt = $conn->prepare("SELECT video_player_id FROM video_player WHERE video_id = :video_id AND player_id = :player_id");
+    $params = array("player_id"=>$input["player_id"], "video_id"=>$input["video_id"]);
+    $stmt->execute($params);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $vp_id = $row["video_player_id"];
+
+    $stmt = $conn->prepare("INSERT INTO technique_usage(video_player_id, technique_id) VALUES (:vp_id, :tech_id)");
+    $params = array("vp_id"=>$vp_id, "tech_id"=>$input["technique_id"]);
+    $stmt->execute($params);
+    exit();
 }
 
 if (!$urlParams["t"]) {
@@ -43,14 +51,13 @@ if (!$urlParams["t"]) {
 
                 Helper.displayBtnAdd(true);
 
-////            $vp = JSON.parse($("#div_vp").text());
-//                $("#submit").click(function() {
-//                    var newObj = {};
-////            newObj.technique_id = $("#newTechnique").val();
-////            newObj.video_player_id = vp;
-////                    Helper.uploadObj(newObj);
-//                    alert("trying to add");
-//                }
+                $("#submit").click(function() {
+                    var newObj = {};
+                    newObj.technique_id = selectTechnique.val();
+                    newObj.player_id = selectPlayer.val();
+                    newObj.video_id = $("#video_id_div").text();
+                    Helper.uploadObj(newObj);
+                }
             }
     </script>
 </head>
@@ -125,6 +132,7 @@ echo "<div id=\"div_players\" style=\"display: none;\">";
         return select_player;
     }";
 echo "</script>";
+echo "<div id=\"video_id_div\" style=\"display: none;\">" . $urlParams["t"] . "</div>";
 ?>
 </body>
 </html>
