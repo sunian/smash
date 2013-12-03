@@ -15,6 +15,10 @@
     ?>
     <script type="text/javascript">
         function signin() {
+
+        }
+
+        function signup() {
             var newObj = {};
             newObj.username = newUsername.val();
             newObj.password = newPassword.val();
@@ -27,10 +31,6 @@
 //
 //                });
             });
-        }
-
-        function signup() {
-
         }
 
         var newUsername, newPassword, newConfirm, newName, newEmail, btnSignUp;
