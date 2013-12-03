@@ -43,8 +43,8 @@ if (strlen($json_input) > 0) {
                 Helper.displayBtnAdd(newTitle.val().length > 0 && newURL.val().length > 0);
             });
 
-            spinner.scroll(function() {
-                console.log(document.body.scrollTop + " " + $(document.body).height() + " " + document.body.clientHeight);
+            spinner.appear(function() {
+                alert("hello");
             });
 
             Helper.setupDataTable("Videos");
