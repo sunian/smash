@@ -82,7 +82,6 @@
 include('libs/navheader.php');
 
 ?>
-
 <div id="sign_up" class="body container">
     <p>Sign up</p>
     <input id="newUsername" placeholder="username"><br>
@@ -96,7 +95,7 @@ include('libs/navheader.php');
     <p>Sign in</p>
     <input id="username" placeholder="username"><br>
     <input id="password" placeholder="password" type="password" disabled><br>
-    <input id="btnSignIn" type="button" value="Sign Up" onclick="signin();" disabled>
+    <input id="btnSignIn" type="button" value="Sign In" onclick="signin();" disabled>
 </div>
 <?php
 ?>
