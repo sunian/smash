@@ -13,6 +13,9 @@ require_once('libs/Video.php');
 
 // insert json input into technique_usage
 //INSERT INTO `cs4750jcs5sb`.`technique_usage` (`technique_id`, `video_player_id`) VALUES ('1', '4'), ('1', '5');
+if (strlen($json_input) > 0) {
+    echo $json_input;
+}
 
 if (!$urlParams["t"]) {
     header("Location: https://plato.cs.virginia.edu/~jcs5sb/smash/videos.php");
