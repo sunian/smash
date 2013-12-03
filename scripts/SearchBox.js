@@ -36,6 +36,7 @@ function SearchBox(parent) {
             e.data[0].clickedAdd();
         });
         this.parent.append(btnGo);
+        this.parent.append(btnAdd);
     };
 
     this.clickedGo = function () {
