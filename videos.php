@@ -41,20 +41,6 @@ if (strlen($json_input) > 0) {
                 Helper.displayBtnAdd(newTitle.val().length > 0 && newURL.val().length > 0);
             });
 
-
-            $(window).scroll(function() {
-                didScroll = true;
-            });
-
-            setInterval(function() {
-                if ( didScroll ) {
-                    if ($(window).scrollTop() + $(window).height() > $(document).height() - 0) {
-                        console.log($(window).scrollTop() +"\n"+ $(window).height() +"\n"+ $(document).height());
-                    }
-                    didScroll = false;
-                }
-            }, 250);
-
             Helper.setupDataTable("Videos");
             setupSearchBox();
             newTitle.focus();
