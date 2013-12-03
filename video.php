@@ -84,7 +84,7 @@ echo "<h1>$video->title</h1>";
 
 </div>
 <?php
-echo "<div id='div_urlParam' style='display: none;'>", $urlParams["t"], "</div>";
+//echo "<div id='div_urlParam' style='display: none;'>", $urlParams["t"], "</div>";
 include('libs/techniques.php');
 ?>
 </body>
