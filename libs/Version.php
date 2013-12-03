@@ -26,6 +26,7 @@ class Version extends JSONObject
             $conn = DbUtil::connect();
             $sql_string = "SELECT title FROM version WHERE title = :title" . $this->version_number ? " AND version_number =
                 :version_number" : "";
+            echo $sql_string , "\n";
             $params = array("title" => $this->title);
             if($this->version_number) $params["version_number"] = $this->version_number;
             $stmt = $conn->prepare($sql_string);
