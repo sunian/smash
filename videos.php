@@ -139,7 +139,7 @@ if (strlen($json_input) > 0) {
 <?php include('libs/navheader.php');
 
 
-$searchbox = SearchBox::nu("Filter Videos", Video::getQueryFields());
+$searchbox = SearchBox::nu("Filter/Add Videos", Video::getQueryFields());
 $searchbox->render();
 
 list($params, $sqlQueryOriginal) = Video::constructQuery($searchbox);

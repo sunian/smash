@@ -24,7 +24,7 @@ function SearchBox(parent) {
         this.parent.append(document.createElement('br'));
         var btnGo = $(document.createElement('input'));
         btnGo.attr("type", "button");
-        btnGo.attr("value", "Go");
+        btnGo.attr("value", "Filter");
         btnGo.bind("click", [this], function (e) {
             e.data[0].clickedGo();
         });
