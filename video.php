@@ -82,8 +82,8 @@ echo "<h1>$video->title</h1>";
                 Add Techniques
             </td>
         </tr>
-        <a href='javascript:void(0);' class='btnPlus' onclick='create$this->id()'> </a>
     </table>
+    <a href='javascript:void(0);' class='btnPlus' onclick='createnewTechnique()'> </a>
 </div>
 </div>
 <?php
