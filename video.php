@@ -51,8 +51,8 @@ if (!$urlParams["t"]) {
 
             $("#submit").click(function() {
                 var newObj = {};
-                newObj.technique_id = selectTechnique.val();
-                newObj.player_id = selectPlayer.val();
+                newObj.technique_id = newTechnique.val();
+                newObj.player_id = newPlayer.val();
                 newObj.video_id = $("#video_id_div").text();
                 Helper.uploadObj(newObj);
             });
