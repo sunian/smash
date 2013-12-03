@@ -41,8 +41,8 @@ if (strlen($json_input) > 0) {
             });
 
             $(window).scroll(function () {
-                if ($(document).height() <= $(window).scrollTop() + $(window).height()) {
-                    alert("End Of The Page");
+                if ($(window).scrollTop() + $(window).height() > $(document).height() - 0) {
+                    alert("Near bottom!");
                 }
             });
 
