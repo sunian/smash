@@ -25,6 +25,21 @@ if (strlen($json_input) > 0) {
         exit;
     }
     ?>
+    <title>
+        <?php
+        if (strcmp($urlParams["t"], "newVersion") == 0) {
+            echo "New Version";
+        }
+        else {
+            $conn = DbUtil::connect();
+            $stmt = $conn->prepare("SELECT name FROM pretty_version WHERE version_id = :version_id");
+            $params = array("version_id"=>$urlParams["t"]);
+            $stmt->execute($params);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            echo $row["name"];
+        }
+        ?>
+    </title>
     <script type="text/javascript">
         var newName;
         var newWeight;
