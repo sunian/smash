@@ -29,16 +29,22 @@ if (strlen($json_input) > 0) {
     <script type="text/javascript">
         var newTitle;
         var newURL;
-        var didScroll = false;
+        var spinner;
+        var displayCount = 1;
 
         function init() {
             newTitle = $("#newTitle");
             newURL = $("#newURL");
+            spinner = $("#spinner");
             newTitle.keyup( function () {
                 Helper.displayBtnAdd(newTitle.val().length > 0 && newURL.val().length > 0);
             });
             newURL.keyup( function () {
                 Helper.displayBtnAdd(newTitle.val().length > 0 && newURL.val().length > 0);
+            });
+
+            spinner.appear(function() {
+                alert("hello");
             });
 
             Helper.setupDataTable("Videos");
@@ -88,7 +94,7 @@ while($row = clean($stmt->fetch())) {
 }
 echo "</table>";
 echo "</div>";
-echo "<div class='spin'></div>";
+echo "<br><div class='spin' id='spinner'></div>";
 
 include('libs/players.php');
 include('libs/characters.php');
