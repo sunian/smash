@@ -45,7 +45,7 @@ class DataTable
                 break;
             }
         }
-
+        if ($authenticatedUser == null) $this->hasFooter = false;
     }
 
     function setData($sqlQuery, $sqlParams){
