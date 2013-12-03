@@ -112,7 +112,7 @@ if (strlen($json_input) > 0) {
                     if(newFallRank.val()) {
                         newObj.version_number = newFallRank.val();
                     }
-
+                    alert(Helper.stringify(newObj));
                     Helper.uploadObj(newObj);
                 });
             }
