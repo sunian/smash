@@ -47,10 +47,6 @@ $video = Video::nu($urlParams["t"]);
         }
         function addNewTechnique() {
             var newObj = {};
-            var $player_id;
-            var $video_id;
-            $player_id = $("#newPlayer").val();
-            $video_id = $urlParams["t"];
             newObj.technique_id = $("#newTechnique").val();
             newObj.video_player_id = vp;
             Helper.uploadObj(newObj);
@@ -127,10 +123,14 @@ echo "<div id=\"div_players\" style=\"display: none;\">";
         return select_player;
     }
 </script>";
+            echo "var $player_id";
+            echo "var $video_id";
+            echo"$player_id = $(\"#newPlayer\").val()";
+            echo "$video_id = $urlParams[t]";
 echo"<div id=\"div_vp\" style=\"display: none;\">";
             $conn = DbUtil::connect();
-            $stmt = $conn->prepare("select video_player_id from video_player " +
-                "where video_player->video_id = :video_id and video_player->player_id = :player_id");
+            $stmt = $conn->prepare("select video_player_id from video_player
+                where video_player->video_id = :video_id and video_player->player_id = :player_id");
             $params = array("video_id"=>$urlParams["t"]);
             $stmt->execute($params);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
