@@ -37,6 +37,7 @@ $video = Video::nu($urlParams["t"]);
             selectTechnique = createTechniqueSelector();
             selectTechnique.id = "selectTechnique";
             newTechnique.append(selectTechnique);
+            Helper.displayBtnAdd(true);
         }
         function addTechniques() {
             var newObj = {};
