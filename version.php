@@ -113,10 +113,10 @@ else {
         echo "</tr>";
     };
     $table->render();
-    echo "<div id=\"video_id_div\" style=\"display: none;\">" . $version->version_id . "</div>";
 }
 include('libs/characters.php');
 include('libs/versions.php');
+echo "<div id=\"video_id_div\" style=\"display: none;\">" . $urlParams["t"] . "</div>";
 ?>
 </body>
 </html>
