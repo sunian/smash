@@ -7,6 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 require_once('browser.php');
+require_once('User.php');
 
 class DbUtil
 {

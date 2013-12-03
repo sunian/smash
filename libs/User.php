@@ -32,37 +32,22 @@ class User extends JSONObject
 
     public function populateFieldsFromUsername()
     {
-//        try {
-//            $conn = DbUtil::connect();
-//            $sqlString = "SELECT title, version_number, release_date, abbreviation FROM version WHERE version_id = :version_id";
-//            $params = array("version_id" => $this->version_id);
-//            $stmt = $conn->prepare($sqlString);
-//            $stmt->execute($params);
-//            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-//            $row = clean($stmt->fetch());
-//            $this->title = $row["title"];
-//            $this->abbreviation = $row["abbreviation"];
-//            $this->release_date = $row["release_date"];
-//            $this->version_number = $row["version_number"];
-//
-//            $stmt = $conn->prepare("SELECT name FROM pretty_version WHERE version_id = :version_id");
-//            $stmt->execute($params);
-//            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-//            $row = clean($stmt->fetch());
-//            $this->pretty_name = $row["name"];
-//
-//            $sqlString = "SELECT c.character_id AS id, i.name AS name, u.name AS universe, c.weight, c.height,
-//                c.falling_speed_rank AS falling_speed, c.air_speed_rank AS air_speed, i.nickname AS nick, :version_name AS version
-//                FROM character_identity AS i INNER JOIN `character` AS c ON i.identity_id = c.identity_id
-//                INNER JOIN universe AS u ON i.universe_id = u.universe_id INNER JOIN version AS v ON v.version_id = c.version_id
-//                WHERE v.version_id = :version_id";
-//            $stmt = $conn->prepare($sqlString);
-//            $params["version_name"] = $this->pretty_name;
-//            $stmt->execute($params);
-//            $this->characters = clean($stmt->fetchAll(PDO::FETCH_CLASS, "Character"));
-//        } catch (PDOException $e) {
-//            return $e->getMessage();
-//        }
+        try {
+            $conn = DbUtil::connect();
+            $sqlString = "SELECT name, email, role_id FROM user WHERE user_name = :username";
+            $params = array("username" => $this->username);
+            $stmt = $conn->prepare($sqlString);
+            $stmt->execute($params);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $row = clean($stmt->fetch());
+            $this->name = $row["name"];
+            $this->email = $row["email"];
+            $this->role = $row["role_id"];
+            $stmt->closeCursor();
+
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
     }
 
     public function getAccessToken()
