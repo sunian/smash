@@ -84,7 +84,7 @@ if (strlen($json_input) > 0) {
                 newName.autocomplete({
                     source: getVersionTitles(),
                     select: function( event, ui ) {
-                        newWeight.val(getAbbreviationForTitle(ui.label));
+                        newWeight.val(getAbbreviationForTitle(ui.value));
                     }
                 });
                 $("#submit").click(function() {
