@@ -30,17 +30,14 @@ if (!$urlParams["t"]) {
     ?>
 
     <script type="text/javascript">
-        function init() {
-            var newTechnique;
-            var selectTechnique;
             function init() {
-                newTechnique = $("#newTechnique");
-                selectTechnique = createTechniqueSelector();
+                var newTechnique = $("#newTechnique");
+                var selectTechnique = createTechniqueSelector();
                 selectTechnique.id = "selectTechnique";
                 newTechnique.append(selectTechnique);
 
-                newPlayer = $("#newPlayer");
-                selectPlayer = createPlayerSelector();
+                var newPlayer = $("#newPlayer");
+                var selectPlayer = createPlayerSelector();
                 selectPlayer.id = "selectPlayer";
                 newPlayer.append(selectPlayer);
 
@@ -55,7 +52,6 @@ if (!$urlParams["t"]) {
 //                    alert("trying to add");
 //                }
             }
-        }
     </script>
 </head>
 <body>
