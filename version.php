@@ -130,7 +130,7 @@ if (strlen($json_input) > 0) {
                 newAirRank = $("#newAirRank");
 
                 Helper.setupDataTable("Characters");
-                Helper.displayBtnAdd(true);
+                Helper.displayBtnAdd(false);
 
                 newName = $("#newName");
                 newName.focus();
