@@ -29,6 +29,7 @@ if (strlen($json_input) > 0) {
     <script type="text/javascript">
         var newTitle;
         var newURL;
+        var didScroll = false;
 
         function init() {
             newTitle = $("#newTitle");
@@ -40,11 +41,19 @@ if (strlen($json_input) > 0) {
                 Helper.displayBtnAdd(newTitle.val().length > 0 && newURL.val().length > 0);
             });
 
-            $(window).scroll(function () {
-                if ($(window).scrollTop() + $(window).height() > $(document).height() - 0) {
-                    alert("Near bottom!");
-                }
+
+            $(window).scroll(function() {
+                didScroll = true;
             });
+
+            setInterval(function() {
+                if ( didScroll ) {
+                    if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+                        alert("Near bottom!");
+                    }
+                    didScroll = false;
+                }
+            }, 250);
 
             Helper.setupDataTable("Videos");
             setupSearchBox();
