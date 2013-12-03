@@ -222,9 +222,11 @@ class Video extends JSONObject
                     $params = array("video_id" => $video_id);
                     $sql_string = "insert into video_version (video_id, version_id) VALUES (:video_id, :version_id);";
                     $params["version_id"] = $field[0];
-                    print_r($params);
-
+                    $stmt = $conn->prepare($sql_string);
+                    $stmt->execute($params);
+                    $stmt->closeCursor();
                 }
+//                print_r($params);
 
             } catch (PDOException $e) {
                 return $e->getMessage();
