@@ -51,7 +51,7 @@ try {
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     echo "<div class='body'>";
-    echo "<table id='most_recent_vids' border='0' style='background-color:transparent;'>";
+    echo "<table id='most_recent_vids'>";
     while($row = clean($stmt->fetch())) {
         $listUnit = Video::nu($row["video_id"]);
         echo "<tr id='" , $row["video_id"] , "'>
