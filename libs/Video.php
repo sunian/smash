@@ -205,7 +205,7 @@ class Video extends JSONObject
                 echo "start\n";
                 $conn = DbUtil::connect();
                 $sql_string = "insert into video (video_id, title, url, date_added, tournament_id) VALUES (NULL, :title, :url, NOW(),:tourny);
-                            SELECT LAST_INSERT_ID();";
+                            SELECT max(video_id) from video;";
                 $params = array();
                 $params["title"] = $searchbox->fields['title']->values[0][0];
                 $params["url"] = $searchbox->fields['url']->values[0][0];
