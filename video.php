@@ -79,9 +79,10 @@ echo "<h1>$video->title</h1>";
     <table id='newTechnique'>
         <tr>
             <td style="width:350px">
-                <a href='javascript:void(0);' class='btnPlus' onclick='create$this->id();'>Add Techniques</a>
+                Add Techniques
             </td>
         </tr>
+        <a href='javascript:void(0);' class='btnPlus' onclick='create$this->id();'> </a>
     </table>
 </div>
 </div>
