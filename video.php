@@ -11,7 +11,7 @@ require_once('libs/DbUtil.php');
 require_once('libs/Video.php');
 //require_once('libs/Technique.php');
 
-if (strlen($json_input) > 0) {
+//if (strlen($json_input) > 0) {
 //$vp
 //$technique = new Technique(("#newTechnique").val());
 // $error = $technique->createTechnique();
