@@ -47,7 +47,7 @@ input[disabled] {
 }
 
 table, div.search-box, div.container {
-    background-color: rgba(54, 64, 134, 0.4) !important;
+    background-color: rgba(54, 64, 134, 0.4);
     text-align: center;
 }
 

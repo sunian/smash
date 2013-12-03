@@ -56,11 +56,16 @@ if (strlen($json_input) > 0) {
             if(versionId=="newVersion") {
                 newName = $("#new_version_title");
                 newWeight = $("#new_version_abbrev");
+                newHeight = $("#new_version_release_date");
+                newFallRank = $("new_version_number");
                 newName.autocomplete({
                    source: getVersionTitles()
                 });
                 newName.keyup(function() {
                    newWeight.val(getAbbreviationForTitle(newName.val()));
+                });
+                $("#submit").click(function() {
+
                 });
             }
             else {
@@ -106,6 +111,7 @@ if (strcmp($urlParams["t"], "newVersion") == 0) {
         <div id='title_fields'><div style=\"display: inline-block\">Release Date: </div>
         <div style=\"display: inline-block\"><input id='new_version_release_date' class='date'></div></div>
         </div>";
+    echo "<button id='submit'>Create Version</button>";
 }
 else {
     $version = new Version();
