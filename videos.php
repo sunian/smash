@@ -41,20 +41,6 @@ if (strlen($json_input) > 0) {
                 Helper.displayBtnAdd(newTitle.val().length > 0 && newURL.val().length > 0);
             });
 
-
-            $(window).scroll(function() {
-                didScroll = true;
-            });
-
-            setInterval(function() {
-                if ( didScroll ) {
-                    if ($(window).scrollTop() + $(window).height() > $(document).height() - 0) {
-                        alert("Near bottom!");
-                    }
-                    didScroll = false;
-                }
-            }, 250);
-
             Helper.setupDataTable("Videos");
             setupSearchBox();
             newTitle.focus();
@@ -102,6 +88,7 @@ while($row = clean($stmt->fetch())) {
 }
 echo "</table>";
 echo "</div>";
+echo "<div class='spin'></div>";
 
 include('libs/players.php');
 include('libs/characters.php');
