@@ -28,4 +28,3 @@
     <script type="text/javascript" src="scripts/Helper.js"></script>
     <script type="text/javascript" src="scripts/User.js"></script>
 <?php if (class_exists("SearchBox")) echo "<script type='text/javascript' src='scripts/SearchBox.js'></script>", "\n"; ?>
-<?php if (class_exists("Crypto")) echo "<script type='text/javascript' src='scripts/cryptico.min.js'></script>", "\n"; ?>
