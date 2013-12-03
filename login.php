@@ -33,11 +33,10 @@
             newUsername.keyup(function () {
                 if (newUsername.val().length > 3) {
                     newPassword.removeAttr("disabled");
-                } else {
-                    newPassword.val("").attr("disabled", "disabled");
                 }
             })
                 .blur(function () {
+                    if ($(document.activeElement).prop("tagName") === "INPUT") return;
                     if (newUsername.val().length < 4)
                         Helper.makeToast($("div.body"), $("#newUsername"),
                             "Username must be at least 4 characters long!");
@@ -46,11 +45,10 @@
                 newConfirm.val("")
                 if (newPassword.val().length > 7) {
                     newConfirm.removeAttr("disabled");
-                } else {
-                    newConfirm.attr("disabled", "disabled");
                 }
             })
                 .blur(function () {
+                    if ($(document.activeElement).prop("tagName") === "INPUT") return;
                     if (newPassword.val().length < 8)
                         Helper.makeToast($("div.body"), $("#newPassword"),
                             "Password must be at least 8 characters long!");
@@ -59,12 +57,10 @@
                 if (newPassword.val() === newConfirm.val()) {
                     newName.removeAttr("disabled");
                     newEmail.removeAttr("disabled");
-                } else {
-                    newName.attr("disabled", "disabled");
-                    newEmail.attr("disabled", "disabled");
                 }
             })
                 .blur(function () {
+                    if ($(document.activeElement).prop("tagName") === "INPUT") return;
                     if (newPassword.val() !== newConfirm.val())
                         Helper.makeToast($("div.body"), $("#newConfirm"),
                             "The passwords you entered don't match!");
@@ -72,11 +68,10 @@
             newEmail.keyup(function () {
                 if (Helper.validateEmail(newEmail.val())) {
                     btnSignUp.removeAttr("disabled");
-                } else {
-                    btnSignUp.attr("disabled", "disabled");
                 }
             })
                 .blur(function () {
+                    if ($(document.activeElement).prop("tagName") === "INPUT") return;
                     if (!Helper.validateEmail(newEmail.val()))
                         Helper.makeToast($("div.body"), $("#newEmail"),
                             "You must enter a valid email!");

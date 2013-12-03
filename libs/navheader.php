@@ -37,5 +37,5 @@ if ($activePage == null) {
         }
         ?>
     </nav>
-    <a href="login.php" style="float: right;margin: 1%;">Login or Sign Up</a>
+    <a id="loginLink" href="login.php" style="float: right;margin: 1%;">Login or Sign Up</a>
 </div>
