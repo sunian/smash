@@ -91,7 +91,7 @@ echo "<h1>$video->title</h1>";
         </tr>
     </table>
     <br>
-    <a href='javascript:void(0);' class='btnPlus' onclick='addNewTechnique()'> </a>
+    <a href='javascript:void(0);' class='btnPlus' id='submit'> </a>
 </div>
 </div>
 <?php
@@ -133,7 +133,7 @@ echo"<div id=\"div_vp\" style=\"display: none;\">";
             $stmt->closeCursor();
     echo "</div><script type=\"text/javascript\">
             $vp = JSON.parse($(\"#div_vp\").text());
-            function addNewTechnique() {
+            $(\"#submit\").click(function() {
             var newObj = {};
             newObj.technique_id = $(\"#newTechnique\").val();
             newObj.video_player_id = vp;
