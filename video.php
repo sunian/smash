@@ -38,27 +38,27 @@ if (!$urlParams["t"]) {
     ?>
 
     <script type="text/javascript">
-            function init() {
-                var newTechnique = $("#newTechnique");
-                var selectTechnique = createTechniqueSelector();
-                selectTechnique.id = "selectTechnique";
-                newTechnique.append(selectTechnique);
+        function init() {
+            var newTechnique = $("#newTechnique");
+            var selectTechnique = createTechniqueSelector();
+            selectTechnique.id = "selectTechnique";
+            newTechnique.append(selectTechnique);
 
-                var newPlayer = $("#newPlayer");
-                var selectPlayer = createPlayerSelector();
-                selectPlayer.id = "selectPlayer";
-                newPlayer.append(selectPlayer);
+            var newPlayer = $("#newPlayer");
+            var selectPlayer = createPlayerSelector();
+            selectPlayer.id = "selectPlayer";
+            newPlayer.append(selectPlayer);
 
-                Helper.displayBtnAdd(true);
+            Helper.displayBtnAdd(true);
 
-                $("#submit").click(function() {
-                    var newObj = {};
-                    newObj.technique_id = selectTechnique.val();
-                    newObj.player_id = selectPlayer.val();
-                    newObj.video_id = $("#video_id_div").text();
-                    Helper.uploadObj(newObj);
-                }
+            $("#submit").click(function() {
+//                var newObj = {};
+//                newObj.technique_id = selectTechnique.val();
+//                newObj.player_id = selectPlayer.val();
+//                newObj.video_id = $("#video_id_div").text();
+//                Helper.uploadObj(newObj);
             }
+        }
     </script>
 </head>
 <body>
@@ -89,39 +89,39 @@ echo "<h1>$video->title</h1>";
         </tr>
     </table>
     <br>
-<div class='body'>
-    <table id='newTechnique'>
-        <tr>
-            <td style="width:350px">
-                Add Technique...
-            </td>
-        </tr>
-    </table>
-    <br>
-    <table id='newPlayer'>
-        <tr>
-            <td style = "width:350px">
-                To Player
-            </td>
-        </tr>
-    </table>
-    <br>
-    <a href='javascript:void(0);' class='btnPlus' id='submit'> </a>
-</div>
+    <div class='body'>
+        <table id='newTechnique'>
+            <tr>
+                <td style="width:350px">
+                    Add Technique...
+                </td>
+            </tr>
+        </table>
+        <br>
+        <table id='newPlayer'>
+            <tr>
+                <td style = "width:350px">
+                    To Player
+                </td>
+            </tr>
+        </table>
+        <br>
+        <a href='javascript:void(0);' class='btnPlus' id='submit'> </a>
+    </div>
 </div>
 <?php
 //echo "<div id='div_urlParam' style='display: none;'>", $urlParams["t"], "</div>";
 include('libs/techniques.php');
 echo "<div id=\"div_players\" style=\"display: none;\">";
-    $conn = DbUtil::connect();
-    $stmt = $conn->prepare("select p.player_id as id, COALESCE(p.tag, p.name) as name from player AS p INNER JOIN video_player as v
+$conn = DbUtil::connect();
+$stmt = $conn->prepare("select p.player_id as id, COALESCE(p.tag, p.name) as name from player AS p INNER JOIN video_player as v
          ON v.player_id = p.player_id WHERE video_id = :video_id order by name");
-    $params = array("video_id"=>$urlParams["t"]);
-    $stmt->execute($params);
-    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    echo json_encode(clean($stmt->fetchAll()));
-    $stmt->closeCursor();
-    echo "</div><script type=\"text/javascript\">
+$params = array("video_id"=>$urlParams["t"]);
+$stmt->execute($params);
+$stmt->setFetchMode(PDO::FETCH_ASSOC);
+echo json_encode(clean($stmt->fetchAll()));
+$stmt->closeCursor();
+echo "</div><script type=\"text/javascript\">
     function createPlayerSelector(includeBlank) {
         var select_player = document.createElement(\"select\");
         var players = JSON.parse($(\"#div_players\").text());
