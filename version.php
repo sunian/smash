@@ -56,7 +56,7 @@ if (strlen($json_input) > 0) {
             if(versionId=="newVersion") {
                 newName = $("#new_version_title");
                 newWeight = $("#new_version_abbrev");
-                console.log(newName);
+                console.log($.makeArray(newName));
                 newName.autocomplete({
                    source: getVersionTitles()
                 });
