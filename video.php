@@ -11,9 +11,9 @@ require_once('libs/DbUtil.php');
 require_once('libs/Video.php');
 //require_once('libs/Technique.php');
 
-//if (strlen($json_input) > 0) {
-//$video = Video::nu($urlParams["t"]);
-//$technique = new Technique($json_input);
+if (strlen($json_input) > 0) {
+//$vp
+//$technique = new Technique(("#newTechnique").val());
 // $error = $technique->createTechnique();
 // if ($error){
 //     echo $error;
@@ -64,12 +64,25 @@ $video = Video::nu($urlParams["t"]);
             Helper.displayBtnAdd(true);
         }
         function addNewTechnique() {
-            alert("adding new technique");
-//            var newObj = {};
+            <?php
+                $v_id = $video->video_id;
+                $p_id = ("#newPlayer").val();
+                 $conn = DbUtil::connect();
+        $stmt = $conn->prepare("SELECT video_player_id FROM video_player WHERE " . ($v_id?" AND
+            video_id = :video_id":"") . ($p_id?" AND player_id = :player_id":""));
+        $params = array("video_id"=>$v_id);
+        if($p_id) $params["player_id"] = $p_id;
+        $stmt->execute($params);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $id = $row["video"];
+        echo "YAYhttps://plato.cs.virginia.edu/~jcs5sb/smash/video.php?t=" , $id;
+        exit();
+            ?>
+            var newObj = {};
 //            newObj.technique_id = $("#newTechnique").val();
-//            newObj.player_id = $("#newPlayer").val();
-//            newObj.video_id = $video->video_id;
-//            Helper.uploadObj(newObj);
+            newObj.player_id = $("#newPlayer").val();
+            newObj.video_id = $video->video_id;
+            Helper.uploadObj(newObj);
         }
     </script>
 </head>
@@ -116,6 +129,7 @@ echo "<h1>$video->title</h1>";
             </td>
         </tr>
     </table>
+    <br>
     <a href='javascript:void(0);' class='btnPlus' onclick='addNewTechnique()'> </a>
 </div>
 </div>
