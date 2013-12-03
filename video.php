@@ -77,8 +77,8 @@ echo "<h1>$video->title</h1>";
 
     <table id='newTechnique'>
         <tr>
-            <td style="width:850px">
-                Add Techniques here..?
+            <td style="width:350px">
+                Add Techniques
             </td>
         </tr>
     </table>
