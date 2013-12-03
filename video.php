@@ -30,21 +30,7 @@ $video = Video::nu($urlParams["t"]);
     <?php include('libs/headers.php');
     ?>
     <script type="text/javascript">
-        var newTechnique;
-        var selectTechnique;
-        function init() {
-            newTechnique = $("#newTechnique");
-            selectTechnique = createTechniqueSelector();
-            selectTechnique.id = "selectTechnique";
-            newTechnique.append(selectTechnique);
 
-            newPlayer = $("#newPlayer");
-            selectPlayer = createPlayerSelector();
-            selectPlayer.id = "selectPlayer";
-            newPlayer.append(selectPlayer);
-
-            Helper.displayBtnAdd(true);
-        }
     </script>
 </head>
 <body>
@@ -91,7 +77,7 @@ echo "<h1>$video->title</h1>";
         </tr>
     </table>
     <br>
-    <a href='javascript:void(0);' class='btnPlus' onclick='addNewTechnique()'> </a>
+    <a href='javascript:void(0);' class='btnPlus' id='submit'> </a>
 </div>
 </div>
 <?php
@@ -117,11 +103,11 @@ echo "<div id=\"div_players\" style=\"display: none;\">";
         return select_player;
     }
 </script>";
-            echo "var $player_id";
-            echo "var $video_id";
-            echo "var $vp";
-            echo "$player_id = $(\"#newPlayer\").val()";
-            echo "$video_id = $urlParams[t]";
+            echo "var $player_id;";
+            echo "var $video_id;";
+            echo "var $vp;";
+            echo "$player_id = $(\"#newPlayer\").val();";
+            echo "$video_id = $urlParams[t];";
 echo"<div id=\"div_vp\" style=\"display: none;\">";
             $conn = DbUtil::connect();
             $stmt = $conn->prepare("select video_player_id from video_player
@@ -131,15 +117,33 @@ echo"<div id=\"div_vp\" style=\"display: none;\">";
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             echo json_encode(clean($stmt->fetchAll()));
             $stmt->closeCursor();
-    echo "</div><script type=\"text/javascript\">
-            $vp = JSON.parse($(\"#div_vp\").text());
-            function addNewTechnique() {
+?>
+    </div><script type="text/javascript">
+      var newTechnique;
+        var selectTechnique;
+        function init() {
+            newTechnique = $("#newTechnique");
+            selectTechnique = createTechniqueSelector();
+            selectTechnique.id = "selectTechnique";
+            newTechnique.append(selectTechnique);
+
+            newPlayer = $("#newPlayer");
+            selectPlayer = createPlayerSelector();
+            selectPlayer.id = "selectPlayer";
+            newPlayer.append(selectPlayer);
+
+            Helper.displayBtnAdd(true);
+
+            $vp = JSON.parse($("#div_vp").text());
+            alert('blah');
+            $("#submit").click(function() {
             var newObj = {};
-            newObj.technique_id = $(\"#newTechnique\").val();
+            newObj.technique_id = $("#newTechnique").val();
             newObj.video_player_id = vp;
             Helper.uploadObj(newObj);
         }
-            </script>";
-?>
+        }
+            </script>
+
 </body>
 </html>

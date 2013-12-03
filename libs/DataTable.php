@@ -40,7 +40,7 @@ class DataTable
         $this->id = $id;
         $this->columns = $columns;
         foreach ($columns as $column) {
-            if ($authenticatedUser == null) $column->inputType = "none";
+            if ($GLOBALS['authenticatedUser'] == null) $column->inputType = "none";
             if (strcmp($column->inputType, "none") != 0) {
                 $this->hasFooter = true;
                 break;
@@ -86,9 +86,9 @@ class DataTable
                                 </tfoot>
                             </table>
                         </td>
-                        <td class='layout' style='padding-left: 20px; display: none'>
-                            <a href='javascript:void(0);' class='btnPlus' onclick='create$this->id();'></a>
-                        </td>
+                        <td class='layout' style='padding-left: 20px; display: none'>"
+                            ,($GLOBALS['authenticatedUser'] == null) ? "" : "<a href='javascript:void(0);' class='btnPlus' onclick='create$this->id();'></a>",
+                        "</td>
                     </tr>
                 </table>
             </div>";
