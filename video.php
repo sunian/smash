@@ -117,30 +117,32 @@ echo"<div id=\"div_vp\" style=\"display: none;\">";
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             echo json_encode(clean($stmt->fetchAll()));
             $stmt->closeCursor();
-    echo "</div><script type=\"text/javascript\">
+?>
+    </div><script type="text/javascript">
       var newTechnique;
         var selectTechnique;
         function init() {
-            newTechnique = $(\"#newTechnique\");
+            newTechnique = $("#newTechnique");
             selectTechnique = createTechniqueSelector();
-            selectTechnique.id = \"selectTechnique\";
+            selectTechnique.id = "selectTechnique";
             newTechnique.append(selectTechnique);
 
-            newPlayer = $(\"#newPlayer\");
+            newPlayer = $("#newPlayer");
             selectPlayer = createPlayerSelector();
-            selectPlayer.id = \"selectPlayer\";
+            selectPlayer.id = "selectPlayer";
             newPlayer.append(selectPlayer);
 
             Helper.displayBtnAdd(true);
         }
-            $vp = JSON.parse($(\"#div_vp\").text());
-            $(\"#submit\").click(function() {
+            $vp = JSON.parse($("#div_vp").text());
+            alert('$vp');
+            $("#submit").click(function() {
             var newObj = {};
-            newObj.technique_id = $(\"#newTechnique\").val();
+            newObj.technique_id = $("#newTechnique").val();
             newObj.video_player_id = vp;
             Helper.uploadObj(newObj);
         }
-            </script>";
-?>
+            </script>
+
 </body>
 </html>
