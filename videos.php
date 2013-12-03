@@ -29,6 +29,7 @@ if (strlen($json_input) > 0) {
     <script type="text/javascript">
         var newTitle;
         var newURL;
+        var didScroll = false;
 
         function init() {
             newTitle = $("#newTitle");
@@ -40,11 +41,19 @@ if (strlen($json_input) > 0) {
                 Helper.displayBtnAdd(newTitle.val().length > 0 && newURL.val().length > 0);
             });
 
-            $(window).scroll(function () {
-                if ($(document).height() <= $(window).scrollTop() + $(window).height()) {
-                    alert("End Of The Page");
-                }
+
+            $(window).scroll(function() {
+                didScroll = true;
             });
+
+            setInterval(function() {
+                if ( didScroll ) {
+                    if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+                        alert("Near bottom!");
+                    }
+                    didScroll = false;
+                }
+            }, 250);
 
             Helper.setupDataTable("Videos");
             setupSearchBox();
@@ -75,6 +84,24 @@ $searchbox->render();
 
 $table = Video::constructDataTableFrom($searchbox);
 $table->render();
+
+list($params, $sqlQuery) = Video::constructQuery($searchbox);
+$sqlQuery = $sqlQuery . " LIMIT 0,10";
+$conn = DbUtil::connect();
+$stmt = $conn->prepare($sqlQuery);
+$stmt->execute($params);
+$stmt->setFetchMode(PDO::FETCH_ASSOC);
+echo "<div class='body'>";
+echo "<table id='all_videos'>";
+while($row = clean($stmt->fetch())) {
+    $listUnit = Video::nu($row["video_id"]);
+    echo "<tr id='" , $row["video_id"] , "'>
+                <td><a href='video.php?t=", $row["video_id"], "'>", $listUnit->renderThumbnail() , "</a></td>
+                <td>" , $listUnit->render() , "</td>
+              </tr>";
+}
+echo "</table>";
+echo "</div>";
 
 include('libs/players.php');
 include('libs/characters.php');
