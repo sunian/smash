@@ -88,7 +88,7 @@ while($row = clean($stmt->fetch())) {
 }
 echo "</table>";
 echo "</div>";
-echo "<div ";
+echo "<div class='spin'></div>";
 
 include('libs/players.php');
 include('libs/characters.php');
