@@ -328,7 +328,7 @@ class Video extends JSONObject
                 echo $video_player->player->tag, " (", $video_player->character->name, ")";
             }
         }
-        echo "<br>Version: ";
+        echo "<br><br>Version: ";
         if ($this->versions) {
             foreach ($this->versions as $i => $version) {
                 if ($i > 0) echo ", ";
