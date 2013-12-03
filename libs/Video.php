@@ -167,7 +167,8 @@ class Video extends JSONObject
             QueryField::nu("version", "Game Version", "select:createVersionSelector", "*"),
             QueryField::nu("video_player", "Player(Character) uses Technique",
                 "select:createPlayerSelector select:createCharacterSelector <br>uses&nbsp; select:createTechniqueSelector", "*"),
-            QueryField::nu("tournament", "Tourny", "select:createTournamentSelector", "1")
+            QueryField::nu("tournament", "Tourny", "select:createTournamentSelector", "1"),
+            QueryField::nu("url", "Url", "input", "1")
         );
     }
 
@@ -195,6 +196,18 @@ class Video extends JSONObject
 //        echo "query=$sqlQuery _ ";
         $table->setData($sqlQuery, $params);
         return $table;
+    }
+
+    public static function insertVideo($searchbox)
+    {
+        if ($searchbox) {
+            $sqlQuery = "insert into video (title, url, date_added, tournament_id) VALUES (:title, :url, NOW(),:tourny)";
+            $params = array();
+            $params["title"] = $searchbox->fields->title->values[0];
+            $params["url"] = $searchbox->fields->url->values[0];
+            $params["tourny"] = $searchbox->fields->tournaments->values[0];
+            print_r($params);
+        }
     }
 
     /**

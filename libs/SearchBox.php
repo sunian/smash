@@ -46,6 +46,12 @@ class SearchBox extends JSONObject
         return $instance;
     }
 
+    public function makeUseful(){
+        foreach ($this->fields as $queryField) {
+            $this->fields[$queryField->id] = $queryField;
+        }
+    }
+
     public function getFieldType($fieldName) {
         switch ($fieldName) {
             case "fields": return "QueryField[]";

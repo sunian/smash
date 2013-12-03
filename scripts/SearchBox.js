@@ -49,7 +49,7 @@ function SearchBox(parent) {
         for (var i in this.fields) {
             this.fields[i].populateValues();
         }
-        Helper.makeQuery(this);
+        Helper.uploadObj(this);
     }
 
     this.render();
