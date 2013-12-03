@@ -19,6 +19,7 @@ class User extends JSONObject
     var $login_count;
     var $date_created;
     var $date_changed_username;
+    var $access_token;
 
     public static function nu($username)
     {
@@ -63,17 +64,18 @@ class User extends JSONObject
 //        }
     }
 
-    public function getAccessToken() {
+    public function getAccessToken()
+    {
         try {
             $conn = DbUtil::connect();
-            $sql_string = "SELECT concat(md5(CAST(login_count as CHAR(20))), password) FROM user WHERE username = :username";
+            $sql_string = "SELECT concat(md5(CAST(login_count AS CHAR(20))), password) FROM user WHERE username = :username";
             $params = array("username" => $this->username);
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
             $password = crypt(clean($stmt->fetchColumn()), $this->password);
             $stmt->closeCursor();
             if (strcmp($password, $this->password) == 0) {
-                $sql_string = "select getAccessToken2(:username)";
+                $sql_string = "select getAccessToken(:username)";
                 $stmt = $conn->prepare($sql_string);
                 $stmt->execute($params);
                 $token = clean($stmt->fetchColumn());
@@ -86,7 +88,8 @@ class User extends JSONObject
         }
     }
 
-    public function getLoginCount() {
+    public function getLoginCount()
+    {
         try {
             $conn = DbUtil::connect();
             $sql_string = "SELECT login_count FROM user WHERE username = :username";
@@ -133,5 +136,29 @@ class User extends JSONObject
     public function render($expanded = false)
     {
         echo "not implemented!\n";
+    }
+
+    public function authenticateWithToken($user_token)
+    {
+        $this->access_token = $user_token;
+        try {
+            $conn = DbUtil::connect();
+            $sql_string = "SELECT user_id FROM user WHERE username = :username AND access_token = :token
+                            AND DATE_ADD(token_set_date,INTERVAL 14 DAY) > CURDATE()";
+            $params = array("username" => $this->username, "token" => $this->access_token);
+            $stmt = $conn->prepare($sql_string);
+            $stmt->execute($params);
+            $this->user_id = clean($stmt->fetchColumn());
+            $stmt->closeCursor();
+            if ($this->user_id) {
+                return $this;
+            } else {
+                return null;
+            }
+
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+
     }
 }

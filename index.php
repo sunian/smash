@@ -17,11 +17,9 @@ require_once('libs/DataTable.php');
     <title>SMASH!</title>
     <?php include('libs/headers.php'); ?>
     <script type="text/javascript">
-        $(function () {
-//            var select_universe = createUniverseSelector();
-//            select_universe.id = "select_universe";
-//            document.body.appendChild(select_universe);
-        });
+        function init() {
+
+        }
     </script>
 </head>
 <body>

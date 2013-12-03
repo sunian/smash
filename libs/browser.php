@@ -12,13 +12,6 @@ if(empty($_SERVER["HTTPS"]) || $_SERVER["HTTPS"] !== "on")//force https
     exit();
 }
 
-if (stripos($_SERVER['HTTP_USER_AGENT'], "MSIE", 0) === false) {
-//    echo "you're safe </br>";
-} elseif (isset($_COOKIE["msie"]) && $_COOKIE["msie"] == "bypass") {
-//    echo "you have been warned! </br>";
-} else {
-    header("Location: ie.php");
-}
 function clean($elem)
 {
     if (is_array($elem))
@@ -35,6 +28,22 @@ function clean($elem)
 }
 
 $urlParams = clean($_GET);
+$cookies = clean($_COOKIE);
+
+if (stripos($_SERVER['HTTP_USER_AGENT'], "MSIE", 0) === false) {
+//    echo "you're safe </br>";
+} elseif (isset($cookies["msie"]) && $cookies["msie"] == "bypass") {
+//    echo "you have been warned! </br>";
+} else {
+    header("Location: ie.php");
+}
+
+$authenticatedUser = null;
+
+if (isset($cookies["user_name"]) && isset($cookies["user_token"])) {
+    $authenticatedUser = User::nu($cookies["user_name"]);
+    $authenticatedUser = $authenticatedUser->authenticateWithToken($cookies["user_token"]);
+}
 
 function startsWith($haystack, $needle)
 {
