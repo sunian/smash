@@ -58,7 +58,15 @@ if (strlen($json_input) > 0) {
             if (newObj.date.length == 0) {
                 newObj.date = undefined;
             } else {
-                newObj.date = Date.parse(newObj.date).toString("yyyy-MM-dd");
+                newObj.date = Date.parse(newObj.date)
+                if(newObj.date) {
+                    newObj.date = newObj.date.toString("yyyy-MM-dd");
+                }
+                else {
+                    alert("Incorrect Date Format!");
+                    newDate.focus();
+                    return;
+                }
             }
             newObj.region = $("#newRegion").val();
             Helper.uploadObj(newObj);
