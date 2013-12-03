@@ -109,6 +109,7 @@ echo "<div id=\"div_players\" style=\"display: none;\">";
     video_id = '<?php echo $urlParams[t]; ?>'
 </script>";
 echo"<div id=\"div_vp\" style=\"display: none;\">";
+echo "hello";
             $conn = DbUtil::connect();
             $stmt = $conn->prepare("select video_player_id from video_player
                 where video_player->video_id = :video_id and video_player->player_id = :player_id");
