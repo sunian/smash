@@ -24,8 +24,8 @@ class Version extends JSONObject
     {
         try {
             $conn = DbUtil::connect();
-            $sql_string = "SELECT title FROM version WHERE title = :title" . ($this->version_number) ? " AND version_number =
-                :version_number" : "";
+            $sql_string = "SELECT title FROM version WHERE title = :title" . ($this->version_number ? " AND version_number =
+                :version_number" : "");
             $params = array("title" => $this->title);
             if($this->version_number) $params["version_number"] = $this->version_number;
             $stmt = $conn->prepare($sql_string);
@@ -36,10 +36,11 @@ class Version extends JSONObject
             }
             $stmt->closeCursor();
 
-            $sql_string = "INSERT INTO version (title" . ($this->release_date) ? ", release_date" : "" .
-            $this->version_number ? ", version_number" : "" . ($this->abbreviation) ? ", abbreviation)" : ")";
-            $sql_string = $sql_string . "VALUES(:title" . ($this->release_date) ? ", :release_date" : "" .
-            $this->version_number ? ", :version_number" : "" . ($this->abbreviation) ? ", :abbreviation)" : ")";
+            echo "The version does not yet exist\n";
+            $sql_string = "INSERT INTO version (title" . ($this->release_date ? ", release_date" : "") .
+                ($this->version_number ? ", version_number" : "") . ($this->abbreviation ? ", abbreviation)" : ")");
+            $sql_string = $sql_string . "VALUES(:title" . ($this->release_date ? ", :release_date" : "") .
+                ($this->version_number ? ", :version_number" : "") . ($this->abbreviation ? ", :abbreviation)" : ")");
             if($this->abbreviation) $params["abbreviation"] = $this->abbreviation;
             if($this->release_date) $params["release_date"] = $this->release_date;
             $stmt = $conn->prepare($sql_string);
