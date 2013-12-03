@@ -20,7 +20,6 @@ if (strlen($json_input) > 0) {
         $version = new Version($json_input);
         $error = $version->createIdentity();
         if($error) {
-            echo $json_input;
             echo $error;
             exit();
         }
@@ -80,7 +79,7 @@ if (strlen($json_input) > 0) {
                 newName = $("#new_version_title");
                 newWeight = $("#new_version_abbrev");
                 newHeight = $("#new_version_release_date");
-                newFallRank = $("new_version_number");
+                newFallRank = $("#new_version_number");
                 newName.autocomplete({
                    source: getVersionTitles()
                 });
@@ -112,7 +111,6 @@ if (strlen($json_input) > 0) {
                     if(newFallRank.val()) {
                         newObj.version_number = newFallRank.val();
                     }
-                    alert(Helper.stringify(newObj));
                     Helper.uploadObj(newObj);
                 });
             }

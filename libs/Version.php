@@ -28,8 +28,6 @@ class Version extends JSONObject
                 :version_number" : "");
             $params = array("title" => $this->title);
             if($this->version_number) $params["version_number"] = $this->version_number;
-            echo $sql_string, "\n";
-            print_r($params);
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
             if ($row = $stmt->fetch()) {
