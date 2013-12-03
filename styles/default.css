@@ -146,6 +146,7 @@ div.search-box {
 div.container {
     display: inline-block;
     padding: 1%;
+    vertical-align: top;
 }
 
 .naviLink {
