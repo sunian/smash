@@ -44,7 +44,8 @@ if (strlen($json_input) > 0) {
             });
 
             $(window).scroll(function() {
-                console.log((document.body.scrollTop + document.body.clientHeight) + " " + $(document.body).height()  );
+                if (document.body.scrollTop + document.body.clientHeight >= $(document.body).height())
+                    alert("hello!");
             });
 
             Helper.setupDataTable("Videos");
