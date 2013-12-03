@@ -105,9 +105,9 @@ echo "<div id=\"div_players\" style=\"display: none;\">";
     var player_id;
     var video_id;
     var vp;
-    player_id = $(\"#newPlayer\").val();
-    video_id = '<?php echo $urlParams[t]; ?>'
-    alert(player_id);
+    player_id = $(\"#newPlayers\").val();
+    video_id =" . $urlParams["t"]. ";";
+echo "alert(player_id);
     alert(video_id);
 </script>";
 echo"<div id=\"div_vp\" style=\"display: none;\">";
