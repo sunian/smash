@@ -9,6 +9,8 @@ require_once('libs/browser.php');
 require_once('libs/User.php');
 
 setcookie("user_token", "", time()-3600);
+$authenticatedUser = null;
+
 if (strlen($json_input) > 0) {
     $user = new User($json_input);
     if (strcmp($input_type, "u") == 0) {//user signed up
