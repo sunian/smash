@@ -23,6 +23,7 @@
         if (includeBlank) select_technique.options[0] = new Option("Technique", -1);
         for (var i in techniques) {
             select_technique.options[select_technique.options.length] = new Option(techniques[i].name, techniques[i].id);
+            //select_technique.options[i] = new Option(techniques[i].name, techniques[i].id);
         }
         return select_technique;
     }

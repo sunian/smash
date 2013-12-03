@@ -41,6 +41,7 @@ $video = Video::nu($urlParams["t"]);
         function addTechniques() {
             var newObj = {};
             newObj.technique = $("#newTechnique").val();
+            if (newObj.technique < 0) newObj.technique = undefined;
             Helper.uploadObj(newObj);
         }
     </script>
@@ -74,16 +75,16 @@ echo "<h1>$video->title</h1>";
     <br>
 
     <table id='newTechnique'>
-        <tr>
-            <td style="width:850px">
-                Add Techniques here..?
-            </td>
-        </tr>
+<!--        <tr>-->
+<!--            <td style="width:850px">-->
+<!--                Add Techniques here..?-->
+<!--            </td>-->
+<!--        </tr>-->
     </table>
 
 </div>
 <?php
-echo "<div id='div_urlParam' style='display: none;'>", $urlParams["t"], "</div>";
+//echo "<div id='div_urlParam' style='display: none;'>", $urlParams["t"], "</div>";
 include('libs/techniques.php');
 ?>
 </body>
