@@ -29,9 +29,22 @@ function SearchBox(parent) {
             e.data[0].clickedGo();
         });
         this.parent.append(btnGo);
+        var btnAdd = $(document.createElement('input'));
+        btnAdd.attr("type", "button");
+        btnAdd.attr("value", "Filter");
+        btnAdd.bind("click", [this], function (e) {
+            e.data[0].clickedAdd();
+        });
+        this.parent.append(btnGo);
     };
 
     this.clickedGo = function () {
+        for (var i in this.fields) {
+            this.fields[i].populateValues();
+        }
+        Helper.makeQuery(this);
+    }
+    this.clickedAdd = function () {
         for (var i in this.fields) {
             this.fields[i].populateValues();
         }
