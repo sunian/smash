@@ -37,10 +37,11 @@ if (strlen($json_input) > 0) {
 //                console.log(JSON.stringify(this));
                 Helper.postJSON(this, "i", function (data, textStatus, jqXHR) {
                     if (data.length > 0) {
-                        alert(data);
                         console.log(data);
+                        $.cookie('user_name', newUser.username);
+                        $.cookie('user_token', data, { expires: 14 });
                     } else {
-                        alert("signed in!");
+                        alert("Incorrect username or password!");
                     }
                 });
             });
