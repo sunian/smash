@@ -232,7 +232,7 @@ class Video extends JSONObject
                 foreach ($searchbox->fields['video_player']->values as $field) {
                     $params = array("video_id" => $video_id);
                     $sql_string = "insert into video_player (video_id, player_id, character_id) VALUES (:video_id, :player_id,
-                        (select c.character_id from character as c inner join character_identity as i on c.identity_id = i.identity_id
+                        (select c.character_id from `character` as c inner join character_identity as i on c.identity_id = i.identity_id
                         where c.version_id = :version_id and i.identity_id = :character_id)
                     );";
                     $params["player_id"] = $field[0];
