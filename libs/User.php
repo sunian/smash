@@ -71,9 +71,10 @@ class User extends JSONObject
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
 //            $password = crypt(clean($stmt->fetchColumn()), $this->password);
+            $temp = $stmt->fetchColumn();
             $stmt->closeCursor();
 //            return strcmp($password, $this->password) == 0 ? "good" : "bad";
-            return $stmt->fetchColumn();
+            return $temp;
 
         } catch (PDOException $e) {
             return $e->getMessage();
