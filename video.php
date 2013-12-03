@@ -103,11 +103,11 @@ echo "<div id=\"div_players\" style=\"display: none;\">";
         return select_player;
     }
 </script>";
-            echo "var $player_id";
-            echo "var $video_id";
-            echo "var $vp";
-            echo "$player_id = $(\"#newPlayer\").val()";
-            echo "$video_id = $urlParams[t]";
+            echo "var $player_id;";
+            echo "var $video_id;";
+            echo "var $vp;";
+            echo "$player_id = $(\"#newPlayer\").val();";
+            echo "$video_id = $urlParams[t];";
 echo"<div id=\"div_vp\" style=\"display: none;\">";
             $conn = DbUtil::connect();
             $stmt = $conn->prepare("select video_player_id from video_player
@@ -135,7 +135,7 @@ echo"<div id=\"div_vp\" style=\"display: none;\">";
             Helper.displayBtnAdd(true);
 
             $vp = JSON.parse($("#div_vp").text());
-            alert('$vp');
+            alert('blah');
             $("#submit").click(function() {
             var newObj = {};
             newObj.technique_id = $("#newTechnique").val();
