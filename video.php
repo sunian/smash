@@ -64,7 +64,7 @@ $video = Video::nu($urlParams["t"]);
             Helper.displayBtnAdd(true);
         }
         function addNewTechnique() {
-<!--            --><?php
+// PHP!
 //                $v_id = $video->video_id;
 //                $p_id = ("#newPlayer").val();
 //                 $conn = DbUtil::connect();
@@ -77,7 +77,7 @@ $video = Video::nu($urlParams["t"]);
 //        $id = $row["video"];
 //        echo "YAYhttps://plato.cs.virginia.edu/~jcs5sb/smash/video.php?t=" , $id;
 //        exit();
-//           ?>
+//
             $video = Video::nu($urlParams["t"]);
             var newObj = {};
 //            newObj.technique_id = $("#newTechnique").val();
