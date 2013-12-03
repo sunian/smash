@@ -15,10 +15,9 @@ if (strlen($json_input) > 0) {
         Video::constructDataTableFrom(new SearchBox($json_input))->render();
     }
     elseif (strcmp($input_type, "z") == 0) {
-        $nextMax = $jsonInput["nextMax"];
-        $query = $jsonInput["query"];
-        echo $query;
-        $params = $jsonInput["params"];
+        $nextMax = $json_input["nextMax"];
+        $query = $json_input["query"];
+        $params = $json_input["params"];
         $params = json_decode($params, true);
         try {
             $conn = DbUtil::connect();
