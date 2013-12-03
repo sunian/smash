@@ -40,7 +40,7 @@ class DataTable
         $this->id = $id;
         $this->columns = $columns;
         foreach ($columns as $column) {
-            if ($authenticatedUser == null) $column->inputType = "none";
+            if ($GLOBALS['authenticatedUser'] == null) $column->inputType = "none";
             if (strcmp($column->inputType, "none") != 0) {
                 $this->hasFooter = true;
                 break;
