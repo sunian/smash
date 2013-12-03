@@ -17,6 +17,7 @@ if (strlen($json_input) > 0) {
     elseif (strcmp($input_type, "z") == 0) {
         $nextMax = $jsonInput["nextMax"];
         $query = $jsonInput["query"];
+        echo $query;
         $params = $jsonInput["params"];
         $params = json_decode($params, true);
         try {
