@@ -41,23 +41,37 @@ if (strlen($json_input) > 0) {
         ?>
     </title>
     <script type="text/javascript">
+        var versionId;
+
         var newName;
         var newWeight;
         var newHeight;
         var newFallRank;
         var newAirRank;
 
+        var titleSelector;
+
         function init() {
-            newWeight = $("#newWeight");
-            newHeight = $("#newHeight");
-            newFallRank = $("#newFallRank");
-            newAirRank = $("#newAirRank");
+            versionId = $("#video_id_div").text();
+            if(versionId=="newVersion") {
+                newName = $("#new_version_title");
+                newWeight = $("#new_version_abbrev");
+                newName.autocomplete({
+                   source: getVersionTitles();
+                });
+            }
+            else {
+                newWeight = $("#newWeight");
+                newHeight = $("#newHeight");
+                newFallRank = $("#newFallRank");
+                newAirRank = $("#newAirRank");
 
-            Helper.setupDataTable("Characters");
-            Helper.displayBtnAdd(true);
+                Helper.setupDataTable("Characters");
+                Helper.displayBtnAdd(true);
 
-            newName = $("#newName");
-            newName.focus();
+                newName = $("#newName");
+                newName.focus();
+            }
         }
 
         function createCharacters() {
@@ -67,7 +81,7 @@ if (strlen($json_input) > 0) {
             newObj.height = newHeight.val();
             newObj.falling_speed_rank = newFallRank.val();
             newObj.air_speed_rank = newAirRank.val();
-            newObj.version_id = $("#video_id_div").text();
+            newObj.version_id = versionId;
 
             Helper.uploadObj(newObj);
         }
@@ -79,8 +93,8 @@ include('libs/navheader.php');
 
 if (strcmp($urlParams["t"], "newVersion") == 0) {
     echo "<h1>New Version Form</h1>";
-    echo "<div id='version_form' class='body'><div id='version_title'><input id='new_version_name' style='display: none;'>
-        <input id='new_version_abbrev' style='display: none;'></div><br>";
+    echo "<div id='version_form' class='body'><div id='version_title'>Version Title: <input id='new_version_name'><br>
+        Version Name: <input id='new_version_abbrev'></div><br>";
     echo "Version Number: <input id='version_number' placeholder='Version Number'><br>";
     echo "Release Date: <input id='version_release_date' placeholder='Version Release Date'><br>";
     echo "</div>";

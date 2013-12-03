@@ -18,6 +18,23 @@
     echo json_encode(clean($stmt->fetchAll()));
     $stmt->closeCursor();
     ?></div>
+<div id="div_version_titles" style="display: none;"><?php
+    require_once('DbUtil.php');
+
+    $conn = DbUtil::connect();
+    $stmt = $conn->prepare("select distinct title from version order by title");
+    $stmt->execute();
+    $names = clean($stmt->fetchAll(PDO::FETCH_COLUMN, 0));
+    $stmt->closeCursor();
+
+    echo json_encode($names);
+    ?></div>
+<script type="text/javascript">
+    function getVersionTitles() {
+        var names = JSON.parse($("#div_version_titles").text());
+        return names;
+    }
+</script>
 <script type="text/javascript">
     function createVersionSelector(includeBlank) {
         var select_version = document.createElement("select");
