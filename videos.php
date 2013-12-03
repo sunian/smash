@@ -43,7 +43,7 @@ if (strlen($json_input) > 0) {
                 Helper.displayBtnAdd(newTitle.val().length > 0 && newURL.val().length > 0);
             });
 
-            spinner.appear(function() {
+            spinner.waypoints(function() {
                 alert("hello");
             });
 
