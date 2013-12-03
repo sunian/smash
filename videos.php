@@ -43,7 +43,7 @@ if (strlen($json_input) > 0) {
                 Helper.displayBtnAdd(newTitle.val().length > 0 && newURL.val().length > 0);
             });
 
-            $(document.body).scroll(function() {
+            $(window).scroll(function() {
                 console.log(document.body.scrollTop + " " + $(document.body).height() + " " + document.body.clientTop);
             });
 
