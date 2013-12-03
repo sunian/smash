@@ -57,7 +57,7 @@ if (strlen($json_input) > 0) {
                 newName = $("#new_version_title");
                 newWeight = $("#new_version_abbrev");
                 newName.autocomplete({
-                   source: getVersionTitles();
+                   source: getVersionTitles()
                 });
             }
             else {
