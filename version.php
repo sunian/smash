@@ -14,7 +14,7 @@ if (strlen($json_input) > 0) {
         $character = new Character($json_input);
         $error = $character->createCharacter();
         if ($error) echo $error;
-        else echo "$$$https://plato.cs.virginia.edu/~jcs5sb/smash/version.php?t=" , $urlParams["t"];
+        else echo "YAYhttps://plato.cs.virginia.edu/~jcs5sb/smash/version.php?t=" , $urlParams["t"];
         exit();
     }
     else {
@@ -35,7 +35,7 @@ if (strlen($json_input) > 0) {
         $stmt->execute($params);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $id = $row["version_id"];
-        echo "$$$https://plato.cs.virginia.edu/~jcs5sb/smash/version.php?t=" , $id;
+        echo "YAYhttps://plato.cs.virginia.edu/~jcs5sb/smash/version.php?t=" , $id;
     }
 }
 ?>
@@ -114,7 +114,7 @@ if (strlen($json_input) > 0) {
                     }
                     Helper.postJSON(newObj, "n",
                         function (data, textStatus, jqXHR) {
-                            if(data.charAt(0)=='$' && data.charAt(1)=='$' && data.charAt(2)=='$') {
+                            if(data.charAt(0)=='Y' && data.charAt(1)=='A' && data.charAt(2)=='Y') {
                                 window.location.href = data.substring(3);
                             }
                             else {

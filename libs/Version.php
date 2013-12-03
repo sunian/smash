@@ -36,7 +36,6 @@ class Version extends JSONObject
             }
             $stmt->closeCursor();
 
-            echo "The version does not yet exist\n";
             $sql_string = "INSERT INTO version (title" . ($this->release_date ? ", release_date" : "") .
                 ($this->version_number ? ", version_number" : "") . ($this->abbreviation ? ", abbreviation)" : ")");
             $sql_string = $sql_string . "VALUES(:title" . ($this->release_date ? ", :release_date" : "") .
