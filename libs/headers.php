@@ -21,6 +21,7 @@
     <script type="text/javascript" src="scripts/bCrypt.js"></script>
     <script type="text/javascript" src="scripts/md5.js"></script>
     <script type="text/javascript" src="scripts/jquery.appear.js"></script>
+    <script type="text/javascript" src="scripts/waypoints.js"></script>
     <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/dot-luv/jquery-ui.min.css"
           rel="stylesheet"
           type="text/css"/>
