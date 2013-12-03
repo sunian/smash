@@ -36,10 +36,10 @@ class Version extends JSONObject
             }
             $stmt->closeCursor();
 
-            $sql_string = "INSERT INTO version (title" . $this->release_date ? ", release_date" : "" .
-            $this->version_number ? ", version_number" : "" . $this->abbreviation ? ", abbreviation)" : ")";
-            $sql_string = $sql_string . "VALUES(:title" . $this->release_date ? ", :release_date" : "" .
-            $this->version_number ? ", :version_number" : "" . $this->abbreviation ? ", :abbreviation)" : ")";
+            $sql_string = "INSERT INTO version (title" . ($this->release_date) ? ", release_date" : "" .
+            $this->version_number ? ", version_number" : "" . ($this->abbreviation) ? ", abbreviation)" : ")";
+            $sql_string = $sql_string . "VALUES(:title" . ($this->release_date) ? ", :release_date" : "" .
+            $this->version_number ? ", :version_number" : "" . ($this->abbreviation) ? ", :abbreviation)" : ")";
             if($this->abbreviation) $params["abbreviation"] = $this->abbreviation;
             if($this->release_date) $params["release_date"] = $this->release_date;
             $stmt = $conn->prepare($sql_string);
