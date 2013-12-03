@@ -41,6 +41,7 @@ if (stripos($_SERVER['HTTP_USER_AGENT'], "MSIE", 0) === false) {
 $authenticatedUser = null;
 
 if (isset($cookies["user_name"]) && isset($cookies["user_token"])) {
+    print_r($cookies);
     $authenticatedUser = User::nu($cookies["user_name"]);
     $authenticatedUser = $authenticatedUser->authenticateWithToken($cookies["user_token"]);
 }
