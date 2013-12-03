@@ -218,19 +218,26 @@ class Video extends JSONObject
                 $video_id = clean($stmt->fetch(PDO::FETCH_COLUMN));
                 $stmt->closeCursor();
 
+                $video_version = 1;
+
                 foreach ($searchbox->fields['version']->values as $field) {
                     $params = array("video_id" => $video_id);
                     $sql_string = "insert into video_version (video_id, version_id) VALUES (:video_id, :version_id);";
                     $params["version_id"] = $field[0];
+                    $video_version = $field[0];
                     $stmt = $conn->prepare($sql_string);
                     $stmt->execute($params);
                     $stmt->closeCursor();
                 }
                 foreach ($searchbox->fields['video_player']->values as $field) {
                     $params = array("video_id" => $video_id);
-                    $sql_string = "insert into video_player (video_id, player_id, character_id) VALUES (:video_id, :player_id, :character_id);";
+                    $sql_string = "insert into video_player (video_id, player_id, character_id) VALUES (:video_id, :player_id,
+                        (select c.character_id from character as c inner join character_identity as i on c.identity_id = i.identity_id
+                        where c.version_id = :version_id and i.identity_id = :character_id)
+                    );";
                     $params["player_id"] = $field[0];
                     $params["character_id"] = $field[1];
+                    $params["version_id"] = $video_version;
                     print_r($params);
                     $stmt = $conn->prepare($sql_string);
                     $stmt->execute($params);
