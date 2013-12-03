@@ -14,7 +14,7 @@ if (strlen($json_input) > 0) {
         $error = $user->createUser();
         if ($error) echo $error;
     } else if (strcmp($input_type, "c") == 0) {//get login count
-        $user = User::nu($json_input);
+        $user = new User($json_input);
         echo $user->getLoginCount();
     }
     exit();
