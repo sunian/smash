@@ -105,9 +105,10 @@ echo "<div id=\"div_players\" style=\"display: none;\">";
     var player_id;
     var video_id;
     var vp;
-    player_id = $(\"#newPlayer\").val();
-    video_id = '<?php echo $urlParams[t]; ?>'
-</script>";
+    player_id = $(\"#newPlayers\").val();
+    video_id = " . $urlParams["t"] . ";" ;
+    alert(player_id);
+    alert(video_id);
 echo"<div id=\"div_vp\" style=\"display: none;\">";
             $conn = DbUtil::connect();
             $stmt = $conn->prepare("select video_player_id from video_player
@@ -117,8 +118,11 @@ echo"<div id=\"div_vp\" style=\"display: none;\">";
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             echo json_encode(clean($stmt->fetchAll()));
             $stmt->closeCursor();
+echo "hello";
+
 ?>
     </div><script type="text/javascript">
+    alert("hey");
       var newTechnique;
         var selectTechnique;
         function init() {
