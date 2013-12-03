@@ -37,14 +37,14 @@ $video = Video::nu($urlParams["t"]);
             selectTechnique = createTechniqueSelector();
             selectTechnique.id = "selectTechnique";
             newTechnique.append(selectTechnique);
-            Helper.setupDataTable("newTechnique");
             Helper.displayBtnAdd(true);
         }
-        function addTechniques() {
-            var newObj = {};
-            newObj.technique = $("#newTechnique").val();
-            if (newObj.technique < 0) newObj.technique = undefined;
-            Helper.uploadObj(newObj);
+        function createNewTechnique() {
+            alert("create new technique");
+//            var newObj = {};
+//            newObj.technique = $("#newTechnique").val();
+//            if (newObj.technique < 0) newObj.technique = undefined;
+//            Helper.uploadObj(newObj);
         }
     </script>
 </head>
@@ -76,10 +76,10 @@ echo "<h1>$video->title</h1>";
     </table>
     <br>
 <div class='body'>
-    <table id='newTechnique' >
+    <table id='newTechnique'>
         <tr>
             <td style="width:350px">
-                Add Techniques
+                <a href='javascript:void(0);' class='btnPlus' onclick='create$this->id();'>Add Techniques</a>
             </td>
         </tr>
     </table>
