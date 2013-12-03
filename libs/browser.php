@@ -11,6 +11,7 @@ if(empty($_SERVER["HTTPS"]) || $_SERVER["HTTPS"] !== "on")//force https
     header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
     exit();
 }
+require_once('libs/User.php');
 
 function clean($elem)
 {
