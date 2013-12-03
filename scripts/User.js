@@ -31,7 +31,7 @@ function User(obj) {
         Helper.postJSON(this, "c", function (data, textStatus, jqXHR) {
             if (data.length > 0) {
                 console.log(data);
-                self.login_count = data * 1;
+                self.login_count = data;
                 callback.call(self);
             } else {
                 alert("Incorrect username or password!");
