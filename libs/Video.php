@@ -226,6 +226,15 @@ class Video extends JSONObject
                     $stmt->execute($params);
                     $stmt->closeCursor();
                 }
+                foreach ($searchbox->fields['video_player']->values as $field) {
+                    $params = array("video_id" => $video_id);
+                    $sql_string = "insert into video_player (video_id, player_id, character_id) VALUES (:video_id, :player_id, :character_id);";
+                    $params["player_id"] = $field[0];
+                    $params["character_id"] = $field[1];
+                    $stmt = $conn->prepare($sql_string);
+                    $stmt->execute($params);
+                    $stmt->closeCursor();
+                }
 //                print_r($params);
 
             } catch (PDOException $e) {
