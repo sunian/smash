@@ -7,6 +7,7 @@
  */
 
 require_once('DbUtil.php');
+require_once('JSONObject.php');
 
 class User extends JSONObject
 {
