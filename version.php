@@ -20,7 +20,6 @@ if (strlen($json_input) > 0) {
         $version = new Version($json_input);
         $error = $version->createIdentity();
         if($error) {
-            echo "oops\n";
             echo $error;
             exit();
         }

@@ -24,9 +24,10 @@ class Version extends JSONObject
     {
         try {
             $conn = DbUtil::connect();
-            $sql_string = "SELECT title FROM version WHERE title = :title" . $this->version_number ? " AND version_number = :version_number" : "";
-            $params = array("title" => $this->title, "version_number" => $this->version_number, "abbreviation" => $this->abbreviation,
-                "release_date" => $this->release_date);
+            $sql_string = "SELECT title FROM version WHERE title = :title" . $this->version_number ? " AND version_number =
+                :version_number" : "";
+            $params = array("title" => $this->title);
+            if($this->version_number) $params["version_number"] = $this->version_number;
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
             if ($row = $stmt->fetch()) {
@@ -39,6 +40,8 @@ class Version extends JSONObject
             $sql_string = $sql_string . "VALUES(:title" . $this->release_date ? ", :release_date" : "" .
             $this->version_number ? ", :version_number" : "" . $this->abbreviation ? ", :abbreviation)" : ")";
             $stmt = $conn->prepare($sql_string);
+            if($this->abbreviation) $params["abbreviation"] = $this->abbreviation;
+            if($this->release_date) $params["release_date"] = $this->release_date;
             $stmt->execute($params);
             $stmt->closeCursor();
             return false;
