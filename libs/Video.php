@@ -202,13 +202,18 @@ class Video extends JSONObject
     {
         if ($searchbox) {
             try {
+                echo "start\n";
                 $conn = DbUtil::connect();
-                $sql_string = "insert into video (title, url, date_added, tournament_id) VALUES (:title, :url, NOW(),:tourny);
-                            SELECT LAST_INSERT_ID();";
+                $sql_string = "insert into video (video_id, title, url, date_added, tournament_id) VALUES (NULL, :title, :url, NOW(),:tourny);";
                 $params = array();
                 $params["title"] = $searchbox->fields['title']->values[0][0];
                 $params["url"] = $searchbox->fields['url']->values[0][0];
                 $params["tourny"] = $searchbox->fields['tournament']->values[0][0];
+                $stmt = $conn->prepare($sql_string);
+                $stmt->execute($params);
+                $stmt->closeCursor();
+
+                $sql_string = "SELECT max(video_id) from video";
                 $stmt = $conn->prepare($sql_string);
                 $stmt->execute($params);
                 $video_id = clean($stmt->fetchAll(PDO::FETCH_ASSOC));
