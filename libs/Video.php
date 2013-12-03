@@ -82,7 +82,7 @@ class Video extends JSONObject
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             while ($row = clean($stmt->fetch())) {
                 $thisPlayer = Player::nu($row["player_id"]);
-                array_push($this->players, $thisPlayer);
+                $this->players[] = $thisPlayer;
             }
         } catch (PDOException $e) {
 //            echo "Error in populate players\n";
@@ -102,7 +102,7 @@ class Video extends JSONObject
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             while ($row = clean($stmt->fetch())) {
                 $thisCharacter = Character::nu($row["character_id"]);
-                array_push($this->characters, $thisCharacter);
+                $this->characters[] = $thisCharacter;
             }
         } catch (PDOException $e) {
 //            echo "Error in populate characters\n";
@@ -141,7 +141,7 @@ class Video extends JSONObject
                 $thisPlayerPlays = new PlayerPlaysChar();
                 $thisPlayerPlays->player = Player::nu($row["player_id"]);
                 $thisPlayerPlays->character = Character::nu($row["character_id"]);
-                array_push($this->playerPlaysChar, $thisPlayerPlays);
+                $this->playerPlaysChar[] = $thisPlayerPlays;
             }
         } catch (PDOException $e) {
             return $e->getMessage();
