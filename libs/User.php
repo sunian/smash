@@ -34,7 +34,7 @@ class User extends JSONObject
     {
         try {
             $conn = DbUtil::connect();
-            $sqlString = "SELECT name, email, role_id FROM user WHERE user_name = :username";
+            $sqlString = "SELECT name, email, role_id FROM user WHERE username = :username";
             $params = array("username" => $this->username);
             $stmt = $conn->prepare($sqlString);
             $stmt->execute($params);
