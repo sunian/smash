@@ -202,6 +202,7 @@ class Video extends JSONObject
     {
         if ($searchbox) {
             try {
+                echo "start\n";
                 $conn = DbUtil::connect();
                 $sql_string = "insert into video (video_id, title, url, date_added, tournament_id) VALUES (NULL, :title, :url, NOW(),:tourny);
                             SELECT LAST_INSERT_ID();";
@@ -214,6 +215,7 @@ class Video extends JSONObject
                 $video_id = clean($stmt->fetchAll(PDO::FETCH_ASSOC));
 //                echo $video_id;
                 print_r($video_id);
+                $stmt->closeCursor();
             } catch (PDOException $e) {
                 return $e->getMessage();
             }
