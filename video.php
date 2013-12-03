@@ -13,7 +13,6 @@ require_once('libs/Video.php');
 if (strlen($json_input) > 0) {
     try {
         $input = json_decode($json_input, true);
-        print_r($input);
         $conn = DbUtil::connect();
         $stmt = $conn->prepare("SELECT video_player_id FROM video_player WHERE video_id = :video_id AND player_id = :player_id");
         $params = array("player_id"=>$input["player_id"], "video_id"=>$input["video_id"]);
