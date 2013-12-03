@@ -20,7 +20,7 @@
     <script type="text/javascript" src="scripts/isaac.js"></script>
     <script type="text/javascript" src="scripts/bCrypt.js"></script>
     <script type="text/javascript" src="scripts/md5.js"></script>
-    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/eggplant/jquery-ui.min.css"
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/dot-luv/jquery-ui.min.css"
           rel="stylesheet"
           type="text/css"/>
     <link href="styles/default.css" rel="stylesheet" type="text/css"/>
