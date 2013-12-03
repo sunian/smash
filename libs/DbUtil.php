@@ -12,8 +12,8 @@ require_once('User.php');
 class DbUtil
 {
     public static $host = "stardock.cs.virginia.edu";
-    public static $user = "cs4750jcs5sb";
-    public static $pass = "starkid";
+    public static $user = "cs4750jcs5sbd";
+    public static $pass = "starkidd";
     public static $database = "cs4750jcs5sb";
     private static $connection = null;
 
