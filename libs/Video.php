@@ -216,7 +216,7 @@ class Video extends JSONObject
                 $sql_string = "SELECT max(video_id) from video";
                 $stmt = $conn->prepare($sql_string);
                 $stmt->execute($params);
-                $video_id = clean($stmt->fetchAll(PDO::FETCH_COLUMN));
+                $video_id = clean($stmt->fetch(PDO::FETCH_COLUMN));
                 echo $video_id;
 //                print_r($video_id);
             } catch (PDOException $e) {
