@@ -12,11 +12,8 @@
     $stmt = $conn->prepare("select distinct name from tournament order by name");
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    $names = clean($stmt->fetchAll());
+    $names = clean($stmt->fetchAll(PDO::FETCH_COLUMN, 0));
     $stmt->closeCursor();
-    foreach ($names as $i => $name) {
-        $names[$i] = $name["name"];
-    }
 
     echo json_encode($names);
     ?></div>
