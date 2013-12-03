@@ -66,15 +66,15 @@ class User extends JSONObject
     public function getAccessToken() {
         try {
             $conn = DbUtil::connect();
-            $sql_string = "SELECT login_count FROM user WHERE username = :username";
+            $sql_string = "SELECT concat(CAST(login_count as CHAR(20)), password) FROM user WHERE username = :username";
             $params = array("username" => $this->username);
             $stmt = $conn->prepare($sql_string);
             $stmt->execute($params);
 //            $password = crypt(clean($stmt->fetchColumn()), $this->password);
-            $temp = $stmt->fetchColumn();
+            $column = $stmt->fetchColumn();
             $stmt->closeCursor();
 //            return strcmp($password, $this->password) == 0 ? "good" : "bad";
-            return $temp;
+            return $column;
 
         } catch (PDOException $e) {
             return $e->getMessage();
