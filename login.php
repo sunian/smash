@@ -36,8 +36,6 @@
                 }
             })
                 .blur(function () {
-                    console.log($(':focus').prop("tagName"));
-                    if ($(document.activeElement).prop("tagName") === "INPUT") return;
                     if (newUsername.val().length < 4)
                         Helper.makeToast($("div.body"), $("#newUsername"),
                             "Username must be at least 4 characters long!");
@@ -49,7 +47,6 @@
                 }
             })
                 .blur(function () {
-                    if ($(document.activeElement).prop("tagName") === "INPUT") return;
                     if (newPassword.val().length < 8)
                         Helper.makeToast($("div.body"), $("#newPassword"),
                             "Password must be at least 8 characters long!");
@@ -61,7 +58,6 @@
                 }
             })
                 .blur(function () {
-                    if ($(document.activeElement).prop("tagName") === "INPUT") return;
                     if (newPassword.val() !== newConfirm.val())
                         Helper.makeToast($("div.body"), $("#newConfirm"),
                             "The passwords you entered don't match!");
@@ -72,7 +68,6 @@
                 }
             })
                 .blur(function () {
-                    if ($(document.activeElement).prop("tagName") === "INPUT") return;
                     if (!Helper.validateEmail(newEmail.val()))
                         Helper.makeToast($("div.body"), $("#newEmail"),
                             "You must enter a valid email!");

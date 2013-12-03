@@ -7,6 +7,9 @@ var hasher;
 $(function () {
     hasher = new bCrypt();
     Helper.callInit();
+    $("input").focus(function () {
+        if (theToast != null) theToast.remove();
+    });
 });
 
 function Helper() {
