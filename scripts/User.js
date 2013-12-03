@@ -34,7 +34,7 @@ function User(obj) {
     this.getLoginCount = function (callback) {
         Helper.postJSON(this, "c", function (data, textStatus, jqXHR) {
             if (data.length > 0) {
-                console.log(data);
+
                 self.login_count = data;
                 callback.call(self);
             } else {
