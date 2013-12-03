@@ -212,7 +212,8 @@ class Video extends JSONObject
                 $stmt = $conn->prepare($sql_string);
                 $stmt->execute($params);
                 $video_id = clean($stmt->fetch(PDO::FETCH_COLUMN));
-                print_r($video_id);
+                echo $video_id;
+//                print_r($video_id);
             } catch (PDOException $e) {
                 return $e->getMessage();
             }

@@ -43,14 +43,14 @@ if (!$urlParams["t"]) {
 
                 Helper.displayBtnAdd(true);
 
-//            $vp = JSON.parse($("#div_vp").text());
-                $("#submit").click(function() {
-                    var newObj = {};
-//            newObj.technique_id = $("#newTechnique").val();
-//            newObj.video_player_id = vp;
-//                    Helper.uploadObj(newObj);
-                    alert("trying to add");
-                }
+////            $vp = JSON.parse($("#div_vp").text());
+//                $("#submit").click(function() {
+//                    var newObj = {};
+////            newObj.technique_id = $("#newTechnique").val();
+////            newObj.video_player_id = vp;
+////                    Helper.uploadObj(newObj);
+//                    alert("trying to add");
+//                }
             }
     </script>
 </head>
