@@ -32,10 +32,10 @@ if ($activePage == null) {
         <?php
         foreach ($navPages as $navPage => $pageTitle) {
             echo "<a class='naviLink clickable",
-                $navPage == $activePage ? " active" : "",
-                "' href='", $navPage, "'>", $pageTitle, "</a>";
+            $navPage == $activePage ? " active" : "",
+            "' href='", $navPage, "'>", $pageTitle, "</a>";
         }
         ?>
     </nav>
-    <div style="display: inline-block; color: white; margin-left: 8px">Happy Thanksgiving, group!</div>
+    <a href="login.php" style="float: right;margin: 1%;">Login or Sign Up</a>
 </div>
