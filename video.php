@@ -107,6 +107,8 @@ echo "<div id=\"div_players\" style=\"display: none;\">";
     var vp;
     player_id = $(\"#newPlayer\").val();
     video_id = '<?php echo $urlParams[t]; ?>'
+    alert(player_id);
+    alert(video_id);
 </script>";
 echo"<div id=\"div_vp\" style=\"display: none;\">";
             $conn = DbUtil::connect();
