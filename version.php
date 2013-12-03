@@ -166,7 +166,7 @@ if (strcmp($urlParams["t"], "newVersion") == 0) {
         <div id='title_fields'><div style=\"display: inline-block\">Release Date: </div>
         <div style=\"display: inline-block\"><input id='new_version_release_date' class='date'></div></div>
         </div>";
-    echo "<button id='submit'>Create Version</button>";
+    echo "<a class='btnPlus' href='javascript:void' id='submit'></a>";
 }
 else {
     $version = new Version();
