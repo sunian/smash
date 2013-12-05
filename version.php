@@ -15,26 +15,25 @@ if (strlen($json_input) > 0) {
         $error = $character->createCharacter();
         if ($error) echo $error;
         exit();
-    }
-    else {
+    } else {
         $version = new Version($json_input);
         $error = $version->createIdentity();
-        if($error) {
+        if ($error) {
             echo $error;
             exit();
         }
         $conn = DbUtil::connect();
-        $stmt = $conn->prepare("SELECT version_id FROM version WHERE title = :title" . ($version->abbreviation?" AND
-            abbreviation = :abbrev":"") . ($version->release_date?" AND release_date = :date":"") . ($version->version_number?" AND
-            version_number = :version_number":""));
-        $params = array("title"=>$version->title);
-        if($version->release_date) $params["date"] = $version->release_date;
-        if($version->version_number) $params["version_number"] = $version->version_number;
-        if($version->abbreviation) $params["abbrev"] = $version->abbreviation;
+        $stmt = $conn->prepare("SELECT version_id FROM version WHERE title = :title" . ($version->abbreviation ? " AND
+            abbreviation = :abbrev" : "") . ($version->release_date ? " AND release_date = :date" : "") . ($version->version_number ? " AND
+            version_number = :version_number" : ""));
+        $params = array("title" => $version->title);
+        if ($version->release_date) $params["date"] = $version->release_date;
+        if ($version->version_number) $params["version_number"] = $version->version_number;
+        if ($version->abbreviation) $params["abbrev"] = $version->abbreviation;
         $stmt->execute($params);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $id = $row["version_id"];
-        echo "YAYhttps://plato.cs.virginia.edu/~jcs5sb/smash/version.php?t=" , $id;
+        echo "YAYhttps://plato.cs.virginia.edu/~jcs5sb/smash/version.php?t=", $id;
         exit();
     }
 }
@@ -52,11 +51,10 @@ if (strlen($json_input) > 0) {
         <?php
         if (strcmp($urlParams["t"], "newVersion") == 0) {
             echo "New Version";
-        }
-        else {
+        } else {
             $conn = DbUtil::connect();
             $stmt = $conn->prepare("SELECT name FROM pretty_version WHERE version_id = :version_id");
-            $params = array("version_id"=>$urlParams["t"]);
+            $params = array("version_id" => $urlParams["t"]);
             $stmt->execute($params);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             echo $row["name"];
@@ -76,29 +74,29 @@ if (strlen($json_input) > 0) {
 
         function init() {
             versionId = $("#video_id_div").text();
-            if(versionId=="newVersion") {
+            if (versionId == "newVersion") {
                 newName = $("#new_version_title");
                 newWeight = $("#new_version_abbrev");
                 newHeight = $("#new_version_release_date");
                 newFallRank = $("#new_version_number");
                 newName.autocomplete({
                     source: getVersionTitles(),
-                    select: function( event, ui ) {
+                    select: function (event, ui) {
                         newWeight.val(getAbbreviationForTitle(ui.item.value));
                     }
                 });
-                $("#submit").click(function() {
+                $("#submit").click(function () {
                     var newObj = {};
-                    if(!newName.val()) {
+                    if (!newName.val()) {
                         alert("You must enter a version title!");
                         newName.focus();
                         return;
                     }
                     newObj.title = newName.val();
 
-                    if(newHeight.val()) {
+                    if (newHeight.val()) {
                         newObj.date = Date.parse(newHeight.val());
-                        if(!newObj.date) {
+                        if (!newObj.date) {
                             alert("Incorrect format for release date!");
                             newHeight.focus();
                             return;
@@ -106,15 +104,15 @@ if (strlen($json_input) > 0) {
                         newObj.date = newObj.date.toString("yyyy-MM-dd");
                     }
 
-                    if(newWeight.val()) {
+                    if (newWeight.val()) {
                         newObj.abbreviation = newWeight.val();
                     }
-                    if(newFallRank.val()) {
+                    if (newFallRank.val()) {
                         newObj.version_number = newFallRank.val();
                     }
                     Helper.postJSON(newObj, "n",
                         function (data, textStatus, jqXHR) {
-                            if(data.charAt(0)=='Y' && data.charAt(1)=='A' && data.charAt(2)=='Y') {
+                            if (data.charAt(0) == 'Y' && data.charAt(1) == 'A' && data.charAt(2) == 'Y') {
                                 window.location.href = data.substring(3);
                             }
                             else {
@@ -167,8 +165,7 @@ if (strcmp($urlParams["t"], "newVersion") == 0) {
         <div style=\"display: inline-block\"><input id='new_version_release_date' class='date'></div></div>
         </div>";
     echo "<a class='btnPlus' href='javascript:void' id='submit'></a>";
-}
-else {
+} else {
     $version = new Version();
     $version->set(array("version_id" => $urlParams["t"]));
     $version->populateFieldsFromID();
@@ -181,17 +178,17 @@ else {
         new TableColumn("Falling Speed Rank", "newFallRank", "input", "Fall Speed Rank"),
         new TableColumn("Air Speed Rank", "newAirRank", "input", "Air Speed Rank")
     ));
-    $table->setData("SELECT ci.name, c.weight, c.height, c.falling_speed_rank, c.air_speed_rank
-        FROM `character` AS c INNER JOIN character_identity AS ci on c.identity_id = ci.identity_id
+    $table->setData("SELECT ci.identity_id as id, ci.name, c.weight, c.height, c.falling_speed_rank, c.air_speed_rank
+        FROM `character` AS c INNER JOIN character_identity AS ci ON c.identity_id = ci.identity_id
         WHERE c.version_id = :version",
         array("version" => $version->version_id));
     $table->renderData = function ($row) {
         echo "<tr>";
-        echo "<td>" . $row["name"] . "</td>";
-        echo "<td type='#'>" . $row["weight"] . "</td>";
-        echo "<td type='#'>" . $row["height"] . "</td>";
-        echo "<td type='#'>" . $row["falling_speed_rank"] . "</td>";
-        echo "<td type='#'>" . $row["air_speed_rank"] . "</td>";
+        echo "<td cid='", $row["id"], "'>", $row["name"], "</td>";
+        echo "<td type='#'>", $row["weight"], "</td>";
+        echo "<td type='#'>", $row["height"], "</td>";
+        echo "<td type='#'>", $row["falling_speed_rank"], "</td>";
+        echo "<td type='#'>", $row["air_speed_rank"], "</td>";
         echo "</tr>";
     };
     $table->render();
