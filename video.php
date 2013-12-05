@@ -94,7 +94,7 @@ echo "<h1>$video->title</h1>";
     <br>
     <?php
     foreach ($video->players as $player) {
-        echo "<div class='body' style='vertical-align: top; text-align: left'><span style='text-decoration: underline'> ";
+        echo "<div class='body container' style='vertical-align: top; text-align: left'><span style='text-decoration: underline'> ";
         echo $player->tag ? $player->tag : $player->name;
         echo "</span>";
         foreach ($video->techniques as $tu) {
