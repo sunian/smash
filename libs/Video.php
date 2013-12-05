@@ -238,7 +238,6 @@ class Video extends JSONObject
                     $params["player_id"] = $field[0];
                     $params["character_id"] = $field[1];
                     $params["version_id"] = $video_version;
-                    print_r($params);
                     $stmt = $conn->prepare($sql_string);
                     $stmt->execute($params);
                     $stmt->closeCursor();
