@@ -130,6 +130,10 @@ if (strlen($json_input) > 0) {
                 Helper.setupDataTable("Characters");
                 Helper.displayBtnAdd(true);
 
+                $("tbody.sortable td[cid]").each(function (i, elem) {
+                    $("select option[value='" + $(elem).attr("cid") + "']").remove();
+                });
+
                 newName = $("#newName");
                 newName.focus();
             }
@@ -178,7 +182,7 @@ if (strcmp($urlParams["t"], "newVersion") == 0) {
         new TableColumn("Falling Speed Rank", "newFallRank", "input", "Fall Speed Rank"),
         new TableColumn("Air Speed Rank", "newAirRank", "input", "Air Speed Rank")
     ));
-    $table->setData("SELECT ci.identity_id as id, ci.name, c.weight, c.height, c.falling_speed_rank, c.air_speed_rank
+    $table->setData("SELECT ci.identity_id AS id, ci.name, c.weight, c.height, c.falling_speed_rank, c.air_speed_rank
         FROM `character` AS c INNER JOIN character_identity AS ci ON c.identity_id = ci.identity_id
         WHERE c.version_id = :version",
         array("version" => $version->version_id));
