@@ -92,6 +92,10 @@ echo "<h1>$video->title</h1>";
         </tr>
     </table>
     <br>
+    <?php
+    print_r($video->techniques);
+    ?>
+    <br>
     <div class='body'>
         <table id='newTechnique'>
             <tr>
