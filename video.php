@@ -93,7 +93,18 @@ echo "<h1>$video->title</h1>";
     </table>
     <br>
     <?php
-    print_r($video);
+    foreach ($video->players as $player) {
+        echo "<div class='body'><span style='text-decoration: underline'> ";
+        echo $player->tag ? $player->tag : $player->name;
+        echo "</span>";
+        foreach ($video->techniques as $tu) {
+            if ($tu->player == $player->player_id) {
+                echo "<br>", $tu->name;
+            }
+        }
+        echo "</div>";
+    }
+
     ?>
     <br>
     <div class='body'>
