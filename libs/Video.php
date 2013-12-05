@@ -68,7 +68,7 @@ class Video extends JSONObject
     {
         try {
             $conn = DbUtil::connect();
-            $sql_string = "SELECT tu.technique_id, t.name, t.abbreviation
+            $sql_string = "SELECT tu.technique_id, t.name, t.abbreviation, tu.video_player_id as player
                 FROM video AS v
                 INNER JOIN video_player AS vp ON v.video_id = vp.video_id
                 INNER JOIN technique_usage AS tu ON vp.video_player_id = tu.video_player_id

@@ -14,6 +14,7 @@ class Technique extends JSONObject
     public $technique_id = null;
     public $name = null;
     public $abbreviation = null;
+    public $player = null;
 
     public function createTechnique()
     {
