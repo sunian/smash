@@ -93,7 +93,7 @@ echo "<h1>$video->title</h1>";
     </table>
     <br>
     <?php
-    print_r($video->techniques);
+    print_r($video);
     ?>
     <br>
     <div class='body'>
